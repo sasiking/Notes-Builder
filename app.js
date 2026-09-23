@@ -41,6 +41,256 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+/* ================= HELPERS & HTML BUILDERS ================= */
+function getStickyDeleteButtonHTML() {
+  return `<button class="sticky-del-btn" contenteditable="false" onclick="this.closest('.sticky').remove()">✕</button>`;
+}
+
+function getFormulaDeleteButtonHTML() {
+  return `<button class="eq-del-btn" contenteditable="false" onclick="this.closest('.eq, .math-block').remove()" title="Delete">✕</button>`;
+}
+
+function getCardToolbarHTML() {
+  return `
+    <div class="card-toolbar" contenteditable="false">
+      <div class="color-swatches">
+        <span style="font-size:10px; font-weight:700; color:#64748b; margin-right:3px;">INK:</span>
+        <div class="swatch" style="background:#0f3870;" onclick="changeCardColor(this, 'blue')"></div>
+        <div class="swatch" style="background:#15803d;" onclick="changeCardColor(this, 'green')"></div>
+        <div class="swatch" style="background:#a16207;" onclick="changeCardColor(this, 'yellow')"></div>
+        <div class="swatch" style="background:#6b21a8;" onclick="changeCardColor(this, 'purple')"></div>
+        <div class="swatch" style="background:#b91c1c;" onclick="changeCardColor(this, 'red')"></div>
+      </div>
+      <div class="card-actions">
+        <button class="card-tool-btn" onclick="addBulletToCard(this)">+ Bullet</button>
+        <button class="card-tool-btn" onclick="addSubpointToCard(this)">+ Sub-point</button>
+        <button class="card-tool-btn" onclick="addFormulaToCard(this)" style="background:#e0f2fe; color:#0369a1;">+ Formula</button>
+        <button class="card-tool-btn" onclick="removeFormulaFromCard(this)" style="background:#fee2e2; color:#991b1b;">- Formula</button>
+      </div>
+    </div>
+  `;
+}
+
+function getMainsBoxToolbarHTML() {
+  return `
+    <div class="mains-box-toolbar" contenteditable="false">
+      <button class="card-tool-btn" onclick="addSymbolToMains(this, '•')">• Bullet</button>
+      <button class="card-tool-btn" onclick="addSubpointToMains(this)">▫ Sub-point</button>
+      <button class="card-tool-btn" onclick="addSymbolToMains(this, '★')">★ Star</button>
+      <button class="card-tool-btn" onclick="addSymbolToMains(this, '■')">■ Rectangle</button>
+      <button class="card-tool-btn" onclick="addSymbolToMains(this, '❖')">❖ Diamond</button>
+      <button class="card-tool-btn" onclick="handleMainsTab(this, 'in')">⇥ Tab</button>
+      <button class="card-tool-btn" onclick="handleMainsTab(this, 'out')">⇤ Untab</button>
+      <button class="card-tool-btn" onclick="insertMainsQuestionDirect(this)" style="background:#fee2e2; border-color:#f87171; color:#991b1b;">
+        + Add Another Question
+      </button>
+    </div>
+  `;
+}
+
+function getSingleMainsQuestionItemHTML(qNum) {
+  return `
+    <div class="mains-q-item">
+      <div class="mains-item-controls" contenteditable="false">
+        <button class="control-btn btn-del" style="background:#991b1b;" onclick="this.closest('.mains-q-item').remove()">✕</button>
+      </div>
+      <div class="mains-q-title" contenteditable="true">
+        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+        <strong>Q${qNum}. "Write descriptive analytical question statement here."</strong>
+      </div>
+      <details class="reveal-box" style="margin-top:8px;">
+        <summary>View Model Answer Structuring Framework</summary>
+        <div class="reveal-content">
+          <div class="mains-framework" contenteditable="true" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+            <strong>Answer Framework:</strong><br>
+            • <em>Introduction:</em> Contextualize premises.<br>
+            <div class="sub-point" contenteditable="true">▫ <strong>Note:</strong> Sub-point elaboration...</div>
+            • <em>Core Analysis:</em> Arguments and empirical evidence.<br>
+            • <em>Conclusion:</em> Long-term impact and way forward.
+          </div>
+        </div>
+      </details>
+      ${getMainsBoxToolbarHTML()}
+    </div>
+  `;
+}
+
+/* ================= LAZY TEMPLATE RESOLVER ================= */
+function getTemplateHTML(type) {
+  const map = {
+    banner: `
+      <div class="title-section" contenteditable="true">
+        <div class="badge-tag">EXAM TAG / PAPER SPECIFICATION</div>
+        <h1>Main Title Here</h1>
+        <div class="subtitle">Subtitle • Scope of Topic • Core Framework</div>
+      </div>`,
+    header: `
+      <div class="section-header" contenteditable="true">
+        <span>Section Header</span>
+      </div>`,
+    'grid-2': `
+      <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note blue">
+            ${getCardToolbarHTML()}
+            <h3 contenteditable="true" style="color:var(--ink-blue); font-size:20px;">Column 1 Title</h3>
+            <ul class="bullet-list" contenteditable="true">
+              <li><strong>Point 1:</strong> Description...</li>
+              <div class="sub-point">▫ <strong>Detail:</strong> Elaboration...</div>
+            </ul>
+          </div>
+        </div>
+        <div class="grid-col">
+          <div class="card-note green">
+            ${getCardToolbarHTML()}
+            <h3 contenteditable="true" style="color:var(--ink-green); font-size:20px;">Column 2 Title</h3>
+            <ul class="bullet-list" contenteditable="true">
+              <li><strong>Point 1:</strong> Description...</li>
+              <div class="sub-point">▫ <strong>Detail:</strong> Elaboration...</div>
+            </ul>
+          </div>
+        </div>
+      </div>`,
+    'card-blue': `<div class="card-note blue">${getCardToolbarHTML()}<h3 contenteditable="true" style="color:var(--ink-blue); font-size:20px;">Card Title</h3><ul class="bullet-list" contenteditable="true"><li><strong>Point:</strong> Description...</li><div class="sub-point">▫ <strong>Note:</strong> Details...</div></ul></div>`,
+    'card-green': `<div class="card-note green">${getCardToolbarHTML()}<h3 contenteditable="true" style="color:var(--ink-green); font-size:20px;">Card Title</h3><ul class="bullet-list" contenteditable="true"><li><strong>Point:</strong> Description...</li><div class="sub-point">▫ <strong>Note:</strong> Details...</div></ul></div>`,
+    'card-yellow': `<div class="card-note yellow">${getCardToolbarHTML()}<h3 contenteditable="true" style="color:var(--ink-yellow); font-size:20px;">Card Title</h3><ul class="bullet-list" contenteditable="true"><li><strong>Point:</strong> Description...</li><div class="sub-point">▫ <strong>Note:</strong> Details...</div></ul></div>`,
+    'card-purple': `<div class="card-note purple">${getCardToolbarHTML()}<h3 contenteditable="true" style="color:var(--ink-purple); font-size:20px;">Card Title</h3><ul class="bullet-list" contenteditable="true"><li><strong>Point:</strong> Description...</li><div class="sub-point">▫ <strong>Note:</strong> Details...</div></ul></div>`,
+    'sticky-yellow': `<div class="sticky yellow">${getStickyDeleteButtonHTML()}<div contenteditable="true">📌 <strong>Exam Catch / Summary Note:</strong><br>Write shortcut or caveats here.</div></div>`,
+    'sticky-pink': `<div class="sticky pink">${getStickyDeleteButtonHTML()}<div contenteditable="true">📌 <strong>Recent Update / Fact:</strong><br>Add recent details here.</div></div>`,
+    'exam-trap': `<div class="exam-trick"><ul class="bullet-list" contenteditable="true" style="margin-top:2px;"><li><strong>TRAP: "Common incorrect statement."</strong> ➔ <strong>WRONG!</strong><div class="sub-point">▫ <strong>Reason:</strong> Actual correct fact...</div></li></ul></div>`,
+    'mcq-dropdown': `
+      <div class="mcq-card">
+        <span class="mcq-badge" contenteditable="true">EXAM BADGE</span>
+        <div contenteditable="true" style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">Q. Question prompt?</div>
+        <div class="mcq-options" contenteditable="true">1) Option 1<br>2) Option 2<br>3) Option 3<br>4) Option 4</div>
+        <details class="reveal-box">
+          <summary>Show Answer & Catch</summary>
+          <div class="reveal-content"><div contenteditable="true" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">➔ <strong>Correct Answer:</strong> <span class="hl-pink">Option 1</span><br>▫ <strong>Explanation:</strong> Explanation here...</div></div>
+        </details>
+      </div>`,
+    'table-blank': `
+      <table class="hand-table" contenteditable="true" style="margin: 10px 0 12px 0; font-size: 14px;">
+        <thead><tr><th style="width: 25%;">Parameter</th><th style="width: 37.5%;">Category A</th><th style="width: 37.5%;">Category B</th></tr></thead>
+        <tbody><tr><td><strong>Dimension 1</strong></td><td>Details...</td><td>Details...</td></tr></tbody>
+      </table>`,
+    'math-block': `
+      <div class="math-block" contenteditable="true">
+        <span>Formula =</span>
+        <div class="fraction">
+          <span class="fraction-top">Numerator Variable</span>
+          <span class="fraction-bottom">Denominator Variable</span>
+        </div>
+        <span>× 100</span>
+        ${getFormulaDeleteButtonHTML()}
+      </div>`
+  };
+  return map[type] || '';
+}
+
+/* ================= DOM WRAPPER & INSERTION ================= */
+function wrapInBlock(htmlContent) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'block-wrapper';
+  wrapper.innerHTML = `
+    <div class="block-controls" contenteditable="false">
+      <button class="control-btn btn-insert-mid" onclick="toggleMidInsertMenu(this)" title="Insert section after">+ Insert Here</button>
+      <button class="control-btn" onclick="moveUp(this)" title="Move Up">▲</button>
+      <button class="control-btn" onclick="moveDown(this)" title="Move Down">▼</button>
+      <button class="control-btn btn-del" onclick="deleteBlock(this)" title="Delete Block">✕</button>
+
+      <div class="mid-insert-menu">
+        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'header')">📌 Section Header</button>
+        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'grid-2')">🔲 2-Column Side-by-Side</button>
+        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'card-blue')">📘 Card (Blue)</button>
+        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'card-green')">📗 Card (Green)</button>
+        <button class="mid-insert-btn" onclick="openFormulaModalForCursor()">∑ Math / Formula Block</button>
+        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'table-blank')">📊 Comparison Table</button>
+        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'sticky-yellow')">📌 Sticky Note</button>
+        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'exam-trap')">⚡ Exam Trap Box</button>
+        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'mcq-dropdown')">❓ Prelims MCQ Card</button>
+      </div>
+    </div>
+    ${htmlContent}
+  `;
+  return wrapper;
+}
+
+function insertBlock(type) {
+  const canvas = document.getElementById('editorCanvas');
+  if (!canvas) return;
+  const html = getTemplateHTML(type);
+  if (!html) return;
+
+  const block = wrapInBlock(html);
+  canvas.appendChild(block);
+  block.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  makeEditable(block);
+  updateTitleUI();
+}
+
+function executeMidInsert(menuBtn, templateType) {
+  const currentBlock = menuBtn.closest('.block-wrapper');
+  if (!currentBlock) return;
+  const html = getTemplateHTML(templateType);
+  if (!html) return;
+
+  const newBlock = wrapInBlock(html);
+  currentBlock.parentNode.insertBefore(newBlock, currentBlock.nextSibling);
+  const menu = menuBtn.closest('.mid-insert-menu');
+  if (menu) menu.classList.remove('active');
+  newBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  makeEditable(newBlock);
+  updateTitleUI();
+}
+
+function toggleMidInsertMenu(btn) {
+  const menu = btn.parentElement.querySelector('.mid-insert-menu');
+  document.querySelectorAll('.mid-insert-menu').forEach(m => {
+    if (m !== menu) m.classList.remove('active');
+  });
+  if (menu) menu.classList.toggle('active');
+}
+
+/* ================= MAINS ENGINE ================= */
+function insertMainsQuestion() {
+  const canvas = document.getElementById('editorCanvas');
+  if (!canvas) return;
+  let mainsSection = canvas.querySelector('.mains-section');
+  if (!mainsSection) {
+    const initialHTML = `
+      <div class="mains-section">
+        ${getSingleMainsQuestionItemHTML(1)}
+      </div>
+    `;
+    const block = wrapInBlock(initialHTML);
+    canvas.appendChild(block);
+    block.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    makeEditable(block);
+  } else {
+    const currentCount = mainsSection.querySelectorAll('.mains-q-item').length;
+    const qNum = currentCount + 1;
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = getSingleMainsQuestionItemHTML(qNum).trim();
+    const newItem = tempDiv.firstElementChild;
+    mainsSection.appendChild(newItem);
+    newItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    makeEditable(newItem);
+  }
+}
+
+function insertMainsQuestionDirect(btn) {
+  const mainsSection = btn.closest('.mains-section');
+  if (!mainsSection) return;
+  const currentCount = mainsSection.querySelectorAll('.mains-q-item').length;
+  const qNum = currentCount + 1;
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = getSingleMainsQuestionItemHTML(qNum).trim();
+  const newItem = tempDiv.firstElementChild;
+  mainsSection.appendChild(newItem);
+  newItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  makeEditable(newItem);
+}
+
 /* ================= IMAGE & MEDIA ENGINE ================= */
 function toggleImageSidebar() {
   const sidebar = document.getElementById('imageSidebar');
@@ -138,11 +388,7 @@ function alignNoteImage(btn, alignPos) {
   container.style.alignItems = alignPos;
 }
 
-/* ================= FORMULA ENGINE ================= */
-function getFormulaDeleteButtonHTML() {
-  return `<button class="eq-del-btn" contenteditable="false" onclick="this.closest('.eq, .math-block').remove()" title="Delete">✕</button>`;
-}
-
+/* ================= FORMULA MODAL ================= */
 function openFormulaModalForCursor() {
   const sel = window.getSelection();
   if (sel.rangeCount > 0) {
@@ -205,7 +451,7 @@ function commitFormulaInsertion() {
     const fallbackTarget = canvas.querySelector('.card-note, .grid-col') || canvas;
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = formulaHTML.trim();
-    fallbackTarget.appendChild(tempDiv.firstChild);
+    fallbackTarget.appendChild(tempDiv.firstElementChild);
   }
   closeFormulaModal();
 }
@@ -233,7 +479,7 @@ function removeFormulaFromCard(btn) {
   }
 }
 
-/* ================= MAINS ENGINE & SYMBOLS / SUB-POINTS / TABS ================= */
+/* ================= EDITING TOOLS ================= */
 function addSymbolToMains(btn, symbol) {
   const framework = btn.closest('.mains-q-item').querySelector('.mains-framework');
   if (!framework) return;
@@ -289,379 +535,6 @@ function handleMainsTab(btn, direction) {
   }
 }
 
-/* ================= TEMPLATES & BLOCKS ================= */
-function getStickyDeleteButtonHTML() {
-  return `<button class="sticky-del-btn" contenteditable="false" onclick="this.closest('.sticky').remove()">✕</button>`;
-}
-
-function getCardToolbarHTML() {
-  return `
-    <div class="card-toolbar" contenteditable="false">
-      <div class="color-swatches">
-        <span style="font-size:10px; font-weight:700; color:#64748b; margin-right:3px;">INK:</span>
-        <div class="swatch" style="background:#0f3870;" onclick="changeCardColor(this, 'blue')"></div>
-        <div class="swatch" style="background:#15803d;" onclick="changeCardColor(this, 'green')"></div>
-        <div class="swatch" style="background:#a16207;" onclick="changeCardColor(this, 'yellow')"></div>
-        <div class="swatch" style="background:#6b21a8;" onclick="changeCardColor(this, 'purple')"></div>
-        <div class="swatch" style="background:#b91c1c;" onclick="changeCardColor(this, 'red')"></div>
-      </div>
-      <div class="card-actions">
-        <button class="card-tool-btn" onclick="addBulletToCard(this)">+ Bullet</button>
-        <button class="card-tool-btn" onclick="addSubpointToCard(this)">+ Sub-point</button>
-        <button class="card-tool-btn" onclick="addFormulaToCard(this)" style="background:#e0f2fe; color:#0369a1;">+ Formula</button>
-        <button class="card-tool-btn" onclick="removeFormulaFromCard(this)" style="background:#fee2e2; color:#991b1b;">- Formula</button>
-      </div>
-    </div>
-  `;
-}
-
-function getMainsBoxToolbarHTML() {
-  return `
-    <div class="mains-box-toolbar" contenteditable="false">
-      <button class="card-tool-btn" onclick="addSymbolToMains(this, '•')">• Bullet</button>
-      <button class="card-tool-btn" onclick="addSubpointToMains(this)">▫ Sub-point</button>
-      <button class="card-tool-btn" onclick="addSymbolToMains(this, '★')">★ Star</button>
-      <button class="card-tool-btn" onclick="addSymbolToMains(this, '■')">■ Rectangle</button>
-      <button class="card-tool-btn" onclick="addSymbolToMains(this, '❖')">❖ Diamond</button>
-      <button class="card-tool-btn" onclick="handleMainsTab(this, 'in')">⇥ Tab</button>
-      <button class="card-tool-btn" onclick="handleMainsTab(this, 'out')">⇤ Untab</button>
-      <button class="card-tool-btn" onclick="insertMainsQuestionDirect(this)" style="background:#fee2e2; border-color:#f87171; color:#991b1b;">
-        + Add Another Question
-      </button>
-    </div>
-  `;
-}
-
-function getSingleMainsQuestionItemHTML(qNum) {
-  return `
-    <div class="mains-q-item">
-      <div class="mains-item-controls" contenteditable="false">
-        <button class="control-btn btn-del" style="background:#991b1b;" onclick="this.closest('.mains-q-item').remove()">✕</button>
-      </div>
-      <div class="mains-q-title" contenteditable="true">
-        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
-        <strong>Q${qNum}. "Write descriptive analytical question statement here."</strong>
-      </div>
-      <details class="reveal-box" style="margin-top:8px;">
-        <summary>View Model Answer Structuring Framework</summary>
-        <div class="reveal-content">
-          <div class="mains-framework" contenteditable="true" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
-            <strong>Answer Framework:</strong><br>
-            • <em>Introduction:</em> Contextualize premises.<br>
-            <div class="sub-point" contenteditable="true">▫ <strong>Note:</strong> Sub-point elaboration...</div>
-            • <em>Core Analysis:</em> Arguments and empirical evidence.<br>
-            • <em>Conclusion:</em> Long-term impact and way forward.
-          </div>
-        </div>
-      </details>
-      ${getMainsBoxToolbarHTML()}
-    </div>
-  `;
-}
-
-const templates = {
-  banner: `
-    <div class="title-section" contenteditable="true">
-      <div class="badge-tag">EXAM TAG / PAPER SPECIFICATION</div>
-      <h1>Main Title Here</h1>
-      <div class="subtitle">Subtitle • Scope of Topic • Core Framework</div>
-    </div>`,
-  header: `
-    <div class="section-header" contenteditable="true">
-      <span>Section Header</span>
-    </div>`,
-  'grid-2': `
-    <div class="grid-2">
-      <div class="grid-col">
-        <div class="card-note blue">
-          ${getCardToolbarHTML()}
-          <h3 contenteditable="true" style="color:var(--ink-blue); font-size:20px;">Column 1 Title</h3>
-          <ul class="bullet-list" contenteditable="true">
-            <li><strong>Point 1:</strong> Description...</li>
-            <div class="sub-point">▫ <strong>Detail:</strong> Elaboration...</div>
-          </ul>
-        </div>
-      </div>
-      <div class="grid-col">
-        <div class="card-note green">
-          ${getCardToolbarHTML()}
-          <h3 contenteditable="true" style="color:var(--ink-green); font-size:20px;">Column 2 Title</h3>
-          <ul class="bullet-list" contenteditable="true">
-            <li><strong>Point 1:</strong> Description...</li>
-            <div class="sub-point">▫ <strong>Detail:</strong> Elaboration...</div>
-          </ul>
-        </div>
-      </div>
-    </div>`,
-  'card-blue': `<div class="card-note blue">${getCardToolbarHTML()}<h3 contenteditable="true" style="color:var(--ink-blue); font-size:20px;">Card Title</h3><ul class="bullet-list" contenteditable="true"><li><strong>Point:</strong> Description...</li><div class="sub-point">▫ <strong>Note:</strong> Details...</div></ul></div>`,
-  'card-green': `<div class="card-note green">${getCardToolbarHTML()}<h3 contenteditable="true" style="color:var(--ink-green); font-size:20px;">Card Title</h3><ul class="bullet-list" contenteditable="true"><li><strong>Point:</strong> Description...</li><div class="sub-point">▫ <strong>Note:</strong> Details...</div></ul></div>`,
-  'card-yellow': `<div class="card-note yellow">${getCardToolbarHTML()}<h3 contenteditable="true" style="color:var(--ink-yellow); font-size:20px;">Card Title</h3><ul class="bullet-list" contenteditable="true"><li><strong>Point:</strong> Description...</li><div class="sub-point">▫ <strong>Note:</strong> Details...</div></ul></div>`,
-  'card-purple': `<div class="card-note purple">${getCardToolbarHTML()}<h3 contenteditable="true" style="color:var(--ink-purple); font-size:20px;">Card Title</h3><ul class="bullet-list" contenteditable="true"><li><strong>Point:</strong> Description...</li><div class="sub-point">▫ <strong>Note:</strong> Details...</div></ul></div>`,
-  'sticky-yellow': `<div class="sticky yellow">${getStickyDeleteButtonHTML()}<div contenteditable="true">📌 <strong>Exam Catch / Summary Note:</strong><br>Write shortcut or caveats here.</div></div>`,
-  'sticky-pink': `<div class="sticky pink">${getStickyDeleteButtonHTML()}<div contenteditable="true">📌 <strong>Recent Update / Fact:</strong><br>Add recent details here.</div></div>`,
-  'exam-trap': `<div class="exam-trick"><ul class="bullet-list" contenteditable="true" style="margin-top:2px;"><li><strong>TRAP: "Common incorrect statement."</strong> ➔ <strong>WRONG!</strong><div class="sub-point">▫ <strong>Reason:</strong> Actual correct fact...</div></li></ul></div>`,
-  'mcq-dropdown': `
-    <div class="mcq-card">
-      <span class="mcq-badge" contenteditable="true">EXAM BADGE</span>
-      <div contenteditable="true" style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">Q. Question prompt?</div>
-      <div class="mcq-options" contenteditable="true">1) Option 1<br>2) Option 2<br>3) Option 3<br>4) Option 4</div>
-      <details class="reveal-box">
-        <summary>Show Answer & Catch</summary>
-        <div class="reveal-content"><div contenteditable="true" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">➔ <strong>Correct Answer:</strong> <span class="hl-pink">Option 1</span><br>▫ <strong>Explanation:</strong> Explanation here...</div></div>
-      </details>
-    </div>`,
-  'table-blank': `
-    <table class="hand-table" contenteditable="true" style="margin: 10px 0 12px 0; font-size: 14px;">
-      <thead><tr><th style="width: 25%;">Parameter</th><th style="width: 37.5%;">Category A</th><th style="width: 37.5%;">Category B</th></tr></thead>
-      <tbody><tr><td><strong>Dimension 1</strong></td><td>Details...</td><td>Details...</td></tr></tbody>
-    </table>`,
-  'math-block': `
-    <div class="math-block" contenteditable="true">
-      <span>Formula =</span>
-      <div class="fraction">
-        <span class="fraction-top">Numerator Variable</span>
-        <span class="fraction-bottom">Denominator Variable</span>
-      </div>
-      <span>× 100</span>
-      ${getFormulaDeleteButtonHTML()}
-    </div>`
-};
-
-function wrapInBlock(htmlContent) {
-  const wrapper = document.createElement('div');
-  wrapper.className = 'block-wrapper';
-  wrapper.innerHTML = `
-    <div class="block-controls" contenteditable="false">
-      <button class="control-btn btn-insert-mid" onclick="toggleMidInsertMenu(this)" title="Insert a new block directly after this section">+ Insert Here</button>
-      <button class="control-btn" onclick="moveUp(this)" title="Move Up">▲</button>
-      <button class="control-btn" onclick="moveDown(this)" title="Move Down">▼</button>
-      <button class="control-btn btn-del" onclick="deleteBlock(this)" title="Delete Block">✕</button>
-
-      <div class="mid-insert-menu">
-        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'header')">📌 Section Header</button>
-        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'grid-2')">🔲 2-Column Side-by-Side</button>
-        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'card-blue')">📘 Card (Blue)</button>
-        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'card-green')">📗 Card (Green)</button>
-        <button class="mid-insert-btn" onclick="openFormulaModalForCursor()">∑ Math / Formula Block</button>
-        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'table-blank')">📊 Comparison Table</button>
-        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'sticky-yellow')">📌 Sticky Note</button>
-        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'exam-trap')">⚡ Exam Trap Box</button>
-        <button class="mid-insert-btn" onclick="executeMidInsert(this, 'mcq-dropdown')">❓ Prelims MCQ Card</button>
-      </div>
-    </div>
-    ${htmlContent}
-  `;
-  return wrapper;
-}
-
-function toggleMidInsertMenu(btn) {
-  const menu = btn.parentElement.querySelector('.mid-insert-menu');
-  document.querySelectorAll('.mid-insert-menu').forEach(m => {
-    if (m !== menu) m.classList.remove('active');
-  });
-  if (menu) menu.classList.toggle('active');
-}
-
-function executeMidInsert(menuBtn, templateType) {
-  const currentBlock = menuBtn.closest('.block-wrapper');
-  const newBlock = wrapInBlock(templates[templateType]);
-  currentBlock.parentNode.insertBefore(newBlock, currentBlock.nextSibling);
-  menuBtn.closest('.mid-insert-menu').classList.remove('active');
-  newBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  makeEditable(newBlock);
-  updateTitleUI();
-}
-
-function insertBlock(type) {
-  const canvas = document.getElementById('editorCanvas');
-  const block = wrapInBlock(templates[type]);
-  canvas.appendChild(block);
-  block.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  makeEditable(block);
-  updateTitleUI();
-}
-
-function insertMainsQuestion() {
-  const canvas = document.getElementById('editorCanvas');
-  let mainsSection = canvas.querySelector('.mains-section');
-  if (!mainsSection) {
-    const initialHTML = `
-      <div class="mains-section">
-        ${getSingleMainsQuestionItemHTML(1)}
-      </div>
-    `;
-    const block = wrapInBlock(initialHTML);
-    canvas.appendChild(block);
-    block.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  } else {
-    const currentCount = mainsSection.querySelectorAll('.mains-q-item').length;
-    const qNum = currentCount + 1;
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = getSingleMainsQuestionItemHTML(qNum).trim();
-    const newItem = tempDiv.firstChild;
-    mainsSection.appendChild(newItem);
-    newItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-}
-
-function insertMainsQuestionDirect(btn) {
-  const mainsSection = btn.closest('.mains-section');
-  if (!mainsSection) return;
-  const currentCount = mainsSection.querySelectorAll('.mains-q-item').length;
-  const qNum = currentCount + 1;
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = getSingleMainsQuestionItemHTML(qNum).trim();
-  const newItem = tempDiv.firstChild;
-  mainsSection.appendChild(newItem);
-  newItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-function handleFileSelect(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  importedFileName = file.name;
-  manualTitleOverride = null;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    importHTMLContent(e.target.result);
-  };
-  reader.readAsText(file);
-  event.target.value = '';
-}
-
-function importHTMLContent(rawHTML) {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(rawHTML, 'text/html');
-  const sourceContainer = doc.querySelector('.notebook-container') || doc.body;
-  if (!sourceContainer) {
-    alert('Could not locate content in file.');
-    return;
-  }
-
-  if (doc.title && doc.title !== 'Polity Notes Output' && doc.title !== 'Notes Visual Builder Studio') {
-    manualTitleOverride = doc.title;
-  }
-
-  const canvas = document.getElementById('editorCanvas');
-  canvas.innerHTML = '';
-  const children = Array.from(sourceContainer.children);
-  children.forEach(child => {
-    if (child.tagName === 'SCRIPT' || child.tagName === 'STYLE') return;
-    child.querySelectorAll('.block-controls, .card-toolbar, .mains-box-toolbar, .mains-item-controls, .sticky-del-btn, .text-del-btn, .mid-insert-menu, .eq-del-btn, .note-image-del, .note-image-toolbar').forEach(el => el.remove());
-    
-    if (child.classList.contains('card-note')) {
-      child.insertAdjacentHTML('afterbegin', getCardToolbarHTML());
-    } else {
-      child.querySelectorAll('.card-note').forEach(c => {
-        if (!c.querySelector('.card-toolbar')) {
-          c.insertAdjacentHTML('afterbegin', getCardToolbarHTML());
-        }
-      });
-    }
-
-    const stickies = child.classList.contains('sticky') ? [child] : Array.from(child.querySelectorAll('.sticky'));
-    stickies.forEach(st => {
-      if (!st.querySelector('.sticky-del-btn')) {
-        st.insertAdjacentHTML('afterbegin', getStickyDeleteButtonHTML());
-      }
-    });
-
-    const imageContainers = child.classList.contains('note-image-container') ? [child] : Array.from(child.querySelectorAll('.note-image-container'));
-    imageContainers.forEach(container => {
-      if (!container.querySelector('.note-image-toolbar')) {
-        container.insertAdjacentHTML('afterbegin', `
-          <div class="note-image-toolbar" contenteditable="false">
-            <span style="font-size:10px; font-weight:700; color:#64748b; margin-right:2px;">SCALE:</span>
-            <button class="image-scale-btn" onclick="resizeNoteImage(this, '25%')">25%</button>
-            <button class="image-scale-btn" onclick="resizeNoteImage(this, '50%')">50%</button>
-            <button class="image-scale-btn" onclick="resizeNoteImage(this, '75%')">75%</button>
-            <button class="image-scale-btn" onclick="resizeNoteImage(this, '100%')">100%</button>
-            <span style="font-size:10px; font-weight:700; color:#64748b; margin: 0 2px 0 6px;">ALIGN:</span>
-            <button class="image-scale-btn" onclick="alignNoteImage(this, 'flex-start')">Left</button>
-            <button class="image-scale-btn" onclick="alignNoteImage(this, 'center')">Center</button>
-            <button class="image-scale-btn" onclick="alignNoteImage(this, 'flex-end')">Right</button>
-          </div>
-        `);
-      }
-      const wrapper = container.querySelector('.note-image-wrapper');
-      if (wrapper && !wrapper.querySelector('.note-image-del')) {
-        wrapper.insertAdjacentHTML('afterbegin', `<button class="note-image-del" contenteditable="false" onclick="this.closest('.block-wrapper').remove()" title="Delete Image">✕</button>`);
-      }
-    });
-
-    const formulas = Array.from(child.querySelectorAll('.eq, .math-block'));
-    formulas.forEach(eq => {
-      if (!eq.querySelector('.eq-del-btn')) {
-        eq.insertAdjacentHTML('beforeend', getFormulaDeleteButtonHTML());
-      }
-    });
-
-    if (child.classList.contains('mains-section') || child.querySelector('.mains-section')) {
-      const section = child.classList.contains('mains-section') ? child : child.querySelector('.mains-section');
-      section.querySelectorAll('.mains-q-item').forEach(item => {
-        if (!item.querySelector('.mains-box-toolbar')) {
-          item.insertAdjacentHTML('beforeend', getMainsBoxToolbarHTML());
-        }
-        if (!item.querySelector('.mains-item-controls')) {
-          item.insertAdjacentHTML('afterbegin', `
-            <div class="mains-item-controls" contenteditable="false">
-              <button class="control-btn btn-del" style="background:#991b1b;" onclick="this.closest('.mains-q-item').remove()">✕</button>
-            </div>
-          `);
-        }
-      });
-    }
-    makeEditable(child);
-    if (child.classList.contains('block-wrapper')) {
-      canvas.appendChild(child);
-    } else {
-      const wrapped = wrapInBlock(child.outerHTML);
-      canvas.appendChild(wrapped);
-    }
-  });
-  updateTitleUI();
-  alert('Document loaded successfully!');
-}
-
-function makeEditable(node) {
-  const editableSelectors = [
-    'h1', 'h2', 'h3', 'h4', 'span:not(.eq-del-btn)', 'p', 'li', 'ul', 'div.sub-point',
-    'div.sticky', 'div.title-section', 'div.section-header', 'div.mains-q-title',
-    'div.mains-framework', 'div.mcq-options', 'table.hand-table', 'div.exam-trick',
-    'div.regular-text-content', 'div.math-block'
-  ];
-  editableSelectors.forEach(sel => {
-    node.querySelectorAll(sel).forEach(el => {
-      if (!el.closest('.card-toolbar') && !el.closest('.block-controls') && !el.closest('.mains-box-toolbar') && !el.closest('.mains-item-controls') && !el.closest('.note-image-toolbar') && !el.classList.contains('sticky-del-btn') && !el.classList.contains('text-del-btn') && !el.classList.contains('eq-del-btn') && !el.classList.contains('note-image-del')) {
-        el.setAttribute('contenteditable', 'true');
-      }
-    });
-  });
-  if (editableSelectors.some(sel => node.matches && node.matches(sel)) && !node.classList.contains('sticky-del-btn') && !node.classList.contains('text-del-btn') && !node.classList.contains('eq-del-btn') && !node.classList.contains('note-image-del')) {
-    node.setAttribute('contenteditable', 'true');
-  }
-}
-
-const colorMap = {
-  blue:   { border: 'blue',   ink: 'var(--ink-blue)' },
-  yellow: { border: 'yellow', ink: 'var(--ink-yellow)' },
-  teal:   { border: 'teal',   ink: 'var(--ink-teal)' },
-  green:  { border: 'green',  ink: 'var(--ink-green)' },
-  purple: { border: 'purple', ink: 'var(--ink-purple)' },
-  red:    { border: 'red',    ink: 'var(--ink-red)' },
-  rose:   { border: 'rose',   ink: 'var(--ink-rose)' },
-  amber:  { border: 'amber',  ink: 'var(--ink-amber)' }
-};
-
-function changeCardColor(swatchEl, colorName) {
-  const card = swatchEl.closest('.card-note');
-  if (!card) return;
-  Object.keys(colorMap).forEach(c => card.classList.remove(c));
-  card.classList.add(colorName);
-  const heading = card.querySelector('h3');
-  if (heading) heading.style.color = colorMap[colorName].ink;
-}
-
 function addBulletToCard(btn) {
   const card = btn.closest('.card-note, .grid-col');
   if (!card) return;
@@ -688,19 +561,40 @@ function addSubpointToCard(btn) {
   list.appendChild(sub);
 }
 
+const colorMap = {
+  blue:   { border: 'blue',   ink: 'var(--ink-blue)' },
+  yellow: { border: 'yellow', ink: 'var(--ink-yellow)' },
+  teal:   { border: 'teal',   ink: 'var(--ink-teal)' },
+  green:  { border: 'green',  ink: 'var(--ink-green)' },
+  purple: { border: 'purple', ink: 'var(--ink-purple)' },
+  red:    { border: 'red',    ink: 'var(--ink-red)' },
+  rose:   { border: 'rose',   ink: 'var(--ink-rose)' },
+  amber:  { border: 'amber',  ink: 'var(--ink-amber)' }
+};
+
+function changeCardColor(swatchEl, colorName) {
+  const card = swatchEl.closest('.card-note');
+  if (!card) return;
+  Object.keys(colorMap).forEach(c => card.classList.remove(c));
+  card.classList.add(colorName);
+  const heading = card.querySelector('h3');
+  if (heading) heading.style.color = colorMap[colorName].ink;
+}
+
 function deleteBlock(btn) { 
-  btn.closest('.block-wrapper').remove(); 
+  const block = btn.closest('.block-wrapper');
+  if (block) block.remove(); 
   updateTitleUI();
 }
 
 function moveUp(btn) {
   const wrapper = btn.closest('.block-wrapper');
-  if (wrapper.previousElementSibling) wrapper.parentNode.insertBefore(wrapper, wrapper.previousElementSibling);
+  if (wrapper && wrapper.previousElementSibling) wrapper.parentNode.insertBefore(wrapper, wrapper.previousElementSibling);
 }
 
 function moveDown(btn) {
   const wrapper = btn.closest('.block-wrapper');
-  if (wrapper.nextElementSibling) wrapper.parentNode.insertBefore(wrapper, wrapper.nextElementSibling);
+  if (wrapper && wrapper.nextElementSibling) wrapper.parentNode.insertBefore(wrapper, wrapper.nextElementSibling);
 }
 
 function clearCanvas() {
@@ -760,6 +654,111 @@ function handleClearTextSizeClick(e) {
   }
 }
 
+function makeEditable(node) {
+  const editableSelectors = [
+    'h1', 'h2', 'h3', 'h4', 'span:not(.eq-del-btn)', 'p', 'li', 'ul', 'div.sub-point',
+    'div.sticky', 'div.title-section', 'div.section-header', 'div.mains-q-title',
+    'div.mains-framework', 'div.mcq-options', 'table.hand-table', 'div.exam-trick',
+    'div.regular-text-content', 'div.math-block'
+  ];
+  editableSelectors.forEach(sel => {
+    node.querySelectorAll(sel).forEach(el => {
+      if (!el.closest('.card-toolbar') && !el.closest('.block-controls') && !el.closest('.mains-box-toolbar') && !el.closest('.mains-item-controls') && !el.closest('.note-image-toolbar') && !el.classList.contains('sticky-del-btn') && !el.classList.contains('text-del-btn') && !el.classList.contains('eq-del-btn') && !el.classList.contains('note-image-del')) {
+        el.setAttribute('contenteditable', 'true');
+      }
+    });
+  });
+  if (editableSelectors.some(sel => node.matches && node.matches(sel)) && !node.classList.contains('sticky-del-btn') && !node.classList.contains('text-del-btn') && !node.classList.contains('eq-del-btn') && !node.classList.contains('note-image-del')) {
+    node.setAttribute('contenteditable', 'true');
+  }
+}
+
+/* ================= IMPORT & EXPORT ================= */
+function handleFileSelect(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  importedFileName = file.name;
+  manualTitleOverride = null;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    importHTMLContent(e.target.result);
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function importHTMLContent(rawHTML) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(rawHTML, 'text/html');
+  const sourceContainer = doc.querySelector('.notebook-container') || doc.body;
+  if (!sourceContainer) {
+    alert('Could not locate content in file.');
+    return;
+  }
+
+  if (doc.title && doc.title !== 'Polity Notes Output' && doc.title !== 'Notes Visual Builder Studio') {
+    manualTitleOverride = doc.title;
+  }
+
+  const canvas = document.getElementById('editorCanvas');
+  canvas.innerHTML = '';
+  const children = Array.from(sourceContainer.children);
+  children.forEach(child => {
+    if (child.tagName === 'SCRIPT' || child.tagName === 'STYLE') return;
+    child.querySelectorAll('.block-controls, .card-toolbar, .mains-box-toolbar, .mains-item-controls, .sticky-del-btn, .text-del-btn, .mid-insert-menu, .eq-del-btn, .note-image-del, .note-image-toolbar').forEach(el => el.remove());
+    
+    if (child.classList.contains('card-note')) {
+      child.insertAdjacentHTML('afterbegin', getCardToolbarHTML());
+    } else {
+      child.querySelectorAll('.card-note').forEach(c => {
+        if (!c.querySelector('.card-toolbar')) {
+          c.insertAdjacentHTML('afterbegin', getCardToolbarHTML());
+        }
+      });
+    }
+
+    const stickies = child.classList.contains('sticky') ? [child] : Array.from(child.querySelectorAll('.sticky'));
+    stickies.forEach(st => {
+      if (!st.querySelector('.sticky-del-btn')) {
+        st.insertAdjacentHTML('afterbegin', getStickyDeleteButtonHTML());
+      }
+    });
+
+    const formulas = Array.from(child.querySelectorAll('.eq, .math-block'));
+    formulas.forEach(eq => {
+      if (!eq.querySelector('.eq-del-btn')) {
+        eq.insertAdjacentHTML('beforeend', getFormulaDeleteButtonHTML());
+      }
+    });
+
+    if (child.classList.contains('mains-section') || child.querySelector('.mains-section')) {
+      const section = child.classList.contains('mains-section') ? child : child.querySelector('.mains-section');
+      section.querySelectorAll('.mains-q-item').forEach(item => {
+        if (!item.querySelector('.mains-box-toolbar')) {
+          item.insertAdjacentHTML('beforeend', getMainsBoxToolbarHTML());
+        }
+        if (!item.querySelector('.mains-item-controls')) {
+          item.insertAdjacentHTML('afterbegin', `
+            <div class="mains-item-controls" contenteditable="false">
+              <button class="control-btn btn-del" style="background:#991b1b;" onclick="this.closest('.mains-q-item').remove()">✕</button>
+            </div>
+          `);
+        }
+      });
+    }
+
+    makeEditable(child);
+    if (child.classList.contains('block-wrapper')) {
+      canvas.appendChild(child);
+    } else {
+      const wrapped = wrapInBlock(child.outerHTML);
+      canvas.appendChild(wrapped);
+    }
+  });
+  updateTitleUI();
+  alert('Document loaded successfully!');
+}
+
 function exportCleanHTML() {
   const canvasClone = document.getElementById('editorCanvas').cloneNode(true);
   canvasClone.querySelectorAll('.block-controls, .card-toolbar, .mains-box-toolbar, .mains-item-controls, .sticky-del-btn, .text-del-btn, .note-image-del, .note-image-toolbar, .mid-insert-menu, .eq-del-btn').forEach(el => el.remove());
@@ -768,16 +767,13 @@ function exportCleanHTML() {
   const resolvedTitle = resolveDocumentTitle();
   let downloadFilename = importedFileName || ((resolvedTitle.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '') || 'notes_output') + '.html');
 
-  // Grab active compiled styles to ensure downloaded standalone notes remain completely self-contained
   let activeStyles = '';
   for (let sheet of document.styleSheets) {
     try {
       for (let rule of sheet.cssRules) {
         activeStyles += rule.cssText + '\n';
       }
-    } catch (e) {
-      // Ignore cross-origin font rules
-    }
+    } catch (e) {}
   }
 
   const fullHTML = `<!DOCTYPE html>
