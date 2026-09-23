@@ -261,6 +261,51 @@ html, body {
   position: relative;
 }
 
+/* ================= THEMED CARDS & INK STYLES ================= */
+.card-note { 
+  background: rgba(255,255,255,0.88); 
+  border: 1.5px solid #cbd5e1; 
+  border-radius: 6px; 
+  padding: 12px 16px; 
+  box-shadow: var(--shadow); 
+  margin-bottom: 12px; 
+}
+
+/* Card Left Borders */
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+.card-note.rose   { border-left: 6px solid var(--ink-rose) !important; }
+
+/* Enforce Ink Colors on Headings automatically */
+.card-note.blue   h1, .card-note.blue   h2, .card-note.blue   h3, .card-note.blue   h4 { color: var(--ink-blue) !important; }
+.card-note.green  h1, .card-note.green  h2, .card-note.green  h3, .card-note.green  h4 { color: var(--ink-green) !important; }
+.card-note.purple h1, .card-note.purple h2, .card-note.purple h3, .card-note.purple h4 { color: var(--ink-purple) !important; }
+.card-note.red    h1, .card-note.red    h2, .card-note.red    h3, .card-note.red    h4 { color: var(--ink-red) !important; }
+.card-note.yellow h1, .card-note.yellow h2, .card-note.yellow h3, .card-note.yellow h4 { color: var(--ink-yellow) !important; }
+.card-note.teal   h1, .card-note.teal   h2, .card-note.teal   h3, .card-note.teal   h4 { color: var(--ink-teal) !important; }
+.card-note.amber  h1, .card-note.amber  h2, .card-note.amber  h3, .card-note.amber  h4 { color: var(--ink-amber) !important; }
+.card-note.orange h1, .card-note.orange h2, .card-note.orange h3, .card-note.orange h4 { color: var(--ink-orange) !important; }
+.card-note.rose   h1, .card-note.rose   h2, .card-note.rose   h3, .card-note.rose   h4 { color: var(--ink-rose) !important; }
+
+/* Swatches styling */
+.color-swatches { display: flex; align-items: center; gap: 6px; }
+.swatch { 
+  width: 15px; 
+  height: 15px; 
+  border-radius: 50%; 
+  cursor: pointer; 
+  border: 1.5px solid rgba(0,0,0,0.25); 
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.swatch:hover { transform: scale(1.3); }
+
 /* ================= FLEXIBLE IN-NOTE IMAGE SYSTEM ================= */
 .note-image-container {
   position: relative;
@@ -520,6 +565,34 @@ html, body {
 }
 .mid-insert-btn:hover { background: #2563eb; border-color: #60a5fa; }
 
+/* CARD LOCAL TOOLBAR */
+.card-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 8px;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px dashed #cbd5e1;
+  user-select: none;
+}
+
+.card-actions { display: flex; gap: 4px; flex-wrap: wrap; }
+.card-tool-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #334155;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+.card-tool-btn:hover { background: #e2e8f0; color: #0f172a; }
+
 /* ================= TYPOGRAPHY & ELEMENTS ================= */
 h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
 .title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; }
@@ -532,16 +605,6 @@ h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
 .grid-col { display: flex; flex-direction: column; }
-
-.card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
-.card-note.blue   { border-left: 5px solid var(--ink-blue); }
-.card-note.green  { border-left: 5px solid var(--ink-green); }
-.card-note.purple { border-left: 5px solid var(--ink-purple); }
-.card-note.red    { border-left: 5px solid var(--ink-red); }
-.card-note.yellow { border-left: 5px solid var(--ink-yellow); }
-.card-note.teal   { border-left: 5px solid var(--ink-teal); }
-.card-note.amber  { border-left: 5px solid var(--ink-amber); }
-.card-note.orange { border-left: 5px solid var(--ink-orange); }
 
 .bullet-list { list-style: none; padding-left: 2px; }
 .bullet-list li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; min-height: 24px; }

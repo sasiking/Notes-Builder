@@ -41,7 +41,37 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ================= HELPERS & HTML BUILDERS ================= */
+/* ================= COLOR & THEME MAP ================= */
+const colorMap = {
+  blue:   'var(--ink-blue)',
+  yellow: 'var(--ink-yellow)',
+  teal:   'var(--ink-teal)',
+  green:  'var(--ink-green)',
+  purple: 'var(--ink-purple)',
+  red:    'var(--ink-red)',
+  rose:   'var(--ink-rose)',
+  amber:  'var(--ink-amber)',
+  orange: 'var(--ink-orange)'
+};
+
+function changeCardColor(swatchEl, colorName) {
+  const card = swatchEl.closest('.card-note');
+  if (!card) return;
+
+  // Clear previous colors
+  Object.keys(colorMap).forEach(c => card.classList.remove(c));
+  
+  // Set selected color class
+  card.classList.add(colorName);
+
+  // Directly set the heading style as well
+  const heading = card.querySelector('h1, h2, h3, h4');
+  if (heading && colorMap[colorName]) {
+    heading.style.setProperty('color', colorMap[colorName], 'important');
+  }
+}
+
+/* ================= TOOLBAR & HTML BUILDERS ================= */
 function getStickyDeleteButtonHTML() {
   return `<button class="sticky-del-btn" contenteditable="false" onclick="this.closest('.sticky').remove()">✕</button>`;
 }
@@ -60,6 +90,9 @@ function getCardToolbarHTML() {
         <div class="swatch" style="background:#a16207;" onclick="changeCardColor(this, 'yellow')"></div>
         <div class="swatch" style="background:#6b21a8;" onclick="changeCardColor(this, 'purple')"></div>
         <div class="swatch" style="background:#b91c1c;" onclick="changeCardColor(this, 'red')"></div>
+        <div class="swatch" style="background:#0f766e;" onclick="changeCardColor(this, 'teal')"></div>
+        <div class="swatch" style="background:#b45309;" onclick="changeCardColor(this, 'amber')"></div>
+        <div class="swatch" style="background:#c2410c;" onclick="changeCardColor(this, 'orange')"></div>
       </div>
       <div class="card-actions">
         <button class="card-tool-btn" onclick="addBulletToCard(this)">+ Bullet</button>
@@ -115,7 +148,23 @@ function getSingleMainsQuestionItemHTML(qNum) {
   `;
 }
 
-/* ================= LAZY TEMPLATE RESOLVER ================= */
+function getImageToolbarHTML() {
+  return `
+    <div class="note-image-toolbar" contenteditable="false">
+      <span style="font-size:10px; font-weight:700; color:#64748b; margin-right:2px;">SCALE:</span>
+      <button class="image-scale-btn" onclick="resizeNoteImage(this, '25%')">25%</button>
+      <button class="image-scale-btn" onclick="resizeNoteImage(this, '50%')">50%</button>
+      <button class="image-scale-btn" onclick="resizeNoteImage(this, '75%')">75%</button>
+      <button class="image-scale-btn" onclick="resizeNoteImage(this, '100%')">100%</button>
+      <span style="font-size:10px; font-weight:700; color:#64748b; margin: 0 2px 0 6px;">ALIGN:</span>
+      <button class="image-scale-btn" onclick="alignNoteImage(this, 'flex-start')">Left</button>
+      <button class="image-scale-btn" onclick="alignNoteImage(this, 'center')">Center</button>
+      <button class="image-scale-btn" onclick="alignNoteImage(this, 'flex-end')">Right</button>
+    </div>
+  `;
+}
+
+/* ================= TEMPLATE RESOLUTION ================= */
 function getTemplateHTML(type) {
   const map = {
     banner: `
@@ -187,11 +236,8 @@ function getTemplateHTML(type) {
   return map[type] || '';
 }
 
-/* ================= DOM WRAPPER & INSERTION ================= */
-function wrapInBlock(htmlContent) {
-  const wrapper = document.createElement('div');
-  wrapper.className = 'block-wrapper';
-  wrapper.innerHTML = `
+function getControlsHTML() {
+  return `
     <div class="block-controls" contenteditable="false">
       <button class="control-btn btn-insert-mid" onclick="toggleMidInsertMenu(this)" title="Insert section after">+ Insert Here</button>
       <button class="control-btn" onclick="moveUp(this)" title="Move Up">▲</button>
@@ -210,8 +256,13 @@ function wrapInBlock(htmlContent) {
         <button class="mid-insert-btn" onclick="executeMidInsert(this, 'mcq-dropdown')">❓ Prelims MCQ Card</button>
       </div>
     </div>
-    ${htmlContent}
   `;
+}
+
+function wrapInBlock(htmlContent) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'block-wrapper';
+  wrapper.innerHTML = `${getControlsHTML()}${htmlContent}`;
   return wrapper;
 }
 
@@ -350,17 +401,7 @@ function insertImageDirectlyToCanvas(base64Data) {
   const canvas = document.getElementById('editorCanvas');
   const containerHTML = `
     <div class="note-image-container">
-      <div class="note-image-toolbar" contenteditable="false">
-        <span style="font-size:10px; font-weight:700; color:#64748b; margin-right:2px;">SCALE:</span>
-        <button class="image-scale-btn" onclick="resizeNoteImage(this, '25%')">25%</button>
-        <button class="image-scale-btn" onclick="resizeNoteImage(this, '50%')">50%</button>
-        <button class="image-scale-btn" onclick="resizeNoteImage(this, '75%')">75%</button>
-        <button class="image-scale-btn" onclick="resizeNoteImage(this, '100%')">100%</button>
-        <span style="font-size:10px; font-weight:700; color:#64748b; margin: 0 2px 0 6px;">ALIGN:</span>
-        <button class="image-scale-btn" onclick="alignNoteImage(this, 'flex-start')">Left</button>
-        <button class="image-scale-btn" onclick="alignNoteImage(this, 'center')">Center</button>
-        <button class="image-scale-btn" onclick="alignNoteImage(this, 'flex-end')">Right</button>
-      </div>
+      ${getImageToolbarHTML()}
       <div class="note-image-wrapper" style="width: 70%; height: auto;">
         <button class="note-image-del" contenteditable="false" onclick="this.closest('.block-wrapper').remove()" title="Delete Image">✕</button>
         <img src="${base64Data}" alt="Study Map / Diagram">
@@ -561,26 +602,6 @@ function addSubpointToCard(btn) {
   list.appendChild(sub);
 }
 
-const colorMap = {
-  blue:   { border: 'blue',   ink: 'var(--ink-blue)' },
-  yellow: { border: 'yellow', ink: 'var(--ink-yellow)' },
-  teal:   { border: 'teal',   ink: 'var(--ink-teal)' },
-  green:  { border: 'green',  ink: 'var(--ink-green)' },
-  purple: { border: 'purple', ink: 'var(--ink-purple)' },
-  red:    { border: 'red',    ink: 'var(--ink-red)' },
-  rose:   { border: 'rose',   ink: 'var(--ink-rose)' },
-  amber:  { border: 'amber',  ink: 'var(--ink-amber)' }
-};
-
-function changeCardColor(swatchEl, colorName) {
-  const card = swatchEl.closest('.card-note');
-  if (!card) return;
-  Object.keys(colorMap).forEach(c => card.classList.remove(c));
-  card.classList.add(colorName);
-  const heading = card.querySelector('h3');
-  if (heading) heading.style.color = colorMap[colorName].ink;
-}
-
 function deleteBlock(btn) { 
   const block = btn.closest('.block-wrapper');
   if (block) block.remove(); 
@@ -702,38 +723,99 @@ function importHTMLContent(rawHTML) {
 
   const canvas = document.getElementById('editorCanvas');
   canvas.innerHTML = '';
-  const children = Array.from(sourceContainer.children);
-  children.forEach(child => {
+  
+  // Clean out leftover UI controls
+  sourceContainer.querySelectorAll(
+    '.block-controls, .card-toolbar, .mains-box-toolbar, .mains-item-controls, ' +
+    '.sticky-del-btn, .text-del-btn, .mid-insert-menu, .eq-del-btn, .note-image-del, .note-image-toolbar'
+  ).forEach(el => el.remove());
+
+  // Unwrap any existing block-wrapper divs so they don't multiply
+  const rawBlocks = [];
+  Array.from(sourceContainer.children).forEach(child => {
     if (child.tagName === 'SCRIPT' || child.tagName === 'STYLE') return;
-    child.querySelectorAll('.block-controls, .card-toolbar, .mains-box-toolbar, .mains-item-controls, .sticky-del-btn, .text-del-btn, .mid-insert-menu, .eq-del-btn, .note-image-del, .note-image-toolbar').forEach(el => el.remove());
-    
-    if (child.classList.contains('card-note')) {
-      child.insertAdjacentHTML('afterbegin', getCardToolbarHTML());
-    } else {
-      child.querySelectorAll('.card-note').forEach(c => {
-        if (!c.querySelector('.card-toolbar')) {
-          c.insertAdjacentHTML('afterbegin', getCardToolbarHTML());
+    if (child.classList.contains('block-wrapper')) {
+      Array.from(child.children).forEach(innerChild => {
+        if (!innerChild.classList.contains('block-controls')) {
+          rawBlocks.push(innerChild);
         }
       });
+    } else {
+      rawBlocks.push(child);
     }
+  });
 
-    const stickies = child.classList.contains('sticky') ? [child] : Array.from(child.querySelectorAll('.sticky'));
+  rawBlocks.forEach(contentEl => {
+    // 1. Restore Card Toolbars and re-apply Ink styling
+    const cards = contentEl.classList.contains('card-note') 
+      ? [contentEl] 
+      : Array.from(contentEl.querySelectorAll('.card-note'));
+
+    cards.forEach(card => {
+      if (!card.querySelector('.card-toolbar')) {
+        card.insertAdjacentHTML('afterbegin', getCardToolbarHTML());
+      }
+
+      // Check which color class the card currently has
+      let matchedColor = null;
+      for (const cName of Object.keys(colorMap)) {
+        if (card.classList.contains(cName)) {
+          matchedColor = cName;
+          break;
+        }
+      }
+
+      // If no color class found, default to blue
+      if (!matchedColor) {
+        matchedColor = 'blue';
+        card.classList.add('blue');
+      }
+
+      // Explicitly set the heading color to match the ink
+      const heading = card.querySelector('h1, h2, h3, h4');
+      if (heading) {
+        heading.style.setProperty('color', colorMap[matchedColor], 'important');
+      }
+    });
+
+    // 2. Restore Sticky Notes
+    const stickies = contentEl.classList.contains('sticky') 
+      ? [contentEl] 
+      : Array.from(contentEl.querySelectorAll('.sticky'));
     stickies.forEach(st => {
       if (!st.querySelector('.sticky-del-btn')) {
         st.insertAdjacentHTML('afterbegin', getStickyDeleteButtonHTML());
       }
     });
 
-    const formulas = Array.from(child.querySelectorAll('.eq, .math-block'));
+    // 3. Restore Image Toolbars
+    const imageContainers = contentEl.classList.contains('note-image-container') 
+      ? [contentEl] 
+      : Array.from(contentEl.querySelectorAll('.note-image-container'));
+    imageContainers.forEach(container => {
+      if (!container.querySelector('.note-image-toolbar')) {
+        container.insertAdjacentHTML('afterbegin', getImageToolbarHTML());
+      }
+      const wrapper = container.querySelector('.note-image-wrapper');
+      if (wrapper && !wrapper.querySelector('.note-image-del')) {
+        wrapper.insertAdjacentHTML('afterbegin', `<button class="note-image-del" contenteditable="false" onclick="this.closest('.block-wrapper').remove()" title="Delete Image">✕</button>`);
+      }
+    });
+
+    // 4. Restore Formula Delete Controls
+    const formulas = Array.from(contentEl.querySelectorAll('.eq, .math-block'));
     formulas.forEach(eq => {
       if (!eq.querySelector('.eq-del-btn')) {
         eq.insertAdjacentHTML('beforeend', getFormulaDeleteButtonHTML());
       }
     });
 
-    if (child.classList.contains('mains-section') || child.querySelector('.mains-section')) {
-      const section = child.classList.contains('mains-section') ? child : child.querySelector('.mains-section');
-      section.querySelectorAll('.mains-q-item').forEach(item => {
+    // 5. Restore Mains Section Toolbars
+    const mainsSection = contentEl.classList.contains('mains-section') 
+      ? contentEl 
+      : contentEl.querySelector('.mains-section');
+    if (mainsSection) {
+      mainsSection.querySelectorAll('.mains-q-item').forEach(item => {
         if (!item.querySelector('.mains-box-toolbar')) {
           item.insertAdjacentHTML('beforeend', getMainsBoxToolbarHTML());
         }
@@ -747,14 +829,12 @@ function importHTMLContent(rawHTML) {
       });
     }
 
-    makeEditable(child);
-    if (child.classList.contains('block-wrapper')) {
-      canvas.appendChild(child);
-    } else {
-      const wrapped = wrapInBlock(child.outerHTML);
-      canvas.appendChild(wrapped);
-    }
+    makeEditable(contentEl);
+    const wrapped = wrapInBlock(contentEl.outerHTML);
+    canvas.appendChild(wrapped);
+    makeEditable(wrapped);
   });
+
   updateTitleUI();
   alert('Document loaded successfully!');
 }
