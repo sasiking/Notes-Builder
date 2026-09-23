@@ -2,7 +2,7 @@ let importedFileName = null;
 let manualTitleOverride = null;
 let savedSelectionRange = null;
 let activeFormulaTab = 'basic';
-let currentImageBase64 = null;
+let activeMidInsertTarget = null;
 
 function syncManualTitle(val) {
   manualTitleOverride = val.trim() || null;
@@ -164,6 +164,18 @@ function getImageToolbarHTML() {
   `;
 }
 
+function getImageContainerHTML(base64Data) {
+  return `
+    <div class="note-image-container">
+      ${getImageToolbarHTML()}
+      <div class="note-image-wrapper" style="width: 70%; height: auto;">
+        <button class="note-image-del" contenteditable="false" onclick="this.closest('.block-wrapper').remove()" title="Delete Image">✕</button>
+        <img src="${base64Data}" alt="Study Map / Diagram">
+      </div>
+    </div>
+  `;
+}
+
 /* ================= TEMPLATE RESOLUTION ================= */
 function getTemplateHTML(type) {
   const map = {
@@ -249,6 +261,7 @@ function getControlsHTML() {
         <button class="mid-insert-btn" onclick="executeMidInsert(this, 'grid-2')">🔲 2-Column Side-by-Side</button>
         <button class="mid-insert-btn" onclick="executeMidInsert(this, 'card-blue')">📘 Card (Blue)</button>
         <button class="mid-insert-btn" onclick="executeMidInsert(this, 'card-green')">📗 Card (Green)</button>
+        <button class="mid-insert-btn" onclick="executeMidInsertImage(this)">🖼️ Image Block</button>
         <button class="mid-insert-btn" onclick="openFormulaModalForCursor()">∑ Math / Formula Block</button>
         <button class="mid-insert-btn" onclick="executeMidInsert(this, 'table-blank')">📊 Comparison Table</button>
         <button class="mid-insert-btn" onclick="executeMidInsert(this, 'sticky-yellow')">📌 Sticky Note</button>
@@ -292,6 +305,39 @@ function executeMidInsert(menuBtn, templateType) {
   newBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
   makeEditable(newBlock);
   updateTitleUI();
+}
+
+function executeMidInsertImage(menuBtn) {
+  activeMidInsertTarget = menuBtn.closest('.block-wrapper');
+  const menu = menuBtn.closest('.mid-insert-menu');
+  if (menu) menu.classList.remove('active');
+
+  let fileInput = document.getElementById('midInsertFileInput');
+  if (!fileInput) {
+    fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.id = 'midInsertFileInput';
+    fileInput.accept = 'image/*,.svg';
+    fileInput.style.display = 'none';
+    fileInput.onchange = handleMidInsertFileSelect;
+    document.body.appendChild(fileInput);
+  }
+  fileInput.value = '';
+  fileInput.click();
+}
+
+function handleMidInsertFileSelect(event) {
+  const file = event.target.files[0];
+  if (!file || !activeMidInsertTarget) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const newBlock = wrapInBlock(getImageContainerHTML(e.target.result));
+    activeMidInsertTarget.parentNode.insertBefore(newBlock, activeMidInsertTarget.nextSibling);
+    newBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    activeMidInsertTarget = null;
+  };
+  reader.readAsDataURL(file);
 }
 
 function toggleMidInsertMenu(btn) {
@@ -342,12 +388,7 @@ function insertMainsQuestionDirect(btn) {
   makeEditable(newItem);
 }
 
-/* ================= IMAGE & MEDIA ENGINE ================= */
-function toggleImageSidebar() {
-  const sidebar = document.getElementById('imageSidebar');
-  if (sidebar) sidebar.classList.toggle('hidden');
-}
-
+/* ================= DIRECT IMAGE INSERTION ================= */
 function handleDirectCanvasImage(event) {
   const file = event.target.files[0];
   if (!file) return;
@@ -360,55 +401,9 @@ function handleDirectCanvasImage(event) {
   event.target.value = '';
 }
 
-function handleImageFileSelect(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    currentImageBase64 = e.target.result;
-    const imgEl = document.getElementById('sidebarImageElement');
-    imgEl.src = currentImageBase64;
-    
-    document.getElementById('imageFileName').innerText = file.name;
-    document.getElementById('imagePreviewCard').style.display = 'flex';
-    
-    imgEl.onload = function() {
-      document.getElementById('imageDimensions').innerText = `${this.naturalWidth} × ${this.naturalHeight}px`;
-    };
-  };
-  reader.readAsDataURL(file);
-  event.target.value = '';
-}
-
-function removeLoadedImage() {
-  currentImageBase64 = null;
-  const imgEl = document.getElementById('sidebarImageElement');
-  if (imgEl) imgEl.src = '';
-  const card = document.getElementById('imagePreviewCard');
-  if (card) card.style.display = 'none';
-}
-
-function insertLoadedImageToCanvas() {
-  if (!currentImageBase64) {
-    alert('Please select an image file first.');
-    return;
-  }
-  insertImageDirectlyToCanvas(currentImageBase64);
-}
-
 function insertImageDirectlyToCanvas(base64Data) {
   const canvas = document.getElementById('editorCanvas');
-  const containerHTML = `
-    <div class="note-image-container">
-      ${getImageToolbarHTML()}
-      <div class="note-image-wrapper" style="width: 70%; height: auto;">
-        <button class="note-image-del" contenteditable="false" onclick="this.closest('.block-wrapper').remove()" title="Delete Image">✕</button>
-        <img src="${base64Data}" alt="Study Map / Diagram">
-      </div>
-    </div>
-  `;
-  const block = wrapInBlock(containerHTML);
+  const block = wrapInBlock(getImageContainerHTML(base64Data));
   canvas.appendChild(block);
   block.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
@@ -579,27 +574,85 @@ function handleMainsTab(btn, direction) {
 function addBulletToCard(btn) {
   const card = btn.closest('.card-note, .grid-col');
   if (!card) return;
-  let list = card.querySelector('.bullet-list');
-  if (!list) {
-    list = document.createElement('ul');
-    list.className = 'bullet-list';
-    list.contentEditable = 'true';
-    card.appendChild(list);
-  }
+
   const li = document.createElement('li');
   li.innerHTML = '<strong>Point:</strong> Description...';
-  list.appendChild(li);
+  li.setAttribute('contenteditable', 'true');
+
+  const sel = window.getSelection();
+  let inserted = false;
+
+  if (sel.rangeCount > 0 && card.contains(sel.anchorNode)) {
+    let target = sel.anchorNode;
+    while (target && target.parentNode !== card && !target.classList?.contains('bullet-list')) {
+      if (target.tagName === 'LI' || target.classList?.contains('sub-point')) break;
+      target = target.parentNode;
+    }
+    if (target && (target.tagName === 'LI' || target.classList?.contains('sub-point'))) {
+      target.insertAdjacentElement('afterend', li);
+      inserted = true;
+    }
+  }
+
+  if (!inserted) {
+    let list = card.querySelector('.bullet-list');
+    if (!list) {
+      list = document.createElement('ul');
+      list.className = 'bullet-list';
+      list.contentEditable = 'true';
+      card.appendChild(list);
+    }
+    list.appendChild(li);
+  }
+
+  const range = document.createRange();
+  range.selectNodeContents(li);
+  range.collapse(false);
+  sel.removeAllRanges();
+  sel.addRange(range);
 }
 
 function addSubpointToCard(btn) {
   const card = btn.closest('.card-note, .grid-col');
   if (!card) return;
-  const list = card.querySelector('.bullet-list');
-  if (!list) return;
+
   const sub = document.createElement('div');
   sub.className = 'sub-point';
   sub.innerHTML = '▫ <strong>Note:</strong> Details...';
-  list.appendChild(sub);
+  sub.setAttribute('contenteditable', 'true');
+
+  const sel = window.getSelection();
+  let inserted = false;
+
+  if (sel.rangeCount > 0 && card.contains(sel.anchorNode)) {
+    let target = sel.anchorNode;
+    while (target && target.parentNode !== card && !target.classList?.contains('bullet-list')) {
+      if (target.tagName === 'LI' || target.classList?.contains('sub-point') || target.tagName === 'P') {
+        break;
+      }
+      target = target.parentNode;
+    }
+
+    if (target && target !== card) {
+      target.insertAdjacentElement('afterend', sub);
+      inserted = true;
+    }
+  }
+
+  if (!inserted) {
+    const list = card.querySelector('.bullet-list');
+    if (list) {
+      list.appendChild(sub);
+    } else {
+      card.appendChild(sub);
+    }
+  }
+
+  const range = document.createRange();
+  range.selectNodeContents(sub);
+  range.collapse(false);
+  sel.removeAllRanges();
+  sel.addRange(range);
 }
 
 function deleteBlock(btn) { 
@@ -724,13 +777,11 @@ function importHTMLContent(rawHTML) {
   const canvas = document.getElementById('editorCanvas');
   canvas.innerHTML = '';
   
-  // Clean out leftover UI controls
   sourceContainer.querySelectorAll(
     '.block-controls, .card-toolbar, .mains-box-toolbar, .mains-item-controls, ' +
     '.sticky-del-btn, .text-del-btn, .mid-insert-menu, .eq-del-btn, .note-image-del, .note-image-toolbar'
   ).forEach(el => el.remove());
 
-  // Unwrap any existing block-wrapper divs so they don't multiply
   const rawBlocks = [];
   Array.from(sourceContainer.children).forEach(child => {
     if (child.tagName === 'SCRIPT' || child.tagName === 'STYLE') return;
@@ -756,7 +807,6 @@ function importHTMLContent(rawHTML) {
         card.insertAdjacentHTML('afterbegin', getCardToolbarHTML());
       }
 
-      // Check which color class the card currently has
       let matchedColor = null;
       for (const cName of Object.keys(colorMap)) {
         if (card.classList.contains(cName)) {
@@ -765,13 +815,11 @@ function importHTMLContent(rawHTML) {
         }
       }
 
-      // If no color class found, default to blue
       if (!matchedColor) {
         matchedColor = 'blue';
         card.classList.add('blue');
       }
 
-      // Explicitly set the heading color to match the ink
       const heading = card.querySelector('h1, h2, h3, h4');
       if (heading) {
         heading.style.setProperty('color', colorMap[matchedColor], 'important');
