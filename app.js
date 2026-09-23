@@ -3,6 +3,7 @@ let manualTitleOverride = null;
 let savedSelectionRange = null;
 let activeFormulaTab = 'basic';
 let activeMidInsertTarget = null;
+let draggedElement = null;
 
 function syncManualTitle(val) {
   manualTitleOverride = val.trim() || null;
@@ -38,8 +39,41 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('input', () => {
       if (!manualTitleOverride) updateTitleUI();
     });
+    
+    canvas.addEventListener('keydown', handleCardEnterKey);
+    initCanvasDropEvents(canvas);
   }
 });
+
+/* ================= ENTER KEY INTERCEPTION ================= */
+function handleCardEnterKey(e) {
+  if (e.key !== 'Enter') return;
+
+  const sel = window.getSelection();
+  if (!sel.rangeCount) return;
+
+  const node = sel.anchorNode;
+  const card = node.nodeType === Node.ELEMENT_NODE ? node.closest('.card-note') : node.parentElement?.closest('.card-note');
+
+  if (!card) return;
+
+  if (!e.shiftKey) {
+    e.preventDefault();
+
+    const range = sel.getRangeAt(0);
+    range.deleteContents();
+
+    const br = document.createElement('br');
+    range.insertNode(br);
+
+    range.setStartAfter(br);
+    range.setEndAfter(br);
+    sel.removeAllRanges();
+    sel.addRange(range);
+
+    br.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
 
 /* ================= COLOR & THEME MAP ================= */
 const colorMap = {
@@ -58,13 +92,9 @@ function changeCardColor(swatchEl, colorName) {
   const card = swatchEl.closest('.card-note');
   if (!card) return;
 
-  // Clear previous colors
   Object.keys(colorMap).forEach(c => card.classList.remove(c));
-  
-  // Set selected color class
   card.classList.add(colorName);
 
-  // Directly set the heading style as well
   const heading = card.querySelector('h1, h2, h3, h4');
   if (heading && colorMap[colorName]) {
     heading.style.setProperty('color', colorMap[colorName], 'important');
@@ -96,10 +126,22 @@ function getCardToolbarHTML() {
       </div>
       <div class="card-actions">
         <button class="card-tool-btn" onclick="addBulletToCard(this)">+ Bullet</button>
+        <button class="card-tool-btn" onclick="addDotPointToCard(this)">• Dot</button>
         <button class="card-tool-btn" onclick="addSubpointToCard(this)">+ Sub-point</button>
         <button class="card-tool-btn" onclick="addFormulaToCard(this)" style="background:#e0f2fe; color:#0369a1;">+ Formula</button>
         <button class="card-tool-btn" onclick="removeFormulaFromCard(this)" style="background:#fee2e2; color:#991b1b;">- Formula</button>
       </div>
+    </div>
+  `;
+}
+
+function getTableToolbarHTML() {
+  return `
+    <div class="table-toolbar" contenteditable="false">
+      <button class="card-tool-btn" onclick="addTableRow(this)">+ Row</button>
+      <button class="card-tool-btn" onclick="deleteTableRow(this)" style="color:#b91c1c;">- Row</button>
+      <button class="card-tool-btn" onclick="addTableColumn(this)">+ Col</button>
+      <button class="card-tool-btn" onclick="deleteTableColumn(this)" style="color:#b91c1c;">- Col</button>
     </div>
   `;
 }
@@ -230,10 +272,13 @@ function getTemplateHTML(type) {
         </details>
       </div>`,
     'table-blank': `
-      <table class="hand-table" contenteditable="true" style="margin: 10px 0 12px 0; font-size: 14px;">
-        <thead><tr><th style="width: 25%;">Parameter</th><th style="width: 37.5%;">Category A</th><th style="width: 37.5%;">Category B</th></tr></thead>
-        <tbody><tr><td><strong>Dimension 1</strong></td><td>Details...</td><td>Details...</td></tr></tbody>
-      </table>`,
+      <div class="table-block-wrapper">
+        ${getTableToolbarHTML()}
+        <table class="hand-table" contenteditable="true">
+          <thead><tr><th style="width: 25%;">Parameter</th><th style="width: 37.5%;">Category A</th><th style="width: 37.5%;">Category B</th></tr></thead>
+          <tbody><tr><td><strong>Dimension 1</strong></td><td>Details...</td><td>Details...</td></tr></tbody>
+        </table>
+      </div>`,
     'math-block': `
       <div class="math-block" contenteditable="true">
         <span>Formula =</span>
@@ -251,6 +296,7 @@ function getTemplateHTML(type) {
 function getControlsHTML() {
   return `
     <div class="block-controls" contenteditable="false">
+      <span class="control-btn drag-handle" title="Drag to reorder section">⠿ Drag</span>
       <button class="control-btn btn-insert-mid" onclick="toggleMidInsertMenu(this)" title="Insert section after">+ Insert Here</button>
       <button class="control-btn" onclick="moveUp(this)" title="Move Up">▲</button>
       <button class="control-btn" onclick="moveDown(this)" title="Move Down">▼</button>
@@ -276,7 +322,227 @@ function wrapInBlock(htmlContent) {
   const wrapper = document.createElement('div');
   wrapper.className = 'block-wrapper';
   wrapper.innerHTML = `${getControlsHTML()}${htmlContent}`;
+  attachDragHandlers(wrapper);
   return wrapper;
+}
+
+/* ================= ROBUST TABLE ROW & COLUMN ENGINE ================= */
+function getActiveTableFromBtn(btn) {
+  if (!btn) return null;
+  const parentWrapper = btn.closest('.table-block-wrapper') || btn.closest('.block-wrapper') || btn.parentElement;
+  if (parentWrapper) {
+    const tbl = parentWrapper.querySelector('table');
+    if (tbl) return tbl;
+  }
+  return btn.parentElement?.nextElementSibling?.tagName === 'TABLE' 
+    ? btn.parentElement.nextElementSibling 
+    : document.querySelector('#editorCanvas table');
+}
+
+function addTableRow(btn) {
+  const table = getActiveTableFromBtn(btn);
+  if (!table) return;
+
+  const headerRow = table.rows[0];
+  const colCount = headerRow ? headerRow.cells.length : 3;
+  const sel = window.getSelection();
+  let targetRow = null;
+
+  if (sel.rangeCount > 0 && table.contains(sel.anchorNode)) {
+    targetRow = sel.anchorNode.nodeType === 1 ? sel.anchorNode.closest('tr') : sel.anchorNode.parentElement?.closest('tr');
+  }
+
+  const tbody = table.querySelector('tbody') || table;
+  const newRow = document.createElement('tr');
+  for (let i = 0; i < colCount; i++) {
+    const td = document.createElement('td');
+    td.innerHTML = i === 0 ? '<strong>Dimension</strong>' : 'Details...';
+    td.setAttribute('contenteditable', 'true');
+    newRow.appendChild(td);
+  }
+
+  if (targetRow && targetRow !== headerRow && targetRow.parentElement) {
+    targetRow.insertAdjacentElement('afterend', newRow);
+  } else {
+    tbody.appendChild(newRow);
+  }
+
+  makeEditable(newRow);
+  const firstCell = newRow.cells[0];
+  if (firstCell) {
+    const range = document.createRange();
+    range.selectNodeContents(firstCell);
+    range.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(range);
+    newRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function deleteTableRow(btn) {
+  const table = getActiveTableFromBtn(btn);
+  if (!table) return;
+
+  const tbody = table.querySelector('tbody') || table;
+  const dataRows = Array.from(table.rows).filter(r => !r.querySelector('th') && r !== table.rows[0]);
+  
+  if (dataRows.length <= 1) {
+    alert('At least one data row must be maintained in the table.');
+    return;
+  }
+
+  const sel = window.getSelection();
+  let targetRow = null;
+
+  if (sel.rangeCount > 0 && table.contains(sel.anchorNode)) {
+    targetRow = sel.anchorNode.nodeType === 1 ? sel.anchorNode.closest('tr') : sel.anchorNode.parentElement?.closest('tr');
+  }
+
+  if (targetRow && !targetRow.querySelector('th') && targetRow !== table.rows[0]) {
+    targetRow.remove();
+  } else {
+    dataRows[dataRows.length - 1].remove();
+  }
+}
+
+function addTableColumn(btn) {
+  const table = getActiveTableFromBtn(btn);
+  if (!table) return;
+
+  const headerRow = table.querySelector('thead tr') || table.rows[0];
+  let targetColIdx = -1;
+
+  const sel = window.getSelection();
+  if (sel.rangeCount > 0 && table.contains(sel.anchorNode)) {
+    const activeCell = sel.anchorNode.nodeType === 1 
+      ? sel.anchorNode.closest('td, th') 
+      : sel.anchorNode.parentElement?.closest('td, th');
+    if (activeCell) {
+      targetColIdx = activeCell.cellIndex;
+    }
+  }
+
+  Array.from(table.rows).forEach((row, rIdx) => {
+    const isHeader = (rIdx === 0 && row.parentElement?.tagName !== 'TBODY') || row.querySelector('th');
+    const cell = document.createElement(isHeader ? 'th' : 'td');
+    cell.innerHTML = isHeader ? `Category ${row.cells.length + 1}` : 'Details...';
+    cell.setAttribute('contenteditable', 'true');
+
+    if (targetColIdx >= 0 && targetColIdx < row.cells.length) {
+      row.cells[targetColIdx].insertAdjacentElement('afterend', cell);
+    } else {
+      row.appendChild(cell);
+    }
+  });
+
+  makeEditable(table);
+}
+
+/* ================= EXACT CURSOR-AWARE COLUMN DELETION ================= */
+function deleteTableColumn(btn) {
+  const table = getActiveTableFromBtn(btn);
+  if (!table) return;
+
+  const firstRow = table.rows[0];
+  if (!firstRow || firstRow.cells.length <= 2) {
+    alert('A comparison table requires at least 2 columns.');
+    return;
+  }
+
+  let targetColIdx = -1;
+  const sel = window.getSelection();
+
+  // 1. Identify which column the cursor is currently resting inside
+  if (sel.rangeCount > 0 && table.contains(sel.anchorNode)) {
+    const activeCell = sel.anchorNode.nodeType === 1 
+      ? sel.anchorNode.closest('td, th') 
+      : sel.anchorNode.parentElement?.closest('td, th');
+
+    if (activeCell) {
+      targetColIdx = activeCell.cellIndex;
+    }
+  }
+
+  // 2. Fallback to deleting the last column if no active cursor selection in this table
+  if (targetColIdx < 0) {
+    targetColIdx = firstRow.cells.length - 1;
+  }
+
+  // 3. Delete the target column index across every row in the table
+  Array.from(table.rows).forEach(row => {
+    if (row.cells.length > targetColIdx) {
+      row.deleteCell(targetColIdx);
+    } else if (row.cells.length > 0) {
+      row.deleteCell(row.cells.length - 1);
+    }
+  });
+}
+
+/* ================= DRAG AND DROP REORDERING ENGINE ================= */
+function attachDragHandlers(wrapper) {
+  wrapper.setAttribute('draggable', 'false');
+
+  const dragHandle = wrapper.querySelector('.drag-handle');
+  if (dragHandle) {
+    dragHandle.addEventListener('mousedown', () => {
+      wrapper.setAttribute('draggable', 'true');
+    });
+    dragHandle.addEventListener('mouseup', () => {
+      wrapper.setAttribute('draggable', 'false');
+    });
+  }
+
+  wrapper.addEventListener('dragstart', (e) => {
+    draggedElement = wrapper;
+    wrapper.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', '');
+  });
+
+  wrapper.addEventListener('dragend', () => {
+    wrapper.classList.remove('dragging');
+    wrapper.setAttribute('draggable', 'false');
+    document.querySelectorAll('.block-wrapper, .grid-col').forEach(el => el.classList.remove('drag-over'));
+    draggedElement = null;
+    updateTitleUI();
+  });
+
+  wrapper.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    if (!draggedElement || draggedElement === wrapper) return;
+    wrapper.classList.add('drag-over');
+  });
+
+  wrapper.addEventListener('dragleave', () => {
+    wrapper.classList.remove('drag-over');
+  });
+
+  wrapper.addEventListener('drop', (e) => {
+    e.preventDefault();
+    wrapper.classList.remove('drag-over');
+    if (!draggedElement || draggedElement === wrapper) return;
+
+    const rect = wrapper.getBoundingClientRect();
+    const isAfter = (e.clientY - rect.top) > (rect.height / 2);
+
+    if (isAfter) {
+      wrapper.parentNode.insertBefore(draggedElement, wrapper.nextSibling);
+    } else {
+      wrapper.parentNode.insertBefore(draggedElement, wrapper);
+    }
+  });
+}
+
+function initCanvasDropEvents(canvas) {
+  canvas.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
+  canvas.addEventListener('drop', (e) => {
+    if (!draggedElement) return;
+    if (e.target === canvas) {
+      canvas.appendChild(draggedElement);
+    }
+  });
 }
 
 function insertBlock(type) {
@@ -292,16 +558,46 @@ function insertBlock(type) {
   updateTitleUI();
 }
 
+/* ================= CONTEXT-AWARE MID INSERTION ================= */
 function executeMidInsert(menuBtn, templateType) {
   const currentBlock = menuBtn.closest('.block-wrapper');
   if (!currentBlock) return;
   const html = getTemplateHTML(templateType);
   if (!html) return;
 
-  const newBlock = wrapInBlock(html);
-  currentBlock.parentNode.insertBefore(newBlock, currentBlock.nextSibling);
   const menu = menuBtn.closest('.mid-insert-menu');
   if (menu) menu.classList.remove('active');
+
+  if (templateType.startsWith('sticky')) {
+    const parentCol = currentBlock.closest('.grid-col');
+    if (parentCol) {
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html.trim();
+      const stickyEl = tempDiv.firstElementChild;
+      currentBlock.insertAdjacentElement('afterend', stickyEl);
+      stickyEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      makeEditable(stickyEl);
+      return;
+    }
+
+    const gridEl = currentBlock.querySelector('.grid-2');
+    if (gridEl) {
+      const cols = gridEl.querySelectorAll('.grid-col');
+      const targetCol = cols.length > 1 ? cols[1] : cols[0];
+      if (targetCol) {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html.trim();
+        const stickyEl = tempDiv.firstElementChild;
+        targetCol.appendChild(stickyEl);
+        stickyEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        makeEditable(stickyEl);
+        return;
+      }
+    }
+  }
+
+  const newBlock = wrapInBlock(html);
+  currentBlock.parentNode.insertBefore(newBlock, currentBlock.nextSibling);
   newBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
   makeEditable(newBlock);
   updateTitleUI();
@@ -585,10 +881,10 @@ function addBulletToCard(btn) {
   if (sel.rangeCount > 0 && card.contains(sel.anchorNode)) {
     let target = sel.anchorNode;
     while (target && target.parentNode !== card && !target.classList?.contains('bullet-list')) {
-      if (target.tagName === 'LI' || target.classList?.contains('sub-point')) break;
+      if (target.tagName === 'LI' || target.classList?.contains('sub-point') || target.classList?.contains('dot-point')) break;
       target = target.parentNode;
     }
-    if (target && (target.tagName === 'LI' || target.classList?.contains('sub-point'))) {
+    if (target && (target.tagName === 'LI' || target.classList?.contains('sub-point') || target.classList?.contains('dot-point'))) {
       target.insertAdjacentElement('afterend', li);
       inserted = true;
     }
@@ -612,6 +908,38 @@ function addBulletToCard(btn) {
   sel.addRange(range);
 }
 
+/* ================= EXACT INLINE DOT INSERTION AT CURSOR ================= */
+function addDotPointToCard(btn) {
+  const card = btn.closest('.card-note, .grid-col');
+  if (!card) return;
+
+  const sel = window.getSelection();
+
+  if (sel.rangeCount > 0 && card.contains(sel.anchorNode)) {
+    const range = sel.getRangeAt(0);
+    range.deleteContents();
+
+    const dotNode = document.createTextNode('• ');
+    range.insertNode(dotNode);
+
+    range.setStartAfter(dotNode);
+    range.setEndAfter(dotNode);
+    sel.removeAllRanges();
+    sel.addRange(range);
+  } else {
+    card.focus();
+    const dotNode = document.createTextNode('• ');
+    card.appendChild(dotNode);
+
+    const range = document.createRange();
+    range.setStartAfter(dotNode);
+    range.setEndAfter(dotNode);
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+}
+
+/* ================= NESTED SUB-POINT FUNCTIONALITY ================= */
 function addSubpointToCard(btn) {
   const card = btn.closest('.card-note, .grid-col');
   if (!card) return;
@@ -625,16 +953,26 @@ function addSubpointToCard(btn) {
   let inserted = false;
 
   if (sel.rangeCount > 0 && card.contains(sel.anchorNode)) {
-    let target = sel.anchorNode;
-    while (target && target.parentNode !== card && !target.classList?.contains('bullet-list')) {
-      if (target.tagName === 'LI' || target.classList?.contains('sub-point') || target.tagName === 'P') {
-        break;
+    const range = sel.getRangeAt(0);
+    let node = sel.anchorNode;
+    let closestSub = null;
+    let closestLi = null;
+
+    while (node && node !== card) {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.classList?.contains('sub-point') && !closestSub) closestSub = node;
+        if (node.tagName === 'LI' && !closestLi) closestLi = node;
       }
-      target = target.parentNode;
+      node = node.parentNode;
     }
 
-    if (target && target !== card) {
-      target.insertAdjacentElement('afterend', sub);
+    if (closestSub || closestLi) {
+      range.deleteContents();
+      range.insertNode(sub);
+      inserted = true;
+    } else {
+      range.deleteContents();
+      range.insertNode(sub);
       inserted = true;
     }
   }
@@ -648,11 +986,11 @@ function addSubpointToCard(btn) {
     }
   }
 
-  const range = document.createRange();
-  range.selectNodeContents(sub);
-  range.collapse(false);
+  const newRange = document.createRange();
+  newRange.selectNodeContents(sub);
+  newRange.collapse(false);
   sel.removeAllRanges();
-  sel.addRange(range);
+  sel.addRange(newRange);
 }
 
 function deleteBlock(btn) { 
@@ -730,14 +1068,14 @@ function handleClearTextSizeClick(e) {
 
 function makeEditable(node) {
   const editableSelectors = [
-    'h1', 'h2', 'h3', 'h4', 'span:not(.eq-del-btn)', 'p', 'li', 'ul', 'div.sub-point',
+    'h1', 'h2', 'h3', 'h4', 'span:not(.eq-del-btn)', 'p', 'li', 'ul', 'div.sub-point', 'div.dot-point',
     'div.sticky', 'div.title-section', 'div.section-header', 'div.mains-q-title',
     'div.mains-framework', 'div.mcq-options', 'table.hand-table', 'div.exam-trick',
-    'div.regular-text-content', 'div.math-block'
+    'div.regular-text-content', 'div.math-block', 'td', 'th'
   ];
   editableSelectors.forEach(sel => {
     node.querySelectorAll(sel).forEach(el => {
-      if (!el.closest('.card-toolbar') && !el.closest('.block-controls') && !el.closest('.mains-box-toolbar') && !el.closest('.mains-item-controls') && !el.closest('.note-image-toolbar') && !el.classList.contains('sticky-del-btn') && !el.classList.contains('text-del-btn') && !el.classList.contains('eq-del-btn') && !el.classList.contains('note-image-del')) {
+      if (!el.closest('.card-toolbar') && !el.closest('.table-toolbar') && !el.closest('.block-controls') && !el.closest('.mains-box-toolbar') && !el.closest('.mains-item-controls') && !el.closest('.note-image-toolbar') && !el.classList.contains('sticky-del-btn') && !el.classList.contains('text-del-btn') && !el.classList.contains('eq-del-btn') && !el.classList.contains('note-image-del')) {
         el.setAttribute('contenteditable', 'true');
       }
     });
@@ -778,7 +1116,7 @@ function importHTMLContent(rawHTML) {
   canvas.innerHTML = '';
   
   sourceContainer.querySelectorAll(
-    '.block-controls, .card-toolbar, .mains-box-toolbar, .mains-item-controls, ' +
+    '.block-controls, .card-toolbar, .table-toolbar, .mains-box-toolbar, .mains-item-controls, ' +
     '.sticky-del-btn, .text-del-btn, .mid-insert-menu, .eq-del-btn, .note-image-del, .note-image-toolbar'
   ).forEach(el => el.remove());
 
@@ -797,7 +1135,7 @@ function importHTMLContent(rawHTML) {
   });
 
   rawBlocks.forEach(contentEl => {
-    // 1. Restore Card Toolbars and re-apply Ink styling
+    // 1. Restore Card Toolbars & Ink Colors
     const cards = contentEl.classList.contains('card-note') 
       ? [contentEl] 
       : Array.from(contentEl.querySelectorAll('.card-note'));
@@ -826,21 +1164,44 @@ function importHTMLContent(rawHTML) {
       }
     });
 
-    // 2. Restore Sticky Notes
-    const stickies = contentEl.classList.contains('sticky') 
-      ? [contentEl] 
-      : Array.from(contentEl.querySelectorAll('.sticky'));
-    stickies.forEach(st => {
+    // 2. Wrap and Inject Toolbars for ALL Tables (Standalone & Nested)
+    let processedHTML = contentEl.outerHTML;
+    if (contentEl.tagName === 'TABLE' && !contentEl.closest('.mains-section')) {
+      processedHTML = `
+        <div class="table-block-wrapper">
+          ${getTableToolbarHTML()}
+          ${contentEl.outerHTML}
+        </div>
+      `;
+    } else if (contentEl.querySelector('table:not(.mains-section table)')) {
+      const tempWrapper = document.createElement('div');
+      tempWrapper.innerHTML = contentEl.outerHTML;
+      tempWrapper.querySelectorAll('table:not(.mains-section table)').forEach(tbl => {
+        tbl.classList.add('hand-table');
+        if (!tbl.closest('.table-block-wrapper')) {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'table-block-wrapper';
+          wrapper.innerHTML = `${getTableToolbarHTML()}${tbl.outerHTML}`;
+          tbl.replaceWith(wrapper);
+        } else if (!tbl.closest('.table-block-wrapper').querySelector('.table-toolbar')) {
+          tbl.closest('.table-block-wrapper').insertAdjacentHTML('afterbegin', getTableToolbarHTML());
+        }
+      });
+      processedHTML = tempWrapper.innerHTML;
+    }
+
+    // 3. Wrap Block and Attach to Canvas
+    const wrapped = wrapInBlock(processedHTML);
+    canvas.appendChild(wrapped);
+
+    // 4. Inject Dynamic UI into the DOM Nodes
+    wrapped.querySelectorAll('.sticky').forEach(st => {
       if (!st.querySelector('.sticky-del-btn')) {
         st.insertAdjacentHTML('afterbegin', getStickyDeleteButtonHTML());
       }
     });
 
-    // 3. Restore Image Toolbars
-    const imageContainers = contentEl.classList.contains('note-image-container') 
-      ? [contentEl] 
-      : Array.from(contentEl.querySelectorAll('.note-image-container'));
-    imageContainers.forEach(container => {
+    wrapped.querySelectorAll('.note-image-container').forEach(container => {
       if (!container.querySelector('.note-image-toolbar')) {
         container.insertAdjacentHTML('afterbegin', getImageToolbarHTML());
       }
@@ -850,18 +1211,13 @@ function importHTMLContent(rawHTML) {
       }
     });
 
-    // 4. Restore Formula Delete Controls
-    const formulas = Array.from(contentEl.querySelectorAll('.eq, .math-block'));
-    formulas.forEach(eq => {
+    wrapped.querySelectorAll('.eq, .math-block').forEach(eq => {
       if (!eq.querySelector('.eq-del-btn')) {
         eq.insertAdjacentHTML('beforeend', getFormulaDeleteButtonHTML());
       }
     });
 
-    // 5. Restore Mains Section Toolbars
-    const mainsSection = contentEl.classList.contains('mains-section') 
-      ? contentEl 
-      : contentEl.querySelector('.mains-section');
+    const mainsSection = wrapped.classList.contains('mains-section') ? wrapped : wrapped.querySelector('.mains-section');
     if (mainsSection) {
       mainsSection.querySelectorAll('.mains-q-item').forEach(item => {
         if (!item.querySelector('.mains-box-toolbar')) {
@@ -877,9 +1233,6 @@ function importHTMLContent(rawHTML) {
       });
     }
 
-    makeEditable(contentEl);
-    const wrapped = wrapInBlock(contentEl.outerHTML);
-    canvas.appendChild(wrapped);
     makeEditable(wrapped);
   });
 
@@ -889,7 +1242,7 @@ function importHTMLContent(rawHTML) {
 
 function exportCleanHTML() {
   const canvasClone = document.getElementById('editorCanvas').cloneNode(true);
-  canvasClone.querySelectorAll('.block-controls, .card-toolbar, .mains-box-toolbar, .mains-item-controls, .sticky-del-btn, .text-del-btn, .note-image-del, .note-image-toolbar, .mid-insert-menu, .eq-del-btn').forEach(el => el.remove());
+  canvasClone.querySelectorAll('.block-controls, .card-toolbar, .table-toolbar, .mains-box-toolbar, .mains-item-controls, .sticky-del-btn, .text-del-btn, .note-image-del, .note-image-toolbar, .mid-insert-menu, .eq-del-btn').forEach(el => el.remove());
   canvasClone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
 
   const resolvedTitle = resolveDocumentTitle();
