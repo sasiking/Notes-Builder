@@ -140,3 +140,37 @@ function deleteTableColumn(btn) {
     }
   });
 }
+
+function deleteWholeTable(btn) {
+  if (!confirm('Are you sure you want to delete this entire table?')) return;
+
+  // Check if the table is wrapped in a .table-block-wrapper
+  const tableWrapper = btn.closest('.table-block-wrapper');
+  if (tableWrapper) {
+    // If the table is inside an expand box or mains section, delete only the table wrapper
+    if (tableWrapper.closest('.expand-content-inner, .mains-framework')) {
+      tableWrapper.remove();
+      return;
+    }
+
+    // If it is a top-level canvas block, remove the parent block wrapper
+    const blockWrapper = tableWrapper.closest('.block-wrapper');
+    if (blockWrapper && !blockWrapper.querySelector('.card-note, .mains-section, .expand-block-wrapper')) {
+      blockWrapper.remove();
+      updateTitleUI();
+      return;
+    }
+
+    tableWrapper.remove();
+    return;
+  }
+
+  // Fallback for unwrapped tables
+  const table = getActiveTableFromBtn(btn);
+  if (table) {
+    const parent = table.parentElement;
+    table.remove();
+    btn.closest('.table-toolbar')?.remove();
+    if (parent && parent.children.length === 0) parent.remove();
+  }
+}

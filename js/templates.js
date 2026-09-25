@@ -85,6 +85,7 @@ function getTableToolbarHTML() {
       <button class="card-tool-btn" onclick="deleteTableRow(this)" style="color:#b91c1c;">- Row</button>
       <button class="card-tool-btn" onclick="addTableColumn(this)">+ Col</button>
       <button class="card-tool-btn" onclick="deleteTableColumn(this)" style="color:#b91c1c;">- Col</button>
+      <button class="card-tool-btn table-del-btn" onclick="deleteWholeTable(this)" title="Delete Entire Table">✕ Delete Table</button>
     </div>
   `;
 }
