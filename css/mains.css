@@ -1,0 +1,56 @@
+/* ================= MAINS SECTION & MCQS ================= */
+.mains-section { 
+  background: #fffafa; 
+  border: 2px solid #7f1d1d; 
+  border-radius: 8px; 
+  padding: 20px 20px 14px 20px; 
+  margin: 24px 0 10px 0; 
+  position: relative; 
+  box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); 
+}
+.mains-section::before { 
+  content: "✍ UPSC & STATE PSC MAINS PRACTICE QUESTIONS"; 
+  font-family: 'Inter', sans-serif; 
+  font-size: 11.5px; 
+  font-weight: 900; 
+  letter-spacing: 0.5px; 
+  color: #ffffff; 
+  position: absolute; 
+  top: -12px; 
+  left: 20px; 
+  background: #991b1b; 
+  padding: 2px 12px; 
+  border-radius: 4px; 
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15); 
+}
+.hl-dark-red { 
+  background-color: #991b1b; 
+  color: #ffffff; 
+  padding: 1px 7px; 
+  border-radius: 4px; 
+  font-weight: bold; 
+  font-size: 14px; 
+  display: inline-block; 
+  font-family: 'Inter', sans-serif; 
+}
+
+.mains-q-item { 
+  position: relative; 
+  margin-bottom: 14px; 
+  border-bottom: 1px dashed rgba(153, 27, 27, 0.25); 
+  padding-bottom: 12px; 
+}
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+.mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+
+.mains-box-toolbar { display: flex; justify-content: flex-end; gap: 6px; margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(153, 27, 27, 0.15); user-select: none; flex-wrap: wrap; }
+.mains-item-controls { position: absolute; top: 0; right: 0; display: none; gap: 3px; }
+.mains-q-item:hover .mains-item-controls { display: flex; }
+
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S SPEED TRICKS & FORMULA HACKS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }

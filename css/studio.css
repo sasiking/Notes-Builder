@@ -1,0 +1,88 @@
+/* ================= DRAG CONTROLS & STUDIO CONTROLS ================= */
+.block-wrapper { 
+  position: relative; 
+  margin-top: 26px; /* Clearance for drag toolbar */
+  margin-bottom: 16px; 
+  break-inside: avoid;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.block-wrapper.dragging { opacity: 0.4; border: 2px dashed #38bdf8; border-radius: 6px; }
+.block-wrapper.drag-over { border-top: 3px solid #2563eb; padding-top: 4px; }
+
+.block-controls {
+  position: absolute;
+  top: -24px;
+  left: 0px;
+  right: auto;
+  display: none;
+  gap: 4px;
+  background: #0f172a;
+  padding: 3px 8px;
+  border-radius: 4px;
+  z-index: 40;
+  border: 1px solid #334155;
+  user-select: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.block-wrapper:hover .block-controls { display: flex; }
+
+.control-btn {
+  background: none; border: none; color: #ffffff; cursor: pointer;
+  font-size: 11px; padding: 2px 5px; font-family: sans-serif; border-radius: 3px;
+}
+.control-btn.drag-handle { cursor: grab; font-size: 12px; color: #93c5fd; padding: 2px 4px; }
+.control-btn.drag-handle:active { cursor: grabbing; }
+.control-btn:hover { background: #334155; color: #38bdf8; }
+.control-btn.btn-del:hover { color: #f87171; }
+.control-btn.btn-insert-mid { background: #2563eb; color: #fff; font-weight: 700; font-size: 10.5px; padding: 2px 7px; }
+
+.mid-insert-menu {
+  position: absolute; top: 24px; left: 0; right: auto; background: #1e293b;
+  border: 1px solid #475569; border-radius: 6px; padding: 6px; display: none;
+  flex-direction: column; gap: 4px; width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 60;
+}
+.mid-insert-menu.active { display: flex; }
+.mid-insert-btn {
+  background: #334155; color: #f8fafc; border: 1px solid #475569; padding: 5px 8px;
+  border-radius: 4px; font-size: 11.5px; font-weight: 600; text-align: left;
+  cursor: pointer; display: flex; align-items: center; gap: 6px;
+}
+.mid-insert-btn:hover { background: #2563eb; border-color: #60a5fa; }
+
+/* Image scaling toolbar */
+.note-image-container { position: relative; margin: 16px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
+.note-image-toolbar { display: flex; align-items: center; gap: 5px; background: #f1f5f9; border: 1px dashed #cbd5e1; padding: 3px 8px; border-radius: 5px; margin-bottom: 6px; user-select: none; }
+.image-scale-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 3px; font-size: 10.5px; font-weight: 700; color: #334155; padding: 1px 6px; cursor: pointer; font-family: 'Inter', sans-serif; }
+.image-scale-btn:hover { background: #e2e8f0; color: #0f172a; }
+.note-image-wrapper { position: relative; resize: both; overflow: hidden; display: inline-block; min-width: 140px; min-height: 80px; max-width: 100%; border: 1.5px dashed #94a3b8; border-radius: 6px; padding: 6px; background: #ffffff; box-shadow: var(--shadow); }
+.note-image-wrapper img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; pointer-events: none; }
+.note-image-del { position: absolute; top: 6px; right: 6px; background: #dc2626; color: #ffffff; border: none; border-radius: 50%; width: 20px; height: 20px; font-weight: 800; font-size: 11px; cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 20; }
+.note-image-wrapper:hover .note-image-del { display: flex; }
+
+/* Modal */
+#formulaModal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 2000; }
+.formula-card-dialog { background: #1e293b; border: 1px solid #475569; border-radius: 10px; width: 440px; max-width: 90vw; padding: 20px; box-shadow: 0 20px 35px rgba(0,0,0,0.5); color: #f8fafc; }
+.formula-dialog-header { font-size: 16px; font-weight: 800; color: #93c5fd; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
+.formula-type-tabs { display: flex; gap: 8px; margin-bottom: 14px; }
+.formula-tab-btn { background: #334155; color: #94a3b8; border: 1px solid #475569; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; }
+.formula-tab-btn.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+.formula-input-row { margin-bottom: 12px; }
+.formula-input-row label { display: block; font-size: 11px; font-weight: 700; color: #94a3b8; margin-bottom: 4px; text-transform: uppercase; }
+.formula-text-input { width: 100%; background: #0f172a; border: 1px solid #475569; border-radius: 6px; color: #f8fafc; padding: 8px 10px; font-size: 13px; font-family: inherit; outline: none; }
+.formula-text-input:focus { border-color: #38bdf8; }
+.formula-modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+
+/* ================= PRINT ENGINE ================= */
+@media print {
+  body, .app-viewport { background: none !important; overflow: visible !important; height: auto !important; }
+  .toolbox, .card-toolbar, .table-toolbar, .mains-box-toolbar, .mains-item-controls, .sticky-del-btn, .text-del-btn, .note-image-del, .note-image-toolbar, .mid-insert-menu, .eq-del-btn, .expand-box-toolbar, #formulaModal { display: none !important; }
+  .canvas-wrapper { padding: 0 !important; background: none !important; height: auto !important; overflow: visible !important; }
+  .block-controls { display: none !important; }
+  .reveal-box { display: block !important; }
+  .reveal-box summary { display: none !important; }
+  .reveal-content { display: block !important; border-top: 1px dashed #93c5fd !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; margin-bottom: 0 !important; }
+  .note-image-wrapper { resize: none !important; border: none !important; }
+}
