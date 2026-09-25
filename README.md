@@ -3,7 +3,7 @@
 > High-yield, exam-ready master notes and responsive study modules tailored for competitive exams (UPSC, State PSCs) and General Mental Ability, built with clean, dependency-free HTML and CSS.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![GitHub Pages](https://img.shields.io/badge/Deployed-GitHub_Pages-blue.svg)](https://<your-username>.github.io/<your-repo>/)
+[![GitHub Pages](https://img.shields.io/badge/Deployed-GitHub_Pages-blue.svg)](https://sasiking.github.io/Notes-Builder/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 ---
