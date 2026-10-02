@@ -6,14 +6,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#0f3870">
+
   <link rel="manifest" href="./manifest.json">
   <link rel="stylesheet" href="./mobile-pwa.css">
+
   <meta charset="UTF-8">
-  
+
   <title>Group 1 Study Notes Library | Visual Notes Studio</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #0f172a;
@@ -28,7 +32,12 @@
       --accent-red: #f87171;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       background-color: var(--bg);
       color: var(--text-main);
@@ -37,7 +46,10 @@
       padding-bottom: 60px;
     }
 
-    /* HEADER */
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
     .hero-header {
       background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
       border-bottom: 1px solid #334155;
@@ -47,6 +59,7 @@
       z-index: 100;
       backdrop-filter: blur(10px);
     }
+
     .hero-container {
       max-width: 1240px;
       margin: 0 auto;
@@ -54,6 +67,7 @@
       flex-direction: column;
       gap: 16px;
     }
+
     .hero-top-row {
       display: flex;
       justify-content: space-between;
@@ -61,6 +75,7 @@
       flex-wrap: wrap;
       gap: 12px;
     }
+
     .brand-title {
       font-size: 24px;
       font-weight: 800;
@@ -69,6 +84,7 @@
       align-items: center;
       gap: 10px;
     }
+
     .brand-title span.badge {
       font-size: 11px;
       font-weight: 800;
@@ -85,6 +101,7 @@
       align-items: center;
       gap: 10px;
     }
+
     .btn-header {
       display: inline-flex;
       align-items: center;
@@ -98,18 +115,23 @@
       border: none;
       transition: all 0.15s ease;
     }
+
     .btn-new-note {
       background: #2563eb;
       color: #ffffff;
       box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
     }
-    .btn-new-note:hover { background: #1d4ed8; }
+
+    .btn-new-note:hover {
+      background: #1d4ed8;
+    }
 
     .btn-scan-folder {
       background: #334155;
       color: #f8fafc;
       border: 1px solid #475569;
     }
+
     .btn-scan-folder:hover {
       background: #475569;
       color: #ffffff;
@@ -121,12 +143,16 @@
       border: 1px solid #14b8a6;
       box-shadow: 0 4px 12px rgba(15, 118, 110, 0.35);
     }
+
     .btn-diary-quick:hover {
       background: #115e59;
       color: #ffffff;
     }
 
-    /* CONTROLS */
+    /* =========================================================
+       CONTROLS
+       ========================================================= */
+
     .controls-wrapper {
       display: flex;
       flex-direction: column;
@@ -135,10 +161,12 @@
       max-width: 800px;
       margin: 0 auto;
     }
+
     .search-box-wrapper {
       position: relative;
       width: 100%;
     }
+
     .search-input {
       width: 100%;
       background: #0b1120;
@@ -151,10 +179,12 @@
       outline: none;
       transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
+
     .search-input:focus {
       border-color: var(--accent-blue);
       box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
     }
+
     .search-icon {
       position: absolute;
       left: 14px;
@@ -165,13 +195,17 @@
       pointer-events: none;
     }
 
-    /* DYNAMIC FILTER TABS */
+    /* =========================================================
+       FILTER TABS
+       ========================================================= */
+
     .filter-tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       justify-content: center;
     }
+
     .tab-btn {
       background: #1e293b;
       color: #94a3b8;
@@ -183,17 +217,22 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
+
     .tab-btn:hover {
       background: #334155;
       color: #f8fafc;
     }
+
     .tab-btn.active {
       background: #0284c7;
       color: #ffffff;
       border-color: #38bdf8;
     }
 
-    /* MAIN LIBRARY CONTAINER */
+    /* =========================================================
+       MAIN LIBRARY
+       ========================================================= */
+
     .main-container {
       max-width: 1240px;
       margin: 28px auto 0 auto;
@@ -203,6 +242,7 @@
     .subject-section {
       margin-bottom: 36px;
     }
+
     .subject-title {
       font-size: 18.5px;
       font-weight: 800;
@@ -214,6 +254,7 @@
       border-bottom: 1px solid #334155;
       padding-bottom: 8px;
     }
+
     .subject-count {
       font-size: 12px;
       font-weight: 700;
@@ -223,14 +264,20 @@
       border-radius: 9999px;
     }
 
-    /* DYNAMIC NOTES GRID */
+    /* =========================================================
+       NOTES GRID
+       ========================================================= */
+
     .notes-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 18px;
     }
 
-    /* NOTE CARD */
+    /* =========================================================
+       NOTE CARD
+       ========================================================= */
+
     .note-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -242,17 +289,20 @@
       transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
       position: relative;
     }
+
     .note-card:hover {
       transform: translateY(-2px);
       border-color: #64748b;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
+
     .note-card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 10px;
     }
+
     .note-badge {
       font-size: 10.5px;
       font-weight: 800;
@@ -264,6 +314,7 @@
       align-items: center;
       gap: 4px;
     }
+
     .note-meta {
       font-size: 11px;
       font-weight: 600;
@@ -277,6 +328,7 @@
       line-height: 1.35;
       margin-bottom: 6px;
     }
+
     .note-file-name {
       font-size: 12px;
       color: #64748b;
@@ -285,14 +337,19 @@
       word-break: break-all;
     }
 
-    /* ACTIONS */
+    /* =========================================================
+       ACTIONS
+       ========================================================= */
+
     .note-actions {
       display: flex;
       gap: 8px;
       margin-top: auto;
       padding-top: 14px;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
+      flex-wrap: wrap;
     }
+
     .action-btn {
       flex: 1;
       display: inline-flex;
@@ -306,54 +363,71 @@
       text-decoration: none;
       transition: all 0.15s ease;
       cursor: pointer;
+      min-width: 100px;
     }
+
     .btn-read {
       background: #0284c7;
       color: #ffffff;
       border: 1px solid #38bdf8;
     }
+
     .btn-read:hover {
       background: #0369a1;
       box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
     }
+
     .btn-direct {
       background: #334155;
       color: #cbd5e1;
       border: 1px solid #475569;
     }
+
     .btn-direct:hover {
       background: #475569;
       color: #ffffff;
     }
+
     .btn-edit {
       background: #1e293b;
       color: #94a3b8;
       border: 1px solid #334155;
     }
+
     .btn-edit:hover {
       background: #334155;
       color: #f8fafc;
     }
+
     .btn-pdf {
       background: #7f1d1d;
       color: #ffffff;
       border: 1px solid #ef4444;
     }
+
     .btn-pdf:hover {
       background: #991b1b;
     }
 
-    /* FULL-SCREEN IN-APP READER MODAL */
+    /* =========================================================
+       FULL-SCREEN READER
+       ========================================================= */
+
     .reader-modal {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw; height: 100vh;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
       background: #0f172a;
       z-index: 99999;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
+
     .reader-modal-header {
       background: #1e293b;
       border-bottom: 2px solid #334155;
@@ -364,12 +438,14 @@
       gap: 12px;
       flex-shrink: 0;
     }
+
     .reader-left-actions {
       display: flex;
       align-items: center;
       gap: 12px;
       min-width: 0;
     }
+
     .reader-btn-back {
       background: #2563eb;
       color: #ffffff;
@@ -385,7 +461,11 @@
       white-space: nowrap;
       transition: background 0.15s ease;
     }
-    .reader-btn-back:hover { background: #1d4ed8; }
+
+    .reader-btn-back:hover {
+      background: #1d4ed8;
+    }
+
     .reader-note-title {
       font-size: 14.5px;
       font-weight: 700;
@@ -394,16 +474,18 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .reader-right-actions {
       display: flex;
       align-items: center;
       gap: 8px;
       flex-shrink: 0;
     }
+
     .reader-btn-direct {
       background: #334155;
       color: #38bdf8;
-      border: 1px solid rgba(56,189,248,0.3);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: 6px;
       padding: 6px 12px;
       font-size: 12px;
@@ -414,7 +496,12 @@
       align-items: center;
       gap: 4px;
     }
-    .reader-btn-direct:hover { background: #475569; color: #ffffff; }
+
+    .reader-btn-direct:hover {
+      background: #475569;
+      color: #ffffff;
+    }
+
     .reader-btn-close {
       background: #ef4444;
       color: #ffffff;
@@ -425,13 +512,18 @@
       font-weight: 800;
       cursor: pointer;
     }
-    .reader-btn-close:hover { background: #dc2626; }
+
+    .reader-btn-close:hover {
+      background: #dc2626;
+    }
+
     .reader-iframe-container {
       flex: 1;
       width: 100%;
       height: 100%;
       position: relative;
     }
+
     .reader-iframe {
       width: 100%;
       height: 100%;
@@ -440,541 +532,1253 @@
       display: block;
     }
 
-    /* EMPTY SEARCH STATE */
+    /* =========================================================
+       EMPTY SEARCH STATE
+       ========================================================= */
+
     #emptyState {
       display: none;
       text-align: center;
       padding: 60px 20px;
       color: #64748b;
     }
+
     #emptyState h3 {
       font-size: 18px;
       color: #cbd5e1;
       margin-bottom: 6px;
     }
 
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
     @media (max-width: 768px) {
-      .hero-top-row { flex-direction: column; align-items: stretch; }
-      .notes-grid { grid-template-columns: 1fr; }
+      .hero-top-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .notes-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 600px) {
-      .hero-header { padding: 16px 12px 14px 12px; }
-      .brand-title { font-size: 19px; }
-      .btn-scan-folder { display: none !important; }
-      .btn-new-note { display: none !important; }
-      .btn-diary-quick { display: inline-flex !important; padding: 6px 12px !important; font-size: 12px !important; }
-      .btn-edit { display: none !important; }
-      .notes-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
-      .note-actions { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
-      .btn-read { grid-column: span 1 !important; padding: 10px 6px !important; font-size: 12px !important; text-align: center !important; justify-content: center !important; }
-      .btn-direct { grid-column: span 1 !important; padding: 10px 6px !important; font-size: 12px !important; text-align: center !important; justify-content: center !important; }
-      .btn-pdf { grid-column: span 2 !important; padding: 12px 14px !important; font-size: 13.5px !important; text-align: center !important; justify-content: center !important; }
-      .tab-btn { white-space: nowrap !important; padding: 8px 12px !important; font-size: 12px !important; flex-shrink: 0 !important; }
-      .filter-tabs { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; flex-wrap: nowrap !important; }
-      .reader-modal-header { padding: 8px 10px; }
-      .reader-note-title { max-width: 140px; font-size: 12.5px; }
+      .hero-header {
+        padding: 16px 12px 14px 12px;
+      }
+
+      .brand-title {
+        font-size: 19px;
+      }
+
+      .btn-scan-folder {
+        display: none !important;
+      }
+
+      .btn-new-note {
+        display: none !important;
+      }
+
+      .btn-diary-quick {
+        display: inline-flex !important;
+        padding: 6px 12px !important;
+        font-size: 12px !important;
+      }
+
+      .btn-edit {
+        display: none !important;
+      }
+
+      .notes-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+
+      .note-actions {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+      }
+
+      .btn-read {
+        grid-column: span 1 !important;
+        padding: 10px 6px !important;
+        font-size: 12px !important;
+        text-align: center !important;
+        justify-content: center !important;
+      }
+
+      .btn-direct {
+        grid-column: span 1 !important;
+        padding: 10px 6px !important;
+        font-size: 12px !important;
+        text-align: center !important;
+        justify-content: center !important;
+      }
+
+      .btn-pdf {
+        grid-column: span 2 !important;
+        padding: 12px 14px !important;
+        font-size: 13.5px !important;
+        text-align: center !important;
+        justify-content: center !important;
+      }
+
+      .tab-btn {
+        white-space: nowrap !important;
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+        flex-shrink: 0 !important;
+      }
+
+      .filter-tabs {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        flex-wrap: nowrap !important;
+      }
+
+      .reader-modal-header {
+        padding: 8px 10px;
+      }
+
+      .reader-note-title {
+        max-width: 140px;
+        font-size: 12.5px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- HEADER -->
+  <!-- =========================================================
+       HEADER
+       ========================================================= -->
+
   <header class="hero-header">
     <div class="hero-container">
+
       <div class="hero-top-row">
+
         <h1 class="brand-title">
           📚 Group 1 Notes Hub
           <span class="badge" id="liveBadge">Dynamic Studio</span>
         </h1>
+
         <div class="top-actions">
-          <a href="daily_aspirant_diary.html" class="btn-header btn-diary-quick" title="Open Daily Discipline Scorecard & Weight Tracker">
+
+          <a
+            href="daily_aspirant_diary.html"
+            class="btn-header btn-diary-quick"
+            title="Open Daily Discipline Scorecard & Weight Tracker"
+          >
             📖 Daily Diary
           </a>
-          <button class="btn-header btn-scan-folder" onclick="scanLocalFolderLive()" title="Pick folder on your PC to discover and render newly added notes live">
+
+          <button
+            class="btn-header btn-scan-folder"
+            onclick="scanLocalFolderLive()"
+            title="Pick folder on your PC to discover and render newly added notes live"
+          >
             📁 Scan Local Folder
           </button>
-          <a href="index.html" class="btn-header btn-new-note" target="_blank" title="Create new note in Visual Studio (Desktop)">
+
+          <!-- IMPORTANT:
+               Dashboard.html is inside Group-1-Notes.
+               ../index.html goes to the ROOT Visual Notes Studio. -->
+          <a
+            href="../index.html"
+            class="btn-header btn-new-note"
+            target="_blank"
+            rel="noopener"
+            title="Create new note in Visual Notes Studio"
+          >
             ➕ New Blank Note
           </a>
+
         </div>
       </div>
 
       <div class="controls-wrapper">
+
         <div class="search-box-wrapper">
           <span class="search-icon">🔍</span>
-          <input type="text" id="searchInput" class="search-input" placeholder="Search notes by topic, title, or filename..." oninput="handleSearch()">
+
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search notes by topic, title, or filename..."
+            oninput="handleSearch()"
+          >
         </div>
 
-        <div class="filter-tabs" id="filterTabsContainer">
+        <div
+          class="filter-tabs"
+          id="filterTabsContainer"
+        >
           <!-- Dynamically populated -->
         </div>
+
       </div>
+
     </div>
   </header>
 
-  <!-- MAIN DYNAMIC CONTENT -->
+  <!-- =========================================================
+       MAIN LIBRARY
+       ========================================================= -->
+
   <main class="main-container">
+
     <div id="dynamicLibraryContainer">
-      <!-- Dynamically populated based on notes present -->
+      <!-- Dynamically populated -->
     </div>
 
-    <!-- EMPTY SEARCH MESSAGE -->
     <div id="emptyState">
       <h3>No study notes found</h3>
-      <p>Try searching for a different keyword or reset the filter tab back to "All Notes".</p>
+      <p>
+        Try searching for a different keyword or reset the filter tab
+        back to "All Notes".
+      </p>
     </div>
+
   </main>
 
-  <!-- FULL-SCREEN IN-APP READER MODAL -->
-  <div id="noteReaderModal" class="reader-modal" style="display: none;">
+  <!-- =========================================================
+       FULL-SCREEN IN-APP READER
+       ========================================================= -->
+
+  <div
+    id="noteReaderModal"
+    class="reader-modal"
+    style="display: none;"
+  >
+
     <div class="reader-modal-header">
+
       <div class="reader-left-actions">
-        <button type="button" class="reader-btn-back" onclick="closeNoteReader()">⬅️ Back to Library</button>
-        <span class="reader-note-title" id="readerNoteTitle">Study Note</span>
+
+        <button
+          type="button"
+          class="reader-btn-back"
+          onclick="closeNoteReader()"
+        >
+          ⬅️ Back to Library
+        </button>
+
+        <span
+          class="reader-note-title"
+          id="readerNoteTitle"
+        >
+          Study Note
+        </span>
+
       </div>
+
       <div class="reader-right-actions">
-        <a href="#" id="readerOpenExternal" class="reader-btn-direct" target="_self">↗️ Direct Page</a>
-        <button type="button" class="reader-btn-close" onclick="closeNoteReader()" title="Close Reader">✖</button>
+
+        <a
+          href="#"
+          id="readerOpenExternal"
+          class="reader-btn-direct"
+          target="_blank"
+          rel="noopener"
+        >
+          ↗️ Direct Page
+        </a>
+
+        <button
+          type="button"
+          class="reader-btn-close"
+          onclick="closeNoteReader()"
+          title="Close Reader"
+        >
+          ✖
+        </button>
+
       </div>
+
     </div>
+
     <div class="reader-iframe-container">
-      <iframe id="readerIframe" class="reader-iframe" src="about:blank"></iframe>
+
+      <iframe
+        id="readerIframe"
+        class="reader-iframe"
+        src="about:blank"
+        title="Study Note Reader"
+      ></iframe>
+
     </div>
+
   </div>
 
-  <!-- LOAD PRECOMPILED MANIFEST & DATA BRIDGE (EXTERNAL COMPILATION) -->
+  <!-- =========================================================
+       LOAD MANIFEST
+       ========================================================= -->
+
   <script src="notes-data.js"></script>
 
   <script>
-    // 100% SELF-CONTAINED OFFLINE MANIFEST
-    // Guarantees immediate zero-lag rendering on mobile phones and Google Drive even if external scripts are blocked
-    const DEFAULT_NOTES_MANIFEST = [
-  {
-    "folder": "economy",
-    "name": "economy_chapter_1.pdf",
-    "path": "economy/economy_chapter_1.pdf",
-    "title": "economy chapter 1 (PDF Reference)",
-    "type": "pdf",
-    "size": 22374353
-  },
-  {
-    "folder": "economy",
-    "name": "economy_chapter_2.pdf",
-    "path": "economy/economy_chapter_2.pdf",
-    "title": "economy chapter 2 (PDF Reference)",
-    "type": "pdf",
-    "size": 11275513
-  },
-  {
-    "folder": "economy",
-    "name": "economy_chapter_3.pdf",
-    "path": "economy/economy_chapter_3.pdf",
-    "title": "economy chapter 3 (PDF Reference)",
-    "type": "pdf",
-    "size": 6398610
-  },
-  {
-    "folder": "Economy_Notes",
-    "name": "economy_chapter_1_full.html",
-    "path": "Economy_Notes/economy_chapter_1_full.html",
-    "title": "Indian Economy - Chapter 1 Complete Master Notes",
-    "type": "html",
-    "size": 64365
-  },
-  {
-    "folder": "Economy_Notes",
-    "name": "economy_chapter_1.html",
-    "path": "Economy_Notes/economy_chapter_1.html",
-    "title": "Indian Economy Chapter 1 Notes",
-    "type": "html",
-    "size": 51313
-  },
-  {
-    "folder": "Economy_Notes",
-    "name": "economy_chapter_2_full.html",
-    "path": "Economy_Notes/economy_chapter_2_full.html",
-    "title": "Indian Economy - Chapter 2 Complete Master Notes",
-    "type": "html",
-    "size": 60079
-  },
-  {
-    "folder": "Economy_Notes",
-    "name": "economy_chapter_3_full.html",
-    "path": "Economy_Notes/economy_chapter_3_full.html",
-    "title": "Resource Mobilization in Andhra Pradesh - Master Notes",
-    "type": "html",
-    "size": 52679
-  },
-  {
-    "folder": "General",
-    "name": "daily_aspirant_diary.html",
-    "path": "daily_aspirant_diary.html",
-    "title": "Executive Aspirant's Daily Diary & Weight Tracker",
-    "type": "html",
-    "size": 46267
-  },
-  {
-    "folder": "General",
-    "name": "group_1_diet_and_fitness_master_plan.html",
-    "path": "group_1_diet_and_fitness_master_plan.html",
-    "title": "Diet & Fitness Master Plan",
-    "type": "html",
-    "size": 37826
-  },
-  {
-    "folder": "General",
-    "name": "group_1_master_timetable.html",
-    "path": "group_1_master_timetable.html",
-    "title": "Timetable",
-    "type": "html",
-    "size": 41864
-  },
-  {
-    "folder": "General",
-    "name": "recovered_diary.html",
-    "path": "recovered_diary.html",
-    "title": "Executive Aspirant's Daily Diary & Weight Tracker",
-    "type": "html",
-    "size": 44097
-  },
-  {
-    "folder": "History_notes",
-    "name": "ancient_ap_history.html",
-    "path": "History_notes/ancient_ap_history.html",
-    "title": "Andhra Pradesh History: Ancient to Early Medieval Outline",
-    "type": "html",
-    "size": 38932
-  },
-  {
-    "folder": "History_notes",
-    "name": "Indus_valley_civilization.html",
-    "path": "History_notes/Indus_valley_civilization.html",
-    "title": "Indus Valley Civilization - Master Notes",
-    "type": "html",
-    "size": 61725
-  },
-  {
-    "folder": "History_notes",
-    "name": "Jain_buddism.html",
-    "path": "History_notes/Jain_buddism.html",
-    "title": "Religious Reform Movements: Jainism & Buddhism (c. 6th Century BCE)",
-    "type": "html",
-    "size": 66149
-  },
-  {
-    "folder": "History_notes",
-    "name": "Mahajanapadhas.html",
-    "path": "History_notes/Mahajanapadhas.html",
-    "title": "The 16 Mahajanapadas & Rise of Magadha",
-    "type": "html",
-    "size": 50766
-  },
-  {
-    "folder": "History_notes",
-    "name": "medieval_ap_history.html",
-    "path": "History_notes/medieval_ap_history.html",
-    "title": "Andhra History: Medieval Era (1000–1565 A.D. & Beyond)",
-    "type": "html",
-    "size": 45251
-  },
-  {
-    "folder": "History_notes",
-    "name": "modern_ap_history_notes.html",
-    "path": "History_notes/modern_ap_history_notes.html",
-    "title": "Modern Andhra History & Renaissance: Comprehensive Master Notes",
-    "type": "html",
-    "size": 45972
-  },
-  {
-    "folder": "History_notes",
-    "name": "satavahana_ap_history.html",
-    "path": "History_notes/satavahana_ap_history.html",
-    "title": "Satavahana Empire: Comprehensive Master Notes",
-    "type": "html",
-    "size": 41795
-  },
-  {
-    "folder": "History_notes",
-    "name": "vedic_age_latest.html",
-    "path": "History_notes/vedic_age_latest.html",
-    "title": "Vedic Civilization",
-    "type": "html",
-    "size": 81626
-  },
-  {
-    "folder": "History_notes",
-    "name": "vedic_age.html",
-    "path": "History_notes/vedic_age.html",
-    "title": "Vedic Civilization",
-    "type": "html",
-    "size": 310396
-  },
-  {
-    "folder": "Polity_Notes",
-    "name": "bharat_ratna_awards.html",
-    "path": "Polity_Notes/bharat_ratna_awards.html",
-    "title": "Bharat Ratna & Padma Awards Master Notes",
-    "type": "html",
-    "size": 45004
-  },
-  {
-    "folder": "Polity_Notes",
-    "name": "Main_Polity.html",
-    "path": "Polity_Notes/Main_Polity.html",
-    "title": "Main Polity",
-    "type": "html",
-    "size": 23213
-  },
-  {
-    "folder": "Polity_Notes",
-    "name": "polity_fundamental_rights.html",
-    "path": "Polity_Notes/polity_fundamental_rights.html",
-    "title": "Fundamental Rights (Part III, Articles 12–35)",
-    "type": "html",
-    "size": 120216
-  },
-  {
-    "folder": "Polity_Notes",
-    "name": "Preamble.html",
-    "path": "Polity_Notes/Preamble.html",
-    "title": "Preamble of the Constitution (A4 Balanced Edition)",
-    "type": "html",
-    "size": 46933
-  },
-  {
-    "folder": "Polity_Notes",
-    "name": "salient_features.html",
-    "path": "Polity_Notes/salient_features.html",
-    "title": "Salient Features, Schedules and Parts of the Indian Constitution",
-    "type": "html",
-    "size": 64457
-  },
-  {
-    "folder": "Science_and_Techonlogy",
-    "name": "space_technology.html",
-    "path": "Science_and_Techonlogy/space_technology.html",
-    "title": "Space Technology Static: Comprehensive Master Notes",
-    "type": "html",
-    "size": 93799
-  }
-];
 
-    // Guarantee window.NOTES_MANIFEST is populated immediately
-    if (!window.NOTES_MANIFEST || !Array.isArray(window.NOTES_MANIFEST) || window.NOTES_MANIFEST.length === 0) {
+    /* =========================================================
+       DEFAULT OFFLINE MANIFEST
+       ========================================================= */
+
+    const DEFAULT_NOTES_MANIFEST = [
+      {
+        "folder": "economy",
+        "name": "economy_chapter_1.pdf",
+        "path": "economy/economy_chapter_1.pdf",
+        "title": "economy chapter 1 (PDF Reference)",
+        "type": "pdf",
+        "size": 22374353
+      },
+      {
+        "folder": "economy",
+        "name": "economy_chapter_2.pdf",
+        "path": "economy/economy_chapter_2.pdf",
+        "title": "economy chapter 2 (PDF Reference)",
+        "type": "pdf",
+        "size": 11275513
+      },
+      {
+        "folder": "economy",
+        "name": "economy_chapter_3.pdf",
+        "path": "economy/economy_chapter_3.pdf",
+        "title": "economy chapter 3 (PDF Reference)",
+        "type": "pdf",
+        "size": 6398610
+      },
+
+      {
+        "folder": "Economy_Notes",
+        "name": "economy_chapter_1_full.html",
+        "path": "Economy_Notes/economy_chapter_1_full.html",
+        "title": "Indian Economy - Chapter 1 Complete Master Notes",
+        "type": "html",
+        "size": 64365
+      },
+      {
+        "folder": "Economy_Notes",
+        "name": "economy_chapter_1.html",
+        "path": "Economy_Notes/economy_chapter_1.html",
+        "title": "Indian Economy Chapter 1 Notes",
+        "type": "html",
+        "size": 51313
+      },
+      {
+        "folder": "Economy_Notes",
+        "name": "economy_chapter_2_full.html",
+        "path": "Economy_Notes/economy_chapter_2_full.html",
+        "title": "Indian Economy - Chapter 2 Complete Master Notes",
+        "type": "html",
+        "size": 60079
+      },
+      {
+        "folder": "Economy_Notes",
+        "name": "economy_chapter_3_full.html",
+        "path": "Economy_Notes/economy_chapter_3_full.html",
+        "title": "Resource Mobilization in Andhra Pradesh - Master Notes",
+        "type": "html",
+        "size": 52679
+      },
+
+      {
+        "folder": "General",
+        "name": "daily_aspirant_diary.html",
+        "path": "daily_aspirant_diary.html",
+        "title": "Executive Aspirant's Daily Diary & Weight Tracker",
+        "type": "html",
+        "size": 46267
+      },
+      {
+        "folder": "General",
+        "name": "group_1_diet_and_fitness_master_plan.html",
+        "path": "group_1_diet_and_fitness_master_plan.html",
+        "title": "Diet & Fitness Master Plan",
+        "type": "html",
+        "size": 37826
+      },
+      {
+        "folder": "General",
+        "name": "group_1_master_timetable.html",
+        "path": "group_1_master_timetable.html",
+        "title": "Timetable",
+        "type": "html",
+        "size": 41864
+      },
+      {
+        "folder": "General",
+        "name": "recovered_diary.html",
+        "path": "recovered_diary.html",
+        "title": "Executive Aspirant's Daily Diary & Weight Tracker",
+        "type": "html",
+        "size": 44097
+      },
+
+      {
+        "folder": "History_notes",
+        "name": "ancient_ap_history.html",
+        "path": "History_notes/ancient_ap_history.html",
+        "title": "Andhra Pradesh History: Ancient to Early Medieval Outline",
+        "type": "html",
+        "size": 38932
+      },
+      {
+        "folder": "History_notes",
+        "name": "Indus_valley_civilization.html",
+        "path": "History_notes/Indus_valley_civilization.html",
+        "title": "Indus Valley Civilization - Master Notes",
+        "type": "html",
+        "size": 61725
+      },
+      {
+        "folder": "History_notes",
+        "name": "Jain_buddism.html",
+        "path": "History_notes/Jain_buddism.html",
+        "title": "Religious Reform Movements: Jainism & Buddhism (c. 6th Century BCE)",
+        "type": "html",
+        "size": 66149
+      },
+      {
+        "folder": "History_notes",
+        "name": "Mahajanapadhas.html",
+        "path": "History_notes/Mahajanapadhas.html",
+        "title": "The 16 Mahajanapadas & Rise of Magadha",
+        "type": "html",
+        "size": 50766
+      },
+      {
+        "folder": "History_notes",
+        "name": "medieval_ap_history.html",
+        "path": "History_notes/medieval_ap_history.html",
+        "title": "Andhra History: Medieval Era (1000–1565 A.D. & Beyond)",
+        "type": "html",
+        "size": 45251
+      },
+      {
+        "folder": "History_notes",
+        "name": "modern_ap_history_notes.html",
+        "path": "History_notes/modern_ap_history_notes.html",
+        "title": "Modern Andhra History & Renaissance: Comprehensive Master Notes",
+        "type": "html",
+        "size": 45972
+      },
+      {
+        "folder": "History_notes",
+        "name": "satavahana_ap_history.html",
+        "path": "History_notes/satavahana_ap_history.html",
+        "title": "Satavahana Empire: Comprehensive Master Notes",
+        "type": "html",
+        "size": 41795
+      },
+      {
+        "folder": "History_notes",
+        "name": "vedic_age_latest.html",
+        "path": "History_notes/vedic_age_latest.html",
+        "title": "Vedic Civilization",
+        "type": "html",
+        "size": 81626
+      },
+      {
+        "folder": "History_notes",
+        "name": "vedic_age.html",
+        "path": "History_notes/vedic_age.html",
+        "title": "Vedic Civilization",
+        "type": "html",
+        "size": 310396
+      },
+
+      {
+        "folder": "Polity_Notes",
+        "name": "bharat_ratna_awards.html",
+        "path": "Polity_Notes/bharat_ratna_awards.html",
+        "title": "Bharat Ratna & Padma Awards Master Notes",
+        "type": "html",
+        "size": 45004
+      },
+      {
+        "folder": "Polity_Notes",
+        "name": "Main_Polity.html",
+        "path": "Polity_Notes/Main_Polity.html",
+        "title": "Main Polity",
+        "type": "html",
+        "size": 23213
+      },
+      {
+        "folder": "Polity_Notes",
+        "name": "polity_fundamental_rights.html",
+        "path": "Polity_Notes/polity_fundamental_rights.html",
+        "title": "Fundamental Rights (Part III, Articles 12–35)",
+        "type": "html",
+        "size": 120216
+      },
+      {
+        "folder": "Polity_Notes",
+        "name": "Preamble.html",
+        "path": "Polity_Notes/Preamble.html",
+        "title": "Preamble of the Constitution (A4 Balanced Edition)",
+        "type": "html",
+        "size": 46933
+      },
+      {
+        "folder": "Polity_Notes",
+        "name": "salient_features.html",
+        "path": "Polity_Notes/salient_features.html",
+        "title": "Salient Features, Schedules and Parts of the Indian Constitution",
+        "type": "html",
+        "size": 64457
+      },
+
+      {
+        "folder": "Science_and_Techonlogy",
+        "name": "space_technology.html",
+        "path": "Science_and_Techonlogy/space_technology.html",
+        "title": "Space Technology Static: Comprehensive Master Notes",
+        "type": "html",
+        "size": 93799
+      }
+    ];
+
+    /* =========================================================
+       MANIFEST INITIALIZATION
+       ========================================================= */
+
+    if (
+      !window.NOTES_MANIFEST ||
+      !Array.isArray(window.NOTES_MANIFEST) ||
+      window.NOTES_MANIFEST.length === 0
+    ) {
       window.NOTES_MANIFEST = DEFAULT_NOTES_MANIFEST;
     }
 
     let activeFilter = 'all';
 
-    // Subject styling and icons mapping
+    /* =========================================================
+       SUBJECT THEMES
+       ========================================================= */
+
     const subjectThemes = {
-      'polity': { icon: '🏛️', label: 'Polity & Governance', badgeClass: 'background:rgba(56,189,248,0.15); color:#38bdf8; border:1px solid rgba(56,189,248,0.3);' },
-      'economy': { icon: '📈', label: 'Economy & Development', badgeClass: 'background:rgba(74,222,128,0.15); color:#4ade80; border:1px solid rgba(74,222,128,0.3);' },
-      'history': { icon: '📜', label: 'Ancient & Medieval History', badgeClass: 'background:rgba(250,204,21,0.15); color:#facc15; border:1px solid rgba(250,204,21,0.3);' },
-      'science': { icon: '🚀', label: 'Science & Technology', badgeClass: 'background:rgba(192,132,252,0.15); color:#c084fc; border:1px solid rgba(192,132,252,0.3);' },
-      'tech': { icon: '🚀', label: 'Science & Technology', badgeClass: 'background:rgba(192,132,252,0.15); color:#c084fc; border:1px solid rgba(192,132,252,0.3);' },
-      'time': { icon: '⏱️', label: 'Study Timetables & Schedules', badgeClass: 'background:rgba(249,115,22,0.15); color:#f97316; border:1px solid rgba(249,115,22,0.3);' },
-      'table': { icon: '⏱️', label: 'Study Timetables & Schedules', badgeClass: 'background:rgba(249,115,22,0.15); color:#f97316; border:1px solid rgba(249,115,22,0.3);' },
-      'general': { icon: '📁', label: 'General Notes', badgeClass: 'background:rgba(148,163,184,0.15); color:#94a3b8; border:1px solid rgba(148,163,184,0.3);' }
+
+      'polity': {
+        icon: '🏛️',
+        label: 'Polity & Governance',
+        badgeClass:
+          'background:rgba(56,189,248,0.15); color:#38bdf8; border:1px solid rgba(56,189,248,0.3);'
+      },
+
+      'economy': {
+        icon: '📈',
+        label: 'Economy & Development',
+        badgeClass:
+          'background:rgba(74,222,128,0.15); color:#4ade80; border:1px solid rgba(74,222,128,0.3);'
+      },
+
+      'history': {
+        icon: '📜',
+        label: 'Ancient & Medieval History',
+        badgeClass:
+          'background:rgba(250,204,21,0.15); color:#facc15; border:1px solid rgba(250,204,21,0.3);'
+      },
+
+      'science': {
+        icon: '🚀',
+        label: 'Science & Technology',
+        badgeClass:
+          'background:rgba(192,132,252,0.15); color:#c084fc; border:1px solid rgba(192,132,252,0.3);'
+      },
+
+      'tech': {
+        icon: '🚀',
+        label: 'Science & Technology',
+        badgeClass:
+          'background:rgba(192,132,252,0.15); color:#c084fc; border:1px solid rgba(192,132,252,0.3);'
+      },
+
+      'time': {
+        icon: '⏱️',
+        label: 'Study Timetables & Schedules',
+        badgeClass:
+          'background:rgba(249,115,22,0.15); color:#f97316; border:1px solid rgba(249,115,22,0.3);'
+      },
+
+      'table': {
+        icon: '⏱️',
+        label: 'Study Timetables & Schedules',
+        badgeClass:
+          'background:rgba(249,115,22,0.15); color:#f97316; border:1px solid rgba(249,115,22,0.3);'
+      },
+
+      'general': {
+        icon: '📁',
+        label: 'General Notes',
+        badgeClass:
+          'background:rgba(148,163,184,0.15); color:#94a3b8; border:1px solid rgba(148,163,184,0.3);'
+      }
     };
 
+    /* =========================================================
+       THEME RESOLUTION
+       ========================================================= */
+
     function resolveThemeForFolder(folderName) {
-      const lower = folderName.toLowerCase();
+
+      const lower = String(folderName || '').toLowerCase();
+
       for (const [key, theme] of Object.entries(subjectThemes)) {
-        if (lower.includes(key)) return theme;
+        if (lower.includes(key)) {
+          return theme;
+        }
       }
-      const formattedLabel = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-      return { icon: '📁', label: formattedLabel, badgeClass: 'background:rgba(148,163,184,0.15); color:#94a3b8; border:1px solid rgba(148,163,184,0.3);' };
+
+      const formattedLabel = String(folderName || 'General')
+        .replace(/_/g, ' ')
+        .replace(/\b\w/g, letter => letter.toUpperCase());
+
+      return {
+        icon: '📁',
+        label: formattedLabel,
+        badgeClass:
+          'background:rgba(148,163,184,0.15); color:#94a3b8; border:1px solid rgba(148,163,184,0.3);'
+      };
     }
 
+    /* =========================================================
+       FILE SIZE
+       ========================================================= */
+
     function formatFileSize(bytes) {
-      if (!bytes || bytes === 0) return '';
-      if (bytes < 1024) return bytes + ' B';
-      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+
+      if (!bytes || bytes === 0) {
+        return '';
+      }
+
+      if (bytes < 1024) {
+        return bytes + ' B';
+      }
+
+      if (bytes < 1024 * 1024) {
+        return (bytes / 1024).toFixed(1) + ' KB';
+      }
+
       return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
     }
 
+    /* =========================================================
+       IMPORTANT:
+       NORMALIZE NOTE PATHS
+       =========================================================
+
+       Dashboard.html is located at:
+
+       Notes-Builder/
+       └── Group-1-Notes/
+           └── Dashboard.html
+
+       Therefore a note such as:
+
+       History_notes/vedic_age.html
+
+       should resolve directly to:
+
+       ./History_notes/vedic_age.html
+
+       This function also protects against manifests that
+       accidentally contain:
+
+       Group-1-Notes/History_notes/vedic_age.html
+
+       or:
+
+       Notes-Builder/Group-1-Notes/History_notes/vedic_age.html
+    */
+
+    function getNoteUrl(notePath) {
+
+      if (!notePath) {
+        return '#';
+      }
+
+      let cleanPath = String(notePath).trim();
+
+      /* Remove leading slashes */
+      cleanPath = cleanPath.replace(/^\/+/, '');
+
+      /* Remove repository + folder prefix */
+      cleanPath = cleanPath.replace(
+        /^Notes-Builder\/Group-1-Notes\//i,
+        ''
+      );
+
+      /* Remove folder prefix */
+      cleanPath = cleanPath.replace(
+        /^Group-1-Notes\//i,
+        ''
+      );
+
+      /* Remove ./ if present */
+      cleanPath = cleanPath.replace(/^\.\/+/, '');
+
+      return cleanPath;
+    }
+
+    /* =========================================================
+       BUILDER URL
+       ========================================================= */
+
+    function getBuilderUrl(notePath) {
+
+      const cleanPath = getNoteUrl(notePath);
+
+      /*
+       * Dashboard.html is:
+       * Group-1-Notes/Dashboard.html
+       *
+       * Root Visual Notes Studio is:
+       * ../index.html
+       *
+       * The builder receives:
+       * Group-1-Notes/<note>
+       */
+
+      const builderNotePath = 'Group-1-Notes/' + cleanPath;
+
+      return '../index.html?note=' + encodeURIComponent(builderNotePath);
+    }
+
+    /* =========================================================
+       HTML ESCAPING
+       ========================================================= */
+
+    function escapeHtml(value) {
+
+      if (value === null || value === undefined) {
+        return '';
+      }
+
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    /* =========================================================
+       MERGE MANIFEST + TITLE OVERRIDES
+       ========================================================= */
+
     function getMergedManifest(sourceManifest) {
-      const list = (sourceManifest && sourceManifest.length) ? sourceManifest : (window.NOTES_MANIFEST && window.NOTES_MANIFEST.length ? window.NOTES_MANIFEST : DEFAULT_NOTES_MANIFEST);
-      if (!list || !Array.isArray(list)) return [];
+
+      const list =
+        (sourceManifest && sourceManifest.length)
+          ? sourceManifest
+          : (
+              window.NOTES_MANIFEST &&
+              window.NOTES_MANIFEST.length
+            )
+              ? window.NOTES_MANIFEST
+              : DEFAULT_NOTES_MANIFEST;
+
+      if (!list || !Array.isArray(list)) {
+        return [];
+      }
+
       let overrides = {};
+
       try {
-        overrides = JSON.parse(localStorage.getItem('GROUP1_NOTES_TITLE_OVERRIDES') || '{}');
-      } catch (e) {}
+        overrides = JSON.parse(
+          localStorage.getItem(
+            'GROUP1_NOTES_TITLE_OVERRIDES'
+          ) || '{}'
+        );
+      } catch (e) {
+        overrides = {};
+      }
 
       return list.map(note => {
+
         const override = overrides[note.name];
+
         if (override && override.title) {
-          return { ...note, title: override.title };
+          return {
+            ...note,
+            title: override.title
+          };
         }
+
         return note;
       });
     }
 
-    // MAIN DYNAMIC RENDERER
-    function renderDynamicDashboard(manifest) {
-      const activeManifest = (manifest && manifest.length) ? manifest : (window.NOTES_MANIFEST && window.NOTES_MANIFEST.length ? window.NOTES_MANIFEST : DEFAULT_NOTES_MANIFEST);
-      const container = document.getElementById('dynamicLibraryContainer');
-      const tabsContainer = document.getElementById('filterTabsContainer');
-      if (!container || !activeManifest) return;
+    /* =========================================================
+       MAIN DASHBOARD RENDERER
+       ========================================================= */
 
-      const mergedList = getMergedManifest(manifest);
+    function renderDynamicDashboard(manifest) {
+
+      const activeManifest =
+        (manifest && manifest.length)
+          ? manifest
+          : (
+              window.NOTES_MANIFEST &&
+              window.NOTES_MANIFEST.length
+            )
+              ? window.NOTES_MANIFEST
+              : DEFAULT_NOTES_MANIFEST;
+
+      const container =
+        document.getElementById(
+          'dynamicLibraryContainer'
+        );
+
+      const tabsContainer =
+        document.getElementById(
+          'filterTabsContainer'
+        );
+
+      if (!container || !tabsContainer || !activeManifest) {
+        return;
+      }
+
+      const mergedList =
+        getMergedManifest(activeManifest);
 
       container.innerHTML = '';
       tabsContainer.innerHTML = '';
 
-      // 1. Group notes dynamically by folder
+      /* =======================================================
+         GROUP NOTES BY FOLDER
+         ======================================================= */
+
       const groups = {};
+
       mergedList.forEach(note => {
-        const folder = note.folder || 'General';
-        if (!groups[folder]) groups[folder] = [];
+
+        const folder =
+          note.folder || 'General';
+
+        if (!groups[folder]) {
+          groups[folder] = [];
+        }
+
         groups[folder].push(note);
       });
 
-      // 2. Build Filter Tabs
-      const allTab = document.createElement('button');
+      /* =======================================================
+         FILTER TABS
+         ======================================================= */
+
+      const allTab =
+        document.createElement('button');
+
       allTab.className = 'tab-btn active';
-      allTab.innerText = `All Notes (${mergedList.length})`;
-      allTab.onclick = () => setFilter('all', allTab);
+
+      allTab.innerText =
+        `All Notes (${mergedList.length})`;
+
+      allTab.onclick = () => {
+        setFilter('all', allTab);
+      };
+
       tabsContainer.appendChild(allTab);
 
       Object.keys(groups).forEach(folder => {
-        const theme = resolveThemeForFolder(folder);
-        const tab = document.createElement('button');
+
+        const theme =
+          resolveThemeForFolder(folder);
+
+        const tab =
+          document.createElement('button');
+
         tab.className = 'tab-btn';
-        tab.innerText = `${theme.icon} ${folder.replace(/_/g, ' ')} (${groups[folder].length})`;
-        tab.onclick = () => setFilter(folder, tab);
+
+        tab.innerText =
+          `${theme.icon} ${folder.replace(/_/g, ' ')} (${groups[folder].length})`;
+
+        tab.onclick = () => {
+          setFilter(folder, tab);
+        };
+
         tabsContainer.appendChild(tab);
       });
 
-      // 3. Build Subject Sections & Cards
-      Object.entries(groups).forEach(([folder, notes]) => {
-        const theme = resolveThemeForFolder(folder);
+      /* =======================================================
+         BUILD SUBJECT SECTIONS
+         ======================================================= */
 
-        const section = document.createElement('section');
-        section.className = 'subject-section';
-        section.setAttribute('data-folder', folder);
+      Object.entries(groups).forEach(
+        ([folder, notes]) => {
 
-        section.innerHTML = `
-          <h2 class="subject-title">
-            ${theme.icon} ${theme.label}
-            <span class="subject-count">${notes.length} ${notes.length === 1 ? 'Item' : 'Items'}</span>
-          </h2>
-          <div class="notes-grid"></div>
-        `;
+          const theme =
+            resolveThemeForFolder(folder);
 
-        const grid = section.querySelector('.notes-grid');
+          const section =
+            document.createElement('section');
 
-        notes.forEach(note => {
-          const card = document.createElement('div');
-          card.className = 'note-card';
-          card.setAttribute('data-folder', folder);
-          card.setAttribute('data-keywords', `${note.name} ${note.title} ${folder}`.toLowerCase());
+          section.className =
+            'subject-section';
 
-          const sizeFormatted = formatFileSize(note.size);
-          const isPdf = note.type === 'pdf';
+          section.setAttribute(
+            'data-folder',
+            folder
+          );
 
-          card.innerHTML = `
-            <div>
-              <div class="note-card-header">
-                <span class="note-badge" style="${isPdf ? 'background:rgba(248,113,113,0.15); color:#f87171; border:1px solid rgba(248,113,113,0.3);' : theme.badgeClass}">
-                  ${isPdf ? '📄 PDF' : '📝 HTML'}
-                </span>
-                <span class="note-meta">${sizeFormatted}</span>
-              </div>
-              <h3 class="note-title">${note.title}</h3>
-              <div class="note-file-name">📄 ${note.name}</div>
-            </div>
-            <div class="note-actions">
-              ${isPdf ? `
-                <a href="${note.path}" target="_self" class="action-btn btn-pdf">
-                  📄 Open PDF
-                </a>
-              ` : `
-                <button type="button" onclick="openNoteReader('${note.path}', '${note.title.replace(/'/g, "\\'")}')" class="action-btn btn-read">
-                  👁️ Read in App
-                </button>
-                <a href="${note.path}" target="_self" class="action-btn btn-direct" title="Open full note page directly">
-                  ↗️ Direct
-                </a>
-              `}
-              ${!isPdf ? (note.name === 'daily_aspirant_diary.html' ? `
-                <a href="${note.path}" target="_self" class="action-btn" style="background:#0f766e; border-color:#14b8a6; color:#ffffff;" title="Open full Diary Tracker">
-                  📓 Tracker
-                </a>
-                <a href="index.html?note=../Group-1-Notes/${note.path}" target="_blank" class="action-btn btn-edit" title="Open in Visual Builder">
-                  ✏️ In Builder
-                </a>
-              ` : `
-                <a href="index.html?note=../Group-1-Notes/${note.path}" target="_blank" class="action-btn btn-edit">
-                  ✏️ Edit in Builder
-                </a>
-              `) : ''}
-            </div>
+          section.innerHTML = `
+            <h2 class="subject-title">
+              ${theme.icon}
+              ${escapeHtml(theme.label)}
+              <span class="subject-count">
+                ${notes.length}
+                ${notes.length === 1 ? 'Item' : 'Items'}
+              </span>
+            </h2>
+
+            <div class="notes-grid"></div>
           `;
 
-          grid.appendChild(card);
+          const grid =
+            section.querySelector(
+              '.notes-grid'
+            );
+
+          /* =====================================================
+             BUILD NOTE CARDS
+             ===================================================== */
+
+          notes.forEach(note => {
+
+            const card =
+              document.createElement('div');
+
+            card.className =
+              'note-card';
+
+            card.setAttribute(
+              'data-folder',
+              folder
+            );
+
+            card.setAttribute(
+              'data-keywords',
+              `${note.name || ''} ${note.title || ''} ${folder || ''}`
+                .toLowerCase()
+            );
+
+            const sizeFormatted =
+              formatFileSize(note.size);
+
+            const isPdf =
+              String(note.type || '').toLowerCase() === 'pdf';
+
+            /*
+             * THIS IS THE IMPORTANT FIX.
+             *
+             * Every generated link uses noteUrl,
+             * never raw note.path.
+             */
+            const noteUrl =
+              getNoteUrl(note.path);
+
+            const builderUrl =
+              getBuilderUrl(note.path);
+
+            const safeTitle =
+              escapeHtml(
+                note.title ||
+                note.name ||
+                'Study Note'
+              );
+
+            const safeName =
+              escapeHtml(
+                note.name || ''
+              );
+
+            let actionsHtml = '';
+
+            if (isPdf) {
+
+              actionsHtml = `
+                <a
+                  href="${escapeHtml(noteUrl)}"
+                  target="_blank"
+                  rel="noopener"
+                  class="action-btn btn-pdf"
+                  title="Open PDF"
+                >
+                  📄 Open PDF
+                </a>
+              `;
+
+            } else {
+
+              actionsHtml = `
+                <button
+                  type="button"
+                  class="action-btn btn-read"
+                  data-note-path="${escapeHtml(noteUrl)}"
+                  data-note-title="${safeTitle}"
+                  onclick="openNoteReaderFromButton(this)"
+                >
+                  👁️ Read in App
+                </button>
+
+                <a
+                  href="${escapeHtml(noteUrl)}"
+                  target="_blank"
+                  rel="noopener"
+                  class="action-btn btn-direct"
+                  title="Open full note page directly"
+                >
+                  ↗️ Direct
+                </a>
+              `;
+
+              if (
+                note.name ===
+                'daily_aspirant_diary.html'
+              ) {
+
+                actionsHtml += `
+                  <a
+                    href="${escapeHtml(noteUrl)}"
+                    target="_blank"
+                    rel="noopener"
+                    class="action-btn"
+                    style="
+                      background:#0f766e;
+                      border-color:#14b8a6;
+                      color:#ffffff;
+                    "
+                    title="Open full Diary Tracker"
+                  >
+                    📓 Tracker
+                  </a>
+
+                  <a
+                    href="${escapeHtml(builderUrl)}"
+                    target="_blank"
+                    rel="noopener"
+                    class="action-btn btn-edit"
+                    title="Open in Visual Builder"
+                  >
+                    ✏️ In Builder
+                  </a>
+                `;
+
+              } else {
+
+                actionsHtml += `
+                  <a
+                    href="${escapeHtml(builderUrl)}"
+                    target="_blank"
+                    rel="noopener"
+                    class="action-btn btn-edit"
+                    title="Open in Visual Builder"
+                  >
+                    ✏️ Edit in Builder
+                  </a>
+                `;
+              }
+            }
+
+            card.innerHTML = `
+              <div>
+
+                <div class="note-card-header">
+
+                  <span
+                    class="note-badge"
+                    style="${
+                      isPdf
+                        ? 'background:rgba(248,113,113,0.15); color:#f87171; border:1px solid rgba(248,113,113,0.3);'
+                        : theme.badgeClass
+                    }"
+                  >
+                    ${isPdf ? '📄 PDF' : '📝 HTML'}
+                  </span>
+
+                  <span class="note-meta">
+                    ${escapeHtml(sizeFormatted)}
+                  </span>
+
+                </div>
+
+                <h3 class="note-title">
+                  ${safeTitle}
+                </h3>
+
+                <div class="note-file-name">
+                  📄 ${safeName}
+                </div>
+
+              </div>
+
+              <div class="note-actions">
+                ${actionsHtml}
+              </div>
+            `;
+
+            grid.appendChild(card);
+          });
+
+          container.appendChild(section);
+        }
+      );
+
+      handleSearch();
+    }
+
+    /* =========================================================
+       FILTER
+       ========================================================= */
+
+    function setFilter(folder, btn) {
+
+      activeFilter = folder;
+
+      document
+        .querySelectorAll('.tab-btn')
+        .forEach(button => {
+          button.classList.remove('active');
         });
 
-        container.appendChild(section);
-      });
+      if (btn) {
+        btn.classList.add('active');
+      }
 
       handleSearch();
     }
 
-    // SEARCH & FILTER LOGIC
-    function setFilter(folder, btn) {
-      activeFilter = folder;
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      handleSearch();
-    }
+    /* =========================================================
+       SEARCH
+       ========================================================= */
 
     function handleSearch() {
-      const query = (document.getElementById('searchInput')?.value || '').trim().toLowerCase();
-      const sections = document.querySelectorAll('.subject-section');
+
+      const query =
+        (
+          document.getElementById(
+            'searchInput'
+          )?.value || ''
+        )
+          .trim()
+          .toLowerCase();
+
+      const sections =
+        document.querySelectorAll(
+          '.subject-section'
+        );
+
       let totalVisible = 0;
 
-      sections.forEach(sec => {
-        const secFolder = sec.getAttribute('data-folder');
-        const matchesFilter = (activeFilter === 'all' || activeFilter === secFolder);
-        const cards = sec.querySelectorAll('.note-card');
-        let secVisibleCount = 0;
+      sections.forEach(section => {
+
+        const sectionFolder =
+          section.getAttribute(
+            'data-folder'
+          );
+
+        const matchesFilter =
+          (
+            activeFilter === 'all' ||
+            activeFilter === sectionFolder
+          );
+
+        const cards =
+          section.querySelectorAll(
+            '.note-card'
+          );
+
+        let sectionVisibleCount = 0;
 
         cards.forEach(card => {
-          const keywords = card.getAttribute('data-keywords') || '';
-          const matchesQuery = !query || keywords.includes(query);
-          const shouldShow = matchesFilter && matchesQuery;
+
+          const keywords =
+            card.getAttribute(
+              'data-keywords'
+            ) || '';
+
+          const matchesQuery =
+            !query ||
+            keywords.includes(query);
+
+          const shouldShow =
+            matchesFilter &&
+            matchesQuery;
 
           if (shouldShow) {
+
             card.style.display = 'flex';
-            secVisibleCount++;
+
+            sectionVisibleCount++;
             totalVisible++;
+
           } else {
+
             card.style.display = 'none';
           }
         });
 
-        sec.style.display = secVisibleCount > 0 ? 'block' : 'none';
+        section.style.display =
+          sectionVisibleCount > 0
+            ? 'block'
+            : 'none';
       });
 
-      const emptyState = document.getElementById('emptyState');
+      const emptyState =
+        document.getElementById(
+          'emptyState'
+        );
+
       if (emptyState) {
-        emptyState.style.display = totalVisible === 0 ? 'block' : 'none';
+
+        emptyState.style.display =
+          totalVisible === 0
+            ? 'block'
+            : 'none';
       }
     }
 
-    function extractBestNoteTitle(html, filename) {
+    /* =========================================================
+       EXTRACT TITLE FROM LOCAL HTML
+       ========================================================= */
+
+    function extractBestNoteTitle(
+      html,
+      filename
+    ) {
+
       function cleanText(txt) {
-        if (!txt) return '';
-        const temp = document.createElement('div');
+
+        if (!txt) {
+          return '';
+        }
+
+        const temp =
+          document.createElement('div');
+
         temp.innerHTML = txt;
-        return temp.textContent.trim().replace(/\s+/g, ' ');
+
+        return temp.textContent
+          .trim()
+          .replace(/\s+/g, ' ');
       }
+
       function isGeneric(t) {
-        if (!t) return true;
-        const s = t.toLowerCase().trim();
+
+        if (!t) {
+          return true;
+        }
+
+        const s =
+          t.toLowerCase().trim();
+
         return (
           s === 'polity notes output' ||
           s === 'visual notes studio' ||
@@ -984,63 +1788,205 @@
           s === 'document'
         );
       }
-      const titleMatch = html.match(/<title>([^<]*)<\/title>/i);
-      const rawTitle = titleMatch ? cleanText(titleMatch[1]) : '';
-      const h1Match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
-      const rawH1 = h1Match ? cleanText(h1Match[1]) : '';
 
-      if (rawTitle && !isGeneric(rawTitle)) return rawTitle;
-      if (rawH1 && !isGeneric(rawH1)) return rawH1;
-      return filename.replace(/\.[^/.]+$/, '').replace(/_/g, ' ');
+      const titleMatch =
+        html.match(
+          /<title>([^<]*)<\/title>/i
+        );
+
+      const rawTitle =
+        titleMatch
+          ? cleanText(titleMatch[1])
+          : '';
+
+      const h1Match =
+        html.match(
+          /<h1[^>]*>([\s\S]*?)<\/h1>/i
+        );
+
+      const rawH1 =
+        h1Match
+          ? cleanText(h1Match[1])
+          : '';
+
+      if (
+        rawTitle &&
+        !isGeneric(rawTitle)
+      ) {
+        return rawTitle;
+      }
+
+      if (
+        rawH1 &&
+        !isGeneric(rawH1)
+      ) {
+        return rawH1;
+      }
+
+      return filename
+        .replace(/\.[^/.]+$/, '')
+        .replace(/_/g, ' ');
     }
 
-    // LIVE LOCAL FOLDER SCANNER (Scans files directly on disk via modern File System API on Desktop)
+    /* =========================================================
+       LOCAL FOLDER SCANNER
+       ========================================================= */
+
     async function scanLocalFolderLive() {
+
       if (!('showDirectoryPicker' in window)) {
-        alert('✨ All 23 study notes, timetable & daily diary are already pre-loaded into your dashboard!\n\n(Note: Live folder scanning is an optional desktop utility in Chrome/Edge on laptop/PC for auto-discovering new files).');
+
+        alert(
+          '✨ Your study notes are already pre-loaded into the dashboard!' +
+          '\n\n' +
+          'Live folder scanning is an optional desktop utility ' +
+          'available in Chrome/Edge on a laptop or PC.'
+        );
+
         return;
       }
+
       try {
-        const dirHandle = await window.showDirectoryPicker();
+
+        const dirHandle =
+          await window.showDirectoryPicker();
+
         const liveManifest = [];
 
-        async function scanDir(handle, relPath = '') {
-          for await (const entry of handle.values()) {
-            if (entry.kind === 'directory') {
-              if (entry.name === 'vedic_age_updated_files') continue;
-              await scanDir(entry, relPath ? `${relPath}/${entry.name}` : entry.name);
-            } else if (entry.kind === 'file') {
-              const name = entry.name;
-              if (name === 'index.html' || name === 'Dashboard.html' || name === 'notes-data.js' || name === 'css2') continue;
-              const ext = name.split('.').pop().toLowerCase();
-              const fullRelPath = relPath ? `${relPath}/${name}` : name;
+        async function scanDir(
+          handle,
+          relPath = ''
+        ) {
 
-              if (ext === 'html' || ext === 'htm') {
-                const file = await entry.getFile();
-                const text = await file.text();
-                const title = extractBestNoteTitle(text, name);
+          for await (
+            const entry of handle.values()
+          ) {
+
+            if (entry.kind === 'directory') {
+
+              if (
+                entry.name ===
+                'vedic_age_updated_files'
+              ) {
+                continue;
+              }
+
+              await scanDir(
+                entry,
+                relPath
+                  ? `${relPath}/${entry.name}`
+                  : entry.name
+              );
+
+            } else if (
+              entry.kind === 'file'
+            ) {
+
+              const name =
+                entry.name;
+
+              if (
+                name === 'index.html' ||
+                name === 'Dashboard.html' ||
+                name === 'notes-data.js' ||
+                name === 'css2'
+              ) {
+                continue;
+              }
+
+              const ext =
+                name
+                  .split('.')
+                  .pop()
+                  .toLowerCase();
+
+              const fullRelPath =
+                relPath
+                  ? `${relPath}/${name}`
+                  : name;
+
+              /* HTML */
+
+              if (
+                ext === 'html' ||
+                ext === 'htm'
+              ) {
+
+                const file =
+                  await entry.getFile();
+
+                const text =
+                  await file.text();
+
+                const title =
+                  extractBestNoteTitle(
+                    text,
+                    name
+                  );
 
                 liveManifest.push({
-                  folder: relPath || 'General',
-                  name: name,
-                  path: fullRelPath,
-                  title: title,
-                  type: 'html',
-                  size: file.size
+                  folder:
+                    relPath || 'General',
+
+                  name:
+                    name,
+
+                  path:
+                    fullRelPath,
+
+                  title:
+                    title,
+
+                  type:
+                    'html',
+
+                  size:
+                    file.size
                 });
 
-                if (window.NOTES_DATABASE) {
-                  window.NOTES_DATABASE[name] = text;
+                if (
+                  window.NOTES_DATABASE
+                ) {
+                  window.NOTES_DATABASE[name] =
+                    text;
                 }
-              } else if (ext === 'pdf') {
-                const file = await entry.getFile();
+
+              /* PDF */
+
+              } else if (
+                ext === 'pdf'
+              ) {
+
+                const file =
+                  await entry.getFile();
+
                 liveManifest.push({
-                  folder: relPath || 'General',
-                  name: name,
-                  path: fullRelPath,
-                  title: name.replace(/\.[^/.]+$/, '').replace(/_/g, ' ') + ' (PDF)',
-                  type: 'pdf',
-                  size: file.size
+                  folder:
+                    relPath || 'General',
+
+                  name:
+                    name,
+
+                  path:
+                    fullRelPath,
+
+                  title:
+                    name
+                      .replace(
+                        /\.[^/.]+$/,
+                        ''
+                      )
+                      .replace(
+                        /_/g,
+                        ' '
+                      ) +
+                    ' (PDF)',
+
+                  type:
+                    'pdf',
+
+                  size:
+                    file.size
                 });
               }
             }
@@ -1050,85 +1996,294 @@
         await scanDir(dirHandle);
 
         if (liveManifest.length > 0) {
-          window.NOTES_MANIFEST = liveManifest;
-          renderDynamicDashboard(liveManifest);
-          const badge = document.getElementById('liveBadge');
+
+          window.NOTES_MANIFEST =
+            liveManifest;
+
+          renderDynamicDashboard(
+            liveManifest
+          );
+
+          const badge =
+            document.getElementById(
+              'liveBadge'
+            );
+
           if (badge) {
-            badge.innerText = `Live: ${dirHandle.name} (${liveManifest.length})`;
-            badge.style.background = '#059669';
+
+            badge.innerText =
+              `Live: ${dirHandle.name} (${liveManifest.length})`;
+
+            badge.style.background =
+              '#059669';
           }
         }
+
       } catch (err) {
-        if (err.name !== 'AbortError') {
+
+        if (
+          err.name !==
+          'AbortError'
+        ) {
+
           console.error(err);
-          alert('Could not scan folder.');
+
+          alert(
+            'Could not scan folder.'
+          );
         }
       }
     }
 
-    // INITIALIZE ON LOAD & DYNAMIC SYNC LISTENERS
-    window.refreshNoteTitle = function(fileName, newTitle) {
-      if (!fileName || !newTitle) return;
-      try {
-        const overrides = JSON.parse(localStorage.getItem('GROUP1_NOTES_TITLE_OVERRIDES') || '{}');
-        overrides[fileName] = { title: newTitle, updatedAt: Date.now() };
-        localStorage.setItem('GROUP1_NOTES_TITLE_OVERRIDES', JSON.stringify(overrides));
-      } catch (e) {}
-      renderDynamicDashboard();
-    };
+    /* =========================================================
+       TITLE OVERRIDE SUPPORT
+       ========================================================= */
 
-    // Auto-update dashboard when title is changed in builder in another tab
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'GROUP1_NOTES_TITLE_OVERRIDES') {
+    window.refreshNoteTitle =
+      function(fileName, newTitle) {
+
+        if (
+          !fileName ||
+          !newTitle
+        ) {
+          return;
+        }
+
+        try {
+
+          const overrides =
+            JSON.parse(
+              localStorage.getItem(
+                'GROUP1_NOTES_TITLE_OVERRIDES'
+              ) || '{}'
+            );
+
+          overrides[fileName] = {
+            title: newTitle,
+            updatedAt: Date.now()
+          };
+
+          localStorage.setItem(
+            'GROUP1_NOTES_TITLE_OVERRIDES',
+            JSON.stringify(overrides)
+          );
+
+        } catch (e) {
+          console.warn(
+            'Could not save title override:',
+            e
+          );
+        }
+
+        renderDynamicDashboard();
+      };
+
+    /* =========================================================
+       AUTO UPDATE WHEN BUILDER CHANGES A TITLE
+       ========================================================= */
+
+    window.addEventListener(
+      'storage',
+      event => {
+
+        if (
+          event.key ===
+          'GROUP1_NOTES_TITLE_OVERRIDES'
+        ) {
+          renderDynamicDashboard();
+        }
+      }
+    );
+
+    /* =========================================================
+       AUTO REFRESH WHEN TAB GETS FOCUS
+       ========================================================= */
+
+    window.addEventListener(
+      'focus',
+      () => {
         renderDynamicDashboard();
       }
-    });
+    );
 
-    // Auto-refresh when user clicks back to the dashboard tab
-    window.addEventListener('focus', () => {
-      renderDynamicDashboard();
-    });
+    /* =========================================================
+       AUTO REFRESH WHEN RETURNING TO PAGE
+       ========================================================= */
 
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) {
-        renderDynamicDashboard();
+    document.addEventListener(
+      'visibilitychange',
+      () => {
+
+        if (!document.hidden) {
+          renderDynamicDashboard();
+        }
       }
-    });
+    );
 
-    // IN-APP READER HANDLERS (Enables seamless zero-tab reading inside PWA)
-    function openNoteReader(notePath, noteTitle) {
-      const modal = document.getElementById('noteReaderModal');
-      const iframe = document.getElementById('readerIframe');
-      const titleSpan = document.getElementById('readerNoteTitle');
-      const directLink = document.getElementById('readerOpenExternal');
+    /* =========================================================
+       IN-APP READER
+       ========================================================= */
+
+    function openNoteReader(
+      notePath,
+      noteTitle
+    ) {
+
+      /*
+       * Normalize the path AGAIN here.
+       *
+       * This protects the reader even if another
+       * script calls openNoteReader() directly.
+       */
+      const cleanPath =
+        getNoteUrl(notePath);
+
+      const modal =
+        document.getElementById(
+          'noteReaderModal'
+        );
+
+      const iframe =
+        document.getElementById(
+          'readerIframe'
+        );
+
+      const titleSpan =
+        document.getElementById(
+          'readerNoteTitle'
+        );
+
+      const directLink =
+        document.getElementById(
+          'readerOpenExternal'
+        );
 
       if (!modal || !iframe) {
-        window.location.href = notePath;
+
+        window.location.href =
+          cleanPath;
+
         return;
       }
 
-      titleSpan.innerText = noteTitle || 'Study Note';
-      iframe.src = notePath;
-      directLink.href = notePath;
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+      if (titleSpan) {
+
+        titleSpan.innerText =
+          noteTitle ||
+          'Study Note';
+      }
+
+      /*
+       * Correct relative URL.
+       */
+      iframe.src =
+        cleanPath;
+
+      /*
+       * Direct page opens in a new tab.
+       */
+      if (directLink) {
+
+        directLink.href =
+          cleanPath;
+      }
+
+      modal.style.display =
+        'flex';
+
+      document.body.style.overflow =
+        'hidden';
     }
+
+    /* =========================================================
+       READER BUTTON HELPER
+       ========================================================= */
+
+    function openNoteReaderFromButton(
+      button
+    ) {
+
+      if (!button) {
+        return;
+      }
+
+      const notePath =
+        button.getAttribute(
+          'data-note-path'
+        );
+
+      const noteTitle =
+        button.getAttribute(
+          'data-note-title'
+        );
+
+      openNoteReader(
+        notePath,
+        noteTitle
+      );
+    }
+
+    /* =========================================================
+       CLOSE READER
+       ========================================================= */
 
     function closeNoteReader() {
-      const modal = document.getElementById('noteReaderModal');
-      const iframe = document.getElementById('readerIframe');
-      if (modal) modal.style.display = 'none';
-      if (iframe) iframe.src = 'about:blank';
-      document.body.style.overflow = '';
+
+      const modal =
+        document.getElementById(
+          'noteReaderModal'
+        );
+
+      const iframe =
+        document.getElementById(
+          'readerIframe'
+        );
+
+      if (modal) {
+        modal.style.display =
+          'none';
+      }
+
+      if (iframe) {
+        iframe.src =
+          'about:blank';
+      }
+
+      document.body.style.overflow =
+        '';
     }
 
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeNoteReader();
-    });
+    /* =========================================================
+       ESCAPE KEY CLOSE
+       ========================================================= */
 
-    document.addEventListener('DOMContentLoaded', () => {
-      renderDynamicDashboard();
-    });
+    window.addEventListener(
+      'keydown',
+      event => {
+
+        if (
+          event.key ===
+          'Escape'
+        ) {
+          closeNoteReader();
+        }
+      }
+    );
+
+    /* =========================================================
+       INITIALIZE
+       ========================================================= */
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      () => {
+
+        renderDynamicDashboard();
+
+      }
+    );
+
   </script>
+
 </body>
 </html>
