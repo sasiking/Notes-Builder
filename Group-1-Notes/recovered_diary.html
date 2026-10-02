@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./mobile-pwa.css">
+<meta charset="UTF-8">
+
+<title>Executive Aspirant's Daily Diary &amp; Weight Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page: #fbfbf9; --ruled-line: #e3ebf5; --margin-line: #f7a8b8;
+  --ink-blue: #0f3870; --ink-dark: #1e293b; --ink-red: #b91c1c; --ink-green: #15803d;
+  --ink-purple: #6b21a8; --ink-orange: #c2410c; --ink-yellow: #a16207; --ink-teal: #0f766e;
+  --highlight-yellow: rgba(254, 240, 138, 0.85); --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75); --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85);
+  --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: #cbd5e1; display: flex; justify-content: center; padding: 25px 10px; min-height: 100vh; font-family: 'Kalam', cursive, sans-serif; color: var(--ink-dark); }
+.notebook-container { width: 100%; max-width: 960px; background-color: var(--bg-page); background-image: linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px), linear-gradient(var(--ruled-line) 1px, transparent 1px); background-size: 100% 28px, 100% 28px; background-repeat: repeat-y, repeat; padding: 35px 35px 80px 65px; border-radius: 6px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); line-height: 28px; position: relative; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 18px; }
+.title-section h1 { font-size: 36px; color: var(--ink-blue); line-height: 1.15; }
+.title-section .subtitle { font-size: 18px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; margin-top: 4px; }
+
+/* TOP METRICS & STATS BAR */
+.stats-banner { background: #ffffff; border: 2px solid #cbd5e1; border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; align-items: center; }
+.stat-box { text-align: center; border-right: 1px dashed #cbd5e1; padding: 0 10px; }
+.stat-box:last-child { border-right: none; }
+.stat-label { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; }
+.stat-value { font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; margin-top: 2px; }
+.stat-value.green { color: #16a34a; }
+.stat-value.blue { color: #2563eb; }
+.stat-value.orange { color: #ea580c; }
+.stat-sub { font-size: 13.5px; font-family: 'Patrick Hand', cursive; color: #475569; margin-top: -2px; }
+
+/* PROGRESS BAR */
+.progress-container { width: 100%; background: #e2e8f0; border-radius: 999px; height: 14px; overflow: hidden; margin-top: 8px; border: 1px solid #cbd5e1; }
+.progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #3b82f6, #10b981); transition: width 0.4s ease; border-radius: 999px; }
+
+.section-header { font-size: 24px; color: var(--ink-red); margin: 22px 0 12px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+
+/* CHECKLIST GRID */
+.checklist-card { background: rgba(255,255,255,0.92); border: 1.5px solid #cbd5e1; border-left: 6px solid var(--ink-teal); border-radius: 6px; padding: 14px 18px; box-shadow: var(--shadow); margin-bottom: 16px; }
+.task-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+@media (max-width: 650px) { .task-grid { grid-template-columns: 1fr; } }
+.task-item { display: flex; align-items: flex-start; gap: 10px; padding: 6px 8px; border-radius: 4px; transition: background 0.15s ease; cursor: pointer; }
+.task-item:hover { background: #f1f5f9; }
+.task-item input[type="checkbox"] { width: 20px; height: 20px; margin-top: 3px; cursor: pointer; accent-color: #0f766e; flex-shrink: 0; }
+.task-text { font-size: 15.5px; line-height: 22px; color: #1e293b; user-select: none; }
+.task-item.completed .task-text { text-decoration: line-through; color: #94a3b8; }
+.task-badge { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 3px; background: #e0f2fe; color: #0369a1; vertical-align: middle; margin-left: 4px; }
+
+/* EDITING MODE BANNER */
+.editing-banner { background: #fef08a; border: 1.5px dashed #ca8a04; border-radius: 6px; padding: 10px 14px; margin-bottom: 14px; display: none; align-items: center; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #854d0e; }
+.btn-cancel-edit { background: #475569; color: #ffffff; border: none; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 4px; cursor: pointer; transition: background 0.15s ease; }
+.btn-cancel-edit:hover { background: #334155; }
+
+/* FORM & DAILY LOGS */
+.log-form-card { background: rgba(255,255,255,0.92); border: 1.5px solid #cbd5e1; border-left: 6px solid var(--ink-blue); border-radius: 6px; padding: 16px 20px; box-shadow: var(--shadow); margin-bottom: 20px; position: relative; }
+.form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 12px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+@media (max-width: 650px) { .form-row-3, .form-row { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; }
+.form-group label { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.form-group input, .form-group textarea, .form-group select { font-family: 'Kalam', cursive; font-size: 16px; padding: 8px 12px; border: 1px solid #94a3b8; border-radius: 4px; background: #ffffff; color: #0f172a; outline: none; }
+.form-group input:focus, .form-group textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+.btn-save { background: #15803d; color: #ffffff; border: none; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; padding: 10px 22px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background 0.15s ease; margin-top: 6px; }
+.btn-save:hover { background: #166534; }
+.btn-clear { background: #ef4444; color: #ffffff; border: none; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 4px; cursor: pointer; float: right; margin-top: 4px; }
+.btn-clear:hover { background: #dc2626; }
+
+/* ACTION BUTTONS (EDIT / DELETE PER ROW) */
+.btn-action { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 700; padding: 4px 8px; border-radius: 4px; cursor: pointer; border: 1px solid transparent; transition: all 0.15s ease; margin: 2px; }
+.btn-action.edit { background: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
+.btn-action.edit:hover { background: #bfdbfe; color: #1e3a8a; }
+.btn-action.delete { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+.btn-action.delete:hover { background: #fca5a5; color: #7f1d1d; }
+
+/* WEIGHT TRACKER GRAPH CARD */
+.graph-card { background: #ffffff; border: 1.5px solid #cbd5e1; border-left: 6px solid var(--ink-green); border-radius: 8px; padding: 18px 20px; margin-bottom: 22px; box-shadow: var(--shadow); }
+.graph-metrics { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px dashed #e2e8f0; }
+.graph-metric-pill { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 6px 12px; font-family: 'Inter', sans-serif; font-size: 12px; color: #475569; display: flex; align-items: center; gap: 6px; }
+.graph-metric-pill strong { color: #0f172a; font-size: 13.5px; }
+.chart-container { width: 100%; overflow-x: auto; background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; position: relative; }
+.chart-svg { display: block; width: 100%; min-width: 600px; height: 260px; }
+
+/* HISTORY TABLE */
+.hand-table { width: 100%; border-collapse: collapse; margin-top: 10px; background: rgba(255,255,255,0.9); font-size: 14.5px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 8px 10px; text-align: left; line-height: 20px; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 18px; }
+.status-pill { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 999px; display: inline-block; }
+.status-pill.met { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+.status-pill.partial { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+.status-pill.missed { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+.empty-state { text-align: center; padding: 24px; color: #64748b; font-family: 'Patrick Hand', cursive; font-size: 18px; }
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container">
+
+    <!-- MASTER TITLE -->
+    <div class="title-section">
+      <div class="badge-tag">APPSC &amp; TGPSC GROUP-I | DISCIPLINE ARCHITECTURE &amp; DAILY DIARY</div>
+      <h1>Executive Aspirant's Daily Diary &amp; Weight Tracker</h1>
+      <div class="subtitle">Daily Accountability • Weight Curve Toward June (~73 kg) • Chronological Log • 18:6 Fasting &amp; 5:30 AM Gym</div>
+    </div>
+
+    <!-- LIVE METRICS BANNER -->
+    <div class="stats-banner">
+      <div class="stat-box">
+        <div class="stat-label">Today's Discipline Score</div>
+        <div class="stat-value blue" id="todayScoreBadge">0%</div>
+        <div class="stat-sub" id="tasksCheckedText">0 of 10 habits completed</div>
+        <div class="progress-container">
+          <div class="progress-bar" id="todayProgressBar"></div>
+        </div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Days Target Met (≥ 80%)</div>
+        <div class="stat-value green" id="targetMetDaysBadge">0</div>
+        <div class="stat-sub" id="targetMetRatioText">0% of total logged days</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Total Days Logged</div>
+        <div class="stat-value orange" id="totalDaysLoggedBadge">0</div>
+        <div class="stat-sub">Road to Mid-June Officer Transformation</div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: DAILY ACCOUNTABILITY CHECKLIST -->
+    <h2 class="section-header"><span>✅ 1. Daily 10-Point Discipline Scorecard</span></h2>
+    <div class="checklist-card">
+      <div style="font-family:'Inter', sans-serif; font-size:12px; font-weight:700; color:#0f766e; margin-bottom:10px; text-transform:uppercase;">
+        Tick these off as you complete them throughout the day (Auto-Saves to your browser)
+      </div>
+
+      <div class="task-grid">
+        <label class="task-item" id="item-0">
+          <input type="checkbox" onchange="toggleTask(0)">
+          <div class="task-text">
+            <strong>05:30 AM Gym Session:</strong> Compound Lifts (40m) + 2 km Treadmill Finisher.
+            <span class="task-badge">Fitness</span>
+          </div>
+        </label>
+
+        <label class="task-item" id="item-1">
+          <input type="checkbox" onchange="toggleTask(1)">
+          <div class="task-text">
+            <strong>18:6 Fasting Protocol:</strong> Kitchen locked strictly before 06:00 PM (18h fast active).
+            <span class="task-badge">Diet</span>
+          </div>
+        </label>
+
+        <label class="task-item" id="item-2">
+          <input type="checkbox" onchange="toggleTask(2)">
+          <div class="task-text">
+            <strong>Morning Study Slot 1:</strong> 1.5 Hours Core GS deep dive (Polity / Economy).
+            <span class="task-badge">Study</span>
+          </div>
+        </label>
+
+        <label class="task-item" id="item-3">
+          <input type="checkbox" onchange="toggleTask(3)">
+          <div class="task-text">
+            <strong>Walking Pad Block 1 (10:30 AM):</strong> 45m fasted walk (~2,500 steps) during IT work.
+            <span class="task-badge">Movement</span>
+          </div>
+        </label>
+
+        <label class="task-item" id="item-4">
+          <input type="checkbox" onchange="toggleTask(4)">
+          <div class="task-text">
+            <strong>Break-Fast Lunch (12:00 PM):</strong> Protein &amp; fiber first, no refined carbs/sugar.
+            <span class="task-badge">Diet</span>
+          </div>
+        </label>
+
+        <label class="task-item" id="item-5">
+          <input type="checkbox" onchange="toggleTask(5)">
+          <div class="task-text">
+            <strong>Walking Pad Block 2 (01:30 PM):</strong> 45m post-lunch walk (crushes food coma).
+            <span class="task-badge">Movement</span>
+          </div>
+        </label>
+
+        <label class="task-item" id="item-6">
+          <input type="checkbox" onchange="toggleTask(6)">
+          <div class="task-text">
+            <strong>Daily Mains Answer Writing:</strong> 1 timed 10M/15M question written (8–11 mins).
+            <span class="task-badge">Mains</span>
+          </div>
+        </label>
+
+        <label class="task-item" id="item-7">
+          <input type="checkbox" onchange="toggleTask(7)">
+          <div class="task-text">
+            <strong>Evening Study Slot 2:</strong> 2.0+ Hours Core GS (History / Science &amp; Tech).
+            <span class="task-badge">Study</span>
+          </div>
+        </label>
+
+        <label class="task-item" id="item-8">
+          <input type="checkbox" onchange="toggleTask(8)">
+          <div class="task-text">
+            <strong>Night ACV Elixir (08:15 PM):</strong> Raw ACV diluted in 250ml water with straw.
+            <span class="task-badge">Health</span>
+          </div>
+        </label>
+
+        <label class="task-item" id="item-9">
+          <input type="checkbox" onchange="toggleTask(9)">
+          <div class="task-text">
+            <strong>Sleep Discipline:</strong> 15 MCQs done, Error Log updated, asleep by 10:15 PM.
+            <span class="task-badge">Recovery</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- SECTION 2: DAILY COVERAGE DIARY LOG -->
+    <h2 class="section-header"><span>✍ 2. What I Covered Today (Daily Diary Entry)</span></h2>
+    <div class="log-form-card" id="entryFormCard">
+
+      <!-- EDITING MODE BANNER -->
+      <div class="editing-banner" id="editingBanner">
+        <span>✏️ <strong>EDITING MODE:</strong> Modifying saved entry for <span id="editingDateText" style="text-decoration: underline;"></span></span>
+        <button class="btn-cancel-edit" onclick="cancelEdit()">✖ Cancel Edit</button>
+      </div>
+
+      <div class="form-row-3">
+        <div class="form-group">
+          <label>Entry Date</label>
+          <input type="date" id="entryDate">
+        </div>
+        <div class="form-group">
+          <label>Morning Scale Weight (kg)</label>
+          <input type="number" step="0.1" id="entryWeight" placeholder="e.g. 102.8">
+        </div>
+        <div class="form-group">
+          <label>Walking Pad &amp; Total Steps</label>
+          <input type="text" id="entrySteps" placeholder="e.g. 6,500 steps">
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label>Syllabus &amp; Topics Covered Today</label>
+        <textarea id="entryTopics" rows="2" placeholder="e.g. Polity: Fundamental Rights Articles 19–22. Economy: Chapter 1 National Income concepts."></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Mains Question Answered &amp; Self-Rating (1-10)</label>
+          <input type="text" id="entryMains" placeholder="e.g. Discuss Writ of Habeas Corpus (Score: 8/10)">
+        </div>
+        <div class="form-group">
+          <label>Gym Workout Highlights</label>
+          <input type="text" id="entryGym" placeholder="e.g. Barbell Squats 4x10 + 2 km Treadmill at 8% incline">
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 14px;">
+        <label>Personal Reflection &amp; Tomorrow's 2 Non-Negotiable Targets</label>
+        <textarea id="entryReflection" rows="2" placeholder="e.g. Felt great energy during afternoon walking pad session. Tomorrow: Finish Vedic Age notes &amp; write 1 Mains question on Magadha."></textarea>
+      </div>
+
+      <div style="display: flex; gap: 12px; align-items: center; margin-top: 6px;">
+        <button class="btn-save" id="btnSaveLog" onclick="saveDayLog()">
+          💾 Save Entry (Auto-Updates Graph &amp; Streak)
+        </button>
+        <button class="btn-cancel-edit" id="btnCancelEditBottom" onclick="cancelEdit()" style="display: none; padding: 10px 16px; font-size: 13px;">
+          ✖ Cancel Edit
+        </button>
+      </div>
+    </div>
+
+    <!-- SECTION 3: DAILY WEIGHT TRACKING GRAPH (103 kg ➔ ~73 kg MID-JUNE MISSION) -->
+    <h2 class="section-header"><span>📉 3. Daily Weight Loss Journey (103 kg ➔ ~73 kg Mid-June Goal)</span></h2>
+    <div class="graph-card">
+      <div class="graph-metrics">
+        <div class="graph-metric-pill">
+          <span>🎯 Baseline Start:</span> <strong>103.0 kg</strong>
+        </div>
+        <div class="graph-metric-pill">
+          <span>⚖️ Current Weight:</span> <strong id="chartCurrentWeight">103.0 kg</strong>
+        </div>
+        <div class="graph-metric-pill">
+          <span>🔥 Total Shed:</span> <strong id="chartTotalShed" style="color:#16a34a;">0.0 kg</strong>
+        </div>
+        <div class="graph-metric-pill">
+          <span>🏁 Remaining to June Goal (~73 kg):</span> <strong id="chartRemainingWeight" style="color:#2563eb;">30.0 kg</strong>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <svg class="chart-svg" id="weightChartSvg" viewBox="0 0 850 260"></svg>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-family:'Inter', sans-serif; font-size:11.5px; color:#64748b; margin-top:8px;">
+        <span>🔴 <strong>103 kg</strong> Starting Point</span>
+        <span>🟡 <strong>84 kg</strong> Familiar Peak Target</span>
+        <span>🟢 <strong>~73 kg</strong> Mid-June Officer Goal</span>
+      </div>
+    </div>
+
+    <!-- SECTION 4: HISTORICAL CONSISTENCY LOG (SORTED CHRONOLOGICALLY: DAY BEFORE YESTERDAY ➔ YESTERDAY ➔ TODAY) -->
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h2 class="section-header" style="margin-bottom: 0;">
+        <span>📜 4. Historical Consistency Log (Chronological: Oldest ➔ Today)</span>
+      </h2>
+      <button class="btn-clear" onclick="clearLogs()">Clear All Saved Logs</button>
+    </div>
+
+    <div style="overflow-x: auto; margin-top: 10px;">
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th style="width: 14%;">Date &amp; Weight</th>
+            <th style="width: 29%;">Topics &amp; Mains Covered</th>
+            <th style="width: 19%;">Gym &amp; Movement</th>
+            <th style="width: 10%;">Tasks</th>
+            <th style="width: 14%;">Status (%)</th>
+            <th style="width: 14%; text-align: center;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="historyTableBody">
+          <!-- Dynamically populated and sorted chronologically -->
+        </tbody>
+      </table>
+      <div class="empty-state" id="emptyStateMsg">No entries saved yet. Log today's morning weight and checklist to start your curve toward ~73 kg!</div>
+    </div>
+
+  </div>
+
+  <script>
+    const STORAGE_KEY_LOGS = 'GROUP1_ASPIRANT_DIARY_ENTRIES';
+    const BASELINE_WEIGHT = 103.0;
+    const GOAL_WEIGHT = 73.0;
+
+    let currentChecklist = Array(10).fill(false);
+    let editingDate = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      const dateInput = document.getElementById('entryDate');
+      if (dateInput) dateInput.value = today;
+
+      loadChecklistState();
+      renderHistoryAndMetrics();
+    });
+
+    function getTodayKey() {
+      return 'CHECKLIST_' + new Date().toISOString().split('T')[0];
+    }
+
+    function loadChecklistState() {
+      const todayKey = getTodayKey();
+      try {
+        const saved = localStorage.getItem(todayKey);
+        currentChecklist = saved ? JSON.parse(saved) : Array(10).fill(false);
+      } catch (e) {
+        currentChecklist = Array(10).fill(false);
+      }
+      applyChecklistToUI();
+      updateTodayMetrics();
+    }
+
+    function applyChecklistToUI() {
+      currentChecklist.forEach((isChecked, idx) => {
+        const item = document.getElementById('item-' + idx);
+        if (item) {
+          const cb = item.querySelector('input[type="checkbox"]');
+          if (cb) cb.checked = !!isChecked;
+          if (isChecked) item.classList.add('completed');
+          else item.classList.remove('completed');
+        }
+      });
+    }
+
+    function toggleTask(index) {
+      const item = document.getElementById('item-' + index);
+      if (!item) return;
+      const cb = item.querySelector('input[type="checkbox"]');
+      currentChecklist[index] = cb.checked;
+
+      if (cb.checked) item.classList.add('completed');
+      else item.classList.remove('completed');
+
+      const targetDate = editingDate || document.getElementById('entryDate').value || new Date().toISOString().split('T')[0];
+      localStorage.setItem('CHECKLIST_' + targetDate, JSON.stringify(currentChecklist));
+
+      updateTodayMetrics();
+    }
+
+    function updateTodayMetrics() {
+      const checkedCount = currentChecklist.filter(Boolean).length;
+      const percentage = Math.round((checkedCount / 10) * 100);
+
+      document.getElementById('todayScoreBadge').innerText = percentage + '%';
+      document.getElementById('tasksCheckedText').innerText = `${checkedCount} of 10 habits completed`;
+      document.getElementById('todayProgressBar').style.width = percentage + '%';
+
+      if (percentage >= 80) {
+        document.getElementById('todayScoreBadge').className = 'stat-value green';
+      } else if (percentage >= 50) {
+        document.getElementById('todayScoreBadge').className = 'stat-value blue';
+      } else {
+        document.getElementById('todayScoreBadge').className = 'stat-value orange';
+      }
+    }
+
+    function saveDayLog() {
+      const date = document.getElementById('entryDate').value || new Date().toISOString().split('T')[0];
+      const weightRaw = document.getElementById('entryWeight').value.trim();
+      const weight = weightRaw ? parseFloat(weightRaw) : null;
+      const steps = document.getElementById('entrySteps').value.trim();
+      const topics = document.getElementById('entryTopics').value.trim();
+      const mains = document.getElementById('entryMains').value.trim();
+      const gym = document.getElementById('entryGym').value.trim();
+      const reflection = document.getElementById('entryReflection').value.trim();
+
+      const checkedCount = currentChecklist.filter(Boolean).length;
+      const percentage = Math.round((checkedCount / 10) * 100);
+
+      const entry = {
+        date,
+        weight,
+        steps,
+        topics,
+        mains,
+        gym,
+        reflection,
+        tasksMet: checkedCount,
+        percentage,
+        checklist: [...currentChecklist]
+      };
+
+      let entries = getSavedLogs();
+      const searchDate = editingDate || date;
+      const existingIdx = entries.findIndex(e => e.date === searchDate);
+
+      if (existingIdx >= 0) {
+        entries[existingIdx] = entry;
+      } else {
+        entries.push(entry);
+      }
+
+      // CRITICAL: Sort strictly CHRONOLOGICALLY (oldest date first -> newest/today last)
+      entries.sort((a, b) => new Date(a.date) - new Date(b.date));
+      localStorage.setItem(STORAGE_KEY_LOGS, JSON.stringify(entries));
+
+      localStorage.setItem('CHECKLIST_' + date, JSON.stringify(currentChecklist));
+
+      const wasEditing = !!editingDate;
+      cancelEdit();
+
+      alert(wasEditing ? `✅ Entry for ${date} updated successfully!\nDiscipline Score: ${percentage}%` : `✅ Entry for ${date} saved successfully!\nDiscipline Score: ${percentage}%`);
+      renderHistoryAndMetrics();
+    }
+
+    function editDayLog(date) {
+      const entries = getSavedLogs();
+      const entry = entries.find(e => e.date === date);
+      if (!entry) return;
+
+      editingDate = date;
+
+      document.getElementById('entryDate').value = entry.date;
+      document.getElementById('entryWeight').value = entry.weight !== null && entry.weight !== undefined ? entry.weight : '';
+      document.getElementById('entrySteps').value = entry.steps || '';
+      document.getElementById('entryTopics').value = entry.topics || '';
+      document.getElementById('entryMains').value = entry.mains || '';
+      document.getElementById('entryGym').value = entry.gym || '';
+      document.getElementById('entryReflection').value = entry.reflection || '';
+
+      if (entry.checklist && Array.isArray(entry.checklist)) {
+        currentChecklist = [...entry.checklist];
+      } else {
+        const saved = localStorage.getItem('CHECKLIST_' + date);
+        currentChecklist = saved ? JSON.parse(saved) : Array(10).fill(false);
+      }
+
+      applyChecklistToUI();
+      updateTodayMetrics();
+
+      document.getElementById('editingBanner').style.display = 'flex';
+      document.getElementById('editingDateText').innerText = date;
+      document.getElementById('btnSaveLog').innerHTML = `💾 Update Entry for ${date}`;
+      document.getElementById('btnCancelEditBottom').style.display = 'inline-block';
+
+      document.getElementById('entryFormCard').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function cancelEdit() {
+      editingDate = null;
+      document.getElementById('editingBanner').style.display = 'none';
+      document.getElementById('btnSaveLog').innerHTML = `💾 Save Entry (Auto-Updates Graph &amp; Streak)`;
+      document.getElementById('btnCancelEditBottom').style.display = 'none';
+
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('entryDate').value = today;
+
+      document.getElementById('entryWeight').value = '';
+      document.getElementById('entrySteps').value = '';
+      document.getElementById('entryTopics').value = '';
+      document.getElementById('entryMains').value = '';
+      document.getElementById('entryGym').value = '';
+      document.getElementById('entryReflection').value = '';
+
+      loadChecklistState();
+    }
+
+    function deleteDayLog(date) {
+      if (!confirm(`Are you sure you want to delete the log for ${date}?\nThis will remove it from your history and chart.`)) {
+        return;
+      }
+
+      let entries = getSavedLogs();
+      entries = entries.filter(e => e.date !== date);
+      localStorage.setItem(STORAGE_KEY_LOGS, JSON.stringify(entries));
+
+      localStorage.removeItem('CHECKLIST_' + date);
+
+      if (editingDate === date) cancelEdit();
+
+      renderHistoryAndMetrics();
+    }
+
+    function getSavedLogs() {
+      try {
+        let logs = JSON.parse(localStorage.getItem(STORAGE_KEY_LOGS) || '[]');
+        // Always enforce strict calendar sorting (Day before yesterday -> Yesterday -> Today)
+        logs.sort((a, b) => new Date(a.date) - new Date(b.date));
+        return logs;
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function renderHistoryAndMetrics() {
+      const entries = getSavedLogs();
+      const tbody = document.getElementById('historyTableBody');
+      const emptyMsg = document.getElementById('emptyStateMsg');
+
+      if (!entries || entries.length === 0) {
+        tbody.innerHTML = '';
+        emptyMsg.style.display = 'block';
+        document.getElementById('targetMetDaysBadge').innerText = '0';
+        document.getElementById('targetMetRatioText').innerText = '0% of total logged days';
+        document.getElementById('totalDaysLoggedBadge').innerText = '0';
+        renderWeightChart([]);
+        return;
+      }
+
+      emptyMsg.style.display = 'none';
+      tbody.innerHTML = '';
+
+      let targetMetDays = 0;
+
+      entries.forEach(entry => {
+        if (entry.percentage >= 80) targetMetDays++;
+
+        const tr = document.createElement('tr');
+        let pillClass = 'missed';
+        let pillText = `⚠️ ${entry.percentage}% Focus`;
+        if (entry.percentage >= 80) {
+          pillClass = 'met';
+          pillText = `🌟 ${entry.percentage}% Met`;
+        } else if (entry.percentage >= 50) {
+          pillClass = 'partial';
+          pillText = `🟡 ${entry.percentage}% Good`;
+        }
+
+        const weightDisplay = entry.weight ? `⚖️ <strong>${entry.weight} kg</strong>` : '<span style="color:#94a3b8;">No weight logged</span>';
+        const stepsDisplay = entry.steps ? `<br><span style="font-size:12px; color:#0f766e;">🚶 ${entry.steps}</span>` : '';
+
+        tr.innerHTML = `
+          <td>
+            <strong>${entry.date}</strong><br>
+            ${weightDisplay}${stepsDisplay}
+          </td>
+          <td>
+            <strong>Topics:</strong> ${entry.topics || 'None logged'}<br>
+            ${entry.mains ? `<span style="color:#b91c1c;">✍ Mains: ${entry.mains}</span>` : ''}
+          </td>
+          <td>${entry.gym || 'Rest / Routine'}</td>
+          <td><strong>${entry.tasksMet}/10</strong></td>
+          <td><span class="status-pill ${pillClass}">${pillText}</span></td>
+          <td style="text-align: center; white-space: nowrap;">
+            <button class="btn-action edit" onclick="editDayLog('${entry.date}')" title="Edit entry for ${entry.date}">✏️ Edit</button>
+            <button class="btn-action delete" onclick="deleteDayLog('${entry.date}')" title="Delete entry for ${entry.date}">🗑️ Delete</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const totalDays = entries.length;
+      const targetRatio = Math.round((targetMetDays / totalDays) * 100);
+
+      document.getElementById('targetMetDaysBadge').innerText = `${targetMetDays} / ${totalDays}`;
+      document.getElementById('targetMetRatioText').innerText = `${targetRatio}% of days achieved ≥ 80%`;
+      document.getElementById('totalDaysLoggedBadge').innerText = totalDays;
+
+      // Render the Weight Chart
+      renderWeightChart(entries);
+    }
+
+    function renderWeightChart(entries) {
+      const svg = document.getElementById('weightChartSvg');
+      svg.innerHTML = '';
+
+      // Filter entries with valid weights
+      const weightData = entries
+        .filter(e => e.weight && !isNaN(e.weight) && e.weight > 40 && e.weight < 200)
+        .map(e => ({ date: e.date, weight: parseFloat(e.weight) }));
+
+      // Update Top Summary Metrics
+      let latestWeight = BASELINE_WEIGHT;
+      if (weightData.length > 0) {
+        latestWeight = weightData[weightData.length - 1].weight;
+      }
+
+      const totalShed = Math.max(0, BASELINE_WEIGHT - latestWeight).toFixed(1);
+      const remaining = Math.max(0, latestWeight - GOAL_WEIGHT).toFixed(1);
+
+      document.getElementById('chartCurrentWeight').innerText = latestWeight.toFixed(1) + ' kg';
+      document.getElementById('chartTotalShed').innerText = (totalShed > 0 ? '-' : '') + totalShed + ' kg';
+      document.getElementById('chartRemainingWeight').innerText = remaining + ' kg';
+
+      // SVG Dimensions
+      const width = 850;
+      const height = 260;
+      const padLeft = 65;
+      const padRight = 50;
+      const padTop = 30;
+      const padBottom = 40;
+
+      // Scale limits
+      const minY = 70.0;
+      const maxY = 105.0;
+
+      function getY(w) {
+        const clamped = Math.max(minY, Math.min(maxY, w));
+        return padTop + ((maxY - clamped) / (maxY - minY)) * (height - padTop - padBottom);
+      }
+
+      // Draw Grid & Target Reference Lines
+      const gridLevels = [
+        { val: 103, color: '#ef4444', label: '103 kg (Start Line)', dash: '4,4' },
+        { val: 95, color: '#cbd5e1', label: '95 kg', dash: '2,2' },
+        { val: 84, color: '#f59e0b', label: '84 kg (Familiar Peak)', dash: '5,5' },
+        { val: 78, color: '#cbd5e1', label: '78 kg', dash: '2,2' },
+        { val: 73, color: '#16a34a', label: '73 kg (Mid-June Goal)', dash: 'none', strokeWidth: 2 }
+      ];
+
+      gridLevels.forEach(gl => {
+        const y = getY(gl.val);
+
+        // Horizontal line
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', padLeft);
+        line.setAttribute('y1', y);
+        line.setAttribute('x2', width - padRight);
+        line.setAttribute('y2', y);
+        line.setAttribute('stroke', gl.color);
+        line.setAttribute('stroke-width', gl.strokeWidth || 1);
+        if (gl.dash !== 'none') line.setAttribute('stroke-dasharray', gl.dash);
+        svg.appendChild(line);
+
+        // Left Label
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', padLeft - 8);
+        text.setAttribute('y', y + 4);
+        text.setAttribute('text-anchor', 'end');
+        text.setAttribute('font-family', 'Inter, sans-serif');
+        text.setAttribute('font-size', '11px');
+        text.setAttribute('font-weight', gl.val === 73 || gl.val === 103 ? '800' : '500');
+        text.setAttribute('fill', gl.color === '#cbd5e1' ? '#64748b' : gl.color);
+        text.textContent = gl.val + 'k';
+        svg.appendChild(text);
+
+        // Right Target Badge
+        if (gl.val === 103 || gl.val === 84 || gl.val === 73) {
+          const rText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          rText.setAttribute('x', width - padRight + 6);
+          rText.setAttribute('y', y + 3);
+          rText.setAttribute('font-family', 'Inter, sans-serif');
+          rText.setAttribute('font-size', '10.5px');
+          rText.setAttribute('font-weight', '700');
+          rText.setAttribute('fill', gl.color);
+          rText.textContent = gl.label;
+          svg.appendChild(rText);
+        }
+      });
+
+      // If no points logged, display starting beacon
+      if (weightData.length === 0) {
+        const msg = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        msg.setAttribute('x', width / 2);
+        msg.setAttribute('y', height / 2 + 10);
+        msg.setAttribute('text-anchor', 'middle');
+        msg.setAttribute('font-family', 'Patrick Hand, cursive');
+        msg.setAttribute('font-size', '18px');
+        msg.setAttribute('fill', '#94a3b8');
+        msg.textContent = '🌟 Step on your weighing scale & log today\'s morning weight above to start your curve toward 73 kg!';
+        svg.appendChild(msg);
+        return;
+      }
+
+      // Calculate X positions for data points
+      const n = weightData.length;
+      const getX = (idx) => {
+        if (n === 1) return (padLeft + (width - padRight)) / 2;
+        return padLeft + (idx / (n - 1)) * (width - padLeft - padRight);
+      };
+
+      // Construct SVG Path
+      let pathD = '';
+      weightData.forEach((pt, i) => {
+        const x = getX(i);
+        const y = getY(pt.weight);
+        pathD += (i === 0 ? 'M' : 'L') + ` ${x} ${y}`;
+      });
+
+      // Path stroke
+      const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      polyline.setAttribute('d', pathD);
+      polyline.setAttribute('fill', 'none');
+      polyline.setAttribute('stroke', '#2563eb');
+      polyline.setAttribute('stroke-width', '3');
+      polyline.setAttribute('stroke-linecap', 'round');
+      polyline.setAttribute('stroke-linejoin', 'round');
+      svg.appendChild(polyline);
+
+      // Plot Points & Date Labels
+      weightData.forEach((pt, i) => {
+        const x = getX(i);
+        const y = getY(pt.weight);
+
+        // Circle marker
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', x);
+        circle.setAttribute('cy', y);
+        circle.setAttribute('r', '5.5');
+        circle.setAttribute('fill', '#ffffff');
+        circle.setAttribute('stroke', '#2563eb');
+        circle.setAttribute('stroke-width', '2.5');
+
+        // Tooltip
+        const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+        title.textContent = `${pt.date}: ${pt.weight} kg`;
+        circle.appendChild(title);
+        svg.appendChild(circle);
+
+        // Weight text above circle
+        const valText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        valText.setAttribute('x', x);
+        valText.setAttribute('y', y - 9);
+        valText.setAttribute('text-anchor', 'middle');
+        valText.setAttribute('font-family', 'Inter, sans-serif');
+        valText.setAttribute('font-size', '11.5px');
+        valText.setAttribute('font-weight', '800');
+        valText.setAttribute('fill', '#0f3870');
+        valText.textContent = pt.weight + ' kg';
+        svg.appendChild(valText);
+
+        // Date text below
+        const dateText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        dateText.setAttribute('x', x);
+        dateText.setAttribute('y', height - 12);
+        dateText.setAttribute('text-anchor', 'middle');
+        dateText.setAttribute('font-family', 'Inter, sans-serif');
+        dateText.setAttribute('font-size', '10.5px');
+        dateText.setAttribute('font-weight', '600');
+        dateText.setAttribute('fill', '#64748b');
+        // Format MM-DD
+        const parts = pt.date.split('-');
+        dateText.textContent = parts.length === 3 ? `${parts[1]}/${parts[2]}` : pt.date;
+        svg.appendChild(dateText);
+      });
+    }
+
+    function clearLogs() {
+      if (confirm("Are you sure you want to clear ALL saved daily logs? This will reset your historical streak and weight chart.")) {
+        localStorage.removeItem(STORAGE_KEY_LOGS);
+        cancelEdit();
+        renderHistoryAndMetrics();
+      }
+    }
+  </script>
+  <a href="./Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

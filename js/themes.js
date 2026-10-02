@@ -1,20 +1,17 @@
 const colorMap = {
-  blue:   'var(--ink-blue)',
-  yellow: 'var(--ink-yellow)',
-  teal:   'var(--ink-teal)',
-  green:  'var(--ink-green)',
-  purple: 'var(--ink-purple)',
-  red:    'var(--ink-red)',
-  rose:   'var(--ink-rose)',
-  amber:  'var(--ink-amber)',
-  orange: 'var(--ink-orange)'
+  blue: '#0f3870',
+  green: '#15803d',
+  yellow: '#a16207',
+  purple: '#6b21a8',
+  red: '#b91c1c',
+  teal: '#0f766e',
+  amber: '#b45309',
+  orange: '#c2410c',
+  rose: '#be123c'
 };
 
 function changeCardColor(swatchEl, colorName, event) {
-  if (event) {
-    event.stopPropagation();
-    event.preventDefault();
-  }
+  if (event) event.stopPropagation();
   const card = swatchEl.closest('.card-note');
   if (!card) return;
 
@@ -28,61 +25,74 @@ function changeCardColor(swatchEl, colorName, event) {
 }
 
 function changeExpandBoxColor(swatchEl, colorName, event) {
-  if (event) {
-    event.stopPropagation();
-    event.preventDefault();
-  }
-  const box = swatchEl.closest('.expand-block-wrapper');
-  if (!box) return;
+  if (event) event.stopPropagation();
+  const boxWrapper = swatchEl.closest('.expand-block-wrapper');
+  if (!boxWrapper) return;
 
-  Object.keys(colorMap).forEach(c => box.classList.remove(c));
-  box.classList.add(colorName);
+  Object.keys(colorMap).forEach(c => boxWrapper.classList.remove(c));
+  boxWrapper.classList.add(colorName);
 }
 
-function handleHighlightClick(e, colorClass) {
-  e.preventDefault();
+/* ================= SELECTION HIGHLIGHTER HANDLERS ================= */
+function handleHighlightClick(event, hlClass) {
+  event.preventDefault(); // Prevents selection from disappearing
   const sel = window.getSelection();
   if (!sel.rangeCount || sel.isCollapsed) return;
+
   const range = sel.getRangeAt(0);
+  const selectedText = range.extractContents();
   const span = document.createElement('span');
-  span.className = colorClass;
-  span.appendChild(range.extractContents());
+  span.className = hlClass;
+  span.appendChild(selectedText);
   range.insertNode(span);
+
+  sel.removeAllRanges();
 }
 
-function handleClearHighlightClick(e) {
-  e.preventDefault();
+function handleClearHighlightClick(event) {
+  event.preventDefault();
   const sel = window.getSelection();
   if (!sel.rangeCount) return;
-  const el = sel.anchorNode.nodeType === 3 ? sel.anchorNode.parentElement : sel.anchorNode;
-  const hl = el.closest('[class*="hl-"]');
-  if (hl) {
-    const parent = hl.parentNode;
-    while (hl.firstChild) parent.insertBefore(hl.firstChild, hl);
-    hl.remove();
+
+  const node = sel.anchorNode;
+  const hlSpan = node.nodeType === 1 ? node.closest('[class*="hl-"]') : node.parentElement?.closest('[class*="hl-"]');
+  if (hlSpan) {
+    const parent = hlSpan.parentNode;
+    while (hlSpan.firstChild) {
+      parent.insertBefore(hlSpan.firstChild, hlSpan);
+    }
+    hlSpan.remove();
   }
 }
 
-function handleTextSizeClick(e, sizeClass) {
-  e.preventDefault();
+/* ================= SELECTION TEXT SIZER HANDLERS ================= */
+function handleTextSizeClick(event, sizeClass) {
+  event.preventDefault();
   const sel = window.getSelection();
   if (!sel.rangeCount || sel.isCollapsed) return;
+
   const range = sel.getRangeAt(0);
+  const selectedText = range.extractContents();
   const span = document.createElement('span');
   span.className = sizeClass;
-  span.appendChild(range.extractContents());
+  span.appendChild(selectedText);
   range.insertNode(span);
+
+  sel.removeAllRanges();
 }
 
-function handleClearTextSizeClick(e) {
-  e.preventDefault();
+function handleClearTextSizeClick(event) {
+  event.preventDefault();
   const sel = window.getSelection();
   if (!sel.rangeCount) return;
-  const el = sel.anchorNode.nodeType === 3 ? sel.anchorNode.parentElement : sel.anchorNode;
-  const sizeSpan = el.closest('.fs-sm, .fs-md, .fs-lg, .fs-xl');
+
+  const node = sel.anchorNode;
+  const sizeSpan = node.nodeType === 1 ? node.closest('[class*="fs-"]') : node.parentElement?.closest('[class*="fs-"]');
   if (sizeSpan) {
     const parent = sizeSpan.parentNode;
-    while (sizeSpan.firstChild) parent.insertBefore(sizeSpan.firstChild, sizeSpan);
+    while (sizeSpan.firstChild) {
+      parent.insertBefore(sizeSpan.firstChild, sizeSpan);
+    }
     sizeSpan.remove();
   }
 }

@@ -86,3 +86,22 @@
   .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; margin-bottom: 0 !important; }
   .note-image-wrapper { resize: none !important; border: none !important; }
 }
+
+/* ================= FORCE TRANSPARENT TITLE BANNER ================= */
+.title-section,
+.block-wrapper .title-section,
+#editorCanvas .title-section,
+.title-section[contenteditable="true"],
+.title-section h1,
+.title-section .subtitle {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Ensure only the badge stays solid purple */
+.title-section .badge-tag {
+  background-color: var(--ink-purple, #6b21a8) !important;
+  color: #ffffff !important;
+}

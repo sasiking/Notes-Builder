@@ -1,0 +1,19 @@
+{
+  "name": "APPSC & TGPSC Group-1 Master Notes & Diary",
+  "short_name": "Group-1 Notes",
+  "description": "Executive Working Professional Study Notes, Timetable & Habit Tracker",
+  "start_url": "./Dashboard.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f3870",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%230f3870'/%3E%3Cpath d='M160 120h192v40H160zm0 80h192v40H160zm0 80h128v40H160zm-40-160v272c0 22 18 40 40 40h208c13 0 24-11 24-24s-11-24-24-24H176c-4 0-8-4-8-8V120h-48z' fill='%23ffffff'/%3E%3Ccircle cx='380' cy='360' r='36' fill='%2322c55e'/%3E%3Cpath d='M368 360l8 8 16-16' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

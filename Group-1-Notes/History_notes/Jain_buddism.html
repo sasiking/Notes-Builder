@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Religious Reform Movements: Jainism & Buddhism (c. 6th Century BCE)</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg-page: #fbfbf9; --ruled-line: #e3ebf5; --margin-line: #f7a8b8;
+  --ink-blue: #0f3870; --ink-dark: #1e293b; --ink-red: #b91c1c; --ink-green: #15803d;
+  --ink-purple: #6b21a8; --ink-orange: #c2410c; --ink-yellow: #a16207; --ink-teal: #0f766e;
+  --ink-cyan: #0369a1; --ink-indigo: #4338ca; --ink-rose: #be123c; --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85); --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75); --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85); --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75); --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3; --sticky-pink: #ffe4e6; --sticky-blue: #e0f2fe; --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: #cbd5e1; display: flex; justify-content: center; padding: 25px 10px; height: auto; overflow: visible; font-family: 'Kalam', cursive, sans-serif; color: var(--ink-dark); }
+.notebook-container { width: 100%; max-width: 940px; min-height: 1200px; background-color: var(--bg-page); background-image: linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px), linear-gradient(var(--ruled-line) 1px, transparent 1px); background-size: 100% 28px, 100% 28px; background-repeat: repeat-y, repeat; padding: 35px 35px 80px 65px; border-radius: 4px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); line-height: 28px; position: relative; }
+.block-wrapper { position: relative; margin-bottom: 16px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; background: transparent !important; }
+.title-section h1 { font-size: 38px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; background: transparent !important; }
+.title-section .subtitle { font-size: 19px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; background: transparent !important; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+.section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+.canvas-multi-row { display: flex; flex-direction: row; align-items: stretch; gap: 16px; width: 100%; margin-bottom: 16px; }
+.canvas-multi-row > .block-wrapper { flex: 1 1 0; min-width: 0; margin-bottom: 0; }
+.card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+.card-note.rose   { border-left: 6px solid var(--ink-rose) !important; }
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+.card-note.orange h3 { color: var(--ink-orange) !important; }
+.card-note.rose h3   { color: var(--ink-rose) !important; }
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; }
+.dot-point { margin-left: 14px; position: relative; padding-left: 16px; font-size: 15.5px; line-height: 23px; margin-top: 3px; margin-bottom: 5px; }
+.dot-point::before { content: "•"; position: absolute; left: 2px; color: var(--ink-dark); font-weight: 900; font-size: 16px; }
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15.5px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+.sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S SPEED TRICKS & FORMULA HACKS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+.fs-sm { font-size: 12px !important; line-height: 18px !important; }
+.fs-md { font-size: 16px !important; line-height: 24px !important; }
+.fs-lg { font-size: 20px !important; line-height: 28px !important; }
+.fs-xl { font-size: 25px !important; line-height: 32px !important; }
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+.expand-block-wrapper { position: relative; margin: 12px 0; width: 100%; }
+.expand-block-wrapper.blue .reveal-box summary { color: var(--ink-blue); background: #eff6ff; border-color: #93c5fd; }
+.expand-block-wrapper.blue .reveal-box summary::before { color: var(--ink-blue); }
+.expand-block-wrapper.blue .reveal-box[open] summary { background: #dbeafe; }
+.expand-block-wrapper.blue .reveal-content { border-color: #93c5fd; }
+.expand-block-wrapper.green .reveal-box summary { color: var(--ink-green); background: #f0fdf4; border-color: #86efac; }
+.expand-block-wrapper.green .reveal-box summary::before { color: var(--ink-green); }
+.expand-block-wrapper.green .reveal-box[open] summary { background: #dcfce7; }
+.expand-block-wrapper.green .reveal-content { border-color: #86efac; }
+.expand-block-wrapper.yellow .reveal-box summary { color: var(--ink-yellow); background: #fefce8; border-color: #fde047; }
+.expand-block-wrapper.yellow .reveal-box summary::before { color: var(--ink-yellow); }
+.expand-block-wrapper.yellow .reveal-box[open] summary { background: #fef08a; }
+.expand-block-wrapper.yellow .reveal-content { border-color: #fde047; }
+.expand-block-wrapper.purple .reveal-box summary { color: var(--ink-purple); background: #faf5ff; border-color: #d8b4fe; }
+.expand-block-wrapper.purple .reveal-box summary::before { color: var(--ink-purple); }
+.expand-block-wrapper.purple .reveal-box[open] summary { background: #f3e8ff; }
+.expand-block-wrapper.purple .reveal-content { border-color: #d8b4fe; }
+.expand-block-wrapper.red .reveal-box summary { color: var(--ink-red); background: #fef2f2; border-color: #fca5a5; }
+.expand-block-wrapper.red .reveal-box summary::before { color: var(--ink-red); }
+.expand-block-wrapper.red .reveal-box[open] summary { background: #fee2e2; }
+.expand-block-wrapper.red .reveal-content { border-color: #fca5a5; }
+.expand-block-wrapper.teal .reveal-box summary { color: var(--ink-teal); background: #f0fdfa; border-color: #5eead4; }
+.expand-block-wrapper.teal .reveal-box summary::before { color: var(--ink-teal); }
+.expand-block-wrapper.teal .reveal-box[open] summary { background: #ccfbf1; }
+.expand-block-wrapper.teal .reveal-content { border-color: #5eead4; }
+.expand-block-wrapper.amber .reveal-box summary { color: var(--ink-amber); background: #fffbeb; border-color: #fcd34d; }
+.expand-block-wrapper.amber .reveal-box summary::before { color: var(--ink-amber); }
+.expand-block-wrapper.amber .reveal-box[open] summary { background: #fef3c7; }
+.expand-block-wrapper.amber .reveal-content { border-color: #fcd34d; }
+.expand-block-wrapper.orange .reveal-box summary { color: var(--ink-orange); background: #fff7ed; border-color: #fdba74; }
+.expand-block-wrapper.orange .reveal-box summary::before { color: var(--ink-orange); }
+.expand-block-wrapper.orange .reveal-box[open] summary { background: #ffedd5; }
+.expand-block-wrapper.orange .reveal-content { border-color: #fdba74; }
+.expand-block-wrapper.rose .reveal-box summary { color: var(--ink-rose); background: #fff1f2; border-color: #fda4af; }
+.expand-block-wrapper.rose .reveal-box summary::before { color: var(--ink-rose); }
+.expand-block-wrapper.rose .reveal-box[open] summary { background: #ffe4e6; }
+.expand-block-wrapper.rose .reveal-content { border-color: #fda4af; }
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ UPSC & STATE PSC MAINS PRACTICE QUESTIONS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; font-family: 'Inter', sans-serif; }
+.mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+.mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+.eq { position: relative; font-family: 'Inter', sans-serif; font-weight: 700; color: #0f3870; background: rgba(224, 242, 254, 0.75); padding: 1px 6px; border-radius: 4px; border: 1px solid rgba(186, 230, 253, 0.95); display: inline-flex; align-items: center; gap: 4px; line-height: 1.35; margin: 1px 2px; vertical-align: middle; }
+.math-block { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-left: 4px solid var(--ink-purple); border-radius: 6px; padding: 10px 14px; margin: 10px 0; font-family: 'Inter', sans-serif; font-weight: 700; color: var(--ink-dark); font-size: 15px; }
+.fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px; }
+.fraction-top { border-bottom: 2px solid var(--ink-dark); padding-bottom: 2px; }
+.fraction-bottom { padding-top: 2px; }
+.note-image-container { position: relative; margin: 16px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
+.note-image-wrapper { position: relative; overflow: hidden; display: inline-block; min-width: 140px; max-width: 100%; border: 1.5px dashed #94a3b8; border-radius: 6px; padding: 6px; background: #ffffff; box-shadow: var(--shadow); }
+.note-image-wrapper img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; }
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+  
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas"><div class="block-wrapper" draggable="false">
+    
+  <div class="title-section">
+        <div class="badge-tag">UPSC / APPSC ANCIENT INDIAN HISTORY MASTER BLUEPRINT</div>
+        <h1>Religious Reform Movements: Jainism &amp; Buddhism (c. 6th Century BCE)</h1>
+        <div class="subtitle">Socio-Economic Genesis • Philosophy • Councils &amp; Literature • Comparative Synthesis</div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>I. The 6th Century BCE Intellectual Ferment &amp; Material Milieu</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note green">
+    
+  <h3 style="color: rgb(21, 128, 61) !important; font-size: 20px;">Raise of New Religions<br></h3><div class="card-text-body"><ul class="bullet-list"><li><strong>Purpose:</strong>&nbsp;<br>• 64 new heterodox religion are formed to oppose Cattle slaughter, Varna system, Brahminism monopolym Sanskrit sacrifices</li><li><strong>Important Religions:</strong>&nbsp;Jainism, Buddhism, Ajeevika, Charvakas.</li></ul></div></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note blue">
+    
+  
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: rgb(15, 56, 112) !important;">1. Material Roots (The Second Urbanization)</h3>
+            <ul class="bullet-list">
+              <li><strong>Iron Implements (Krishna Ayas):</strong> Clearance of dense forests in the middle Gangetic plains resulted in settled agriculture with extensive crop surpluses.</li>
+              <li><strong>Preservation of Cattle Wealth:</strong> Intensive agrarian ploughing necessitated draught animals. Brahmanical animal sacrifices (<em>Pashubali</em>) depleted bovine assets essential for food security.</li>
+              <li><strong>Rise of the Gahapatis &amp; Setthis:</strong> Wealthy urban merchants and landowners sought a philosophical system free from ritual degradation of usury/money lending (<em>Kusida</em>), prohibited by Vedic Dharmasutras.</li>
+              <li><strong>Use of Money:</strong> Punch-marked coins (silver/copper) enhanced trade fluidity; religious asceticism accommodated the changing commercial reality.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note amber">
+    
+  
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: rgb(180, 83, 9) !important;">2. Kshatriya Reaction &amp; Sramana Traditions</h3>
+            <ul class="bullet-list">
+              <li><strong>Kshatriya-Brahmana Rivalry:</strong> Both Vardhamana Mahavira and Gautama Buddha belonged to royal Kshatriya lineages (Jnatrika and Shakya clans), challenging the ritual supremacy of the priestly class.</li>
+              <li><strong>Sramana Movement:</strong> Wandering philosophers and seekers rejecting Vedic authority, rituals, and the caste monopoly.
+                <div class="sub-point">
+                  ▫ <strong>Ajivikas:</strong> Founded by <strong>Makkhali Gosala</strong>; strict determinism/fatalism (<em>Niyati</em>); denied human free will.<br>
+                  ▫ <strong>Charvakas / Lokayatas:</strong> Founded by <strong>Charvaka / Ajita Kesakambalin</strong>; radical materialism; rejected soul, god, and afterlife.<br>
+                  ▫ <strong>Akrityavada:</strong> Purana Kassapa; actions yield no moral merit or demerit.<br>
+                  ▫ <strong>Ucchedavada:</strong> Pakudha Kaccayana; eternal existence of 7 uncreated elements.
+                </div>
+              </li>
+            </ul>
+            <div class="sticky yellow">
+              📌 <strong>Vernacular Appeal:</strong> Both traditions decisively abandoned esoteric Sanskrit in favor of spoken dialects — <strong>Ardhamagadhi / Prakrit</strong> for Jainism and <strong>Pali</strong> for Buddhism.
+            </div>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>II. Buddhism: The Buddha, Doctrine &amp; Buddhist Councils</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note blue">
+    
+  <h3 style="color:var(--ink-blue); font-size:20px;">Origin</h3><div class="card-text-body"><ul class="bullet-list"><li><strong>Hientsang:</strong>&nbsp;Si-Yu-Ki</li><li><strong>Ceylon Monks:</strong> Description...<br></li><li><strong>Gurus: </strong>Taught sankya philosophy<div class="sub-point">▫ <span class="subpoint-text"><strong>Udaraka<br></strong>▫ <b>Alarakalama</b></span></div></li><li><strong>Sangha:</strong>&nbsp;227 rules - Pattimokka mentioned in Vinayapitaka <br><b>• Rules</b><br><div class="sub-point">▫ Bhikshu, Bhikshuni.<br>▫ Only two pairs of clothes.<br>▫ A needle and a thread.<br>▫ Carry begging bowl.<br>▫ Sleep on bare body.<br>▫ Monks has to walk 18kms for begging<br>▫ One shall not commit 64 types of crimes.<br><b>▫ Upostha: </b>Fasting on full moon day, Birthday, confession of crimes.<br>▫ Not allowed for soldiers, sick people, slaves, people with debt, Female but Ananda convinced to give entry.<br>▫ No sexual relations and gossips</div></li></ul></div></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note green">
+    
+  
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: rgb(21, 128, 61) !important;">1. Siddhartha Gautama (563 – 483 BCE)</h3>
+            <ul class="bullet-list">
+              <li><strong>Birth:</strong> Lumbini (<span class="hl-amber">Nepal</span>) garden near Kapilavastu (Rummindei pillar inscription of Ashoka proves birth site); Shakya Kshatriya clan, on <span class="hl-teal">Vaishaka Purnima</span>, Shakya Muni.<br><b>•</b> <b>Family</b><div class="sub-point">▫&nbsp;<span style="font-size: 16px;"><b>Father:</b>&nbsp; Shuddodana<br><span style="font-size: 15px;">▫ <b>Mother: </b>Mahamaya, Urmila Rajyam<br>▫ <b>Step-Mother:</b>&nbsp;Prajapati Gautami<br>▫ <b>Wife:</b> Yashodha<br>▫ <b>Son:</b> Rahula</span></span></div></li>
+              <li><strong>Four Great Sights:</strong> An old man, a sick person, a dead body, and an Monk (content and peaceful).</li><li><strong>Students:</strong>&nbsp;<div class="sub-point">▫ <span class="subpoint-text"><strong>1st student:</strong>&nbsp;Mahakashyapa becomes student and 5 years elder than siddhartha.<br><b><span style="font-weight: 400;">▫&nbsp;</span>Fav Students:</b> Ananda, upali<br>▫ Horse: Kantaka<br>▫ Charioteer: Channa<br></span></div></li>
+              <li><strong>The Five Sacred <span class="hl-amber">Symbols</span> of Buddha's Journey:</strong>
+                <div class="sub-point">
+                  ▫ <strong>Janma (Birth):</strong> <span class="hl-amber">Lotus</span>, dream of mahamaya.<br>
+                  ▫ <strong>Mahabhinishkramana (Great Renunciation, age 29):</strong> <span class="hl-amber">Horse</span>(Kanthaka).<br>
+                  ▫ <b>Nirvana / Sambodhi (Enlightenment, age 35):</b><div class="sub-point" style=""><b>▫ </b>He did intense penance for 49 days, at last day of full moon, he got Sambodhi at&nbsp;Bodhi <span class="hl-amber" style="">Tree</span> (Pipal, ravi chettu), river Niranjana (Uruvela/Bodh Gaya).<br><span style="font-weight: 700;">▫</span>&nbsp;He was called as Thathagatha.<br><span style="font-weight: 700;">▫</span>&nbsp;Sujatha offered rice milk to buddha, first female devotee.<br></div>
+                  ▫ <b>Dharmachakrapravartana (1st Sermon):</b><br>• first religious lecture given to 5 students named<br><div class="sub-point">▫ Sabbaka, Sariputra<br>▫ Bayana, Kondalama, Buggalana</div> <span class="hl-amber">Wheel</span> (8 spokes), Deer Park at Sarnath.<br>▫ <strong>Mahaparinirvana (Death, age 80):</strong> <span class="hl-amber">Stupa</span> / Footprints at Kusinara (Malla republic).<br>• Chunda -a chandala offered pig meat to Buddha , hed got diarrhea and died.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note blue">
+    
+  
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: rgb(15, 56, 112) !important;">2. Core Buddhist Philosophy</h3>
+            <ul class="bullet-list">
+              <li><strong>Arya Satya (Four Noble Truths):</strong>
+                <div class="sub-point">
+                  1. <em>Dukkha:</em> The world is full of suffering.<br>
+                  2. <em>Dukkha Samudaya:</em> Cause of suffering is desire (<em>Tanha / Trishna</em>).<br>
+                  3. <em>Dukkha Nirodha:</em> Cessation of suffering is possible.<br>
+                  4. <em>Dukkha Nirodha Gamini Pratipada:</em> Path leading to the cessation of suffering (Ashtangika Marga).
+                </div>
+              </li>
+              <li><strong>Madhyama Pratipada:</strong> Rejection of severe asceticism (Jainism) and extreme sensual indulgence (Vedic ritualism); adherence to the "Middle Path".</li>
+              <li><strong>Pratityasamutpada (Dependent Origination):</strong> "This arising, that arises"; 12-linked chain of causation (<em>Dvadasa Nidana</em>).</li>
+              <li><strong>Metaphysical Stances:</strong>
+                <div class="sub-point">
+                  ▫ <strong>Anatmavada:</strong> Denial of a permanent, eternal soul (Atman).<br>
+                  ▫ <strong>Anityavada / Kshanikavada:</strong> Theory of transience; everything changes every moment.<br>
+                  ▫ Silent on the existence of God (Atheistic/Agnostic).
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky yellow"><div>📌 <strong>Exam Catch / Summary Note:</strong><br>Bhoomi sparshsa mudra - Buddha touched earth ad called it to witness his truth as mara is disturbing him<br>Armapali: dancer in court of dananada joined buddha<br>Angulimala: Daccoit turned into buddhist.</div></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+    
+  
+    
+  
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 12%;">Council</th>
+              <th style="width: 14%;">Year &amp; Venue</th>
+              <th style="width: 18%;">Patron (King)</th>
+              <th style="width: 18%;">Chairman (Priest)</th>
+              <th style="width: 38%;">Key Decisions &amp; Literature Codified</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1st Council</strong></td>
+              <td>483 BCE<br>Sattapanni Cave, Rajgriha</td>
+              <td><strong>Ajatashatru</strong><br>(Haryanka Dynasty)</td>
+              <td><strong>Mahakassapa</strong></td>
+              <td>• Codified teachings into two Pitakas in Pali:<br>&nbsp;▫ <strong>Sutta Pitaka:</strong> Discourses &amp; philosophy (recited by <em>Ananda</em>).<br>&nbsp;▫ <strong>Vinaya Pitaka:</strong> Monastic rules &amp; discipline (recited by <em>Upali</em>).</td>
+            </tr>
+            <tr>
+              <td><strong>2nd Council</strong></td>
+              <td>383 BCE<br>Vaishali</td>
+              <td><strong>Kalasoka</strong><br>(Shishunaga Dynasty)</td>
+              <td><strong>Sabbakami</strong></td>
+              <td>• Ideological dispute over 10 monastic practices.<br>• First schism split the Sangha into:<br>&nbsp;▫ <strong>Sthaviravadins (Theravada):</strong> Orthodox elders.<br>&nbsp;▫ <strong>Mahasanghikas:</strong> Liberal/majority reformers.</td>
+            </tr>
+            <tr>
+              <td><strong>3rd Council</strong></td>
+              <td>250 BCE<br>Pataliputra</td>
+              <td><strong>Ashoka</strong><br>(Maurya Dynasty)</td>
+              <td><strong>Moggaliputta Tissa</strong></td>
+              <td>• Compilation of the third Pitaka: <strong>Abhidhamma Pitaka</strong> (philosophical exposition; includes <em>Kathavatthu</em> by Tissa).<br>• Condemned heretics; sent international Buddhist missions (e.g., Mahinda and Sanghamitta to Sri Lanka).</td>
+            </tr>
+            <tr>
+              <td><strong>4th Council</strong></td>
+              <td>72 CE<br>Kundalvana, Kashmir</td>
+              <td><strong>Kanishka</strong><br>(Kushan Dynasty)</td>
+              <td><strong>Vasumitra</strong><br>(Deputy: Asvaghosha)</td>
+              <td>• Final division of Buddhism into <strong>Hinayana</strong> (Lesser Vehicle) and <strong>Mahayana</strong> (Greater Vehicle).<br>• Sanskrit replaced Pali as the vehicle for Mahayana texts.<br>• Commentaries compiled into the <em>Mahavibhasha Sastra</em>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>III. Buddhist Sects, Bodhisattvas &amp; Art Horizons</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note purple">
+    
+  
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: rgb(107, 33, 168) !important;">1. Major Schisms &amp; Schools</h3>
+            <ul class="bullet-list">
+              <li><strong>Hinayana:</strong> "Defenders of Elders"; <br><div class="sub-point">▫&nbsp;<span style="font-size: 16px;">Original practitioners of Buddhism. <br><span style="font-size: 15px;">▫&nbsp;</span>Pali scriptures; no idol worship (symbolic reverence), <br><span style="font-size: 15px;">▫&nbsp;</span>Worship only symbols in buddhism</span><span style="font-size: 16px;">;<br><span style="font-size: 15px;">▫ Worshipped buddha as only guru.</span><br></span><span style="font-size: 16px;"><span style="font-size: 15px;">▫&nbsp;</span>personal liberation through self-effort (Astanga Marga)<br><span style="font-size: 15px;">▫ Spread to south east asia nations, srilanka, Burma.<br>▫ <b>Literature: <br></b>1. Tripitakas<div class="sub-point">▫&nbsp;<strong style="background-color: rgba(255, 255, 255, 0.85);">Sutta Pitaka: </strong><span style="background-color: rgba(255, 255, 255, 0.85);">Again divided into 5 types,&nbsp;<div class="sub-point">▫ Dheerga: Long preechings<strong><br>▫ </strong>Madyama: Medium preechings<br><span style="font-weight: 400;">▫ Kudaka: Jataka stories<br>▫ Samyuktha: Collection<br>▫ Angaguttura: Numericals</span></div><br><strong style="font-weight: bold;"><span style="font-weight: 400; background-color: rgba(255, 255, 255, 0.88);">▫&nbsp;</span><strong>Vinaya&nbsp;</strong>Pitaka:<br><strong><strong><strong><span style="font-weight: 400; background-color: rgba(255, 255, 255, 0.88);">▫&nbsp;</span></strong></strong>Abhidhamma:&nbsp;</strong></strong></span></div></span></span></div><div class="sub-point"><span class="subpoint-text"><strong>2 . Milindha Panho</strong>&nbsp;Details...</span></div></li><li><strong>Theravada:</strong> Description...</li>
+              <li><strong>Mahayana:</strong> Believes in Buddha's divinity, idol worship, prayer, and transfer of merits; Sanskrit language.
+                <div class="sub-point">
+                  ▫ <strong>Madhyamaka (Sunyavada):</strong> Founded by <strong>Nagarjuna</strong>; reality is empty (<em>Sunya</em>) of inherent nature; theory of relativity.<br>
+                  ▫ <strong>Yogachara (Vijnanavada):</strong> Founded by <strong>Maitreyanatha, Asanga, Vasubandhu</strong>; idealist consciousness-only school.
+                </div>
+              </li>
+              <li><strong>Vajrayana (Tantric Buddhism):</strong> Centered in Bengal/Bihar (Pala era); emphasizes mantras, mudras, esoteric rituals, female consorts (<em>Taras</em>); seat at Vikramashila University.</li><li><strong>Chaityakas:</strong>&nbsp;Worship only symbols in buddhism. founder Mahadeva Bhikshu, first buddhist in Andhra.<br>• Further divived into 5 sub-sects.<br><div class="sub-point"><span class="subpoint-text">▫ Aprasaila<br>▫ Purvasila<br>▫ Uttarasaila<br>▫ Rajahirika<br>▫ Siddarthika</span></div><br>• <br></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note amber">
+    
+  
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: rgb(180, 83, 9) !important;">2. Prominent Bodhisattvas (Mahayana)</h3>
+            <ul class="bullet-list">
+              <li><strong>Avalokiteshvara (Padmapani):</strong> The Lotus-bearer; embodiment of infinite compassion (Karuna); most popular.</li>
+              <li><strong>Manjushri:</strong> Embodiment of transcendent wisdom (Prajna); carries a flaming sword of knowledge and a book.</li>
+              <li><strong>Vajrapani:</strong> Wielder of the thunderbolt (symbolizing spiritual power); foe of sin and evil.</li>
+              <li><strong>Maitreya:</strong> The future Buddha currently residing in the Tushita heaven; predicted to arrive when Dharma is lost.</li>
+              <li><strong>Kshitigarbha:</strong> Guardian of the purgatories and purgatorial realms.</li>
+              <li><strong>Tara:</strong> Female counterpart and savior in Vajrayana tradition.</li>
+            </ul>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>IV. Jainism: Tirthankaras, Philosophy &amp; Canonical Traditions</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note teal">
+    
+  
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: rgb(15, 118, 110) !important;">1. Tirthankaras &amp; Mahavira's Life</h3>
+            <ul class="bullet-list">
+              <li><strong>24 Tirthankaras ("Ford-makers"):</strong>
+                <div class="sub-point">
+                  ▫ <strong>1st (Rishabhanatha / Adinatha):</strong> Bull symbol; mentioned in Rigveda and Vayu Purana.<br>
+                  ▫ <strong>22nd (Arishtanemi):</strong> Conch symbol; mentioned alongside Lord Krishna in Rigveda.<br>
+                  ▫ <strong>23rd (Parshvanatha):</strong> Serpent symbol; prince of Benaras who gave the 4 vows (Ahimsa, Satya, Asteya, Aparigraha).<br>
+                  ▫ <strong>24th (Vardhamana Mahavira):</strong> Lion symbol; added the 5th vow (Brahmacharya).
+                </div>
+              </li>
+              <li><strong>Chronological Milestones of Mahavira (540 – 468 BCE):</strong>
+                <div class="sub-point">
+                  ▫ <strong>Birth:</strong> Kundagrama near Vaishali; Jnatrika Kshatriya clan; father Siddhartha, mother Trishala (sister of Lichchhavi chief Chetaka).<br>
+                  ▫ <strong>Renunciation:</strong> Age 30 (after parents' demise with brother Nandivardhana's consent).<br>
+                  ▫ <strong>Kaivalya (Supreme Knowledge):</strong> At age 42, on the banks of river <strong>Rijupalika</strong> under a Sal tree near <strong>Jrimbhikagrama</strong>.<br>
+                  ▫ <strong>Mahaparinirvana:</strong> At age 72 at <strong>Pavapuri</strong> near Rajgriha (court of King Hastipala).
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note purple">
+    
+  
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: rgb(107, 33, 168) !important;">2. Epistemology, Metaphysics &amp; Conduct</h3>
+            <ul class="bullet-list">
+              <li><strong>Tri-Ratna (Three Jewels):</strong>
+                <div class="sub-point">
+                  1. <em>Samyak Darshana:</em> Right Faith / Perception.<br>
+                  2. <em>Samyak Jnana:</em> Right Knowledge.<br>
+                  3. <em>Samyak Charitra:</em> Right Conduct (adherence to 5 Mahavratas).
+                </div>
+              </li>
+              <li><strong>The Five Mahavratas:</strong> Ahimsa (non-violence), Satya (truth), Asteya (non-stealing), Aparigraha (non-possession), Brahmacharya (celibacy).</li>
+              <li><strong>Relativistic Epistemology:</strong>
+                <div class="sub-point">
+                  ▫ <strong>Anekantavada:</strong> Doctrine of the manifold nature of reality (pluralism).<br>
+                  ▫ <strong>Syadvada:</strong> The theory of conditioned predication ("may be" / 7-fold judgment or <em>Saptabhangi Naya</em>).
+                </div>
+              </li>
+              <li><strong>Hylozoism:</strong> Belief that all matter, even stones, water, fire, and wind, possesses souls (<em>Jiva</em>).</li>
+              <li><strong>Sallekhana / Santhara:</strong> Religious vow of voluntary fasting to death (Chandragupta Maurya undertook it at Shravanabelagola).</li>
+            </ul>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+    
+  
+    
+  
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 15%;">Council</th>
+              <th style="width: 15%;">Year &amp; Venue</th>
+              <th style="width: 20%;">President &amp; Patron</th>
+              <th style="width: 50%;">Key Outcomes &amp; Canonical Compilations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1st Jain Council</strong></td>
+              <td>c. 300 BCE<br>Pataliputra</td>
+              <td><strong>Sthulabhadra</strong><br>Patron: Chandragupta Maurya</td>
+              <td>• Great famine in Magadha led Bhadrabahu to migrate south (Karnataka).<br>• Formal schism into <strong>Digambaras</strong> (sky-clad, orthodox, under Bhadrabahu) and <strong>Svetambaras</strong> (white-clad, under Sthulabhadra).<br>• Compilation of the <strong>12 Angas</strong> to replace the lost 14 Purvas (Digambaras rejected these).</td>
+            </tr>
+            <tr>
+              <td><strong>2nd Jain Council</strong></td>
+              <td>512 CE<br>Vallabhi (Gujarat)</td>
+              <td><strong>Devardhi Kshamasramana</strong><br>Patron: Maitraka Dynasty</td>
+              <td>• Final systematic compilation and written preservation of the Svetambara canonical texts in <strong>Ardhamagadhi Prakrit</strong>.<br>• Codified 12 Angas, 12 Upangas, 10 Prakirnas, 6 Chhedasutras, 4 Mulasutras.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>V. Comprehensive Comparison: Jainism vs. Buddhism</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+    
+  
+    
+  
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Comparative Axis</th>
+              <th style="width: 40%;">Jainism</th>
+              <th style="width: 40%;">Buddhism</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Concept of Soul (Atman)</strong></td>
+              <td>Radical Soul-Realism: Believes in eternal souls (<em>Jiva</em>) existing in all animate and inanimate objects (hylozoism).</td>
+              <td><strong>Anatmavada (No-Soul):</strong> Denies the existence of a permanent soul; self is a bundle of 5 shifting aggregates (<em>Skandhas</em>).</td>
+            </tr>
+            <tr>
+              <td><strong>Austerity &amp; Ahimsa</strong></td>
+              <td>Extreme asceticism: Complete renunciation of clothes (Digambara), extreme non-violence (even covering mouth, avoiding agriculture/root vegetables).</td>
+              <td><strong>Middle Path (Madhyama Marga):</strong> Rejects self-mortification; permits moderate living, seasonal clothes, and normal agriculture.</td>
+            </tr>
+            <tr>
+              <td><strong>Liberation / Salvation</strong></td>
+              <td><strong>Kaivalya:</strong> Freedom of soul from the contamination of physical Karma, often through voluntary mortification/fasting (Sallekhana).</td>
+              <td><strong>Nirvana:</strong> Extinction of desire and ignorance during life; blowing out the flame of craving without physical torture.</td>
+            </tr>
+            <tr>
+              <td><strong>Varna / Caste Outlook</strong></td>
+              <td>Does NOT unequivocally condemn the Varna system; Mahavira stated one's birth in a high or low caste was due to sins/merits in past life.</td>
+              <td>Explicitly attacks the ritual basis of the Varna system; opened Sangha gates to all castes without distinction.</td>
+            </tr>
+            <tr>
+              <td><strong>Admission of Women</strong></td>
+              <td>Svetambaras admit women; believe 19th Tirthankara (Malli) was female. Digambaras deny women can attain Kaivalya without being reborn as men.</td>
+              <td>Admitted women to the Bhikkhuni Sangha at the insistence of Ananda and Mahapajapati Gotami (though Buddha gave strict <em>Gurudharmas</em>).</td>
+            </tr>
+            <tr>
+              <td><strong>Geographical Spread</strong></td>
+              <td>Remained confined strictly within the boundaries of the Indian subcontinent (Rajasthan, Gujarat, Karnataka).</td>
+              <td>Spread dynamically across Asia as a global religion (Sri Lanka, Tibet, China, Japan, Southeast Asia).</td>
+            </tr>
+            <tr>
+              <td><strong>Canonical Language</strong></td>
+              <td><strong>Ardhamagadhi Prakrit</strong> (later Sanskrit by Hemachandra).</td>
+              <td><strong>Pali</strong> for early/Theravada; Classical <strong>Sanskrit</strong> adopted in Mahayana.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VI. Speed Recall Keys, Palettes &amp; Mnemonics</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky yellow">
+        <h4 style="color:var(--ink-blue); font-size:20px;">⚡ Topper's Mnemonics &amp; Fast Recall Maps</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; font-size:16px;">
+          <div>
+            • <strong>BUDDHIST COUNCILS (KINGS):</strong> <span class="hl-pink">"A-K-A-K"</span>.<br>
+            ➔ <strong>A</strong>jatashatru (1st) ➔ <strong>K</strong>alasoka (2nd) ➔ <strong>A</strong>shoka (3rd) ➔ <strong>K</strong>anishka (4th).<br>
+            • <strong>BUDDHIST COUNCILS (VENUES):</strong> <span class="hl-blue">"R-V-P-K"</span>.<br>
+            ➔ <strong>R</strong>ajgriha ➔ <strong>V</strong>aishali ➔ <strong>P</strong>ataliputra ➔ <strong>K</strong>ashmir (Kundalvana).<br>
+            • <strong>BUDDHIST COUNCILS (CHAIRMEN):</strong> <span class="hl-green">"M-S-M-V"</span>.<br>
+            ➔ <strong>M</strong>ahakassapa ➔ <strong>S</strong>abbakami ➔ <strong>M</strong>oggaliputta Tissa ➔ <strong>V</strong>asumitra.
+          </div>
+          <div>
+            • <strong>JAIN FIVE VOWS:</strong> <span class="hl-yellow">"A-S-A-A-B"</span>.<br>
+            ➔ <strong>A</strong>himsa, <strong>S</strong>atya, <strong>A</strong>steya, <strong>A</strong>parigraha, <strong>B</strong>rahmacharya (added by Mahavira).<br>
+            • <strong>THE TRIPITAKAS:</strong><br>
+            ➔ <strong>Vinaya:</strong> Monastic Discipline (Upali).<br>
+            ➔ <strong>Sutta:</strong> Buddha's Sermon Dialogues (Ananda).<br>
+            ➔ <strong>Abhidhamma:</strong> Philosophy &amp; Metaphysics (Tissa).
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VII. Exam-Trick Boxes (Avoid Common Traps!)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="exam-trick">
+        <ul class="bullet-list" style="margin-top:2px;">
+          <li><strong>TRAP 1: "Vardhamana Mahavira was the founder of Jainism."</strong> ➔ <strong>WRONG!</strong> Rishabhanatha was the 1st Tirthankara and founder. Mahavira was the <strong>24th and last</strong> Tirthankara who codified and institutionalized it.</li>
+          <li><strong>TRAP 2: "Both Buddhism and Jainism rejected the doctrine of Karma and Rebirth."</strong> ➔ <strong>WRONG!</strong> Both religions <strong>strictly accepted the law of Karma and the cycle of Rebirth (Punarjanma)</strong>. They only rejected the infallible authority of the Vedas, animal sacrifice, and priestly intermediaries.</li>
+          <li><strong>TRAP 3: "Buddhism believes in the transmigration of the permanent soul (Atman)."</strong> ➔ <strong>WRONG!</strong> Buddhism vehemently upholds <strong>Anatmavada</strong> (no permanent soul). Rebirth in Buddhism is the continuity of karmic consciousness (stream of consciousness), like one candle lighting another, NOT a migrating eternal Atman.</li>
+          <li><strong>TRAP 4: "The doctrine of Anekantavada belongs to Buddhism."</strong> ➔ <strong>WRONG!</strong> <em>Anekantavada</em> (plurality of truth) and <em>Syadvada</em> (relative truth) are the hallmark philosophies of <strong>Jainism</strong>. Do not confuse it with Buddhist <em>Kshanikavada</em> (momentariness) or <em>Sunyavada</em> (emptiness).</li>
+          <li><strong>TRAP 5: "Women were admitted into the Buddhist Sangha from the very first sermon."</strong> ➔ <strong>WRONG!</strong> The Buddha was initially reluctant. The female monastic order (Bhikkhuni Sangha) was founded years later at <strong>Vaishali</strong> only after intense pleading by his foster mother <strong>Mahapajapati Gotami</strong> and disciple <strong>Ananda</strong>.</li>
+        </ul>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VIII. UPSC &amp; State PSC Prelims Practice Checks</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mcq-card">
+        <div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><span class="mcq-badge">UPSC Prelims Archive • Question 1</span></div>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q1. With reference to the religious history of India, consider the following statements: (UPSC CSE 2020)<br>
+          1. Sthaviravadins belong to Mahayana Buddhism.<br>
+          2. Lokottaravadin sect was an offshoot of Mahasanghika sect of Buddhism.<br>
+          3. The deification of Buddha by Mahasanghikas fostered the Mahayana Buddhism.<br>
+          Which of the statements given above are correct?
+        </div>
+        <div class="mcq-options">
+          1) 1 and 2 only<br>
+          2) 2 and 3 only<br>
+          3) 3 only<br>
+          4) 1, 2 and 3
+        </div>
+        <div class="mcq-solution-wrapper" style="position: relative; margin-top: 8px;"><details class="reveal-box">
+          <summary>Show Answer &amp; Exam Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">2) 2 and 3 only</span>.<br>
+              ▫ <strong>Statement 1 is incorrect:</strong> Sthaviravadins (Theravada) belonged to early orthodox Hinayana tradition, not Mahayana.<br>
+              ▫ <strong>Statement 2 is correct:</strong> The Lokottaravadins emerged as a splinter school from the Mahasanghikas during the Second Council.<br>
+              ▫ <strong>Statement 3 is correct:</strong> Mahasanghikas viewed Buddha as transcendental (<em>Lokottara</em>), paving the philosophical ground for the full-blown deification of Buddha in Mahayana.
+            </div>
+          </div>
+        </details></div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mcq-card">
+        <div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><span class="mcq-badge">UPSC Prelims Archive • Question 2</span></div>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q2. With reference to the religious practices in India, the "Sthanakvasi" sect belongs to: (UPSC CSE 2018)<br>
+          1) Buddhism<br>
+          2) Jainism<br>
+          3) Vaishnavism<br>
+          4) Shaivism
+        </div>
+        <div class="mcq-options">
+          1) Buddhism<br>
+          2) Jainism<br>
+          3) Vaishnavism<br>
+          4) Shaivism
+        </div>
+        <div class="mcq-solution-wrapper" style="position: relative; margin-top: 8px;"><details class="reveal-box">
+          <summary>Show Answer &amp; Exam Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">2) Jainism</span>.<br>
+              ▫ <strong>Explanation:</strong> Sthanakvasi is a non-idolatrous sub-sect of <strong>Svetambara Jainism</strong> founded by merchant Lavaji in 1653 CE. They pray in non-decorated halls called <em>Sthanakas</em> and do not believe in idol worship or temples.
+            </div>
+          </div>
+        </details></div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mains-section">
+        
+        <!-- Question 1 -->
+        <div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+            
+          
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+            <strong>Q1. "Buddhism and Jainism were not merely religious protests, but social and economic movements that reflected the material transitions of their age." Analyze.</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Model Structuring Framework:</strong><br>
+                • <strong>Introduction:</strong> Characterize the 6th century BCE as the dawn of the "Second Urbanization" in the middle Gangetic basin, marked by surplus crop yields, craft guilds, and trade expansion that came into sharp friction with the pastoral, sacrificial ethos of Later Vedic Brahmanism.<br>
+                • <strong>Economic Dimension:</strong><br>
+                  ▫ <em>Iron Plough Agriculture:</em> Required draft cattle. Brahmanical yajnas slaughtered cattle indiscriminately; both religions made non-violence (Ahimsa) their cardinal principle, protecting bovine assets.<br>
+                  ▫ <em>Legitimizing Trade &amp; Usury:</em> Orthodox Dharmasutras condemned seafaring and money-lending (<em>Kusida</em>); Buddhism and Jainism accommodated business interests, leading to patronage by Setthis and Gahapatis.<br>
+                • <strong>Social Dimension:</strong><br>
+                  ▫ <em>Challenge to Varna Hierarchy:</em> Kshatriyas resented Brahmana ritual hegemony; merchants (Vaishyas) desired social status commensurate with their wealth.<br>
+                  ▫ <em>Democratic Inclusivity:</em> Buddhism and Jainism admitted lower varnas and women into their monastic orders, replacing birth-based hierarchy with ethical moral conduct (<em>Sila</em>).<br>
+                  ▫ <em>Vernacular Medium:</em> Replaced formal Sanskrit with the language of the masses (Pali and Ardhamagadhi), democratizing access to sacred philosophy.<br>
+                • <strong>Conclusion:</strong> These movements succeeded because they offered an ideological framework that harmonized with the socio-economic imperatives of an urbanizing, commercial society.
+              </div>
+            </div>
+          </details>
+        
+    
+  
+    
+  
+    
+  
+    
+  </div>
+
+        <!-- Question 2 -->
+        <div class="mains-q-item" style="margin-top: 14px;">
+            
+          
+            
+          
+            
+          
+            
+          
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 15 Marks</span> 
+            <strong>Q2. "Assess the philosophical differences between Jainism and Buddhism with special reference to their attitudes toward asceticism, the concept of the soul, and salvation."</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Model Structuring Framework:</strong><br>
+                • <strong>Introduction:</strong> Both Jainism and Buddhism arose as Sramana traditions challenging Vedic infallibility, yet evolved distinct metaphysical paradigms concerning spiritual liberation.<br>
+                • <strong>Philosophical Dialectic:</strong><br>
+                  ▫ <strong>Asceticism vs. Middle Way:</strong> Jainism advocates severe bodily mortification, nakedness (Digambara), and ritual starvation (<em>Sallekhana</em>) to purge past karma. Buddhism unequivocally rejects severe mortification as futile, adopting <em>Madhyama Pratipada</em> (Middle Path).<br>
+                  ▫ <strong>Jiva (Soul) vs. Anatmavada (No-Soul):</strong> Jainism is deeply hylozoic, asserting that all physical matter contains an eternal, individual soul (<em>Jiva</em>). Buddhism propounds <em>Anatmavada</em>, denying an eternal, unchanging soul, viewing the individual as a constantly shifting configuration of 5 aggregates (<em>Skandhas</em>).<br>
+                  ▫ <strong>Kaivalya vs. Nirvana:</strong> Kaivalya represents the purification and upward ascent of the soul to the apex of the universe (<em>Siddhashila</em>). Nirvana in Buddhism is psychological emancipation—the extinction of the flame of craving (<em>Tanha</em>) and attainment of peace during life.<br>
+                  ▫ <strong>Epistemology:</strong> Jainism developed relativism via <em>Anekantavada</em> and <em>Syadvada</em>; Buddhism developed causal dynamism via <em>Pratityasamutpada</em> and <em>Kshanikavada</em> (momentariness).<br>
+                • <strong>Conclusion:</strong> While Jainism's severe austerity prevented wide foreign adoption, its extreme ethical strictness preserved it within India; conversely, Buddhism's pragmatic flexibility enabled it to transcend geographic boundaries and emerge as a world religion.
+              </div>
+            </div>
+          </details>
+        
+    
+  
+    
+  
+    
+  
+    
+  </div>
+
+      <div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+      
+      <div class="mains-q-title">
+        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+        <strong>Q3. "Explain the role of Guilds in 6th century BCE"</strong>
+      </div>
+      <details class="reveal-box" style="margin-top:8px;">
+        <summary>View Model Answer Structuring Framework</summary>
+        <div class="reveal-content">
+          <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+            <strong>Answer Framework:</strong><br>
+            • <em><b>Introduction:</b></em>&nbsp;The 6th century BCE marked the dawn of the <b data-path-to-node="1" data-index-in-node="59">Second Urbanisation</b> in the middle Gangetic basin, characterized by agricultural surpluses, monetization via punch-marked coins, and the expansion of craft specialization.<br>
+            <div class="sub-point">▫ <strong>Note:</strong>&nbsp;As specialized artisanal manufacture outgrew domestic production, craftsmen and merchants organized into corporate associations known as <b data-path-to-node="1" data-index-in-node="375">Srenis (guilds)</b>, <b data-path-to-node="1" data-index-in-node="392">Nigamas</b>, and <b data-path-to-node="1" data-index-in-node="405">Pugas</b>, headed by influential leaders called <b data-path-to-node="1" data-index-in-node="449">Pramukhas</b>, <b data-path-to-node="1" data-index-in-node="460">Jyestakas</b>, or <b data-path-to-node="1" data-index-in-node="475">Shresthi</b>.</div><div class="sub-point"><div class="table-block-wrapper">
+      
+    
+  
+      <table class="hand-table" style="margin: 10px 0 12px 0; font-size: 14px;">
+        <thead><tr><th style="width: 25%;">Sreni</th><th style="width: 37.5%;">Profession</th></tr></thead>
+        <tbody><tr><td><strong>Kolika</strong></td><td>Weavers</td></tr><tr><td><strong>Kularika</strong></td><td>Potters</td></tr><tr><td><strong>Telika</strong></td><td>Oil</td></tr><tr><td><strong>Gandhika</strong></td><td>Perfumes</td></tr><tr><td><strong>Mithika</strong></td><td>Stone cutters</td></tr></tbody>
+      </table></div></div><div class="sub-point">
+• Every Guild turned into a caste and consolidated the caste system.<br></div>• <b data-path-to-node="2" data-index-in-node="2">Core Analysis:</b><div>    ▫ <i data-path-to-node="2" data-index-in-node="19" style="text-decoration-line: underline;">Economic Organization &amp; Quality Control:</i> Guilds bought raw materials in bulk, trained young apprentices, set fixed product prices, and checked the quality of goods like cloth, metal tools, pots, and woodwork.&nbsp;</div><div>▫ <i data-path-to-node="2" data-index-in-node="230" style="text-decoration-line: underline;">Early Banking &amp; Loans:</i> Srenis took cash deposits from kings and the public on interest, gave loans to traders, and funded long-distance bullock caravan trade on the <i data-path-to-node="2" data-index-in-node="395">Uttarapatha</i> and <i data-path-to-node="2" data-index-in-node="411">Dakshinapatha</i> routes.&nbsp;</div><div>▫ <i data-path-to-node="2" data-index-in-node="435" style="text-decoration-line: underline;">Internal Rules &amp; Justice:</i> Guilds functioned under their own customary laws (<b data-path-to-node="2" data-index-in-node="511">Srenidharma</b>); local kings recognized these customs, allowing guild heads to resolve conflicts between their own members without royal interference.&nbsp;</div><div>▫ <u><i data-path-to-node="2" data-index-in-node="661">Support to Buddhism &amp; Jainism:</i> </u>Traders (<i data-path-to-node="2" data-index-in-node="701">Setthis</i> and <i data-path-to-node="2" data-index-in-node="713">Vaishyas</i>) disliked the strict Vedic caste hierarchy that looked down on interest-earning money-lending (<b data-path-to-node="2" data-index-in-node="817">Kusida</b>); to gain social respect, guilds donated heavily to build monasteries (<i data-path-to-node="2" data-index-in-node="895">viharas</i>), rest halls, and stupas for Buddhist and Jain monks.&nbsp;</div><div>▫&nbsp;<i data-path-to-node="2" data-index-in-node="959"><u>City Building &amp; Welfare:</u></i> Guilds helped build urban centers by digging public water wells and tanks, running free food kitchens, constructing rest houses, and maintaining town defenses in capitals like Rajagriha, Kaushambi, and Shravasti.</div><div><div><br></div><div>
+            • <b><em>Conclusion:</em> </b>By moving economic life away from simple barter into organized business unions, 6th-century BCE guilds created the wealth and stability needed for early kingdoms to grow into the Mauryan Empire.
+          </div></div></div>
+        </div>
+      </details>
+      
+    
+  
+    
+    
+  
+    
+  
+    
+  </div></div></div><div class="block-wrapper" draggable="false">
+    
+  <div style="text-align:center; font-family:'Patrick Hand', cursive; font-size:18px; color:var(--ink-blue); margin-top:16px;">
+        ★ Heterodox Movements (Jainism &amp; Buddhism) Master Notes Complete • Print-Perfect &amp; Exam-Ready ★
+      </div></div></div>
+  
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

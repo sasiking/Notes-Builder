@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Andhra History & Renaissance: Comprehensive Master Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg-page: #fbfbf9; --ruled-line: #e3ebf5; --margin-line: #f7a8b8;
+  --ink-blue: #0f3870; --ink-dark: #1e293b; --ink-red: #b91c1c; --ink-green: #15803d;
+  --ink-purple: #6b21a8; --ink-orange: #c2410c; --ink-yellow: #a16207; --ink-teal: #0f766e;
+  --ink-cyan: #0369a1; --ink-indigo: #4338ca; --ink-rose: #be123c; --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85); --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75); --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85); --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75); --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3; --sticky-pink: #ffe4e6; --sticky-blue: #e0f2fe; --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: #cbd5e1; display: flex; justify-content: center; padding: 25px 10px; height: auto; overflow: visible; font-family: 'Kalam', cursive, sans-serif; color: var(--ink-dark); }
+.notebook-container { width: 100%; max-width: 940px; min-height: 1200px; background-color: var(--bg-page); background-image: linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px), linear-gradient(var(--ruled-line) 1px, transparent 1px); background-size: 100% 28px, 100% 28px; background-repeat: repeat-y, repeat; padding: 35px 35px 80px 65px; border-radius: 4px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); line-height: 28px; position: relative; }
+.block-wrapper { position: relative; margin-bottom: 16px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; background: transparent !important; }
+.title-section h1 { font-size: 38px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; background: transparent !important; }
+.title-section .subtitle { font-size: 19px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; background: transparent !important; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+.section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+.canvas-multi-row { display: flex; flex-direction: row; align-items: stretch; gap: 16px; width: 100%; margin-bottom: 16px; }
+.canvas-multi-row > .block-wrapper { flex: 1 1 0; min-width: 0; margin-bottom: 0; }
+.card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+.card-note.rose   { border-left: 6px solid var(--ink-rose) !important; }
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+.card-note.orange h3 { color: var(--ink-orange) !important; }
+.card-note.rose h3   { color: var(--ink-rose) !important; }
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; }
+.dot-point { margin-left: 14px; position: relative; padding-left: 16px; font-size: 15.5px; line-height: 23px; margin-top: 3px; margin-bottom: 5px; }
+.dot-point::before { content: "•"; position: absolute; left: 2px; color: var(--ink-dark); font-weight: 900; font-size: 16px; }
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15.5px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+.sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S SPEED TRICKS & FORMULA HACKS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+.fs-sm { font-size: 12px !important; line-height: 18px !important; }
+.fs-md { font-size: 16px !important; line-height: 24px !important; }
+.fs-lg { font-size: 20px !important; line-height: 28px !important; }
+.fs-xl { font-size: 25px !important; line-height: 32px !important; }
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+.expand-block-wrapper { position: relative; margin: 12px 0; width: 100%; }
+.expand-block-wrapper.blue .reveal-box summary { color: var(--ink-blue); background: #eff6ff; border-color: #93c5fd; }
+.expand-block-wrapper.blue .reveal-box summary::before { color: var(--ink-blue); }
+.expand-block-wrapper.blue .reveal-box[open] summary { background: #dbeafe; }
+.expand-block-wrapper.blue .reveal-content { border-color: #93c5fd; }
+.expand-block-wrapper.green .reveal-box summary { color: var(--ink-green); background: #f0fdf4; border-color: #86efac; }
+.expand-block-wrapper.green .reveal-box summary::before { color: var(--ink-green); }
+.expand-block-wrapper.green .reveal-box[open] summary { background: #dcfce7; }
+.expand-block-wrapper.green .reveal-content { border-color: #86efac; }
+.expand-block-wrapper.yellow .reveal-box summary { color: var(--ink-yellow); background: #fefce8; border-color: #fde047; }
+.expand-block-wrapper.yellow .reveal-box summary::before { color: var(--ink-yellow); }
+.expand-block-wrapper.yellow .reveal-box[open] summary { background: #fef08a; }
+.expand-block-wrapper.yellow .reveal-content { border-color: #fde047; }
+.expand-block-wrapper.purple .reveal-box summary { color: var(--ink-purple); background: #faf5ff; border-color: #d8b4fe; }
+.expand-block-wrapper.purple .reveal-box summary::before { color: var(--ink-purple); }
+.expand-block-wrapper.purple .reveal-box[open] summary { background: #f3e8ff; }
+.expand-block-wrapper.purple .reveal-content { border-color: #d8b4fe; }
+.expand-block-wrapper.red .reveal-box summary { color: var(--ink-red); background: #fef2f2; border-color: #fca5a5; }
+.expand-block-wrapper.red .reveal-box summary::before { color: var(--ink-red); }
+.expand-block-wrapper.red .reveal-box[open] summary { background: #fee2e2; }
+.expand-block-wrapper.red .reveal-content { border-color: #fca5a5; }
+.expand-block-wrapper.teal .reveal-box summary { color: var(--ink-teal); background: #f0fdfa; border-color: #5eead4; }
+.expand-block-wrapper.teal .reveal-box summary::before { color: var(--ink-teal); }
+.expand-block-wrapper.teal .reveal-box[open] summary { background: #ccfbf1; }
+.expand-block-wrapper.teal .reveal-content { border-color: #5eead4; }
+.expand-block-wrapper.amber .reveal-box summary { color: var(--ink-amber); background: #fffbeb; border-color: #fcd34d; }
+.expand-block-wrapper.amber .reveal-box summary::before { color: var(--ink-amber); }
+.expand-block-wrapper.amber .reveal-box[open] summary { background: #fef3c7; }
+.expand-block-wrapper.amber .reveal-content { border-color: #fcd34d; }
+.expand-block-wrapper.orange .reveal-box summary { color: var(--ink-orange); background: #fff7ed; border-color: #fdba74; }
+.expand-block-wrapper.orange .reveal-box summary::before { color: var(--ink-orange); }
+.expand-block-wrapper.orange .reveal-box[open] summary { background: #ffedd5; }
+.expand-block-wrapper.orange .reveal-content { border-color: #fdba74; }
+.expand-block-wrapper.rose .reveal-box summary { color: var(--ink-rose); background: #fff1f2; border-color: #fda4af; }
+.expand-block-wrapper.rose .reveal-box summary::before { color: var(--ink-rose); }
+.expand-block-wrapper.rose .reveal-box[open] summary { background: #ffe4e6; }
+.expand-block-wrapper.rose .reveal-content { border-color: #fda4af; }
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ UPSC & STATE PSC MAINS PRACTICE QUESTIONS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; font-family: 'Inter', sans-serif; }
+.mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+.mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+.eq { position: relative; font-family: 'Inter', sans-serif; font-weight: 700; color: #0f3870; background: rgba(224, 242, 254, 0.75); padding: 1px 6px; border-radius: 4px; border: 1px solid rgba(186, 230, 253, 0.95); display: inline-flex; align-items: center; gap: 4px; line-height: 1.35; margin: 1px 2px; vertical-align: middle; }
+.math-block { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-left: 4px solid var(--ink-purple); border-radius: 6px; padding: 10px 14px; margin: 10px 0; font-family: 'Inter', sans-serif; font-weight: 700; color: var(--ink-dark); font-size: 15px; }
+.fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px; }
+.fraction-top { border-bottom: 2px solid var(--ink-dark); padding-bottom: 2px; }
+.fraction-bottom { padding-top: 2px; }
+.note-image-container { position: relative; margin: 16px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
+.note-image-wrapper { position: relative; overflow: hidden; display: inline-block; min-width: 140px; max-width: 100%; border: 1.5px dashed #94a3b8; border-radius: 6px; padding: 6px; background: #ffffff; box-shadow: var(--shadow); }
+.note-image-wrapper img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; }
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+  
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas"><div class="block-wrapper" draggable="false">
+    
+  <div class="title-section">
+      <div class="badge-tag">APPSC GROUP-I &amp; II | UPSC CSE OPTIONAL | MODERN ANDHRA HISTORY</div>
+      <h1>Modern Andhra History &amp; Renaissance: Comprehensive Master Notes</h1>
+      <div class="subtitle">European Factories • Company Rule • Zamindars &amp; Poligars • Brown, Munro &amp; Mackenzie • Reformers &amp; Subaltern Culture</div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>I. Political Framework: Rulers, Regional Powers &amp; Company Control</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th>Power / Ruling Entity</th>
+            <th>Core Region &amp; Tenure</th>
+            <th>Prominent Figures</th>
+            <th>Key Political &amp; Territorial Milestones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Late Qutb Shahis &amp; Mughal Subahdars</strong></td>
+            <td>Hyderabad, Coastal Circars<br>(c. 1650 – 1724 A.D.)</td>
+            <td>Abul Hasan Tana Shah, Aurangzeb, Zulfiqar Khan</td>
+            <td>Conquest of Golconda by Aurangzeb (1687); coastal Andhra annexed to the Mughal Empire under the Subahdar of the Deccan at Hyderabad.</td>
+          </tr>
+          <tr>
+            <td><strong>Asaf Jahis (Nizams of Hyderabad)</strong></td>
+            <td>Deccan, Northern Circars, Rayalaseema<br>(1724 – 1948 A.D.)</td>
+            <td>Nizam-ul-Mulk, Nasir Jung, Salabat Jung, Nizam Ali Khan</td>
+            <td>Founded independent dynasty in 1724; leased out Coastal Circars to the French under Marquis de Bussy, later ceded Northern Circars and Ceded Districts to the British EIC.</td>
+          </tr>
+          <tr>
+            <td><strong>Native States &amp; Regional Dynasts ("Little Kings")</strong></td>
+            <td>Vizianagaram, Bobbili, Venkatagiri, Punganur, Kalahasti, Gadwal</td>
+            <td>Pusapati Ananda Gajapati Raju, Ranga Rao of Bobbili, Pedda Venkatapati</td>
+            <td>Semi-autonomous feudal principalities; fought regional wars (Battle of Bobbili, 1757; Battle of Padmanabham, 1794); later converted into Permanent Settlement Zamindaris under British rule.</td>
+          </tr>
+          <tr>
+            <td><strong>European Trading Companies</strong></td>
+            <td>Machilipatnam, Nizampatnam, Pulicat, Bheemunipatnam</td>
+            <td>Pieter Both (Dutch), Marquis de Bussy (French), Robert Clive (EIC)</td>
+            <td>Establishment of maritime factories along the Coromandel coast; Anglo-French Carnatic Wars transformed commercial trading posts into colonial military territorial rule.</td>
+          </tr>
+          <tr>
+            <td><strong>English East India Company (Madras Presidency)</strong></td>
+            <td>Northern Circars (1766/1788), Ceded Districts (1800)</td>
+            <td>Lord Clive, Thomas Munro, Colin Mackenzie, C.P. Brown</td>
+            <td>Acquired Circars via Mughal Farman (1765) and Treaty of Hyderabad (1766); acquired Rayalaseema via Subsidiary Alliance treaty of 1800; unified Telugu-speaking districts under Madras Presidency rule.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>II. European Trade Settlements &amp; British Territorial Annexation</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note blue">
+    
+  
+          <h3 style="color: rgb(15, 56, 112) !important;">1. European Factories along the Andhra Coast</h3>
+          <ul class="bullet-list">
+            <li><strong>Dutch East India Company (VOC):</strong> Established their first Indian factory at <span class="hl-yellow">Machilipatnam (1605)</span> followed by Nizampatnam (Petapuli) and Pulicat; dominated the export of fine indigo, rice, and diamond transit.</li>
+            <li><strong>English East India Company (EIC):</strong>
+              <div class="sub-point">
+                ▫ Opened their first operational southeastern factory at <strong>Machilipatnam (1611)</strong> aboard the ship <em>Globe</em>.<br>
+                ▫ Secured the landmark <strong>Golden Farman (1632)</strong> from Sultan Abdullah Qutb Shah, allowing duty-free commerce for 500 pagodas annually.<br>
+                ▫ Established trade settlements at Armagon (Dugarajapatnam, 1626) and Visakhapatnam (1682).
+              </div>
+            </li>
+            <li><strong>French &amp; Other Powers:</strong> French built trade centers at Machilipatnam and Yanam (1723); Portuguese operated out of coastal San Thome and Masulipatnam pockets.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note amber">
+    
+  
+          <h3 style="color: rgb(180, 83, 9) !important;">2. Acquisition of Northern Circars &amp; Ceded Districts</h3>
+          <ul class="bullet-list">
+            <li><strong>The Northern Circars (5 Coastal Districts):</strong>
+              <div class="sub-point">
+                ▫ Comprised Chicacole (Srikakulam), Rajahmundry, Eluru, Mustafanagar (Kondapalli), and Murtazanagar (Guntur).<br>
+                ▫ <strong>1753:</strong> Nizam Salabat Jung ceded Circars to French General Bussy.<br>
+                ▫ <strong>1759:</strong> Colonel Forde defeated the French at the Battle of Chandurthi (Condore); captured Machilipatnam.<br>
+                ▫ <strong>1765/1766:</strong> Robert Clive secured an Imperial Farman from Mughal Emperor Shah Alam II; ratified by Nizam Ali Khan under the Treaty of Hyderabad (Guntur ceded later in 1788).
+              </div>
+            </li>
+            <li><strong>The Ceded Districts (Rayalaseema):</strong>
+              <div class="sub-point">
+                ▫ Bellary, Anantapur, Cuddapah, and Kurnool surrendered to the British by Nizam Ali Khan in 1800 under the <strong>Subsidiary Alliance</strong> to fund British subsidiary troops.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>III. Land Systems &amp; Feudal Resistance: Zamindars &amp; Poligars</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note purple">
+    
+  
+          <h3 style="color: rgb(107, 33, 168) !important;">1. Zamindari System &amp; Revolts in Circars</h3>
+          <ul class="bullet-list">
+            <li><strong>Permanent Settlement (1802):</strong> Imposed in coastal Circars by Lord Wellesley; converted traditional revenue collectors and local chieftains into hereditary proprietary landlords with fixed revenue demands.</li>
+            <li><strong>Battle of Padmanabham (1794):</strong>
+              <div class="sub-point">
+                ▫ Conflict erupted when the EIC ordered Raja Chinna Vijayarama Raju of Vizianagaram to disband his troops and clear excessive tribute arrears.<br>
+                ▫ The Raja fought British forces under Colonel Prendergast and died on the battlefield at Padmanabham; state was subsequently partitioned and subordinated.
+              </div>
+            </li>
+            <li><strong>Draksharama &amp; Hill Zamindari Revolts:</strong> Consistent uprisings led by hill chieftains (e.g., Payakrao of Palakonda, Virabhadra Raju) against British revenue extractions.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note red">
+    
+  
+          <h3 style="color: rgb(185, 28, 28) !important;">2. The Poligar System &amp; Rayalaseema Rebellions</h3>
+          <ul class="bullet-list">
+            <li><strong>Poligars (Palegars):</strong> Feudal military chieftains who held armed forts and gathered village revenues in exchange for maintaining armed troops (legacy of the Vijayanagara Nayankara system).</li>
+            <li><strong>Munro's Pacification Campaign (1800–1801):</strong> Major Thomas Munro forcefully disarmed 80 regional poligars, dismantled their stone forts, and confiscated independent private armies to enforce public order.</li>
+            <li><strong>Uyyalawada Narasimha Reddy's Rebellion (1846):</strong>
+              <div class="sub-point">
+                ▫ Renowned Poligar of Koilkuntla (Kurnool); revolted against the arbitrary reduction of traditional <em>Kattubadi</em> pensions and agrarian distress.<br>
+                ▫ Led an armed guerrilla rebellion of thousands across Koilkuntla, Giddalur, and Nallamala forests; captured and publicly hanged in 1847.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>IV. Colonial Scholars, Administrators &amp; Missionary Impact</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note teal">
+    
+  
+          <h3 style="color: rgb(15, 118, 110) !important;">1. Munro, Mackenzie &amp; C.P. Brown</h3>
+          <ul class="bullet-list">
+            <li><strong>Sir Thomas Munro:</strong> Principal Collector of the Ceded Districts (1800–1807) and Governor of Madras; instituted the <strong>Ryotwari System</strong> (direct state-peasant settlement, eliminating intermediaries); revered by peasants as <em>"Munrolappa"</em>.</li>
+            <li><strong>Colin Mackenzie:</strong> First Surveyor General of India; amassed the famous <strong>Mackenzie Manuscripts</strong> (Kaifiyats, village land charters, local histories, stone inscriptions) preserving valuable Andhra regional history.</li>
+            <li><strong>Charles Philip Brown (C.P. Brown):</strong>
+              <div class="sub-point">
+                ▫ British civilian judge known as the savior of classical Telugu literature.<br>
+                ▫ Rescued, edited, and printed decaying palm-leaf manuscripts including <em>Vemana Satakamu</em> (1829), <em>Andhra Mahabharatamu</em>, and <em>Palnati Vira Charitra</em>.<br>
+                ▫ Compiled the comprehensive <strong>English-Telugu Dictionary (1852)</strong> and established free libraries in Cuddapah.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note green">
+    
+  
+          <h3 style="color: rgb(21, 128, 61) !important;">2. Role of Christian Missionaries &amp; Western Education</h3>
+          <ul class="bullet-list">
+            <li><strong>Key Missionary Societies:</strong> London Missionary Society (Visakhapatnam, 1805), Church Missionary Society (Masulipatnam, 1841), American Evangelical Lutheran Mission (Guntur, 1842 under John Christian Frederick Heyer).</li>
+            <li><strong>Noble College (Machilipatnam, 1843):</strong> Established by Rev. Robert Noble; pioneered modern higher English education in Andhra.</li>
+            <li><strong>Social and Linguistic Awakenings:</strong>
+              <div class="sub-point">
+                ▫ Established modern printing presses, casting Telugu typesets for translation of biblical and secular texts.<br>
+                ▫ Opened early modern schools for depressed classes (Dalits/Panchamas) and women, challenging age-old social exclusion.<br>
+                ▫ Prompted orthodox Hindu society to establish reform associations to counter proselytization.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>V. Social Reformers &amp; The Modern Andhra Renaissance</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th>Reformer</th>
+            <th>Primary Centers</th>
+            <th>Ideological Focus &amp; Organizations</th>
+            <th>Pioneering Milestones &amp; Literature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Kandukuri Veeresalingam</strong><br>(1848–1919)<br><em>"Father of Andhra Renaissance"</em></td>
+            <td>Rajahmundry</td>
+            <td>Widow remarriage, female education, anti-nautch movement (abolition of Devadasi system), Brahmo Samaj.<br>• Founded <em>Rajahmundry Social Reform Association (1878)</em> and <em>Hithakarini Samaj (1908)</em>.</td>
+            <td>• Conducted the first widow remarriage in Andhra (Dec 11, 1881).<br>• Established the first girls' school in Dowleswaram (1874).<br>• Authored <em>Rajasekhara Charitra</em> (first modern Telugu novel) and <em>Vivekavardhani</em> journal.</td>
+          </tr>
+          <tr>
+            <td><strong>Raghupati Venkataratnam Naidu</strong><br>(1862–1939)<br><em>"Maharshi"</em></td>
+            <td>Kakinada, Machilipatnam</td>
+            <td>Social purity, champion of the Anti-Nautch movement, upliftment of depressed classes (Harijan education), Brahmo Samaj.</td>
+            <td>• Principal of PR College, Kakinada; admitted Dalit students and provided free boarding.<br>• Formed orphanages and promoted moral education.<br>• Revered as an apostle of the Prarthana and Brahmo Samaj in coastal Andhra.</td>
+          </tr>
+          <tr>
+            <td><strong>Gurajada Apparao</strong><br>(1862–1915)<br><em>"Mahakavi"</em></td>
+            <td>Vizianagaram</td>
+            <td>Social reform through literature, eradication of child marriage and bride-price (Kanyasulkam), patron of spoken Telugu.</td>
+            <td>• Authored the social reform drama <em>Kanyasulkam</em> (1892) in colloquial spoken dialect.<br>• Wrote patriotic classic poem <em>Desamunu Preminchumanna</em> ("A country does not mean its mud, a country means its people").</td>
+          </tr>
+          <tr>
+            <td><strong>Gidugu Venkata Ramamurthy</strong><br>(1863–1940)<br><em>"Pidugu Gidugu"</em></td>
+            <td>Parlakhemundi, Srikakulam</td>
+            <td><strong>Vyavaharika Bhasha Udyamam</strong> (Spoken/Colloquial Language Movement), tribal upliftment.</td>
+            <td>• Fought against rigid pedantic classical language (Grahya Bhasha) to make Telugu accessible to the masses.<br>• Published the journal <em>Telugu</em>.<br>• Created an alphabet and compiled lexicons for the tribal <strong>Sora language</strong> (Savara tribe).</td>
+          </tr>
+          <tr>
+            <td><strong>Annie Besant &amp; Theosophy</strong></td>
+            <td>Madanapalle (Chittoor)</td>
+            <td>Theosophical education, Home Rule Movement, revival of ancient spiritual heritage.</td>
+            <td>• Established the <strong>Besant Theosophical College (1915)</strong> at Madanapalle.<br>• Rabindranath Tagore translated and set the tune to the National Anthem <em>Jana Gana Mana</em> into English ("Morning Song of India") at this college in 1919.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VI. Library Movement, Nationalist Press &amp; Role of Women</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note purple">
+    
+  
+          <h3 style="color: rgb(107, 33, 168) !important;">1. The Library Movement (Granthalaya Udyamam)</h3>
+          <ul class="bullet-list">
+            <li><strong>Inception:</strong> First public modern library established as <strong>Sri Krishna Devaraya Andhra Bhasha Nilayam (1901)</strong> at Ramkote, Hyderabad, by Komarraju Lakshmana Rao and Nayani Venkata Ranga Rao.</li>
+            <li><strong>Grassroots Spread in Coastal Andhra:</strong>
+              <div class="sub-point">
+                ▫ <em>Sri Rajaraja Narendra Andhra Bhasha Nilayam (1904):</em> Founded at Hanamkonda.<br>
+                ▫ <em>Andhra Desa Granthalaya Sangham (1914):</em> Established at Vijayawada; first state-level library association in India, pioneered by <strong>Ayyanki Venkata Ramanayya</strong> and <strong>Suraneni Venkata Narasimha Rao</strong>.<br>
+                ▫ <strong>Boat Libraries &amp; Walking Libraries:</strong> Libraries circulated books on canal boats and bullock carts across Godavari delta villages to spread mass literacy and national consciousness.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note blue">
+    
+  
+          <h3 style="color: rgb(15, 56, 112) !important;">2. Role of the Press &amp; Political Journalism</h3>
+          <ul class="bullet-list">
+            <li><strong>Early Pioneers:</strong> <em>Vrittanta Manjari</em> (1838, Madras), <em>Hitavadi</em>, and Veeresalingam's reformist journal <em>Vivekavardhani</em> (1874).</li>
+            <li><strong>Andhra Patrika:</strong>
+              <div class="sub-point">
+                ▫ Founded as a weekly in Bombay (1908) by <strong>Kasunathuni Nageswara Rao Pantulu</strong>; shifted to Madras as a daily in 1914.<br>
+                ▫ Acted as the primary medium of political nationalist awareness and cultural revivalism across Telugu homes.
+              </div>
+            </li>
+            <li><strong>Krishna Patrika (1902):</strong> Founded at Machilipatnam by Konda Venkatappayya; edited by <strong>Mutnuri Krishna Rao</strong>; served as an intellectual center for the Swadeshi and Vande Mataram movements.</li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note rose">
+    
+  
+      <h3 style="color: rgb(190, 18, 60) !important;">3. Awakening and Role of Women</h3>
+      <ul class="bullet-list">
+        <li><strong>Pioneering Women Leaders:</strong>
+          <div class="sub-point">
+            ▫ <strong>Kallakuri Rajyalakshmamma:</strong> Actively worked alongside her husband Veeresalingam, managing the Widow Home (Vidhava Saranalayam) in Rajahmundry.<br>
+            ▫ <strong>Duvvuri Subbamma:</strong> Fearless freedom fighter from East Godavari; first Andhra woman to undergo rigorous prison sentences for nationalist speeches; led civil disobedience.<br>
+            ▫ <strong>Ponaka Kanakamma:</strong> Founded the <em>Sri Kasturidevi Vidyalayam</em> for girls at Nellore (1923), inspired by Mahatma Gandhi.<br>
+            ▫ <strong>Dr. Durgabai Deshmukh:</strong> Organized the Andhra Mahila Sabha in Madras (1937), training thousands of destitute women in nursing, crafts, and social service.
+          </div>
+        </li>
+      </ul>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VII. Folk Traditions, Tribal Movements &amp; Subaltern Culture</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note teal">
+    
+  
+          <h3 style="color: rgb(15, 118, 110) !important;">1. Folk Arts &amp; Oral Performance Traditions</h3>
+          <ul class="bullet-list">
+            <li><strong>Burra Katha:</strong> Dynamic narrative musical storytelling using the Tambura and Andelu; widely adopted during national and communist movements to mobilize rural peasants.</li>
+            <li><strong>Oggu Katha:</strong> Traditional oral ballad performance among the Kuruma and Golla shepherd communities, chanting heroic pastoral epics of Mallanna and Beerappa.</li>
+            <li><strong>Tolu Bommalata (Shadow Puppetry):</strong> Rural leather puppet theaters dramatizing episodes from the Ramayana and Mahabharata, surviving predominantly around Nimmalakunta (Anantapur).</li>
+            <li><strong>Jamukula Katha &amp; Harikatha:</strong> Itinerant balladeers and storytellers bringing philosophical, historical, and mythological lessons directly to village platforms.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note green">
+    
+  
+          <h3 style="color: rgb(21, 128, 61) !important;">2. Tribal Identity &amp; The Manyam Rebellion</h3>
+          <ul class="bullet-list">
+            <li><strong>Tribal Grievances:</strong> Imposition of the 1882 Madras Forest Act banned traditional <em>Podu</em> (slash-and-burn) cultivation, restricted forest produce collection, and introduced the oppressive <em>Muttadari</em> extraction system.</li>
+            <li><strong>Alluri Sitarama Raju (1922–1924):</strong>
+              <div class="sub-point">
+                ▫ Led the celebrated <strong>Rampa Rebellion (Manyam Udyamam)</strong> in the Eastern Ghats among Koya and Konda Dora tribesmen.<br>
+                ▫ Executed strategic guerrilla attacks on British police stations (Chintapalli, Krishnadevipeta, Rampachodavaram) to seize arms.<br>
+                ▫ Empathized with subaltern forest dwellers; combined ascetic spiritual devotion with modern armed resistance; captured and martyred in May 1924.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="exam-trick">
+      <ul class="bullet-list">
+        <li><strong>TRAP 1: "Thomas Munro introduced the Zamindari system in the Ceded Districts."</strong> ➔ <strong>FALSE!</strong> Munro was a fierce opponent of the Zamindari intermediary model; he introduced the <strong>Ryotwari system</strong> (direct agreement with the cultivator). Permanent Settlement Zamindari was introduced in the <strong>Northern Circars</strong> in 1802.</li>
+        <li><strong>TRAP 2: "The first public Telugu library was established in Vijayawada."</strong> ➔ <strong>FALSE!</strong> The earliest modern public library was <strong>Sri Krishna Devaraya Andhra Bhasha Nilayam (1901)</strong> established at <strong>Hyderabad</strong> (Ramkote). Vijayawada hosted the formation of the <em>Andhra Desa Granthalaya Sangham</em> in 1914.</li>
+        <li><strong>TRAP 3: "Gurajada Apparao's Kanyasulkam was written in classical literary Grandhika Telugu."</strong> ➔ <strong>FALSE!</strong> Gurajada wrote <em>Kanyasulkam</em> deliberately in <strong>Vyavaharika Bhasha (spoken dialect)</strong> to expose social evils and prove that spoken language is capable of elite dramatic expression.</li>
+        <li><strong>TRAP 4: "C.P. Brown translated Vemana's verses in the 20th century."</strong> ➔ <strong>FALSE!</strong> C.P. Brown translated and published Vemana's poems in <strong>1829</strong> (early 19th century).</li>
+        <li><strong>TRAP 5: "The first English factory in India was established at Machilipatnam."</strong> ➔ <strong>FALSE!</strong> It was the Company's first factory on the <strong>southeastern coast / Bay of Bengal (1611)</strong>. Surat (1608/1612) was their early hub on the western coast.</li>
+      </ul>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky yellow">
+      <strong>Chronological Milestone Hook:</strong><br>
+      European Landing (Machilipatnam, 1605/1611) ➔ Northern Circars Cession (1766) ➔ Battle of Padmanabham (1794) ➔ Ceded Districts to EIC (1800) ➔ Munro's Ryotwari &amp; Poligar Disarmament (1800–1807) ➔ C.P. Brown's Literary Retrieval (1820s) ➔ Uyyalawada Rebellion (1846) ➔ Godavari Anicut/Sir Arthur Cotton (1852) ➔ Kandukuri's Widow Remarriage (1881) ➔ Gurajada's Kanyasulkam (1892) ➔ Library Movement (1901/1914) ➔ Rampa Rebellion (1922–1924).
+    </div></div></div>
+  
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

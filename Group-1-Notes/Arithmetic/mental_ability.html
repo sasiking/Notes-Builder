@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number System - Quantitative Aptitude Master Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg-page: #fbfbf9; --ruled-line: #e3ebf5; --margin-line: #f7a8b8;
+  --ink-blue: #0f3870; --ink-dark: #1e293b; --ink-red: #b91c1c; --ink-green: #15803d;
+  --ink-purple: #6b21a8; --ink-orange: #c2410c; --ink-yellow: #a16207; --ink-teal: #0f766e;
+  --ink-cyan: #0369a1; --ink-indigo: #4338ca; --ink-rose: #be123c; --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85); --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75); --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85); --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75); --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3; --sticky-pink: #ffe4e6; --sticky-blue: #e0f2fe; --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: #cbd5e1; display: flex; justify-content: center; padding: 25px 10px; height: auto; overflow: visible; font-family: 'Kalam', cursive, sans-serif; color: var(--ink-dark); }
+.notebook-container { width: 100%; max-width: 940px; min-height: 1200px; background-color: var(--bg-page); background-image: linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px), linear-gradient(var(--ruled-line) 1px, transparent 1px); background-size: 100% 28px, 100% 28px; background-repeat: repeat-y, repeat; padding: 35px 35px 80px 65px; border-radius: 4px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); line-height: 28px; position: relative; }
+.block-wrapper { position: relative; margin-bottom: 16px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; background: transparent !important; }
+.title-section h1 { font-size: 38px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; background: transparent !important; }
+.title-section .subtitle { font-size: 19px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; background: transparent !important; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+.section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+.canvas-multi-row { display: flex; flex-direction: row; align-items: stretch; gap: 16px; width: 100%; margin-bottom: 16px; }
+.canvas-multi-row > .block-wrapper { flex: 1 1 0; min-width: 0; margin-bottom: 0; }
+.card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+.card-note.rose   { border-left: 6px solid var(--ink-rose) !important; }
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+.card-note.orange h3 { color: var(--ink-orange) !important; }
+.card-note.rose h3   { color: var(--ink-rose) !important; }
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; }
+.dot-point { margin-left: 14px; position: relative; padding-left: 16px; font-size: 15.5px; line-height: 23px; margin-top: 3px; margin-bottom: 5px; }
+.dot-point::before { content: "•"; position: absolute; left: 2px; color: var(--ink-dark); font-weight: 900; font-size: 16px; }
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15.5px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+.sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S SPEED TRICKS & FORMULA HACKS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+.fs-sm { font-size: 12px !important; line-height: 18px !important; }
+.fs-md { font-size: 16px !important; line-height: 24px !important; }
+.fs-lg { font-size: 20px !important; line-height: 28px !important; }
+.fs-xl { font-size: 25px !important; line-height: 32px !important; }
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+.expand-block-wrapper { position: relative; margin: 12px 0; width: 100%; }
+.expand-block-wrapper.blue .reveal-box summary { color: var(--ink-blue); background: #eff6ff; border-color: #93c5fd; }
+.expand-block-wrapper.blue .reveal-box summary::before { color: var(--ink-blue); }
+.expand-block-wrapper.blue .reveal-box[open] summary { background: #dbeafe; }
+.expand-block-wrapper.blue .reveal-content { border-color: #93c5fd; }
+.expand-block-wrapper.green .reveal-box summary { color: var(--ink-green); background: #f0fdf4; border-color: #86efac; }
+.expand-block-wrapper.green .reveal-box summary::before { color: var(--ink-green); }
+.expand-block-wrapper.green .reveal-box[open] summary { background: #dcfce7; }
+.expand-block-wrapper.green .reveal-content { border-color: #86efac; }
+.expand-block-wrapper.yellow .reveal-box summary { color: var(--ink-yellow); background: #fefce8; border-color: #fde047; }
+.expand-block-wrapper.yellow .reveal-box summary::before { color: var(--ink-yellow); }
+.expand-block-wrapper.yellow .reveal-box[open] summary { background: #fef08a; }
+.expand-block-wrapper.yellow .reveal-content { border-color: #fde047; }
+.expand-block-wrapper.purple .reveal-box summary { color: var(--ink-purple); background: #faf5ff; border-color: #d8b4fe; }
+.expand-block-wrapper.purple .reveal-box summary::before { color: var(--ink-purple); }
+.expand-block-wrapper.purple .reveal-box[open] summary { background: #f3e8ff; }
+.expand-block-wrapper.purple .reveal-content { border-color: #d8b4fe; }
+.expand-block-wrapper.red .reveal-box summary { color: var(--ink-red); background: #fef2f2; border-color: #fca5a5; }
+.expand-block-wrapper.red .reveal-box summary::before { color: var(--ink-red); }
+.expand-block-wrapper.red .reveal-box[open] summary { background: #fee2e2; }
+.expand-block-wrapper.red .reveal-content { border-color: #fca5a5; }
+.expand-block-wrapper.teal .reveal-box summary { color: var(--ink-teal); background: #f0fdfa; border-color: #5eead4; }
+.expand-block-wrapper.teal .reveal-box summary::before { color: var(--ink-teal); }
+.expand-block-wrapper.teal .reveal-box[open] summary { background: #ccfbf1; }
+.expand-block-wrapper.teal .reveal-content { border-color: #5eead4; }
+.expand-block-wrapper.amber .reveal-box summary { color: var(--ink-amber); background: #fffbeb; border-color: #fcd34d; }
+.expand-block-wrapper.amber .reveal-box summary::before { color: var(--ink-amber); }
+.expand-block-wrapper.amber .reveal-box[open] summary { background: #fef3c7; }
+.expand-block-wrapper.amber .reveal-content { border-color: #fcd34d; }
+.expand-block-wrapper.orange .reveal-box summary { color: var(--ink-orange); background: #fff7ed; border-color: #fdba74; }
+.expand-block-wrapper.orange .reveal-box summary::before { color: var(--ink-orange); }
+.expand-block-wrapper.orange .reveal-box[open] summary { background: #ffedd5; }
+.expand-block-wrapper.orange .reveal-content { border-color: #fdba74; }
+.expand-block-wrapper.rose .reveal-box summary { color: var(--ink-rose); background: #fff1f2; border-color: #fda4af; }
+.expand-block-wrapper.rose .reveal-box summary::before { color: var(--ink-rose); }
+.expand-block-wrapper.rose .reveal-box[open] summary { background: #ffe4e6; }
+.expand-block-wrapper.rose .reveal-content { border-color: #fda4af; }
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ UPSC & STATE PSC MAINS PRACTICE QUESTIONS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; font-family: 'Inter', sans-serif; }
+.mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+.mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+.eq { position: relative; font-family: 'Inter', sans-serif; font-weight: 700; color: #0f3870; background: rgba(224, 242, 254, 0.75); padding: 1px 6px; border-radius: 4px; border: 1px solid rgba(186, 230, 253, 0.95); display: inline-flex; align-items: center; gap: 4px; line-height: 1.35; margin: 1px 2px; vertical-align: middle; }
+.math-block { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-left: 4px solid var(--ink-purple); border-radius: 6px; padding: 10px 14px; margin: 10px 0; font-family: 'Inter', sans-serif; font-weight: 700; color: var(--ink-dark); font-size: 15px; }
+.fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px; }
+.fraction-top { border-bottom: 2px solid var(--ink-dark); padding-bottom: 2px; }
+.fraction-bottom { padding-top: 2px; }
+.note-image-container { position: relative; margin: 16px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
+.note-image-wrapper { position: relative; overflow: hidden; display: inline-block; min-width: 140px; max-width: 100%; border: 1.5px dashed #94a3b8; border-radius: 6px; padding: 6px; background: #ffffff; box-shadow: var(--shadow); }
+.note-image-wrapper img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; }
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+  
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas"><div class="block-wrapper" draggable="false">
+    
+  <div class="title-section">
+        <div class="badge-tag">UPSC / STATE PSC QUANTITATIVE APTITUDE MASTER BLUEPRINT</div>
+        <h1>Number System - Quantitative Aptitude Master Notes</h1>
+        <div class="subtitle">Complete Taxonomy • Factors vs Multiples • Primes &amp; Composites • Divisibility &amp; Speed Hacks</div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>I. The Tree of Real Numbers</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note blue">
+    
+  
+            <h3 style="font-size: 20px; color: rgb(15, 56, 112) !important;">1. Real Numbers Spectrum</h3>
+            <ul class="bullet-list">
+              <li><strong>Real Numbers (R):</strong> Any number you can place on a regular number line. It includes every whole number, fraction, decimal, and root.</li>
+              <li><strong>Rational Numbers (Q):</strong> Any number that can be written as a clean fraction <span class="fraction"><span class="fraction-top">p</span><span class="fraction-bottom">q</span></span>, where <i>p</i> and <i>q</i> are integers and bottom number <i>q ≠ 0</i>.
+                <div class="sub-point">
+                  ▫ <em>Clean Ending Decimals:</em> Numbers that stop after a few decimal places, like 0.5 (1/2) or 0.75 (3/4).<br>
+                  ▫ <em>Repeating Decimals:</em> Numbers that repeat the same pattern forever, like 0.333... (1/3).
+                </div>
+              </li>
+              <li><strong>Irrational Numbers:</strong> Numbers that cannot be written as a simple fraction. Their decimals go on forever without following any repeating pattern (such as √2, √3, π).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note amber">
+    
+  
+            <h3 style="font-size: 20px; color: rgb(180, 83, 9) !important;">2. Integers, Whole &amp; Natural Numbers</h3>
+            <ul class="bullet-list">
+              <li><strong>Natural Numbers (N):</strong> Daily counting numbers starting from 1: {1, 2, 3, 4, ...}.</li>
+              <li><strong>Whole Numbers (W):</strong> Counting numbers that start from zero: {0, 1, 2, 3, ...}.</li>
+              <li><strong>Integers (Z):</strong> All complete numbers with no decimal part. Includes negative numbers, zero, and positive numbers: {..., -3, -2, -1, 0, 1, 2, 3, ...}.
+                <div class="sub-point">
+                  ▫ <strong>Zero (0):</strong> It is an integer, but it is neither positive nor negative.<br>
+                  ▫ <strong>Even/Odd Rule:</strong> 0 is strictly an <strong>even number</strong> because dividing 0 by 2 gives zero remainder.<br>
+                  ▫ <strong>Smallest Positive Even Number:</strong> 2. In the full integer line, even numbers stretch infinitely to -∞.
+                </div>
+              </li>
+            </ul>
+            <div class="sticky yellow">
+              📌 <strong>Repeating Decimal Shortcut:</strong><br>
+              • If one digit repeats: <span class="eq">0.aaaa... = a / 9</span><br>
+              • Mixed pattern: <span class="eq">0.ab̅b̅... = (ab - a) / 90</span><br>
+              • Example: <span class="eq">0.1666... = (16 - 1) / 90 = 15 / 90 = 1 / 6</span>
+            </div>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>II. Factors, Multiples, Primes &amp; Composite Numbers</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note green">
+    
+  
+            <h3 style="font-size: 20px; color: rgb(21, 128, 61) !important;">1. Easy Definitions: Factors &amp; Multiples</h3>
+            <ul class="bullet-list">
+              <li><strong>Factor (Divisor):</strong> A number that divides another number completely with zero remainder.
+                <div class="sub-point">
+                  ▫ If <i>a ÷ b</i> leaves no remainder, then <strong>b is a factor of a</strong>.<br>
+                  ▫ Factors are always limited (finite) and can never be bigger than the number itself.<br>
+                  ▫ Example: The factors of 12 are <strong>1, 2, 3, 4, 6, and 12</strong> (6 factors in total).
+                </div>
+              </li>
+              <li><strong>Multiple:</strong> The result you get by multiplying a number by 1, 2, 3, and so on.
+                <div class="sub-point">
+                  ▫ Multiples of 6 are 6, 12, 18, 24, 30... and they go on forever (infinite).
+                </div>
+              </li>
+              <li><strong>Perfect Number:</strong> A number that equals the sum of all its factors, leaving out the number itself.
+                <div class="sub-point">
+                  ▫ Example: 6 has factors 1, 2, and 3. Add them: 1 + 2 + 3 = 6. The next perfect number is 28 (1 + 2 + 4 + 7 + 14 = 28).
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note purple">
+    
+  
+            <h3 style="font-size: 20px; color: rgb(107, 33, 168) !important;">2. Primes vs Composite Numbers</h3>
+            <ul class="bullet-list">
+              <li><strong>Prime Number:</strong> A whole number greater than 1 that can be divided evenly by <strong>only two numbers: 1 and itself</strong>.
+                <div class="sub-point">
+                  ▫ Examples: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29...
+                </div>
+              </li>
+              <li><strong>Composite Number:</strong> A whole number greater than 1 that has <strong>more than two factors</strong> (meaning another number can divide it evenly).
+                <div class="sub-point">
+                  ▫ <strong>Smallest Composite Number:</strong> <strong>4</strong> (divisible by 1, 2, 4).<br>
+                  ▫ <strong>Smallest Odd Composite Number:</strong> <strong>9</strong> (divisible by 1, 3, 9).<br>
+                  ▫ Any composite number can be broken down into prime factors (like 12 = 2 × 2 × 3).
+                </div>
+              </li>
+              <li><strong>The Special Number 1:</strong> 1 has only one single factor (itself), so 1 is <span class="hl-pink">neither prime nor composite</span>.</li>
+              <li><strong>The Number 2:</strong> 2 is the only <strong>even prime number</strong> and the smallest prime of all.</li>
+            </ul>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note teal">
+    
+  
+            <h3 style="font-size: 20px; color: rgb(15, 118, 110) !important;">3. Useful Prime Rules</h3>
+            <ul class="bullet-list">
+              <li><strong>Prime Counts to Remember:</strong>
+                <div class="sub-point">
+                  ▫ From 1 to 50 ➔ <strong>15 primes</strong><br>
+                  ▫ From 51 to 100 ➔ <strong>10 primes</strong><br>
+                  ▫ From 1 to 100 ➔ <strong>25 primes</strong><br>
+                  ▫ From 1 to 200 ➔ <strong>46 primes</strong>
+                </div>
+              </li>
+              <li><strong>The 6k ± 1 Rule:</strong> Every prime number greater than 3 can be written in the form <span class="eq">6k ± 1</span> (where <i>k</i> is an integer).
+                <div class="sub-point">
+                  ▫ Note: Not every number in this form is a prime (for instance, 25 and 35 fit the form but are composite).
+                </div>
+              </li>
+              <li><strong>Twin Primes:</strong> Prime numbers that have a gap of 2 between them (e.g., 3 and 5, 5 and 7, 11 and 13, 17 and 19).</li>
+              <li><strong>Co-Prime Numbers:</strong> Any two numbers that share no common factor other than 1. Neither number has to be prime on its own (for example, 8 and 9 are co-prime because HCF is 1).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note orange">
+    
+  
+            <h3 style="font-size: 20px; color: rgb(194, 65, 12) !important;">4. Finding Total Factors Quickly</h3>
+            <ul class="bullet-list">
+              <li><strong>Prime Factorization:</strong> Write the number as a product of prime powers:
+                <div class="math-block">N = p<sup>a</sup> × q<sup>b</sup> × r<sup>c</sup></div>
+              </li>
+              <li><strong>Total Number of Divisors:</strong> Add 1 to each exponent and multiply them together:
+                <div class="math-block">Total Factors = (a + 1)(b + 1)(c + 1)</div>
+              </li>
+              <li><strong>Sum of All Factors:</strong>
+                <div class="math-block">Sum = <span class="fraction"><span class="fraction-top">p<sup>a+1</sup> - 1</span><span class="fraction-bottom">p - 1</span></span> × <span class="fraction"><span class="fraction-top">q<sup>b+1</sup> - 1</span><span class="fraction-bottom">q - 1</span></span> × <span class="fraction"><span class="fraction-top">r<sup>c+1</sup> - 1</span><span class="fraction-bottom">r - 1</span></span></div>
+              </li>
+              <li><strong>Total Prime Factors:</strong> Simply add the powers together: <span class="eq">a + b + c</span>.</li>
+              <li><strong>Distinct Prime Factors:</strong> The count of unique prime bases: 3 (p, q, and r).</li>
+            </ul>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>III. Rapid Divisibility Rules Matrix</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 15%;">Divisor</th>
+              <th style="width: 45%;">Simple Test Rule</th>
+              <th style="width: 40%;">Quick Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>2, 4, 8, 16</strong></td>
+              <td>
+                • 2: Last digit must be even.<br>
+                • 4: Last 2 digits must form a number divisible by 4.<br>
+                • 8: Last 3 digits must form a number divisible by 8.<br>
+                • 16: Last 4 digits must be divisible by 16.
+              </td>
+              <td>
+                • 57,936: Check only the last three digits 936. Since 936 ÷ 8 = 117, the whole number is divisible by 8.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>3 &amp; 9</strong></td>
+              <td>
+                • 3: Add all digits; the sum must divide by 3.<br>
+                • 9: Add all digits; the sum must divide by 9.
+              </td>
+              <td>
+                • 48,357: Sum of digits = 4 + 8 + 3 + 5 + 7 = 27. Since 27 divides by 9, the number divides by both 3 and 9.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>5 &amp; 10</strong></td>
+              <td>
+                • 5: The last digit must end in 0 or 5.<br>
+                • 10: The last digit must end in 0.
+              </td>
+              <td>
+                • Useful for finding trailing zeros in factorials.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>6</strong></td>
+              <td>• The number must divide by both 2 and 3 at the same time.</td>
+              <td>• It must be an even number whose digits add up to a multiple of 3.</td>
+            </tr>
+            <tr>
+              <td><strong>7</strong></td>
+              <td>• Double the last digit and subtract it from the remaining number. The result must divide by 7 (or equal 0).</td>
+              <td>• 343: Double 3 is 6. Subtract from 34: 34 - 6 = 28. Since 28 ÷ 7 = 4, 343 divides by 7.</td>
+            </tr>
+            <tr>
+              <td><strong>11</strong></td>
+              <td>• Take the sum of digits in odd places and subtract the sum of digits in even places. The difference must be 0 or a multiple of 11.</td>
+              <td>• 84,953: (8 + 9 + 3) - (4 + 5) = 20 - 9 = 11. Divisible by 11.</td>
+            </tr>
+            <tr>
+              <td><strong>Combined Rules</strong></td>
+              <td>• Split into two co-prime factors and test each one separately.</td>
+              <td>
+                • Divisible by 72: Check 8 and 9.<br>
+                • Divisible by 88: Check 8 and 11.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>IV. Cyclicity, Unit Digits &amp; Remainder Theorems</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note blue">
+    
+  
+            <h3 style="font-size: 20px; color: rgb(15, 56, 112) !important;">Unit Digit Speed Rules</h3>
+            <ul class="bullet-list">
+              <li><strong>Always Same (0, 1, 5, 6):</strong> Raised to any positive power, they always end in the same digit:
+                <div class="sub-point">
+                  ▫ (...0)<sup>n</sup> ends in 0 | (...1)<sup>n</sup> ends in 1<br>
+                  ▫ (...5)<sup>n</sup> ends in 5 | (...6)<sup>n</sup> ends in 6
+                </div>
+              </li>
+              <li><strong>Repeat Every 2 Steps (4, 9):</strong>
+                <div class="sub-point">
+                  ▫ 4<sup>odd</sup> ends in 4 | 4<sup>even</sup> ends in 6<br>
+                  ▫ 9<sup>odd</sup> ends in 9 | 9<sup>even</sup> ends in 1
+                </div>
+              </li>
+              <li><strong>Repeat Every 4 Steps (2, 3, 7, 8):</strong> Divide the power by 4 and use the remainder:
+                <div class="sub-point">
+                  ▫ Remainder 1 ➔ Base<sup>1</sup><br>
+                  ▫ Remainder 2 ➔ Base<sup>2</sup><br>
+                  ▫ Remainder 3 ➔ Base<sup>3</sup><br>
+                  ▫ Remainder 0 ➔ Base<sup>4</sup>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note amber">
+    
+  
+            <h3 style="font-size: 20px; color: rgb(180, 83, 9) !important;">Remainders &amp; Trailing Zeros</h3>
+            <ul class="bullet-list">
+              <li><strong>Basic Division Rule:</strong>
+                <div class="math-block">Dividend = (Divisor × Quotient) + Remainder</div>
+              </li>
+              <li><strong>Step-by-Step Division:</strong> If dividing a number step-by-step by divisors <i>d<sub>1</sub></i> and <i>d<sub>2</sub></i> leaves remainders <i>r<sub>1</sub></i> and <i>r<sub>2</sub></i>, the original number is: <span class="eq">N = d<sub>1</sub>(d<sub>2</sub>k + r<sub>2</sub>) + r<sub>1</sub></span>.</li>
+              <li><strong>Zeros at the End of N!:</strong> Count how many times 5 divides into the factorial:
+                <div class="math-block">Trailing Zeros = [N / 5] + [N / 25] + [N / 125] + ...</div>
+                <div class="sub-point">
+                  ▫ Example for 100!: 100/5 = 20; 100/25 = 4 ➔ 20 + 4 = <span class="eq">24 trailing zeros</span>.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>V. Visual Map, Formulas &amp; Speed Recall Keys</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky yellow">
+        <h4 style="color:var(--ink-blue); font-size:20px;">⚡ Topper's Mnemonics &amp; Fast Recall Maps</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; font-size:16px;">
+          <div>
+            • <strong>NUMBER GROUP CHAIN:</strong><br>
+            ➔ <span class="hl-pink">N ⊂ W ⊂ Z ⊂ Q ⊂ R</span><br>
+            ➔ Natural ⊂ Whole ⊂ Integers ⊂ Rationals ⊂ Real Numbers.<br>
+            • <strong>FACTOR COUNT COMPARISON:</strong><br>
+            ➔ Prime: Exactly 2 factors (1 and itself).<br>
+            ➔ Composite: More than 2 factors (at least 3).<br>
+            ➔ Number 1: Only 1 factor (stands alone).
+          </div>
+          <div>
+            • <strong>HOW TO TEST IF N IS PRIME:</strong><br>
+            1. Find a whole number <i>k</i> so that <i>k<sup>2</sup> ≥ N</i>.<br>
+            2. Check if <i>N</i> divides by any prime number up to <i>k</i>.<br>
+            3. If none can divide it, <strong>N is prime!</strong><br>
+            • <strong>TWO PRIMES MULTIPLIED:</strong><br>
+            ➔ If <i>N = p × q</i>, total factors = (1 + 1)(1 + 1) = <strong>4</strong>.
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="svg-box">
+        <svg viewBox="0 0 850 190" width="100%" height="190" style="font-family:'Kalam', cursive;">
+          <rect x="290" y="10" width="270" height="38" rx="6" fill="#dbeafe" stroke="#1e40af" stroke-width="1.8"></rect>
+          <text x="425" y="30" text-anchor="middle" font-size="14.5" fill="#1e40af" font-weight="bold">REAL NUMBER SYSTEM CLASSIFICATION</text>
+          <text x="425" y="43" text-anchor="middle" font-size="11" fill="#334155">Complete Numerical Hierarchy</text>
+
+          <path d="M 425 48 L 425 76" stroke="#64748b" stroke-width="1.8"></path>
+          <path d="M 160 76 L 690 76" stroke="#64748b" stroke-width="1.8"></path>
+
+          <path d="M 160 76 L 160 102" stroke="#64748b" stroke-width="1.8"></path>
+          <path d="M 690 76 L 690 102" stroke="#64748b" stroke-width="1.8"></path>
+
+          <!-- Rational Branch -->
+          <rect x="50" y="102" width="220" height="75" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"></rect>
+          <text x="160" y="122" text-anchor="middle" font-size="13" fill="#15803d" font-weight="bold">RATIONAL NUMBERS (Q)</text>
+          <text x="160" y="139" text-anchor="middle" font-size="11" fill="#334155">• Integers: Negative, Zero, Positive</text>
+          <text x="160" y="155" text-anchor="middle" font-size="11" fill="#475569">• Whole {0, 1, 2...} and Natural {1, 2...}</text>
+          <text x="160" y="169" text-anchor="middle" font-size="10.5" fill="#475569">• Primes (2 factors) &amp; Composites (&gt;2)</text>
+
+          <!-- Middle Note -->
+          <text x="425" y="140" text-anchor="middle" font-size="12" fill="#b91c1c" font-weight="bold">REAL NUMBERS (R)</text>
+
+          <!-- Irrational Branch -->
+          <rect x="580" y="102" width="220" height="75" rx="6" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"></rect>
+          <text x="690" y="122" text-anchor="middle" font-size="13" fill="#b91c1c" font-weight="bold">IRRATIONAL NUMBERS</text>
+          <text x="690" y="139" text-anchor="middle" font-size="11" fill="#334155">• Non-terminating, Non-repeating</text>
+          <text x="690" y="155" text-anchor="middle" font-size="11" fill="#475569">• Roots: √2, √3, √5, √7</text>
+          <text x="690" y="169" text-anchor="middle" font-size="10.5" fill="#475569">• Constants: π, e</text>
+        </svg>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VI. Exam-Trick Boxes (Avoid Common Traps!)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="exam-trick">
+        <ul class="bullet-list" style="margin-top:2px;">
+          <li><strong>TRAP 1: "1 is a prime number."</strong> ➔ <strong>WRONG!</strong> 1 has only one single factor (itself). A prime must have exactly two distinct factors. So 1 is neither prime nor composite.</li>
+          <li><strong>TRAP 2: "All composite numbers are even."</strong> ➔ <strong>WRONG!</strong> 9 is the smallest odd composite number (factors: 1, 3, 9). Other odd composites include 15, 21, 25, 27, 33.</li>
+          <li><strong>TRAP 3: "A factor and a multiple are the exact same thing."</strong> ➔ <strong>WRONG!</strong> A factor divides a number completely (factors of 12 are 1, 2, 3, 4, 6, 12). A multiple is the result of multiplying (multiples of 12 are 12, 24, 36, 48...). Factors stop; multiples go on forever.</li>
+          <li><strong>TRAP 4: "Two numbers must be prime to be co-prime."</strong> ➔ <strong>WRONG!</strong> Co-prime simply means their common divisor is only 1. For example, 14 and 15 are both composite, but HCF(14, 15) = 1, so they are co-prime.</li>
+          <li><strong>TRAP 5: "π and 22/7 are both rational numbers."</strong> ➔ <strong>WRONG!</strong> 22/7 is a rational fraction used as an estimate. The real π is an <strong>irrational number</strong> whose decimals never stop and never repeat.</li>
+        </ul>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VII. Latest Developments: Cryptography, Computing &amp; Primes</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note blue">
+    
+  
+            <h3 style="font-size: 20px; color: rgb(15, 56, 112) !important;">1. Prime Numbers in Digital Security</h3>
+            <ul class="bullet-list">
+              <li><strong>RSA Encryption Security:</strong> Online banking, UPI transactions, and data security rely on the fact that multiplying two huge prime numbers is easy, but factoring their large product back into primes takes computers years.</li>
+              <li><strong>Post-Quantum Encryption:</strong> As quantum computers develop, national security systems are adopting lattice-based encryption algorithms to stay safe against ultra-fast prime factorization.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note green">
+    
+  
+            <h3 style="font-size: 20px; color: rgb(21, 128, 61) !important;">2. Great Internet Mersenne Prime Search</h3>
+            <ul class="bullet-list">
+              <li><strong>Mersenne Primes:</strong> Prime numbers written in the form <span class="eq">M<sub>p</sub> = 2<sup>p</sup> - 1</span>, where the power <i>p</i> is also prime.</li>
+              <li><strong>Record Computing Milestones:</strong> Volunteer networks across the globe continue to discover giant prime numbers millions of digits long, helping verify hardware stability and test new algorithms.</li>
+            </ul>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VIII. Practice Check &amp; Step-by-Step Problems</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mcq-card">
+        <div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><span class="mcq-badge">Factors &amp; Composites • Question 1</span></div>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q1. Which of the following statements is/are correct?<br>
+          1. The smallest composite number is 4.<br>
+          2. The number of factors of any prime number is always two.<br>
+          3. Two composite numbers cannot be co-prime to each other.
+        </div>
+        <div class="mcq-options">
+          1) 1 and 2 only<br>
+          2) 2 and 3 only<br>
+          3) 1 and 3 only<br>
+          4) 1, 2 and 3
+        </div>
+        <div class="mcq-solution-wrapper" style="position: relative; margin-top: 8px;"><details class="reveal-box">
+          <summary>Show Step-by-Step Solution</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">1) 1 and 2 only</span>.<br>
+              ▫ <strong>Statement 1 is correct:</strong> 4 is the smallest composite number (factors are 1, 2, 4).<br>
+              ▫ <strong>Statement 2 is correct:</strong> Every prime number has exactly two factors: 1 and itself.<br>
+              ▫ <strong>Statement 3 is incorrect:</strong> Two composite numbers can be co-prime if they share no common factor other than 1 (like 9 and 16, where HCF is 1).
+            </div>
+          </div>
+        </details></div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mcq-card">
+        <div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><span class="mcq-badge">Factor Count • Question 2</span></div>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q2. How many positive divisors (factors) does the composite number 360 have?
+        </div>
+        <div class="mcq-options">
+          1) 18<br>
+          2) 20<br>
+          3) 24<br>
+          4) 30
+        </div>
+        <div class="mcq-solution-wrapper" style="position: relative; margin-top: 8px;"><details class="reveal-box">
+          <summary>Show Step-by-Step Solution</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">3) 24</span>.<br>
+              ▫ <strong>Prime Breakdown of 360:</strong> 360 = 36 × 10 = 2<sup>3</sup> × 3<sup>2</sup> × 5<sup>1</sup>.<br>
+              ▫ <strong>Rule:</strong> Total factors = (a + 1)(b + 1)(c + 1).<br>
+              ▫ <strong>Calculation:</strong> (3 + 1)(2 + 1)(1 + 1) = 4 × 3 × 2 = <strong>24 factors</strong>.
+            </div>
+          </div>
+        </details></div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>IX. Analytical Problem Solving &amp; Proof Framework</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mains-section">
+        <div class="mains-q-item">
+            
+          
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Analytical Mathematics • 10 Marks</span> 
+            <strong>Q. "Explain why the number 1 is classified as neither prime nor composite, and prove that there are infinitely many prime numbers."</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;" open="">
+            <summary>View Analytical Proof Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Answer Framework:</strong><br>
+                • <strong>Why 1 is Neither Prime nor Composite:</strong><br>
+                ▫ A prime number must have exactly two distinct factors (1 and itself). 1 has only one factor (1), so it cannot be prime.<br>
+                ▫ A composite number must have more than two factors. 1 does not meet this condition either.<br>
+                ▫ Leaving 1 out keeps prime factorization unique for every number.<br>
+                • <strong>Euclid's Simple Proof:</strong><br>
+                ▫ Suppose there were only a limited list of prime numbers: {p<sub>1</sub>, p<sub>2</sub>, ..., p<sub>n</sub>}.<br>
+                ▫ Multiply them all together and add 1: <span class="eq">P = (p<sub>1</sub> × p<sub>2</sub> × ... × p<sub>n</sub>) + 1</span>.<br>
+                ▫ If you divide <i>P</i> by any prime in our list, it always leaves a remainder of 1.<br>
+                ▫ So <i>P</i> must either be a brand new prime number itself, or be divisible by a prime not in our list.<br>
+                • <strong>Conclusion:</strong> Prime numbers can never run out; they are infinite.
+              </div>
+            </div>
+          </details>
+        
+    
+  </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div style="text-align:center; font-family:'Patrick Hand', cursive; font-size:18px; color:var(--ink-blue); margin-top:16px;">
+        ★ Number System Master Notes Complete • Print-Perfect &amp; Exam-Ready ★
+      </div></div></div>
+  
+</body>
+</html>

@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../mobile-pwa.css">
+<meta charset="UTF-8">
+
+<title>Indian Economy Chapter 1 Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page: #fbfbf9;
+  --ruled-line: #e3ebf5;
+  --margin-line: #f7a8b8;
+  --ink-blue: #0f3870;
+  --ink-dark: #1e293b;
+  --ink-red: #b91c1c;
+  --ink-green: #15803d;
+  --ink-purple: #6b21a8;
+  --ink-orange: #c2410c;
+  --ink-yellow: #a16207;
+  --ink-teal: #0f766e;
+  --ink-cyan: #0369a1;
+  --ink-indigo: #4338ca;
+  --ink-rose: #be123c;
+  --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85);
+  --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75);
+  --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85);
+  --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75);
+  --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3;
+  --sticky-pink: #ffe4e6;
+  --sticky-blue: #e0f2fe;
+  --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body { 
+  background-color: #cbd5e1; 
+  display: flex; 
+  justify-content: center; 
+  padding: 25px 10px; 
+  height: auto; 
+  overflow: visible; 
+  font-family: 'Kalam', cursive, sans-serif;
+  color: var(--ink-dark);
+}
+
+.notebook-container { 
+  width: 100%;
+  max-width: 940px;
+  min-height: 1200px;
+  background-color: var(--bg-page);
+  background-image: 
+    linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px),
+    linear-gradient(var(--ruled-line) 1px, transparent 1px);
+  background-size: 100% 28px, 100% 28px;
+  background-repeat: repeat-y, repeat;
+  padding: 35px 35px 80px 65px;
+  border-radius: 4px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15); 
+  line-height: 28px;
+  position: relative;
+}
+
+.block-wrapper { position: relative; margin-bottom: 16px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; }
+.title-section h1 { font-size: 36px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; }
+.title-section .subtitle { font-size: 18px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+
+.section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+
+.card-note { 
+  background: rgba(255,255,255,0.88); 
+  border: 1.5px solid #cbd5e1; 
+  border-radius: 6px; 
+  padding: 12px 16px; 
+  box-shadow: var(--shadow); 
+  margin-bottom: 12px; 
+}
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; }
+
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15.5px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S RED ALERT: EXAM TRAPS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+
+.svg-box { margin: 16px 0; padding: 10px; background: #ffffff; border-radius: 6px; box-shadow: var(--shadow); }
+
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ UPSC & APPSC MAINS PRACTICE QUESTIONS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; font-family: 'Inter', sans-serif; }
+
+.mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+.mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas">
+
+    <!-- TITLE SECTION -->
+    <div class="block-wrapper">
+      <div class="title-section">
+        <div class="badge-tag">APPSC / UPSC MAINS PAPER-IV MASTER BLUEPRINT</div>
+        <h1>Chapter 1: Major Challenges of Indian Economy</h1>
+        <div class="subtitle">Growth Cycles • Sectoral Bottlenecks • External Imbalances • Banking, Crime &amp; Inclusive Growth</div>
+      </div>
+    </div>
+
+    <!-- SECTION I: GROWTH CYCLES & TRAJECTORY -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>I. Inconsistent Economic Growth Trajectory</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note blue">
+            <h3 style="font-size: 20px;">1. Growth Trends Across Eras</h3>
+            <ul class="bullet-list">
+              <li><strong>Pre-LPG Era (1947–1991):</strong> Averaged ~3.5% growth[cite: 10]. High state control, public sector monopoly, and import substitution caused low output[cite: 10].</li>
+              <li><strong>LPG Reforms Era (1991–2019):</strong> Growth accelerated to 6%–10% bracket[cite: 10]. India became one of the fastest-growing major economies[cite: 10].</li>
+              <li><strong>COVID-19 Shock &amp; Bounce (2019–2023):</strong> Slumped to ~4% (2019-20), then crashed by -7.3% in 2020 (pandemic)[cite: 10]. Rebounded to 6%–7% via government capex and exports[cite: 10].</li>
+              <li><strong>Present Outlook:</strong> Sustaining 6.0%–6.5% run rate[cite: 10]. Main engines: Digitalization, PLI push, and Gati Shakti[cite: 10].</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note amber">
+            <h3 style="font-size: 20px;">2. Causes &amp; Consequences of Inconsistency</h3>
+            <ul class="bullet-list">
+              <li><strong>Why Growth Fluctuate:</strong> Frequent policy changes[cite: 10], monsoon risks[cite: 10], lack of logistics[cite: 10], large informal workforce[cite: 10], and global price spikes[cite: 10].</li>
+              <li><strong>Damaging Outcomes:</strong>
+                <div class="sub-point">
+                  ▫ <em>Job Uncertainty:</em> Unemployment hovers around 5.5%–6.5%[cite: 10]; high rural hidden underemployment[cite: 10].<br>
+                  ▫ <em>Extreme Wealth Divide:</em> Top 10% hold 76%–78% of national wealth; bottom 50% get only 4%–6%[cite: 10].<br>
+                  ▫ <em>Fiscal Deficit Pressure:</em> Tax drop during slowdowns pushes deficit up (peaked at 9.3% in FY21, now 5.1%–5.6%)[cite: 10].
+                </div>
+              </li>
+            </ul>
+            <div class="sticky yellow">
+              📌 <strong>Memory Catch:</strong> Long-term steady policy + big public spending on roads/rail (Gati Shakti) is key to breaking erratic growth cycles[cite: 10].
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION II: SECTORAL BOTTLENECKS (AGRI & MFG) -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>II. Sectoral Gaps: Agriculture &amp; Manufacturing</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="table-block-wrapper">
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 18%;">Sector</th>
+              <th style="width: 25%;">GDP Share vs Jobs</th>
+              <th style="width: 27%;">Key Reasons for Low Growth</th>
+              <th style="width: 30%;">Fixes &amp; Government Schemes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Agriculture</strong></td>
+              <td>• <strong>16% of GDP</strong>[cite: 10].<br>• Supports <strong>~46.1%</strong> population[cite: 10].<br>• GVA growth at 3.0%–4.5%[cite: 10].</td>
+              <td>• Tiny plot sizes[cite: 10].<br>• Dependence on rains[cite: 10].<br>• Low private capital (&lt;2%)[cite: 10].<br>• Heavy subsidy costs (fertilizer is 2nd largest after food)[cite: 10].</td>
+              <td>• <strong>PMKSY:</strong> Drip/sprinkler water supply[cite: 10].<br>• <strong>PMFBY:</strong> Crop damage insurance[cite: 10].<br>• <strong>e-NAM:</strong> Direct pan-India mandis[cite: 10].<br>• <strong>PM Kisan Sampada:</strong> Cold storage hubs[cite: 10].</td>
+            </tr>
+            <tr>
+              <td><strong>Manufacturing</strong></td>
+              <td>• <strong>17% of GVA</strong>[cite: 10].<br>• Employs only <strong>11%</strong> (6.5 Cr)[cite: 10].<br>• Goal: 27% by 2047[cite: 10].</td>
+              <td>• Tough labor rules and red tape[cite: 10].<br>• Costly power &amp; slow transport[cite: 10].<br>• Poor tech adoption among MSMEs[cite: 10].<br>• Low spending on R&amp;D[cite: 10].</td>
+              <td>• <strong>PLI Scheme:</strong> Production incentives in 14 key areas[cite: 10].<br>• <strong>PM-MITRA:</strong> World-class textile parks[cite: 10].<br>• <strong>Bharatmala &amp; Sagarmala:</strong> Road &amp; port cargo speed[cite: 10].</td>
+            </tr>
+            <tr>
+              <td><strong>MSME Sector</strong></td>
+              <td>• <strong>29% of GDP</strong>[cite: 10].<br>• <strong>40% of Exports</strong>[cite: 10].<br>• 7.5 Crore workers (62% of jobs)[cite: 10].</td>
+              <td>• 95% units are unorganized[cite: 10].<br>• Difficult access to bank credit.<br>• Lack of access to modern tools.</td>
+              <td>• <strong>Mudra Yojana:</strong> Collateral-free seed money[cite: 10].<br>• <strong>Emergency Credit Line:</strong> Liquidity support.<br>• Digital lending portals.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION III: INFLATION, OIL, BOP & RUPEE -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>III. Price Spikes, Oil Dependency &amp; External Trade</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note purple">
+            <h3 style="font-size: 20px;">1. Inflation &amp; The Oil Price Nexus</h3>
+            <ul class="bullet-list">
+              <li><strong>Oil Import Trap:</strong> India imports &gt;85% of crude oil[cite: 10]. Price swings ($40 in 2020 $\rightarrow$ $120+ in 2022 $\rightarrow$ $70–$90 in 2024–26) hit fuel directly[cite: 10].</li>
+              <li><strong>Cost Pass-Through:</strong> Fuel hike raises freight and transport charges, driving up everyday food prices[cite: 10].</li>
+              <li><strong>CPI Dynamics:</strong> Target is 4% (tolerance band of 2%–6%)[cite: 10]. Peaked at 6.3% in May 2022 before cooling to 4.5%–6.0%[cite: 10].</li>
+              <li><strong>Key Shield:</strong> Underground Strategic Petroleum Reserves (SPR) and promoting domestic oil palm to cut imports[cite: 10].</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note red">
+            <h3 style="font-size: 20px;">2. Rupee Slide &amp; Balance of Payments (BoP)</h3>
+            <ul class="bullet-list">
+              <li><strong>Current Account Deficit (CAD):</strong> Runs when merchandise imports (oil, gold, electronics) heavily outstrip exports[cite: 10]. Averaging 0.5%–2.0% of GDP[cite: 10].</li>
+              <li><strong>Falling Rupee Value:</strong>
+                <div class="sub-point">
+                  ▫ <em>Why it drops:</em> Big trade gap[cite: 10], costly oil[cite: 10], and sudden exit of foreign portfolio capital[cite: 10].<br>
+                  ▫ <em>Impact:</em> Makes imports pricier (imported inflation)[cite: 10] and increases the burden of paying back foreign loans[cite: 10].
+                </div>
+              </li>
+              <li><strong>Capital Inflows as Cushion:</strong> Stable FDI ($70–$85 billion/year) and remittances help offset trade gaps[cite: 10].</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION IV: BALANCE OF PAYMENTS FRAMEWORK -->
+    <div class="block-wrapper">
+      <div class="card-note teal">
+        <h3 style="font-size: 20px;">Balance of Payments (BoP) Blueprint</h3>
+        <div class="grid-2">
+          <div>
+            <strong style="color:var(--ink-blue);">Current Account (Trade &amp; Incomes):</strong>
+            <ul class="bullet-list" style="margin-top:4px;">
+              <li><strong>Trade Balance (Visible):</strong> Physical goods (Crude oil, cars, computers vs gems, pharma)[cite: 10]. Usually in deficit[cite: 10].</li>
+              <li><strong>Services Balance (Invisible):</strong> IT, software exports, consulting, tourism[cite: 10]. Usually in surplus.</li>
+              <li><strong>Income Balance:</strong> Cross-border dividends, interest, corporate profits[cite: 10].</li>
+              <li><strong>Transfers:</strong> Family remittances, gifts, foreign grants[cite: 10].</li>
+            </ul>
+          </div>
+          <div>
+            <strong style="color:var(--ink-green);">Capital &amp; Financial Account:</strong>
+            <ul class="bullet-list" style="margin-top:4px;">
+              <li><strong>Foreign Direct Investment (FDI):</strong> Long-term physical business setups[cite: 10].</li>
+              <li><strong>Foreign Institutional Investment (FII/FPI):</strong> Short-term stock and bond trading[cite: 10].</li>
+              <li><strong>Loans &amp; Bank Accounts:</strong> External Commercial Borrowings (ECBs), NRI deposits, Government aid[cite: 10].</li>
+              <li><strong>Forex Reserve Changes:</strong> Additions or drawdown by RBI to steady the rupee[cite: 10].</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION V: NPAs & CAPITAL INFUSION -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>IV. Banking NPAs &amp; Financial Cleanup</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note orange">
+            <h3 style="font-size: 20px;">1. The NPA Wave &amp; Its Fallout</h3>
+            <ul class="bullet-list">
+              <li><strong>What is an NPA:</strong> Loan overdue for <strong>90 days or more</strong> without interest or principal payment[cite: 10].</li>
+              <li><strong>Peak Crisis:</strong> Gross NPAs crossed 11% in FY18 due to stalled steel, power, and highway projects after 2011[cite: 10].</li>
+              <li><strong>Consequences:</strong> Choked fresh credit flow[cite: 10], drained bank profits[cite: 10], and slowed economic investment[cite: 10].</li>
+              <li><strong>Recovery Status:</strong> Fallen sharply to multi-year lows of <strong>1.8%–2.5%</strong> due to cleaning bad debts and strict recognition[cite: 10].</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note green">
+            <h3 style="font-size: 20px;">2. Cleanup &amp; Resolution Toolkit</h3>
+            <ul class="bullet-list">
+              <li><strong>IBC, 2016:</strong> Time-bound insolvency resolution[cite: 10]; recovered over ₹4 lakh crore and took control from defaulting owners[cite: 10].</li>
+              <li><strong>SARFAESI Act, 2002:</strong> Allows banks to take over and auction securities without waiting for court nod[cite: 10].</li>
+              <li><strong>NARCL (Bad Bank):</strong> Bundles and sells legacy toxic loans[cite: 10].</li>
+              <li><strong>Recapitalization:</strong> Central government infused over ₹2.1 lakh crore into public sector banks to rebuild capital safety nets[cite: 10].</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION VI: MONEY LAUNDERING & BLACK MONEY -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>V. Money Laundering, Black Money &amp; Enforcement</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="table-block-wrapper">
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Area</th>
+              <th style="width: 37.5%;">Black Money</th>
+              <th style="width: 37.5%;">Money Laundering</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Basic Meaning</strong></td>
+              <td>Income not shown to tax officers; untaxed income[cite: 10].</td>
+              <td>Converting illicit crime money into legal-looking money[cite: 10].</td>
+            </tr>
+            <tr>
+              <td><strong>Primary Origin</strong></td>
+              <td>From legal jobs (tax dodging) or illegal acts[cite: 10].</td>
+              <td>Always tied to a primary criminal act (predicate crime)[cite: 10].</td>
+            </tr>
+            <tr>
+              <td><strong>Legal Backbone</strong></td>
+              <td>Income Tax Act, Black Money Act (2015)[cite: 10].</td>
+              <td>Prevention of Money Laundering Act, 2002 (PMLA)[cite: 10].</td>
+            </tr>
+            <tr>
+              <td><strong>Enforcing Arm</strong></td>
+              <td>Income Tax Department, CBDT[cite: 10].</td>
+              <td>Enforcement Directorate (ED) &amp; FIU-IND[cite: 10].</td>
+            </tr>
+            <tr>
+              <td><strong>Core Process</strong></td>
+              <td>Hiding cash and undisclosed assets[cite: 10].</td>
+              <td><strong>Placement ➔ Layering ➔ Integration</strong>[cite: 10].</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PMLA & FEOA STICKY -->
+    <div class="block-wrapper">
+      <div class="sticky yellow">
+        <div>📌 <strong>Key Anti-Laundering Provisions:</strong><br>
+        • <strong>Fugitive Economic Offenders Act (2018):</strong> Targets absconders evading cases over <strong>₹100 crore</strong>; allows confiscating domestic and foreign property before trial[cite: 10].<br>
+        • <strong>FATF Watchdog:</strong> 40 recommendations; placed India in "regular follow-up" category indicating strong compliance[cite: 10].<br>
+        • <strong>ED Powers:</strong> Investigates predicate offences, attaches properties for 180 days, and takes statements admissible in court[cite: 10].</div>
+      </div>
+    </div>
+
+    <!-- SECTION VII: CAPITAL DEFICIENCY & INCLUSIVE GROWTH -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>VI. Capital Scarcity, Inclusive Growth &amp; Sustainability</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note teal">
+            <h3 style="font-size: 20px;">1. Capital Deficit &amp; Fiscal Strain</h3>
+            <ul class="bullet-list">
+              <li><strong>Resource Shortage:</strong> Low tax-to-GDP ratio restricts spending on healthcare, schools, and roads[cite: 10].</li>
+              <li><strong>Public Debt Levels:</strong> General government debt peaked at 89.2% of GDP in 2020 and eased to ~81.4%[cite: 10].</li>
+              <li><strong>Government Interventions:</strong>
+                <div class="sub-point">
+                  ▫ <em>National Infrastructure Pipeline (NIP):</em> Forward map for infrastructure investments[cite: 10].<br>
+                  ▫ <em>Asset Monetization:</em> Leasing operational roads and airports to raise funds[cite: 10].<br>
+                  ▫ <em>Jan Dhan Yojana:</em> Mobilizing small domestic savings into formal banking[cite: 10].
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note amber">
+            <h3 style="font-size: 20px;">2. Lack of Inclusive &amp; Green Growth</h3>
+            <ul class="bullet-list">
+              <li><strong>Wealth Concentration:</strong> Richest 1% holds 40.1% of national wealth, showing persistent inequality[cite: 10].</li>
+              <li><strong>Ecological Stress:</strong> India placed 176th out of 177 on the Environmental Performance Index (EPI)[cite: 10].</li>
+              <li><strong>Balancing Welfare &amp; Green Power:</strong>
+                <div class="sub-point">
+                  ▫ <em>Welfare:</em> MGNREGA safety net[cite: 10], PMAY housing[cite: 10], Ayushman Bharat healthcare[cite: 10].<br>
+                  ▫ <em>Green Push:</em> Scaling up solar and wind capacity to decouple growth from emissions[cite: 10].
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION VIII: SPEED RECALL KEYS & METRICS -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>VII. Speed Recall Keys &amp; Data Hub</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="sticky yellow">
+        <h4 style="color:var(--ink-blue); font-size:20px;">⚡ Topper's Mnemonics &amp; High-Yield Metrics</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; font-size:16px;">
+          <div>
+            • <strong>SECTORAL SHARES IN GDP:</strong><br>
+            ➔ Agriculture: ~16% GDP (46.1% jobs)[cite: 10].<br>
+            ➔ Manufacturing: ~17% GVA (11% jobs)[cite: 10].<br>
+            ➔ MSME: ~29% GDP (62% jobs, 40% exports)[cite: 10].<br>
+            • <strong>MACRO BOUNDS:</strong><br>
+            ➔ Fiscal Deficit: 5.1%–5.6% (from 9.3% in FY21)[cite: 10].<br>
+            ➔ CAD: 0.5%–2.0% of GDP[cite: 10].
+          </div>
+          <div>
+            • <strong>MONEY LAUNDERING STAGES:</strong> <span class="hl-pink">P ➔ L ➔ I</span>.<br>
+            ➔ <strong>P</strong>lacement (smurfing/cash deposit) ➔ <strong>L</strong>ayering (shell accounts/TBML) ➔ <strong>I</strong>ntegration (luxury/real estate asset buys)[cite: 10].<br>
+            • <strong>BAD LOAN INDICATOR:</strong><br>
+            ➔ NPA mark: 90 days overdue[cite: 10].<br>
+            ➔ Gross NPA: fell from 11.2% (FY18) to 1.8%–2.5%[cite: 10].
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION IX: VISUAL MAP -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>VIII. Macroeconomic Transmission Diagram</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="svg-box">
+        <svg viewBox="0 0 850 190" width="100%" height="190" style="font-family:'Kalam', cursive;">
+          <rect x="300" y="10" width="250" height="38" rx="6" fill="#dbeafe" stroke="#1e40af" stroke-width="1.8"></rect>
+          <text x="425" y="30" text-anchor="middle" font-size="15" fill="#1e40af" font-weight="bold">EXTERNAL SHOCK TRANSMISSION</text>
+          <text x="425" y="43" text-anchor="middle" font-size="11" fill="#334155">Crude Oil Spike (&gt;85% Import Dependent)</text>
+
+          <path d="M 425 48 L 425 76" stroke="#64748b" stroke-width="1.8"></path>
+          <path d="M 140 76 L 710 76" stroke="#64748b" stroke-width="1.8"></path>
+
+          <path d="M 140 76 L 140 102" stroke="#64748b" stroke-width="1.8"></path>
+          <path d="M 710 76 L 710 102" stroke="#64748b" stroke-width="1.8"></path>
+
+          <!-- Branch 1 -->
+          <rect x="40" y="102" width="200" height="75" rx="6" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"></rect>
+          <text x="140" y="123" text-anchor="middle" font-size="13" fill="#b91c1c" font-weight="bold">TRADE &amp; CURRENCY</text>
+          <text x="140" y="140" text-anchor="middle" font-size="11" fill="#334155">• Trade Deficit Widens</text>
+          <text x="140" y="156" text-anchor="middle" font-size="11" fill="#475569">• Rupee Slides vs USD</text>
+
+          <!-- Arrow -->
+          <path d="M 250 140 L 600 140" stroke="#b91c1c" stroke-width="2" stroke-dasharray="4"></path>
+          <text x="425" y="132" text-anchor="middle" font-size="12" fill="#b91c1c" font-weight="bold">HIGHER LOGISTICS &amp; IMPORT COSTS</text>
+
+          <!-- Branch 2 -->
+          <rect x="610" y="102" width="200" height="75" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"></rect>
+          <text x="710" y="123" text-anchor="middle" font-size="13" fill="#b45309" font-weight="bold">DOMESTIC PRICES</text>
+          <text x="710" y="140" text-anchor="middle" font-size="11" fill="#334155">• Transport Costs Surge</text>
+          <text x="710" y="156" text-anchor="middle" font-size="11" fill="#475569">• CPI Headline Inflation Breaches 6%</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- SECTION X: EXAM TRICK BOXES -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>IX. Exam-Trick Boxes (Avoid Common Traps!)</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="exam-trick">
+        <ul class="bullet-list" style="margin-top:2px;">
+          <li><strong>TRAP 1: "Balance of Trade (BOT) covers both merchandise goods and IT services."</strong> ➔ <strong>WRONG!</strong> BOT accounts <strong>only for physical visible goods</strong>[cite: 10]. Services (IT, travel, consulting) fall strictly under the <strong>Invisibles account of the Current Account</strong>[cite: 10].</li>
+          <li><strong>TRAP 2: "Fugitive Economic Offenders Act (FEOA) applies to all economic defaults."</strong> ➔ <strong>WRONG!</strong> FEOA applies strictly to economic frauds where the total value involved is <strong>₹100 crore or more</strong>[cite: 10].</li>
+          <li><strong>TRAP 3: "A loan is marked as an NPA immediately after a single missed EMI."</strong> ➔ <strong>WRONG!</strong> An asset is formally classified as an NPA only after overdue default on interest or principal continues for <strong>90 days or more</strong>[cite: 10].</li>
+          <li><strong>TRAP 4: "Black money and money laundering are identical offences under law."</strong> ➔ <strong>WRONG!</strong> Black money is untaxed undisclosed income (tax compliance issue)[cite: 10]. Money laundering is the systematic conversion of crime proceeds into clean money (criminal offence under PMLA)[cite: 10].</li>
+          <li><strong>TRAP 5: "FDI is volatile hot-money while FPI is long-term investment."</strong> ➔ <strong>WRONG!</strong> <strong>FDI</strong> represents long-term physical business investments[cite: 10]. <strong>FPI</strong> is liquid, short-term portfolio money that can exit financial markets rapidly during shocks[cite: 10].</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION XI: PRELIMS PRACTICE CHECKS -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>X. UPSC &amp; APPSC Prelims Practice Check</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="mcq-card">
+        <span class="mcq-badge">UPSC / APPSC Prelims Practice • Question 1</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q1. Which of the following components are categorized under the Current Account of the Balance of Payments (BoP)?<br>
+          1. Merchandise import-export balance[cite: 10]<br>
+          2. Software service exports[cite: 10]<br>
+          3. Foreign Direct Investment (FDI) inflows[cite: 10]<br>
+          4. Remittances from workers abroad[cite: 10]<br>
+          Select the correct answer using the code below:
+        </div>
+        <div class="mcq-options">
+          1) 1, 2 and 3 only<br>
+          2) 1, 2 and 4 only<br>
+          3) 2, 3 and 4 only<br>
+          4) 1, 2, 3 and 4
+        </div>
+        <details class="reveal-box" open="">
+          <summary>Show Answer &amp; Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">2) 1, 2 and 4 only</span>.<br>
+              ▫ <strong>Statements 1, 2, and 4 belong to the Current Account:</strong> Visible trade, services, and unilateral remittances are Current Account elements[cite: 10].<br>
+              ▫ <strong>Statement 3 is incorrect:</strong> FDI is a long-term capital inflow recorded under the <strong>Capital/Financial Account</strong>[cite: 10].
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="mcq-card">
+        <span class="mcq-badge">UPSC / APPSC Prelims Practice • Question 2</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q2. In India, which of the following measures is primarily utilized under the IBC (2016) to tackle Non-Performing Assets?<br>
+          1) Waiving farm crop loans through state budgets<br>
+          2) Time-bound commercial resolution shifting operational control away from defaulting promoters[cite: 10]<br>
+          3) Direct takeover of property without tribunal hearings<br>
+          4) Lowering corporate tax rates across manufacturing
+        </div>
+        <div class="mcq-options">
+          1) 1 only<br>
+          2) 2 only<br>
+          3) 2 and 3 only<br>
+          4) 1, 2 and 4
+        </div>
+        <details class="reveal-box" open="">
+          <summary>Show Answer &amp; Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">2) 2 only</span>.<br>
+              ▫ <strong>Explanation:</strong> The Insolvency and Bankruptcy Code (IBC, 2016) enforces a time-bound debtor-in-possession to creditor-in-control mechanism to resolve bad assets or liquidate defaulting businesses[cite: 10].
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SECTION XII: MAINS ENGINE -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>XI. Mains Practice Questions</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="mains-section">
+        
+        <!-- Question 1 -->
+        <div class="mains-q-item">
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+            <strong>Q1. "Despite robust GDP growth, India faces a dual structural challenge: an overburdened agricultural sector and an underperforming manufacturing base." Analyze the causes and outline policy remedies.</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;" open="">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Answer Framework:</strong><br>
+                • <strong>Introduction:</strong> India presents a structural disconnect where agriculture contributes only ~16% to GDP but sustains ~46.1% of the workforce[cite: 10], while manufacturing contributes 17% of GVA and employs only 11%[cite: 10].<br>
+                • <strong>Causes of Slow Agriculture Growth:</strong><br>
+                ▫ <em>Land Fragmentation:</em> Small, uneconomic holdings limit farm mechanization[cite: 10].<br>
+                ▫ <em>Monsoon Dependence:</em> Erratic weather causes high crop failure risks[cite: 10].<br>
+                ▫ <em>Low Capital Investment:</em> Private corporate capital formation in farming remains below 2%[cite: 10].<br>
+                • <strong>Causes of Manufacturing Bottlenecks:</strong><br>
+                ▫ <em>Infrastructure &amp; Logistics:</em> High power tariffs and transport costs undermine price competitiveness[cite: 10].<br>
+                ▫ <em>Regulatory Friction:</em> Complex labor laws and compliance burdens discourage business scale[cite: 10].<br>
+                ▫ <em>MSME Dominance:</em> 95% of units are unorganized with limited R&amp;D access[cite: 10].<br>
+                • <strong>Policy Interventions:</strong><br>
+                ▫ <em>Agri:</em> Micro-irrigation under PMKSY[cite: 10], e-NAM market unification[cite: 10], and cold chains via PM Kisan Sampada[cite: 10].<br>
+                ▫ <em>Manufacturing:</em> PLI schemes across 14 sectors[cite: 10], Gati Shakti connectivity[cite: 10], and single-window industrial clearances[cite: 10].<br>
+                • <strong>Conclusion:</strong> Bridging the gap requires shifting surplus farm labor into high-value manufacturing and agro-processing to achieve the 2047 target of 27% manufacturing GVA[cite: 10].
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="mains-q-item" style="margin-top: 14px;">
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 15 Marks</span> 
+            <strong>Q2. "Explain the nexus between international oil price volatility, inflation, and the depreciation of the Indian Rupee. How does it threaten macroeconomic stability?"</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;" open="">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Answer Framework:</strong><br>
+                • <strong>Introduction:</strong> India meets over 85% of its crude oil requirements through imports[cite: 10], linking domestic price levels and currency valuation directly to global energy markets[cite: 10].<br>
+                • <strong>The Transmission Mechanism:</strong><br>
+                <div class="table-block-wrapper">
+                  <table class="hand-table" style="margin: 10px 0 12px 0; font-size: 14px;">
+                    <thead>
+                      <tr>
+                        <th style="width: 25%;">Trigger Step</th>
+                        <th style="width: 37.5%;">Direct Impact</th>
+                        <th style="width: 37.5%;">Macroeconomic Consequence</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Global Crude Spike</strong></td>
+                        <td>Import invoice rises sharply; higher dollar demand[cite: 10].</td>
+                        <td>Expands merchandise trade deficit and widens CAD[cite: 10].</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Pass-Through to Fuel</strong></td>
+                        <td>Freight and transport rates rise across consumer items[cite: 10].</td>
+                        <td>Feeds cost-push inflation, pushing CPI above the 6% upper band[cite: 10].</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Rupee Depreciation</strong></td>
+                        <td>Higher dollar demand weakens exchange rate[cite: 10].</td>
+                        <td>Spurs imported inflation and raises external debt servicing costs[cite: 10].</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                • <strong>Threat to Stability:</strong><br>
+                ▫ <em>Fiscal Burden:</em> Limits budget flexibility due to higher fuel and fertilizer subsidy outlays[cite: 10].<br>
+                ▫ <em>Growth Compression:</em> Higher inflation reduces real purchasing power, dampening domestic consumer demand[cite: 10].<br>
+                • <strong>Mitigation Measures:</strong> Build Strategic Petroleum Reserves[cite: 10], support renewable energy diversification[cite: 10], and conduct timely RBI market operations to curb currency speculation[cite: 10].<br>
+                • <strong>Conclusion:</strong> Managing the oil-rupee-inflation loop requires transitioning to domestic clean energy and maintaining prudent external debt management[cite: 10].
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="mains-q-item" style="margin-top: 14px;">
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+            <strong>Q3. "Evaluate the structural impact of the Insolvency and Bankruptcy Code (IBC) in resolving the NPA crisis in the Indian banking system."</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;" open="">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+                <strong>Answer Framework:</strong><br>
+                • <strong>Introduction:</strong> Severe corporate stress caused Gross NPAs to peak at over 11% in FY18[cite: 10]. The IBC (2016) introduced a systemic shift toward time-bound, market-led asset resolution[cite: 10].<br>
+                • <strong>Structural Contributions of IBC:</strong><br>
+                ▫ <em>Creditor Control:</em> Replaced promoter-in-possession with creditor-in-control, ending wilful default leverage[cite: 10].<br>
+                ▫ <em>Resolution &amp; Recovery:</em> Facilitated recoveries exceeding ₹4 lakh crore, strengthening bank balance sheets[cite: 10].<br>
+                ▫ <em>Credit Discipline:</em> The prospect of losing corporate ownership spurred operational repayments prior to formal admission.<br>
+                • <strong>Supporting Reforms:</strong> Bank recapitalization of over ₹2.1 lakh crore[cite: 10], NARCL establishment for toxic asset offloading[cite: 10], and strict RBI AQR reviews[cite: 10].<br>
+                • <strong>Outcome:</strong> Gross NPAs declined to a multi-year low of 1.8%–2.5%, rebuilding commercial lending capacity[cite: 10].<br>
+                • <strong>Conclusion:</strong> Strengthening judicial infrastructure and reducing tribunal backlogs is vital to sustain time-bound debt resolution.
+              </div>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="block-wrapper">
+      <div style="text-align:center; font-family:'Patrick Hand', cursive; font-size:18px; color:var(--ink-blue); margin-top:16px;">
+        ★ Indian Economy Chapter 1 Notes Complete • Print-Perfect &amp; Exam-Ready ★
+      </div>
+    </div>
+
+  </div>
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

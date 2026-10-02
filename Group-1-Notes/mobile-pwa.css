@@ -1,0 +1,273 @@
+/* ==========================================================================
+   MULTI-DEVICE RESPONSIVE ARCHITECTURE
+   Laptops & Desktops (>1024px) | Tablets (601px-1024px) | Phones (<=600px)
+   Guarantees Laptop/PC/Tablet layouts NEVER get squished or distorted!
+   ========================================================================== */
+
+/* 1. Global Touch & Text Smoothing (Zero layout impact) */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   2. TABLET BREAKPOINT (601px to 1024px) - iPads, Surface & Galaxy Tabs
+   Preserves full 2-column notebook layout with comfortable tablet margins
+   ========================================================================== */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+
+  /* Notebook container adapts gracefully to tablet screens */
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important; /* Preserves authentic margin & lines */
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+
+  /* 2-Column Grids stay intact on Tablets! */
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+
+  /* Dashboard on Tablets: 2 columns */
+  .notes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 16px !important;
+  }
+
+  .stats-row {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* Tables have smooth horizontal scrolling if needed */
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* ==========================================================================
+   3. SMARTPHONE BREAKPOINT (<= 600px) - Handheld iPhones & Androids Only
+   Only phone screens collapse to single-column layout for reading on the go
+   ========================================================================== */
+@media screen and (max-width: 600px) {
+
+  body {
+    padding: 6px 4px !important;
+  }
+
+  /* Maximize reading area on narrow phone screens */
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+
+  /* Typography scaled for phone screens */
+  .title-section h1 {
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+  }
+
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+
+  /* Collapse into single column only on phones */
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+
+  /* Phone Table & Chart Scrolling */
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+
+  /* Phone Diary Form & Stats */
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .chart-svg {
+    min-width: 580px !important;
+  }
+
+  /* Phone Dashboard */
+  .header-container {
+    padding: 10px 12px !important;
+  }
+
+  .hero-section {
+    padding: 14px 10px !important;
+  }
+
+  .hero-title {
+    font-size: 20px !important;
+  }
+
+  .stats-row {
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .stat-item {
+    width: 100% !important;
+  }
+
+  .filter-bar {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .tab-btn {
+    white-space: nowrap !important;
+    padding: 8px 12px !important;
+    font-size: 11.5px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .note-actions {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .action-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Phone Dashboard Header Buttons */
+  .btn-scan-folder {
+    display: none !important;
+  }
+
+  .btn-new-note {
+    display: none !important;
+  }
+
+  .btn-diary-quick {
+    display: inline-flex !important;
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* On phones, hide desktop builder button on cards for clean reading */
+  .btn-edit {
+    display: none !important;
+  }
+}

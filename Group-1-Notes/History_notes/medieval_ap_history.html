@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andhra History: Medieval Era (1000–1565 A.D. & Beyond)</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg-page: #fbfbf9; --ruled-line: #e3ebf5; --margin-line: #f7a8b8;
+  --ink-blue: #0f3870; --ink-dark: #1e293b; --ink-red: #b91c1c; --ink-green: #15803d;
+  --ink-purple: #6b21a8; --ink-orange: #c2410c; --ink-yellow: #a16207; --ink-teal: #0f766e;
+  --ink-cyan: #0369a1; --ink-indigo: #4338ca; --ink-rose: #be123c; --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85); --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75); --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85); --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75); --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3; --sticky-pink: #ffe4e6; --sticky-blue: #e0f2fe; --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: #cbd5e1; display: flex; justify-content: center; padding: 25px 10px; height: auto; overflow: visible; font-family: 'Kalam', cursive, sans-serif; color: var(--ink-dark); }
+.notebook-container { width: 100%; max-width: 940px; min-height: 1200px; background-color: var(--bg-page); background-image: linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px), linear-gradient(var(--ruled-line) 1px, transparent 1px); background-size: 100% 28px, 100% 28px; background-repeat: repeat-y, repeat; padding: 35px 35px 80px 65px; border-radius: 4px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); line-height: 28px; position: relative; }
+.block-wrapper { position: relative; margin-bottom: 16px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; background: transparent !important; }
+.title-section h1 { font-size: 38px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; background: transparent !important; }
+.title-section .subtitle { font-size: 19px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; background: transparent !important; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+.section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+.canvas-multi-row { display: flex; flex-direction: row; align-items: stretch; gap: 16px; width: 100%; margin-bottom: 16px; }
+.canvas-multi-row > .block-wrapper { flex: 1 1 0; min-width: 0; margin-bottom: 0; }
+.card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+.card-note.rose   { border-left: 6px solid var(--ink-rose) !important; }
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+.card-note.orange h3 { color: var(--ink-orange) !important; }
+.card-note.rose h3   { color: var(--ink-rose) !important; }
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; }
+.dot-point { margin-left: 14px; position: relative; padding-left: 16px; font-size: 15.5px; line-height: 23px; margin-top: 3px; margin-bottom: 5px; }
+.dot-point::before { content: "•"; position: absolute; left: 2px; color: var(--ink-dark); font-weight: 900; font-size: 16px; }
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15.5px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+.sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S SPEED TRICKS & FORMULA HACKS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+.fs-sm { font-size: 12px !important; line-height: 18px !important; }
+.fs-md { font-size: 16px !important; line-height: 24px !important; }
+.fs-lg { font-size: 20px !important; line-height: 28px !important; }
+.fs-xl { font-size: 25px !important; line-height: 32px !important; }
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+.expand-block-wrapper { position: relative; margin: 12px 0; width: 100%; }
+.expand-block-wrapper.blue .reveal-box summary { color: var(--ink-blue); background: #eff6ff; border-color: #93c5fd; }
+.expand-block-wrapper.blue .reveal-box summary::before { color: var(--ink-blue); }
+.expand-block-wrapper.blue .reveal-box[open] summary { background: #dbeafe; }
+.expand-block-wrapper.blue .reveal-content { border-color: #93c5fd; }
+.expand-block-wrapper.green .reveal-box summary { color: var(--ink-green); background: #f0fdf4; border-color: #86efac; }
+.expand-block-wrapper.green .reveal-box summary::before { color: var(--ink-green); }
+.expand-block-wrapper.green .reveal-box[open] summary { background: #dcfce7; }
+.expand-block-wrapper.green .reveal-content { border-color: #86efac; }
+.expand-block-wrapper.yellow .reveal-box summary { color: var(--ink-yellow); background: #fefce8; border-color: #fde047; }
+.expand-block-wrapper.yellow .reveal-box summary::before { color: var(--ink-yellow); }
+.expand-block-wrapper.yellow .reveal-box[open] summary { background: #fef08a; }
+.expand-block-wrapper.yellow .reveal-content { border-color: #fde047; }
+.expand-block-wrapper.purple .reveal-box summary { color: var(--ink-purple); background: #faf5ff; border-color: #d8b4fe; }
+.expand-block-wrapper.purple .reveal-box summary::before { color: var(--ink-purple); }
+.expand-block-wrapper.purple .reveal-box[open] summary { background: #f3e8ff; }
+.expand-block-wrapper.purple .reveal-content { border-color: #d8b4fe; }
+.expand-block-wrapper.red .reveal-box summary { color: var(--ink-red); background: #fef2f2; border-color: #fca5a5; }
+.expand-block-wrapper.red .reveal-box summary::before { color: var(--ink-red); }
+.expand-block-wrapper.red .reveal-box[open] summary { background: #fee2e2; }
+.expand-block-wrapper.red .reveal-content { border-color: #fca5a5; }
+.expand-block-wrapper.teal .reveal-box summary { color: var(--ink-teal); background: #f0fdfa; border-color: #5eead4; }
+.expand-block-wrapper.teal .reveal-box summary::before { color: var(--ink-teal); }
+.expand-block-wrapper.teal .reveal-box[open] summary { background: #ccfbf1; }
+.expand-block-wrapper.teal .reveal-content { border-color: #5eead4; }
+.expand-block-wrapper.amber .reveal-box summary { color: var(--ink-amber); background: #fffbeb; border-color: #fcd34d; }
+.expand-block-wrapper.amber .reveal-box summary::before { color: var(--ink-amber); }
+.expand-block-wrapper.amber .reveal-box[open] summary { background: #fef3c7; }
+.expand-block-wrapper.amber .reveal-content { border-color: #fcd34d; }
+.expand-block-wrapper.orange .reveal-box summary { color: var(--ink-orange); background: #fff7ed; border-color: #fdba74; }
+.expand-block-wrapper.orange .reveal-box summary::before { color: var(--ink-orange); }
+.expand-block-wrapper.orange .reveal-box[open] summary { background: #ffedd5; }
+.expand-block-wrapper.orange .reveal-content { border-color: #fdba74; }
+.expand-block-wrapper.rose .reveal-box summary { color: var(--ink-rose); background: #fff1f2; border-color: #fda4af; }
+.expand-block-wrapper.rose .reveal-box summary::before { color: var(--ink-rose); }
+.expand-block-wrapper.rose .reveal-box[open] summary { background: #ffe4e6; }
+.expand-block-wrapper.rose .reveal-content { border-color: #fda4af; }
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ UPSC & STATE PSC MAINS PRACTICE QUESTIONS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; font-family: 'Inter', sans-serif; }
+.mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+.mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+.eq { position: relative; font-family: 'Inter', sans-serif; font-weight: 700; color: #0f3870; background: rgba(224, 242, 254, 0.75); padding: 1px 6px; border-radius: 4px; border: 1px solid rgba(186, 230, 253, 0.95); display: inline-flex; align-items: center; gap: 4px; line-height: 1.35; margin: 1px 2px; vertical-align: middle; }
+.math-block { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-left: 4px solid var(--ink-purple); border-radius: 6px; padding: 10px 14px; margin: 10px 0; font-family: 'Inter', sans-serif; font-weight: 700; color: var(--ink-dark); font-size: 15px; }
+.fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px; }
+.fraction-top { border-bottom: 2px solid var(--ink-dark); padding-bottom: 2px; }
+.fraction-bottom { padding-top: 2px; }
+.note-image-container { position: relative; margin: 16px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
+.note-image-wrapper { position: relative; overflow: hidden; display: inline-block; min-width: 140px; max-width: 100%; border: 1.5px dashed #94a3b8; border-radius: 6px; padding: 6px; background: #ffffff; box-shadow: var(--shadow); }
+.note-image-wrapper img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; }
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+  
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas"><div class="block-wrapper" draggable="false">
+    
+  <div class="title-section">
+      <div class="badge-tag">APPSC GROUP-I &amp; II | UPSC CSE OPTIONAL | MEDIEVAL ANDHRA DESA</div>
+      <h1>Andhra History: Medieval Era (1000–1565 A.D. &amp; Beyond)</h1>
+      <div class="subtitle">Complete Dynastic Framework • Socio-Cultural Conditions • Religion • Kavitraya to Asthadiggajas • Fine Arts &amp; Architecture • Qutb Shahis &amp; Vemana</div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>I. Dynastic Chronology &amp; Political Outline (1000–1565 A.D. &amp; Beyond)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th>Dynasty &amp; Period</th>
+            <th>Capital / Core Territory</th>
+            <th>Prominent Monarchs</th>
+            <th>Administrative, Military &amp; Historical Milestones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Later Eastern Chalukyas &amp; Chalukya-Cholas</strong><br>(1000 – c. 1189 A.D.)</td>
+            <td>Rajahmundry (Rajamahendravaram), Vengi</td>
+            <td>Rajaraja Narendra (1019–1061), Kulottunga Chola I (Rajendra Chalukya)</td>
+            <td>Marked the literary watershed of Telugu (patronized Nannaya); extensive Chola matrimonial ties merged the crowns of Vengi and Thanjavur under Kulottunga I.</td>
+          </tr>
+          <tr>
+            <td><strong>Kakatiyas of Orugallu</strong><br>(c. 1158 – 1323 A.D.)</td>
+            <td>Anumakonda, Orugallu (Warangal)</td>
+            <td>Prola II, Rudradeva, Ganapati Deva, Rani Rudrama Devi, Prataparudra II</td>
+            <td>Achieved first complete geopolitical unification of Andhra (Telangana, Coastal, Rayalaseema); developed 77 Nayankaras, tank irrigation (Pakhal, Ramappa), and foreign trade (Motupalli Charter).</td>
+          </tr>
+          <tr>
+            <td><strong>Musunuri Nayakas</strong><br>(c. 1326 – 1368 A.D.)</td>
+            <td>Rekapalli, Warangal</td>
+            <td>Prolaya Nayaka, Kapaya Nayaka</td>
+            <td>Organized a 75-chieftain confederacy that drove out the Delhi Sultanate (Tughlaq) governors; reclaimed Warangal; Kapaya assumed the title <em>Andhradesadhisvara</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Reddi Kingdom</strong><br>(c. 1325 – 1448 A.D.)</td>
+            <td>Addanki, Kondaveedu, Rajahmundry</td>
+            <td>Prolaya Vema Reddi, Anavota Reddi, Kumaragiri Reddi, Racha Vema Reddi</td>
+            <td>Re-established indigenous rule in coastal Andhra; strong revival of Vedic traditions and Vasantotsavas; major patrons of Sanskrit and Telugu literature (Errana, Srinatha); pioneered massive hill fortifications.</td>
+          </tr>
+          <tr>
+            <td><strong>Recherla Velamas (Padmanayakas)</strong><br>(c. 1325 – 1475 A.D.)</td>
+            <td>Rachakonda, Devarakonda</td>
+            <td>Singama Nayaka I, Anavota Nayaka, Sarvajna Singa Bhupala</td>
+            <td>Held dominant military control in Telangana; sustained rivalries with the Reddis; Sarvajna Singa Bhupala authored the Sanskrit literary classic <em>Rasarnava Sudhakaram</em> and patronized Srinatha and Potana.</td>
+          </tr>
+          <tr>
+            <td><strong>Gajapatis of Odisha</strong><br>(c. 1434 – 1541 A.D.)</td>
+            <td>Cuttack (Governed Coastal Andhra down to Udayagiri)</td>
+            <td>Kapilendra Deva, Purushottama Deva, Prataparudra Deva</td>
+            <td>Imperial rulers of Kalingandhra; maintained military sway over Kondaveedu and Udayagiri until Krishnadevaraya's Kalinga expedition; patronized the major temples at Simhachalam and Srikurmam.</td>
+          </tr>
+          <tr>
+            <td><strong>Vijayanagara Empire</strong><br>(1336 – 1565 A.D. &amp; beyond)</td>
+            <td>Vijayanagara (Hampi), later Penukonda &amp; Chandragiri</td>
+            <td>Harihara I, Bukka I, Devaraya II, Sri Krishnadevaraya, Achyuta Deva Raya, Aliya Rama Raya</td>
+            <td>Four dynasties: Sangama, Saluva, Tuluva, Aravidu; served as the political guardian of South India; peak of imperial power, architectural brilliance (Lepakshi), and the golden age of Telugu Prabandha poetry (Asthadiggajas).</td>
+          </tr>
+          <tr>
+            <td><strong>Qutb Shahis of Golconda</strong><br>(1518 – 1687 A.D.)</td>
+            <td>Golconda, Hyderabad</td>
+            <td>Sultan Quli, Ibrahim Qutb Shah, Muhammad Quli Qutb Shah, Abul Hasan Tana Shah</td>
+            <td>Independent Deccan Sultanate ruling Telangana and coastal regions; promoted an integrated Indo-Islamic Deccani culture; extensively supported native Telugu poets (earning Ibrahim the moniker <em>Malkibha Rama</em>).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>II. Socio-Cultural &amp; Religious Conditions (1000–1565 A.D.)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note blue">
+    
+  
+          <h3 style="color: rgb(15, 56, 112) !important;">1. Social Structure &amp; Community Dynamics</h3>
+          <ul class="bullet-list">
+            <li><strong>Rise of Peasant-Warrior Aristocracy:</strong> Traditional varna stratification gave way to martial peasant groups (Kapus, Reddis, Velamas) rising as ruling monarchs and feudal lords through military merit.</li>
+            <li><strong>Kakatiya Social Mobility:</strong> Kakatiyas openly recorded their descent from the fourth varna (Durjaya clan), showcasing the fluid upward mobility of regional agrarian communities.</li>
+            <li><strong>Autonomous Trade &amp; Craft Guilds:</strong>
+              <div class="sub-point">
+                ▫ <em>Ayyavole-500 &amp; Ubhaya-Nanadesi:</em> Trans-regional merchant corporations managing internal and coastal supply chains.<br>
+                ▫ <em>Panchanamu:</em> Artisan confederation (blacksmiths, goldsmiths, carpenters, stonemasons, brass smiths) holding exclusive community privileges and tax concessions.<br>
+                ▫ <em>Samaya Councils:</em> Autonomous caste and professional bodies regulating guild rules, resolving local civil disputes, and managing endowments.
+              </div>
+            </li>
+            <li><strong>Position of Women:</strong> Noblewomen exercised substantial political and financial autonomy; notably, Rani Rudrama Devi governed as sovereign monarch under the male designation <em>Rudradeva Maharaja</em>; royal women funded major irrigation tanks and temples.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note amber">
+    
+  
+          <h3 style="color: rgb(180, 83, 9) !important;">2. Religious Currents: Saivism, Vaishnavism &amp; Synthesis</h3>
+          <ul class="bullet-list">
+            <li><strong>Evolution of Saivism:</strong>
+              <div class="sub-point">
+                ▫ <em>Pasupata &amp; Kalamukha Sects:</em> Influential monastic orders based at Srisailam (Sriparvata), managing vast temple lands and mathas.<br>
+                ▫ <em>Vira Saivism (Aradhya &amp; Lingayat):</em> Spearheaded by Mallikarjuna Panditaradhya and Palkuriki Somanatha; challenged rigid ritualism and hereditary hierarchies, emphasizing personal devotion to Shiva.
+              </div>
+            </li>
+            <li><strong>Ascendance of Vaishnavism:</strong>
+              <div class="sub-point">
+                ▫ Visistadvaita gained royal and mass patronage, turning Tirumala, Ahobilam, Simhachalam, and Srikakulam into dominant religious and economic hubs.<br>
+                ▫ Tallapaka Annamacharya composed thousands of Sankirtanas at Tirumala, integrating classical philosophy with accessible folk devotion.
+              </div>
+            </li>
+            <li><strong>The Harihara Cult:</strong> A conscious philosophical compromise championed by Tikkana Somayaji (dedicating the <em>Andhra Mahabharatamu</em> to Lord Hariharanatha) to resolve sectarian conflicts between Saivas and Vaishnavas.</li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>III. Growth of Telugu Literature: Kavitraya to Asthadiggajas</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note purple">
+    
+  
+      <h3 style="color: rgb(107, 33, 168) !important;">1. The Kavitrayam (Trinity of Telugu Poets) &amp; Andhra Mahabharatamu</h3>
+      <div class="table-block-wrapper">
+    
+  
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th>Poet</th>
+              <th>Period &amp; Patronage</th>
+              <th>Portion of the Epic Authored</th>
+              <th>Literary Significance &amp; Linguistic Style</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Nannaya Bhattu</strong></td>
+              <td>11th Century<br>Rajaraja Narendra (Eastern Chalukya)</td>
+              <td>Adi Parva, Sabha Parva, and part of Aranya Parva (up to 4th canto)</td>
+              <td>Titled <em>Adi Kavi</em> and <em>Vaganusasana</em>; laid the foundational classical Champu style (mixed prose and verse); authored <em>Andhra Sabda Chintamani</em>.</td>
+            </tr>
+            <tr>
+              <td><strong>Tikkana Somayaji</strong></td>
+              <td>13th Century<br>Manumasiddhi II of Nellore</td>
+              <td>15 Parvas (from Virata Parva through Svargarohana Parva)</td>
+              <td>Titled <em>Kavi Brahma</em> and <em>Ubhaya Kavi Mitra</em>; mastered native spoken Telugu idioms (Acca Telugu) with dramatic dialogue; dedicated his work to Lord Hariharanatha.</td>
+            </tr>
+            <tr>
+              <td><strong>Errana (Yerrapragada)</strong></td>
+              <td>14th Century<br>Prolaya Vema Reddi (Reddi Dynasty)</td>
+              <td>Completed the remaining portion of Aranya Parva</td>
+              <td>Titled <em>Prabandha Parameshwara</em> and <em>Sambhudasa</em>; blended Nannaya's classical diction with Tikkana's conversational cadence; also composed <em>Harivamsamu</em> and <em>Nrisimha Puranamu</em>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note green">
+    
+  
+          <h3 style="color: rgb(21, 128, 61) !important;">2. Saiva Literature &amp; Reddi Court Era</h3>
+          <ul class="bullet-list">
+            <li><strong>Palkuriki Somanatha:</strong> Championed indigenous Desi metrics; authored <em>Basava Puranamu</em> and <em>Panditaradhya Charitra</em> in native <em>Dvipada</em> couplets.</li>
+            <li><strong>Srinatha (Kavi Sarvabhauma):</strong>
+              <div class="sub-point">
+                ▫ Chief court poet of the Kondaveeti Reddis; honored with a shower of gold coins and pearls (<em>Kanakabhisheka</em>) in the court of Vijayanagara King Devaraya II.<br>
+                ▫ Major works: <em>Sringara Naishadham</em>, <em>Kasi Khandam</em>, <em>Bhimakhandam</em>, <em>Haravilasa</em>, and the earliest martial historical ballad, <em>Palnati Vira Charitra</em>.
+              </div>
+            </li>
+            <li><strong>Bammera Potana:</strong> Independent poet who refused royal court patronage; composed the devotional classic <em>Srimad Andhra Bhagavatam</em> in lyrical, accessible Telugu.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note red">
+    
+  
+          <h3 style="color: rgb(185, 28, 28) !important;">3. Prabandha Zenith: Sri Krishnadevaraya &amp; Asthadiggajas</h3>
+          <ul class="bullet-list">
+            <li><strong>Emperor Sri Krishnadevaraya:</strong> Authored the political treatise and Prabandha epic <em>Amuktamalyada</em> (narrating the life of Andal/Goda Devi); celebrated Telugu with the phrase: <em>"Desa Bhashalandu Telugu Lessa"</em>.</li>
+            <li><strong>The Asthadiggajas (Eight Literary Giants of the Bhuvana Vijayam Court):</strong>
+              <div class="sub-point">
+                ▫ <em>Allasani Peddana:</em> Titled <em>Andhra Kavita Pitamaha</em>; author of <em>Swarochisha Manu Sambhavamu (Manucharitramu)</em>.<br>
+                ▫ <em>Nandi Timmana:</em> Authored <em>Parijatapaharanamu</em> (noted for delicate phrasing, <em>Mukku Timmana Muddu Paluku</em>).<br>
+                ▫ <em>Tenali Ramakrishna:</em> Composed the philosophically profound <em>Panduranga Mahatmyamu</em>.<br>
+                ▫ <em>Dhurjati:</em> Authored Saivite devotional works <em>Kalahasteeswara Mahatmyamu</em> and <em>Satakamu</em>.<br>
+                ▫ <em>Madayyagari Mallana:</em> Composed <em>Rajashekhara Charitramu</em>.<br>
+                ▫ <em>Ayyalaraju Ramabhadrudu:</em> Authored <em>Ramabhyudayamu</em>.<br>
+                ▫ <em>Pingali Surana:</em> Master of complex dual narratives; wrote <em>Kalapurnodayamu</em> and <em>Raghava Pandaviyamu</em>.<br>
+                ▫ <em>Ramarajabhushana (Bhattumurthi):</em> Authored <em>Vasu Charitramu</em> and <em>Kavyalankara Sangrahamu</em>.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>IV. Art, Architecture &amp; Monumental Heritage</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th>Empire / Dynasty</th>
+            <th>Architectural Innovations &amp; Hallmarks</th>
+            <th>Key Monumental Examples &amp; Locations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Kakatiyas</strong></td>
+            <td>Stellate (star-shaped) platforms, sandbox foundation technology for earthquake absorption, floating lightweight bricks, lathe-turned black dolerite pillars, detached Nandi mandapas, and freestanding <em>Keerthi Thoranas</em>.</td>
+            <td>• <strong>Ramappa Temple (Palampet):</strong> UNESCO World Heritage Site; praised by Marco Polo as the "brightest star in the galaxy of medieval temples".<br>• <strong>Thousand Pillar Temple (Hanamkonda):</strong> Dedicated to Trikuta (Siva, Vishnu, Surya).<br>• <strong>Warangal Fort:</strong> Multi-tiered stone and mud fortifications with ornamental monolithic Thorana gateways.</td>
+          </tr>
+          <tr>
+            <td><strong>Reddi Kings</strong></td>
+            <td>Defensive military hill architecture taking advantage of rocky elevations; natural-spring water reservoirs, stone bastions, and wide assembly mandapas.</td>
+            <td>• <strong>Kondaveedu Fort &amp; Kondapalli Fort:</strong> Stronghold centers overlooking the Krishna plains.<br>• Major additions to Srisailam (flight of stone steps to Patalaganga) and Simhachalam.</td>
+          </tr>
+          <tr>
+            <td><strong>Vijayanagara Empire</strong></td>
+            <td>Elaborate Dravida architecture: towering multi-tier <em>Raya Gopurams</em>, ornate <em>Kalyana Mandapas</em> with carved monolithic piers depicting rearing horses and mythical <em>Yalis</em>, stone temple chariots, and detailed fresco ceiling paintings.</td>
+            <td>• <strong>Lepakshi Veerabhadra Temple:</strong> Hanging pillar, colossal monolithic granite Nandi, ceiling mural frescoes, and multi-hooded Nagalinga.<br>• <strong>Srikalahasti &amp; Tirupati:</strong> Monumental entrance gopurams and pillared processional halls built by Krishnadevaraya.<br>• <strong>Tadpatri:</strong> Intricate stone relief carvings at the Chintala Venkataramana and Bugga Ramalingeswara temples.</td>
+          </tr>
+          <tr>
+            <td><strong>Gajapatis</strong></td>
+            <td>Kalinga architectural patterns in North-Coastal Andhra (Kalingandhra); curvilinear shikhara profiles (Rekha Deulas) and tiered assembly roofs (Pidha Deulas).</td>
+            <td>• Stone epigraphs and construction additions at <strong>Simhachalam (Varaha Narasimha Temple)</strong> and Srikurmam.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>V. Performing Arts: Dance Traditions &amp; Classical Music</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note teal">
+    
+  
+          <h3 style="color: rgb(15, 118, 110) !important;">1. Dance Traditions &amp; Treatises</h3>
+          <ul class="bullet-list">
+            <li><strong>Nrutta Ratnavali:</strong> Definitive dance treatise composed by Jayapa Senani (commander under Kakatiya Ganapati Deva, 1254 A.D.); codified both classical <em>Marga</em> and regional <em>Desi</em> dance forms.</li>
+            <li><strong>Perini Siva Tandavam:</strong> High-energy martial dance performed by Kakatiya warriors before going to war, honoring Lord Nataraja.</li>
+            <li><strong>Kuchipudi Dance Drama:</strong> Emerged in Kuchipudi village (Krishna district); developed by Siddhendra Yogi into Yakshagana format through canonical pieces like <em>Bhamakalapam</em>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note rose">
+    
+  
+          <h3 style="color: rgb(190, 18, 60) !important;">2. Carnatic Music &amp; Devotional Pada Literature</h3>
+          <ul class="bullet-list">
+            <li><strong>Tallapaka Annamacharya:</strong> Revered as <em>Pada-Kavita Pitamaha</em>; composed 32,000 devotional <em>Sankirtanas</em> (Sringara and Vairagya padas) preserved on copper plates at Tirumala.</li>
+            <li><strong>Tallapaka Timmakka:</strong> Wife of Annamacharya; composed <em>Subhadra Kalyanam</em> in Dvipada meter, recognized as the earliest documented Telugu poetess.</li>
+            <li><strong>Kshetrajya:</strong> 17th-century composer from Movva; perfected the expressive <em>Sringara Pada</em> style, influencing both Carnatic vocal music and Kuchipudi/Bharatanatyam repertoires.</li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VI. Contribution of Qutb Shahis &amp; Praja Kavi Vemana</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note blue">
+    
+  
+          <h3 style="color: rgb(15, 56, 112) !important;">1. Qutb Shahi Cultural Synthesis (1518–1687 A.D.)</h3>
+          <ul class="bullet-list">
+            <li><strong>Literary Patronage:</strong>
+              <div class="sub-point">
+                ▫ <em>Ibrahim Qutb Shah:</em> Lived in exile at Vijayanagara for seven years; patronized poets like Telaganna and Gangadhara Kavi; affectionately called <strong>"Malkibha Rama"</strong> by Telugu poets.<br>
+                ▫ <em>Yayati Charitra:</em> Composed by Ponnikanti Telaganna, dedicated to Amin Khan of Patancheru; first complete <strong>Accha Telugu</strong> literary work (free from Sanskrit tatsama words).<br>
+                ▫ <em>Tapati Samvaranopakhyanamu:</em> Authored by Addanki Gangadhara Kavi and dedicated to Ibrahim Qutb Shah.
+              </div>
+            </li>
+            <li><strong>Syncretic Administration:</strong> Under Abul Hasan Tana Shah, local Brahmin ministers Madanna and Akkanna directed the administration; royal agrahara grants were confirmed for the Bhadrachalam Rama Temple under Kancharla Gopanna (Bhakta Ramadasu).</li>
+            <li><strong>Architecture &amp; Commerce:</strong> Construction of Golconda Fort and the Charminar (1591); worldwide export of Machilipatnam Kalamkari chintz textiles from the Coromandel coast.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note yellow">
+    
+  
+          <h3 style="color: rgb(161, 98, 7) !important;">2. Praja Kavi Vemana (The People's Poet)</h3>
+          <ul class="bullet-list">
+            <li><strong>Form &amp; Meter:</strong> Composed hundreds of moral, philosophical, and social verses in the simple, rhythmic <em>Ataveladi</em> meter, each concluding with the refrain: <em>"Viswadhabhirama Vinura Vema"</em>.</li>
+            <li><strong>Social Critique:</strong>
+              <div class="sub-point">
+                ▫ Strongly condemned rigid caste segregation, ritualism, temple commercialization, and hypocritical ascetic practices.<br>
+                ▫ Preached internal spiritual purity, practical ethics, charity, and universal human dignity in everyday spoken language.
+              </div>
+            </li>
+            <li><strong>Global Preservation:</strong> British civil servant and scholar C.P. Brown gathered, edited, translated, and published Vemana's verses into English in 1829, establishing his global recognition.</li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="exam-trick">
+      <ul class="bullet-list">
+        <li><strong>TRAP 1: "The Kakatiyas claimed descent from the solar or lunar Kshatriya line."</strong> ➔ <strong>FALSE!</strong> The Kakatiyas explicitly identified themselves as belonging to the fourth varna (Sudras of the Durjaya clan), highlighting the social mobility of Deccan agrarian clans.</li>
+        <li><strong>TRAP 2: "Allasani Peddana wrote Amuktamalyada."</strong> ➔ <strong>FALSE!</strong> <em>Amuktamalyada</em> was written by <strong>Emperor Sri Krishnadevaraya</strong>. Peddana authored <em>Manucharitramu</em> and was titled <em>Andhra Kavita Pitamaha</em>.</li>
+        <li><strong>TRAP 3: "Accha Telugu literature was started by Nannaya."</strong> ➔ <strong>FALSE!</strong> Nannaya utilized heavy Sanskrit loanwords (Tatsamas). The earliest standalone <em>Accha Telugu</em> work was <strong>Yayati Charitra</strong>, written by Ponnikanti Telaganna during the reign of Ibrahim Qutb Shah.</li>
+        <li><strong>TRAP 4: "Nrutta Ratnavali was a Vijayanagara dance treatise."</strong> ➔ <strong>FALSE!</strong> <em>Nrutta Ratnavali</em> was authored during the <strong>Kakatiya era</strong> by elephant force commander <strong>Jayapa Senani</strong> in 1254 A.D.</li>
+      </ul>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky yellow">
+      <strong>Chronological Milestone Hook:</strong><br>
+      Later Eastern Chalukyas/Nannaya (11th C) ➔ Kakatiyas/Jayapa/Tikkana (12th–14th C) ➔ Musunuri &amp; Reddi Kings/Errana/Srinatha (14th–15th C) ➔ Vijayanagara/Krishnadevaraya/Asthadiggajas (16th C) ➔ Qutb Shahis/Accha Telugu (16th–17th C) ➔ Vemana/Ataveladi Reform (17th C).
+    </div></div></div>
+  
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

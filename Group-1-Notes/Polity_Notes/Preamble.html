@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../mobile-pwa.css">
+<meta charset="UTF-8">
+
+<title>Preamble of the Constitution (A4 Balanced Edition)</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-page: #fbfbf9;
+    --ruled-line: #e3ebf5;
+    --margin-line: #f7a8b8;
+    --ink-blue: #0f3870;
+    --ink-dark: #1e293b;
+    --ink-red: #b91c1c;
+    --ink-green: #15803d;
+    --ink-purple: #6b21a8;
+    --ink-orange: #c2410c;
+    --highlight-yellow: rgba(254, 240, 138, 0.75);
+    --highlight-green: rgba(187, 247, 208, 0.65);
+    --highlight-pink: rgba(251, 207, 232, 0.65);
+    --highlight-blue: rgba(186, 230, 253, 0.65);
+    --sticky-yellow: #fef9c3;
+    --sticky-pink: #ffe4e6;
+    --sticky-blue: #e0f2fe;
+    --shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @page {
+    size: A4 portrait;
+    margin: 12mm 10mm 12mm 10mm;
+  }
+
+  body {
+    background-color: #cbd5e1;
+    font-family: 'Kalam', cursive, sans-serif;
+    color: var(--ink-dark);
+    padding: 25px 10px;
+    display: flex;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .notebook-container {
+    width: 100%;
+    max-width: 980px;
+    background-color: var(--bg-page);
+    background-image: 
+      linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px),
+      linear-gradient(var(--ruled-line) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 28px;
+    padding: 35px 35px 50px 65px;
+    border-radius: 4px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+    position: relative;
+    line-height: 28px;
+  }
+
+  /* Nested Subpoint Indentation with Dashed Guide Line */
+  .sub-point {
+    margin-left: 18px;
+    padding-left: 10px;
+    border-left: 2px dashed #94a3b8;
+    font-size: 15px;
+    line-height: 22px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+  
+  .title-section {
+    text-align: center;
+    border-bottom: 3px double var(--ink-blue);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+  .title-section h1 {
+    font-size: 40px;
+    color: var(--ink-blue);
+    letter-spacing: 0.5px;
+    line-height: 1.15;
+  }
+  .title-section .subtitle {
+    font-size: 20px;
+    color: var(--ink-red);
+    font-family: 'Patrick Hand', cursive;
+  }
+  .badge-tag {
+    display: inline-block;
+    background: var(--ink-purple);
+    color: #fff;
+    padding: 2px 14px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    font-weight: 800;
+    margin-top: 4px;
+  }
+
+  .section-header {
+    font-size: 26px;
+    color: var(--ink-red);
+    margin: 24px 0 10px 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px dashed rgba(185, 28, 28, 0.4);
+    padding-bottom: 2px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  .section-header span {
+    background: var(--highlight-yellow);
+    padding: 0 8px;
+    border-radius: 4px;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 12px; }
+
+  /* Notebook Elements */
+  .card-note {
+    background: rgba(255,255,255,0.88);
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 12px 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .card-note.blue { border-left: 5px solid var(--ink-blue); }
+  .card-note.green { border-left: 5px solid var(--ink-green); }
+  .card-note.purple { border-left: 5px solid var(--ink-purple); }
+  .card-note.red { border-left: 5px solid var(--ink-red); }
+  .card-note.orange { border-left: 5px solid var(--ink-orange); }
+
+  .sticky {
+    padding: 14px 16px;
+    border-radius: 2px;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+    transform: rotate(-0.5deg);
+    margin: 14px 0;
+    font-size: 16.5px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+  .sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+  .sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+
+  .hl-yellow { background: var(--highlight-yellow); padding: 0 4px; border-radius: 3px; }
+  .hl-green { background: var(--highlight-green); padding: 0 4px; border-radius: 3px; }
+  .hl-pink { background: var(--highlight-pink); padding: 0 4px; border-radius: 3px; }
+  .hl-blue { background: var(--highlight-blue); padding: 0 4px; border-radius: 3px; }
+
+  /* Prelims PYQ & MCQ Practice Cards */
+  .mcq-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-left: 5px solid #2563eb;
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.04);
+  }
+  .mcq-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: #dbeafe;
+    color: #1e40af;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .mcq-options {
+    margin: 6px 0 8px 14px;
+    font-size: 14.5px;
+    line-height: 22px;
+  }
+
+  /* APPSC MAINS DESCRIPTIVE QUESTION BANK ZONE */
+  .mains-section {
+    background: #fffafa;
+    border: 2px solid #7f1d1d;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 24px 0 10px 0;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .mains-section::before {
+    content: "✍ APPSC MAINS PRACTICE & PREVIOUS YEAR QUESTIONS (PYQs)";
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: #991b1b;
+    padding: 2px 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  .hl-dark-red {
+    background-color: #991b1b;
+    color: #ffffff;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+  }
+  .mains-q-item {
+    margin-bottom: 14px;
+    border-bottom: 1px dashed rgba(153, 27, 27, 0.25);
+    padding-bottom: 10px;
+  }
+  .mains-q-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .mains-q-title {
+    font-size: 17px;
+    color: #7f1d1d;
+    font-weight: 700;
+    line-height: 24px;
+  }
+  .mains-framework {
+    font-size: 15px;
+    color: #334155;
+    margin-top: 4px;
+    padding-left: 10px;
+    border-left: 2.5px solid #991b1b;
+    line-height: 22px;
+  }
+
+  .bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+
+  .hand-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 16px 0;
+    background: rgba(255,255,255,0.85);
+    font-size: 15px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .hand-table th, .hand-table td {
+    border: 1px solid #94a3b8;
+    padding: 7px 10px;
+    text-align: left;
+    line-height: 20px;
+  }
+  .hand-table th {
+    background: #e2e8f0;
+    color: var(--ink-blue);
+    font-family: 'Caveat', cursive;
+    font-size: 19px;
+  }
+
+  .exam-trick {
+    background: #fff1f2;
+    border: 2px dashed var(--ink-red);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    position: relative;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .exam-trick::before {
+    content: "⚡ TOPPER'S RED ALERT: CONSTITUTIONAL TRAPS ⚡";
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--ink-red);
+    position: absolute;
+    top: -11px;
+    left: 18px;
+    background: #fff;
+    padding: 0 8px;
+    border: 1px solid var(--ink-red);
+    border-radius: 4px;
+  }
+
+  .svg-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0;
+    background: rgba(255,255,255,0.85);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  @media print {
+    body { background: none; padding: 0; }
+    .notebook-container {
+      box-shadow: none;
+      width: 100%;
+      max-width: 100%;
+      padding: 10px 15px 15px 45px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="notebook-container">
+
+  <!-- 1. TITLE SECTION -->
+  <div class="title-section">
+    <div class="badge-tag">UPSC / STATE PSC INDIAN POLITY HIGH-YIELD REVISION NOTES</div>
+    <h1>The Preamble to the Constitution of India</h1>
+    <div class="subtitle">Philosophy & Core Ideals • Sovereign Socialist Secular Democratic Republic • 4 Pillars • Basic Structure Jurisprudence</div>
+  </div>
+
+  <!-- SECTION 1: GENESIS & PHILOSOPHICAL SOURCE -->
+  <div class="section-header"><span>1. Genesis, Source & Historical Foundations</span></div>
+  <div class="grid-2">
+    <div class="card-note blue">
+      <h3 style="color:var(--ink-blue); font-size:21px;">Genesis & Sovereign Source</h3>
+      <ul class="bullet-list">
+        <li><strong>Historical Anchor:</strong> Based entirely on the <span class="hl-yellow">Objectives Resolution</span>, drafted and moved by <strong>Pt. Jawaharlal Nehru</strong> on <span class="hl-blue">Dec 13, 1946</span>; unanimously adopted by the Assembly on <span class="hl-green">Jan 22, 1947</span>.</li>
+        <li><strong>Source of Authority:</strong> Derived from <em>"We, the People of India"</em>; establishes <strong>Popular Sovereignty</strong> where ultimate constitutional authority rests with the people, not the British Crown or Parliament.</li>
+        <li><strong>Adoption & Date of Enactment:</strong> Enacted on <span class="hl-pink">26th November 1949</span> (Constitution Day / Samvidhan Divas).</li>
+        <li><strong>Unique Sequence of Enactment:</strong> The Constituent Assembly debated and enacted the Preamble <strong>at the very end</strong> to confirm consistency with the rest of the Constitution.</li>
+      </ul>
+    </div>
+    <div class="card-note purple">
+      <h3 style="color:var(--ink-purple); font-size:21px;">Comparative Global Borrowings</h3>
+      <ul class="bullet-list">
+        <li><strong>Concept of a Written Preamble:</strong> Borrowed from the <span class="hl-yellow">American Constitution</span> (the first written constitution to adopt a formal preamble).</li>
+        <li><strong>The Triad of Ideals:</strong> <em>Liberty, Equality, and Fraternity</em> were borrowed from the <span class="hl-blue">French Revolution (1789)</span>.</li>
+        <li><strong>Three Dimensions of Justice:</strong> <em>Social, Economic, and Political Justice</em> were inspired by the <span class="hl-pink">Russian Revolution (1917)</span>.</li>
+        <li><strong>Organic Character:</strong> Operates as the philosophical compass, prefacing the foundational values of democratic constitutionalism.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 2: NATURE OF THE INDIAN POLITY -->
+  <div class="section-header"><span>2. Nature of the State (The 5 Key Words)</span></div>
+  <div class="grid-2">
+    <div class="card-note green">
+      <h3 style="color:var(--ink-green); font-size:20px;">Sovereign, Socialist & Secular</h3>
+      <ul class="bullet-list">
+        <li><strong>Sovereign:</strong> Complete independence internally and externally; India is not a dominion of any foreign power and possesses the constitutional power to acquire foreign territory or cede a part of its territory (subject to Art 368).</li>
+        <li><strong>Socialist (Added by 42nd CAA, 1976):</strong>
+          <div class="sub-point">
+            ▫ <strong>Democratic Socialism:</strong> Rejects communist state socialism; operates through a <strong>mixed economy</strong> where public and private sectors coexist.<br>
+            ▫ <strong>Gandhian-Marxist Synthesis:</strong> In <span class="hl-pink">D.S. Nakara v. Union of India (1983)</span>, the SC held that Indian socialism is a blend of Marxism and Gandhism, leaning heavily toward Gandhian socialism to end poverty, ignorance, disease, and inequality of opportunity.
+          </div>
+        </li>
+        <li><strong>Secular (Added by 42nd CAA, 1976):</strong>
+          <div class="sub-point">
+            ▫ <strong>Positive Secularism:</strong> Unlike Western secularism (strict separation of Church and State), India practices <em>"Sarva Dharma Sambhava"</em> (all religions enjoy equal status, respect, and state protection).<br>
+            ▫ <strong>Basic Structure Confirmation:</strong> In <span class="hl-yellow">S.R. Bommai v. Union of India (1994)</span>, the Supreme Court held that secularism was already an organic, immutable feature of the Constitution prior to 1976.
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="card-note orange">
+      <h3 style="color:var(--ink-orange); font-size:20px;">Democratic & Republic</h3>
+      <ul class="bullet-list">
+        <li><strong>Democratic:</strong>
+          <div class="sub-point">
+            ▫ <strong>Representative Democracy:</strong> Executive is accountable to the legislature; exercised via <strong>universal adult suffrage</strong> (Art 326), periodic competitive elections, independent judiciary, and the rule of law.<br>
+            ▫ <strong>Comprehensive Character:</strong> Encompasses not merely political democracy, but social and economic democracy as stressed by Dr. B.R. Ambedkar.
+          </div>
+        </li>
+        <li><strong>Republic:</strong>
+          <div class="sub-point">
+            ▫ <strong>Elected Head of State:</strong> The President of India is elected indirectly for a fixed term of 5 years (no hereditary monarchy like in the UK).<br>
+            ▫ <strong>Absence of Privileged Class:</strong> All public offices are opened to every citizen without discrimination.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 3: THE 4 OBJECTIVES OF THE CONSTITUTION -->
+  <div class="section-header"><span>3. Foundational Objectives: Justice, Liberty, Equality, Fraternity</span></div>
+  <div class="grid-2">
+    <div class="card-note blue">
+      <h3 style="color:var(--ink-blue); font-size:20px;">Justice & Liberty</h3>
+      <ul class="bullet-list">
+        <li><strong>JUSTICE (Social, Economic, Political):</strong>
+          <div class="sub-point">
+            ▫ <strong>Social Justice:</strong> Equal treatment of all citizens without caste, race, color, or gender distinctions; elimination of privileges; uplift of backward classes (SCs, STs, OBCs) and women (operationalized via Arts 15, 17, 38).<br>
+            ▫ <strong>Economic Justice:</strong> Elimination of glaring inequalities in income, wealth, and property (operationalized via DPSPs Arts 39(b) and 39(c)). Combined, social and economic justice form <em>"Distributive Justice"</em>.<br>
+            ▫ <strong>Political Justice:</strong> Equal access to public political offices and equal voice in government (operationalized via Arts 325 and 326).
+          </div>
+        </li>
+        <li><strong>LIBERTY (Thought, Expression, Belief, Faith, Worship):</strong>
+          <div class="sub-point">
+            ▫ Liberty of individual development safeguarded through Part III (Arts 19(1)(a), 25–28).<br>
+            ▫ <strong>Qualified, Not Absolute:</strong> Subject to limitations and public interest restrictions outlined in the text.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card-note red">
+      <h3 style="color:var(--ink-red); font-size:20px;">Equality & Fraternity</h3>
+      <ul class="bullet-list">
+        <li><strong>EQUALITY (of Status and Opportunity):</strong>
+          <div class="sub-point">
+            ▫ <strong>Status & Opportunity:</strong> Absence of special privilege to any individual, and adequate opportunities for all without discrimination.<br>
+            ▫ <strong>Constitutional Facets:</strong> Civic equality (Arts 14–18), political equality (Arts 325, 326), and economic equality (Art 39 directive for equal livelihood).
+          </div>
+        </li>
+        <li><strong>FRATERNITY (Dignity & Unity/Integrity):</strong>
+          <div class="sub-point">
+            ▫ A sense of brotherhood promoted structurally by single citizenship and Fundamental Duties (Art 51A(e)).<br>
+            ▫ Assures two conditions: <strong>1. Dignity of the Individual</strong> (sacrosanct human value), and <strong>2. Unity and Integrity of the Nation</strong> (national integration counteracting regional, linguistic, and communal secessionism).
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 4: JUDICIAL CONFLICT & BASIC STRUCTURE JURISPRUDENCE -->
+  <div class="section-header"><span>4. Judicial Evolution: Is Preamble Part of the Constitution?</span></div>
+  <div class="grid-2">
+    <div class="card-note purple">
+      <h3 style="color:var(--ink-purple); font-size:20px;">The Three Landmark Cases</h3>
+      <ul class="bullet-list">
+        <li><strong>1. Berubari Union Reference (1960) — 8-Judge Bench:</strong>
+          <div class="sub-point">
+            ▫ SC observed that the Preamble acts as an aid to interpretation: a <em>"key to open the mind of the makers"</em>.<br>
+            ▫ <strong>Regressive Ruling:</strong> The Court ruled that the <span class="hl-pink">Preamble is NOT a part of the Constitution</span>, meaning it had no status under Article 368 amending power.
+          </div>
+        </li>
+        <li><strong>2. Kesavananda Bharati v. State of Kerala (1973) — 13-Judge Bench:</strong>
+          <div class="sub-point">
+            ▫ Overruled <em>Berubari Union</em> after examining Constituent Assembly records.<br>
+            ▫ <strong>Historic Verdict:</strong> SC ruled that the <span class="hl-green">Preamble IS an integral part of the Constitution</span>.<br>
+            ▫ Confirmed that the Preamble holds the same constituent force because it was voted on and passed by the Assembly in identical procedure to the rest of the text.
+          </div>
+        </li>
+        <li><strong>3. LIC of India Case (1995):</strong>
+          <div class="sub-point">
+            ▫ Supreme Court once again reaffirmed that the Preamble is an <strong>integral part</strong> of the Constitution.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card-note green">
+      <h3 style="color:var(--ink-green); font-size:20px;">Amendability & Legal Status</h3>
+      <ul class="bullet-list">
+        <li><strong>Amendability under Article 368:</strong>
+          <div class="sub-point">
+            ▫ Because it is an integral part of the Constitution, the Preamble <span class="hl-yellow">can be amended under Article 368</span> (ruled in <em>Kesavananda Bharati</em>).<br>
+            ▫ <strong>Limitation:</strong> The amending power cannot be used to damage, emasculate, or destroy the <strong>Basic Structure</strong> (e.g., Democracy, Secularism, Republican character, Unity and Integrity).
+          </div>
+        </li>
+        <li><strong>The 42nd Constitutional Amendment Act, 1976:</strong>
+          <div class="sub-point">
+            ▫ The Preamble has been amended <strong>only once</strong> in Indian constitutional history.<br>
+            ▫ Added three terms: <span class="hl-pink">"SOCIALIST"</span>, <span class="hl-pink">"SECULAR"</span>, and altered "Unity of the Nation" to <span class="hl-green">"Unity and INTEGRITY of the Nation"</span>.
+          </div>
+        </li>
+        <li><strong>Non-Justiciable Legal Enforceability:</strong>
+          <div class="sub-point">
+            ▫ <span class="hl-pink">Non-Justiciable:</span> It is not enforceable in a court of law; its provisions cannot be executed through writs independently.<br>
+            ▫ <strong>Neither a source of power</strong> to the legislature, nor a <strong>limitation/prohibition</strong> on legislative action.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 5: MASTER MEMORY SHEET (COMPARATIVE TABLE) -->
+  <div class="section-header"><span>5. Master Memory Sheet: Preamble Evolution Matrix</span></div>
+  <table class="hand-table">
+    <thead>
+      <tr>
+        <th style="width:20%;">Core Dimension</th>
+        <th style="width:40%;">Original Preamble (Adopted Nov 26, 1949)</th>
+        <th style="width:40%;">Present Preamble (Post-42nd CAA, 1976)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Nature of Polity</strong></td>
+        <td><em>"Sovereign Democratic Republic"</em> (3 Core Terms)</td>
+        <td><em>"Sovereign <span class="hl-yellow">Socialist Secular</span> Democratic Republic"</em> (5 Core Terms)</td>
+      </tr>
+      <tr>
+        <td><strong>National Fraternal Unity</strong></td>
+        <td><em>"Unity of the Nation"</em></td>
+        <td><em>"Unity and <span class="hl-yellow">Integrity</span> of the Nation"</em></td>
+      </tr>
+      <tr>
+        <td><strong>Judicial Status</strong></td>
+        <td>Excluded from constitutional status (<em>Berubari Union, 1960</em>)</td>
+        <td>Integral part of the Constitution & Basic Structure (<em>Kesavananda, 1973</em>)</td>
+      </tr>
+      <tr>
+        <td><strong>Enforceability</strong></td>
+        <td>Non-justiciable and non-enforceable in courts</td>
+        <td>Remains strictly <strong>non-justiciable</strong>; functions as an interpretive aid during ambiguity</td>
+      </tr>
+      <tr>
+        <td><strong>Amending Power</strong></td>
+        <td>Considered non-amendable under Art 368 (per <em>Berubari</em>)</td>
+        <td>Amendable under Article 368 without violating Basic Structure</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 6: FORMULA & MNEMONIC ZONE -->
+  <div class="section-header"><span>6. Formula & Mnemonic Zone</span></div>
+  <div class="sticky yellow">
+    <h4 style="color:var(--ink-blue); font-size:20px;">⚡ Topper's Mnemonics & Speed Formulas</h4>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; font-size:16px;">
+      <div>
+        • <strong>NATURE OF STATE (Sequence):</strong> <span class="hl-pink">"S-S-S-D-R"</span><br>
+        ➔ <strong>S</strong>overeign ➔ <strong>S</strong>ocialist ➔ <strong>S</strong>ecular ➔ <strong>D</strong>emocratic ➔ <strong>R</strong>epublic.<br>
+        <em>Tip:</em> Remember that <strong>Socialist</strong> comes BEFORE <strong>Secular</strong>.
+      </div>
+      <div>
+        • <strong>OBJECTIVES FORMULA:</strong> <span class="hl-green">"J-L-E-F"</span><br>
+        ➔ <strong>J</strong>ustice (Social, Economic, Political) ➔ <strong>L</strong>iberty (5 aspects) ➔ <strong>E</strong>quality (Status, Opportunity) ➔ <strong>F</strong>raternity (Dignity, Unity & Integrity).
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: CONCEPT MAPS & FLOWCHARTS -->
+  <div class="section-header"><span>7. Concept Maps & Visual Flowcharts</span></div>
+  <div class="svg-box">
+    <svg viewBox="0 0 850 180" width="100%" height="180" style="font-family:'Kalam', cursive;">
+      <rect x="315" y="10" width="220" height="42" rx="6" fill="#dbeafe" stroke="#1e40af" stroke-width="1.8"/>
+      <text x="425" y="28" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="bold">THE PREAMBLE ARCHITECTURE</text>
+      <text x="425" y="42" text-anchor="middle" font-size="11" fill="#334155">Non-Justiciable • Integral Part</text>
+
+      <path d="M 425 52 L 425 78" stroke="#64748b" stroke-width="1.8"/>
+      <path d="M 115 78 L 735 78" stroke="#64748b" stroke-width="1.8"/>
+
+      <path d="M 115 78 L 115 104" stroke="#64748b" stroke-width="1.8"/>
+      <path d="M 320 78 L 320 104" stroke="#64748b" stroke-width="1.8"/>
+      <path d="M 525 78 L 525 104" stroke="#64748b" stroke-width="1.8"/>
+      <path d="M 735 78 L 735 104" stroke="#64748b" stroke-width="1.8"/>
+
+      <!-- Block 1 -->
+      <rect x="25" y="104" width="180" height="64" rx="5" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+      <text x="115" y="124" text-anchor="middle" font-size="13" fill="#b45309" font-weight="bold">SOURCE</text>
+      <text x="115" y="142" text-anchor="middle" font-size="11" fill="#334155">"People of India"</text>
+      <text x="115" y="157" text-anchor="middle" font-size="10" fill="#475569">Popular Sovereignty</text>
+
+      <!-- Block 2 -->
+      <rect x="230" y="104" width="180" height="64" rx="5" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+      <text x="320" y="124" text-anchor="middle" font-size="13" fill="#15803d" font-weight="bold">NATURE (S-S-S-D-R)</text>
+      <text x="320" y="142" text-anchor="middle" font-size="11" fill="#334155">Sovereign, Socialist,</text>
+      <text x="320" y="157" text-anchor="middle" font-size="10" fill="#475569">Secular, Dem., Republic</text>
+
+      <!-- Block 3 -->
+      <rect x="435" y="104" width="180" height="64" rx="5" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"/>
+      <text x="525" y="124" text-anchor="middle" font-size="13" fill="#b91c1c" font-weight="bold">OBJECTIVES (J-L-E-F)</text>
+      <text x="525" y="142" text-anchor="middle" font-size="11" fill="#334155">Justice, Liberty,</text>
+      <text x="525" y="157" text-anchor="middle" font-size="10" fill="#475569">Equality, Fraternity</text>
+
+      <!-- Block 4 -->
+      <rect x="645" y="104" width="180" height="64" rx="5" fill="#f3e8ff" stroke="#6b21a8" stroke-width="1.5"/>
+      <text x="735" y="124" text-anchor="middle" font-size="13" fill="#6b21a8" font-weight="bold">DATE & STATUS</text>
+      <text x="735" y="142" text-anchor="middle" font-size="11" fill="#334155">Enacted: 26 Nov 1949</text>
+      <text x="735" y="157" text-anchor="middle" font-size="10" fill="#475569">Basic Structure Core</text>
+    </svg>
+  </div>
+
+  <!-- SECTION 8: FAMOUS JURISTS' QUOTES -->
+  <div class="section-header"><span>8. Eminent Jurists' Perspectives & Key Quotes</span></div>
+  <div class="card-note blue">
+    <ul class="bullet-list">
+      <li><strong>N.A. Palkhivala:</strong> Called the Preamble the <span class="hl-yellow">"Identity Card of the Constitution"</span>.</li>
+      <li><strong>Dr. K.M. Munshi:</strong> Described it as the <span class="hl-pink">"Horoscope of our Sovereign Democratic Republic"</span>.</li>
+      <li><strong>Sir Alladi Krishnaswamy Iyer:</strong> Observed that <em>"The Preamble to our Constitution expresses what we had thought or dreamt so long."</em></li>
+      <li><strong>Pandit Thakur Das Bhargava:</strong> Declared: <em>"The Preamble is the most precious part of the Constitution. It is the soul of the Constitution. It is a key to the Constitution. It is a jewel set in the Constitution."</em></li>
+      <li><strong>Sir Ernest Barker (English Political Scientist):</strong> Paid tribute to Indian framers by quoting the Preamble on the opening page of his treatise <em>Principles of Social and Political Theory</em> (1951), describing it as the <em>"Key-note"</em> of his book.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 9: EXAM-TRICK RED ALERT BOXES -->
+  <div class="section-header"><span>9. Exam-Trick Boxes (Avoid Common Traps!)</span></div>
+  <div class="exam-trick">
+    <ul class="bullet-list" style="margin-top:2px;">
+      <li><strong>TRAP 1: "The Preamble was adopted on January 26, 1950 along with the commencement of the Constitution."</strong> ➔ <strong>WRONG!</strong> It was formally adopted and enacted on <strong>November 26, 1949</strong>. January 26, 1950 is the date of *commencement*.</li>
+
+      <li><strong>TRAP 2: "The Preamble gives substantive law-making power to Parliament."</strong> ➔ <strong>WRONG!</strong> The Preamble is neither an independent source of power to the legislature nor an independent source of prohibition or limitation on legislative power.</li>
+
+      <li><strong>TRAP 3: "The Preamble can never be amended under Article 368."</strong> ➔ <strong>WRONG!</strong> In <em>Kesavananda Bharati (1973)</em>, the Supreme Court held that the Preamble <strong>can be amended under Article 368</strong> subject to the Basic Structure doctrine (it was amended by the 42nd CAA, 1976).</li>
+
+      <li><strong>TRAP 4: "Liberty of Economic Pursuits is a specific guarantee in the Preamble."</strong> ➔ <strong>WRONG!</strong> The Preamble secures <strong>Economic Justice</strong>, but Liberty is restricted specifically to <em>Thought, Expression, Belief, Faith, and Worship</em>.</li>
+
+      <li><strong>TRAP 5: "The Preamble was enacted first, followed by the rest of the Articles."</strong> ➔ <strong>WRONG!</strong> The Preamble was debated and enacted <strong>last</strong> by the Constituent Assembly to ensure complete harmony with the enacted Articles.</li>
+
+      <li><strong>TRAP 6: "The 42nd Amendment added the words 'Socialist', 'Secular', and 'Democratic'."</strong> ➔ <strong>WRONG!</strong> 'Democratic' was already present in the original 1949 text. The 42nd CAA added <span class="hl-pink">Socialist</span>, <span class="hl-pink">Secular</span>, and <span class="hl-green">Integrity</span>.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 10: PRELIMS PRACTICE & PYQ DRILL -->
+  <div class="section-header"><span>10. Prelims Practice & Previous Year Questions (PYQs)</span></div>
+
+  <!-- MCQ 1 -->
+  <div class="mcq-card">
+    <span class="mcq-badge">UPSC CSE Prelims Standard</span>
+    <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+      Q1. What is the legal status of the Preamble to the Constitution of India according to the Supreme Court?
+    </div>
+    <div class="mcq-options">
+      1) It is not a part of the Constitution and has no legal effect.<br>
+      2) It is a part of the Constitution and has the same legal effect as any other part.<br>
+      3) It is a part of the Constitution but has no legal effect independently of other parts.<br>
+      4) It is not a part of the Constitution but has independent legal effect.
+    </div>
+    <div class="sub-point" style="background-color: #f8fafc; padding: 8px 10px; margin-top: 6px;">
+      ➔ <strong>Correct Answer:</strong> <span class="hl-pink">3) It is a part of the Constitution but has no legal effect independently of other parts</span><br>
+      ▫ <strong>Master Catch:</strong> Ruled in <em>Kesavananda Bharati (1973)</em> and <em>LIC of India (1995)</em>. While it is an integral part of the constitutional document, it is non-justiciable on its own; it serves as an interpretive guide when substantive articles are ambiguous.
+    </div>
+  </div>
+
+  <!-- MCQ 2 -->
+  <div class="mcq-card">
+    <span class="mcq-badge">APPSC Group-1 Prelims Standard</span>
+    <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+      Q2. In which exact sequence do the following expressions appear in the text of the Preamble of the Indian Constitution?
+    </div>
+    <div class="mcq-options">
+      1) Sovereign, Secular, Socialist, Democratic, Republic<br>
+      2) Sovereign, Socialist, Secular, Democratic, Republic<br>
+      3) Sovereign, Democratic, Republic, Socialist, Secular<br>
+      4) Socialist, Secular, Sovereign, Democratic, Republic
+    </div>
+    <div class="sub-point" style="background-color: #f8fafc; padding: 8px 10px; margin-top: 6px;">
+      ➔ <strong>Correct Answer:</strong> <span class="hl-pink">2) Sovereign, Socialist, Secular, Democratic, Republic</span><br>
+      ▫ <strong>Formula Applied:</strong> Recall the <strong>S-S-S-D-R</strong> sequence mnemonic. "Socialist" always precedes "Secular".
+    </div>
+  </div>
+
+  <!-- MCQ 3 -->
+  <div class="mcq-card">
+    <span class="mcq-badge">UPSC Civil Services Prelims</span>
+    <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+      Q3. The mind of the makers of the Constitution of India is reflected in which of the following?
+    </div>
+    <div class="mcq-options">
+      1) The Preamble<br>
+      2) The Fundamental Rights<br>
+      3) The Directive Principles of State Policy<br>
+      4) The Fundamental Duties
+    </div>
+    <div class="sub-point" style="background-color: #f8fafc; padding: 8px 10px; margin-top: 6px;">
+      ➔ <strong>Correct Answer:</strong> <span class="hl-pink">1) The Preamble</span><br>
+      ▫ <strong>Explanation:</strong> The Supreme Court in <em>Berubari Union (1960)</em> observed that the Preamble is a "key to open the minds of the makers", reflecting their foundational philosophies and aspirations.
+    </div>
+  </div>
+
+  <!-- Reserved Space for Test Series Additions -->
+  <div style="margin-top: 10px; padding: 8px; border: 1px dashed #94a3b8; border-radius: 6px; text-align: center; font-size: 13.5px; color: #475569; font-family: 'Patrick Hand', cursive;">
+    ✎ <em>[Reserved Space: Add your daily mock test / test series MCQs and recent APPSC Prelims PYQs here]</em>
+  </div>
+
+  <!-- SECTION 11: QUICK REVISION SUMMARY -->
+  <div class="section-header"><span>11. Quick Revision Summary (High-Speed Recall)</span></div>
+  <div class="sticky pink">
+    <div style="font-size:15px; line-height:23px;">
+      1. Source: People of India (Popular Sovereignty).<br>
+      2. Drafted based on Jawaharlal Nehru's Objectives Resolution (Dec 13, 1946; adopted Jan 22, 1947).<br>
+      3. Enacted on November 26, 1949 (Constitution Day); enacted last by the Constituent Assembly.<br>
+      4. Core Nature: Sovereign, Socialist, Secular, Democratic, Republic (S-S-S-D-R).<br>
+      5. Four Objectives: Justice (S-E-P), Liberty (5 facets), Equality (Status & Opportunity), Fraternity (Dignity & Unity/Integrity).<br>
+      6. Influences: Preamble concept from USA; Justice from USSR (1917); Liberty, Equality, Fraternity from France (1789).<br>
+      7. Berubari Case (1960): Declared Preamble NOT a part of the Constitution.<br>
+      8. Kesavananda Bharati (1973): Overruled Berubari; declared Preamble IS an integral part of the Constitution.<br>
+      9. Amendability: Amendable under Article 368 without altering the Basic Structure.<br>
+      10. 42nd CAA, 1976: Amended only once; inserted words "Socialist", "Secular", and "Integrity".<br>
+      11. Enforceability: Non-justiciable, non-enforceable; acts as an interpretive compass during ambiguity.
+    </div>
+  </div>
+
+  <!-- SECTION 12: APPSC MAINS QUESTION BANK & FRAMEWORKS -->
+  <div class="section-header"><span>12. APPSC Mains Practice & Model Answer Frameworks</span></div>
+  <div class="mains-section">
+    
+    <!-- Mains Question 1 -->
+    <div class="mains-q-item">
+      <div class="mains-q-title">
+        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+        <strong>Q1. "The Preamble does not merely state the objectives of the Constitution; it reflects the constitutional philosophy and operates as an interpretive beacon." Critically analyze its legal status and constitutional significance with landmark judicial verdicts.</strong>
+      </div>
+      <div class="mains-framework">
+        <strong>Answer Framework:</strong><br>
+        • <em>Introduction (approx. 30 words):</em> Define the Preamble as the philosophical preface and embodiment of popular sovereignty (<em>"We, the People"</em>). Quote N.A. Palkhivala (<em>"Identity Card of the Constitution"</em>) or K.M. Munshi.<br>
+        • <em>Judicial Evolution of Legal Status (approx. 50 words):</em><br>
+        &nbsp;&nbsp;▫ <em>Berubari Union (1960):</em> SC classified it as an interpretive key to framers' minds, but ruled it was <strong>not a part</strong> of the Constitution.<br>
+        &nbsp;&nbsp;▫ <em>Kesavananda Bharati (1973):</em> Overruled <em>Berubari</em>; held that the Preamble <strong>is an integral part</strong> of the Constitution, having been voted on and enacted like any other provision.<br>
+        &nbsp;&nbsp;▫ <em>LIC of India (1995):</em> Reaffirmed its integral constitutional character.<br>
+        • <em>The Dual Nature: Non-Justiciable yet Interpretive Guide (approx. 50 words):</em><br>
+        &nbsp;&nbsp;▫ Explain that it is non-justiciable (cannot be enforced directly via writs in the absence of substantive provisions).<br>
+        &nbsp;&nbsp;▫ However, when constitutional language is ambiguous, the interpretation consistent with Preamble values prevails (e.g., expanding Article 21, interpreting DPSPs).<br>
+        • <em>Basic Structure & Amendability Linkage (approx. 40 words):</em> Clarify that under Article 368, the Preamble can be amended (as done in 1976), but core tenets (secularism, democracy, socialist goals, national unity) constitute the unalterable Basic Structure.<br>
+        • <em>Conclusion (approx. 30 words):</em> End on how the Preamble functions as the moral conscience and guiding star of dynamic constitutionalism.
+      </div>
+    </div>
+
+    <!-- Mains Question 2 -->
+    <div class="mains-q-item">
+      <div class="mains-q-title">
+        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+        <strong>Q2. Examine whether the insertion of the words "Socialist" and "Secular" by the 42nd Constitutional Amendment Act, 1976 introduced new concepts or merely articulated pre-existing constitutional commitments.</strong>
+      </div>
+      <div class="mains-framework">
+        <strong>Answer Framework:</strong><br>
+        • <em>Introduction:</em> Contextualize the 42nd CAA, 1976 (Swaran Singh Committee recommendations) which inserted <em>Socialist</em>, <em>Secular</em>, and <em>Integrity</em>.<br>
+        • <em>The "Socialist" Commitment:</em><br>
+        &nbsp;&nbsp;▫ Trace how Part IV (Directive Principles of State Policy) already contained socialist goals (Arts 38, 39(b), 39(c) for equitable distribution of material resources and avoidance of wealth concentration).<br>
+        &nbsp;&nbsp;▫ Cite <em>D.S. Nakara (1983)</em> confirming India's commitment to Gandhian democratic socialism was active since 1950.<br>
+        • <em>The "Secular" Commitment:</em><br>
+        &nbsp;&nbsp;▫ Part III already guaranteed positive secularism through individual religious freedom (Art 25), denominational rights (Art 26), freedom from religious taxes (Art 27), and non-discrimination (Arts 14, 15, 16).<br>
+        &nbsp;&nbsp;▫ Cite <em>S.R. Bommai (1994)</em> where the SC confirmed secularism was always an innate basic feature.<br>
+        • <em>Critical Evaluation:</em> The 42nd CAA made explicit what was already organic and implicit in the constitutional scheme; it was an articulation rather than an ideological departure.<br>
+        • <em>Conclusion:</em> Reiterate that the amendment formalized the pre-existing commitments of the Constituent Assembly into the introductory declaration of the Republic.
+      </div>
+    </div>
+
+    <!-- Reserved Space for Test Series Additions -->
+    <div style="margin-top: 10px; padding: 8px; border: 1px dashed #94a3b8; border-radius: 6px; text-align: center; font-size: 13.5px; color: #475569; font-family: 'Patrick Hand', cursive;">
+      ✎ <em>[Reserved Space: Add your daily Mains answer writing questions and feedback pointers here]</em>
+    </div>
+    
+  </div>
+
+  <div style="text-align:center; font-family:'Patrick Hand', cursive; font-size:18px; color:var(--ink-blue); margin-top:16px;">
+    ★ Preamble Master Notes Complete • 100% Exam-Ready Recall ★
+  </div>
+
+</div>
+
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

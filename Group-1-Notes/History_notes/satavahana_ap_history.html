@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satavahana Empire: Comprehensive Master Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg-page: #fbfbf9; --ruled-line: #e3ebf5; --margin-line: #f7a8b8;
+  --ink-blue: #0f3870; --ink-dark: #1e293b; --ink-red: #b91c1c; --ink-green: #15803d;
+  --ink-purple: #6b21a8; --ink-orange: #c2410c; --ink-yellow: #a16207; --ink-teal: #0f766e;
+  --ink-cyan: #0369a1; --ink-indigo: #4338ca; --ink-rose: #be123c; --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85); --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75); --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85); --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75); --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3; --sticky-pink: #ffe4e6; --sticky-blue: #e0f2fe; --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: #cbd5e1; display: flex; justify-content: center; padding: 25px 10px; height: auto; overflow: visible; font-family: 'Kalam', cursive, sans-serif; color: var(--ink-dark); }
+.notebook-container { width: 100%; max-width: 940px; min-height: 1200px; background-color: var(--bg-page); background-image: linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px), linear-gradient(var(--ruled-line) 1px, transparent 1px); background-size: 100% 28px, 100% 28px; background-repeat: repeat-y, repeat; padding: 35px 35px 80px 65px; border-radius: 4px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); line-height: 28px; position: relative; }
+.block-wrapper { position: relative; margin-bottom: 16px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; background: transparent !important; }
+.title-section h1 { font-size: 38px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; background: transparent !important; }
+.title-section .subtitle { font-size: 19px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; background: transparent !important; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+.section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+.canvas-multi-row { display: flex; flex-direction: row; align-items: stretch; gap: 16px; width: 100%; margin-bottom: 16px; }
+.canvas-multi-row > .block-wrapper { flex: 1 1 0; min-width: 0; margin-bottom: 0; }
+.card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+.card-note.rose   { border-left: 6px solid var(--ink-rose) !important; }
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+.card-note.orange h3 { color: var(--ink-orange) !important; }
+.card-note.rose h3   { color: var(--ink-rose) !important; }
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; }
+.dot-point { margin-left: 14px; position: relative; padding-left: 16px; font-size: 15.5px; line-height: 23px; margin-top: 3px; margin-bottom: 5px; }
+.dot-point::before { content: "•"; position: absolute; left: 2px; color: var(--ink-dark); font-weight: 900; font-size: 16px; }
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15.5px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+.sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S SPEED TRICKS & FORMULA HACKS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+.fs-sm { font-size: 12px !important; line-height: 18px !important; }
+.fs-md { font-size: 16px !important; line-height: 24px !important; }
+.fs-lg { font-size: 20px !important; line-height: 28px !important; }
+.fs-xl { font-size: 25px !important; line-height: 32px !important; }
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+.expand-block-wrapper { position: relative; margin: 12px 0; width: 100%; }
+.expand-block-wrapper.blue .reveal-box summary { color: var(--ink-blue); background: #eff6ff; border-color: #93c5fd; }
+.expand-block-wrapper.blue .reveal-box summary::before { color: var(--ink-blue); }
+.expand-block-wrapper.blue .reveal-box[open] summary { background: #dbeafe; }
+.expand-block-wrapper.blue .reveal-content { border-color: #93c5fd; }
+.expand-block-wrapper.green .reveal-box summary { color: var(--ink-green); background: #f0fdf4; border-color: #86efac; }
+.expand-block-wrapper.green .reveal-box summary::before { color: var(--ink-green); }
+.expand-block-wrapper.green .reveal-box[open] summary { background: #dcfce7; }
+.expand-block-wrapper.green .reveal-content { border-color: #86efac; }
+.expand-block-wrapper.yellow .reveal-box summary { color: var(--ink-yellow); background: #fefce8; border-color: #fde047; }
+.expand-block-wrapper.yellow .reveal-box summary::before { color: var(--ink-yellow); }
+.expand-block-wrapper.yellow .reveal-box[open] summary { background: #fef08a; }
+.expand-block-wrapper.yellow .reveal-content { border-color: #fde047; }
+.expand-block-wrapper.purple .reveal-box summary { color: var(--ink-purple); background: #faf5ff; border-color: #d8b4fe; }
+.expand-block-wrapper.purple .reveal-box summary::before { color: var(--ink-purple); }
+.expand-block-wrapper.purple .reveal-box[open] summary { background: #f3e8ff; }
+.expand-block-wrapper.purple .reveal-content { border-color: #d8b4fe; }
+.expand-block-wrapper.red .reveal-box summary { color: var(--ink-red); background: #fef2f2; border-color: #fca5a5; }
+.expand-block-wrapper.red .reveal-box summary::before { color: var(--ink-red); }
+.expand-block-wrapper.red .reveal-box[open] summary { background: #fee2e2; }
+.expand-block-wrapper.red .reveal-content { border-color: #fca5a5; }
+.expand-block-wrapper.teal .reveal-box summary { color: var(--ink-teal); background: #f0fdfa; border-color: #5eead4; }
+.expand-block-wrapper.teal .reveal-box summary::before { color: var(--ink-teal); }
+.expand-block-wrapper.teal .reveal-box[open] summary { background: #ccfbf1; }
+.expand-block-wrapper.teal .reveal-content { border-color: #5eead4; }
+.expand-block-wrapper.amber .reveal-box summary { color: var(--ink-amber); background: #fffbeb; border-color: #fcd34d; }
+.expand-block-wrapper.amber .reveal-box summary::before { color: var(--ink-amber); }
+.expand-block-wrapper.amber .reveal-box[open] summary { background: #fef3c7; }
+.expand-block-wrapper.amber .reveal-content { border-color: #fcd34d; }
+.expand-block-wrapper.orange .reveal-box summary { color: var(--ink-orange); background: #fff7ed; border-color: #fdba74; }
+.expand-block-wrapper.orange .reveal-box summary::before { color: var(--ink-orange); }
+.expand-block-wrapper.orange .reveal-box[open] summary { background: #ffedd5; }
+.expand-block-wrapper.orange .reveal-content { border-color: #fdba74; }
+.expand-block-wrapper.rose .reveal-box summary { color: var(--ink-rose); background: #fff1f2; border-color: #fda4af; }
+.expand-block-wrapper.rose .reveal-box summary::before { color: var(--ink-rose); }
+.expand-block-wrapper.rose .reveal-box[open] summary { background: #ffe4e6; }
+.expand-block-wrapper.rose .reveal-content { border-color: #fda4af; }
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ UPSC & STATE PSC MAINS PRACTICE QUESTIONS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; font-family: 'Inter', sans-serif; }
+.mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+.mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+.eq { position: relative; font-family: 'Inter', sans-serif; font-weight: 700; color: #0f3870; background: rgba(224, 242, 254, 0.75); padding: 1px 6px; border-radius: 4px; border: 1px solid rgba(186, 230, 253, 0.95); display: inline-flex; align-items: center; gap: 4px; line-height: 1.35; margin: 1px 2px; vertical-align: middle; }
+.math-block { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-left: 4px solid var(--ink-purple); border-radius: 6px; padding: 10px 14px; margin: 10px 0; font-family: 'Inter', sans-serif; font-weight: 700; color: var(--ink-dark); font-size: 15px; }
+.fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px; }
+.fraction-top { border-bottom: 2px solid var(--ink-dark); padding-bottom: 2px; }
+.fraction-bottom { padding-top: 2px; }
+.note-image-container { position: relative; margin: 16px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
+.note-image-wrapper { position: relative; overflow: hidden; display: inline-block; min-width: 140px; max-width: 100%; border: 1.5px dashed #94a3b8; border-radius: 6px; padding: 6px; background: #ffffff; box-shadow: var(--shadow); }
+.note-image-wrapper img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; }
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+  
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas"><div class="block-wrapper" draggable="false">
+    
+  <div class="title-section">
+      <div class="badge-tag">APPSC GROUP-I &amp; II | UPSC CSE OPTIONAL | ANCIENT ANDHRA HISTORY</div>
+      <h1>Satavahana Empire: Comprehensive Master Notes</h1>
+      <div class="subtitle">Origins • Political Chronology • Administration • Economy &amp; Trade • Society • Religion, Literature &amp; Art</div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>I. Origin, Identity &amp; Historical Sources</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note blue">
+    
+  
+          <h3 style="color: rgb(15, 56, 112) !important;">1. Literary &amp; Epigraphic Sources</h3>
+          <ul class="bullet-list">
+            <li><strong>Puranic Nomenclature:</strong> Puranas (Matsya, Vayu, Vishnu) refer to them as <em>Andhras</em>, <em>Andhra-Bhrityas</em>, or <em>Andhrajatiyah</em>. Matsya Purana lists 30 kings reigning for ~450 years.</li>
+            <li><strong>Inscriptional Identity:</strong> Their own epigraphs and coins consistently use the name <strong>Satavahana</strong> or <strong>Satakani</strong>, never calling themselves "Andhra".</li>
+            <li><strong>Key Inscriptions:</strong>
+              <div class="sub-point">
+                ▫ <em>Naneghat Inscription:</em> Issued by Queen Naganika (widow of Satakarni I); records early Vedic sacrifices and the first epigraphic evidence of tax-free land gifts (Brahmadeya).<br>
+                ▫ <em>Nasik Prasasti:</em> Composed by Gautami Balasri; eulogizes the military exploits and virtues of Gautamiputra Satakarni.<br>
+                ▫ <em>Hathigumpha Inscription:</em> Kharavela of Kalinga records his military engagements with Satakarni I.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note amber">
+    
+  
+          <h3 style="color: rgb(180, 83, 9) !important;">2. Debate on Original Homeland &amp; Capitals</h3>
+          <ul class="bullet-list">
+            <li><strong>Andhra Origin Theory:</strong> Advocated by Vincent Smith, K. Gopalachari; supported by ancient references like Aitareya Brahmana and Pliny's accounts of fortified Andhra settlements.</li>
+            <li><strong>Kotilingala Evidence:</strong> Discovery of pre-Satavahana and early Satavahana punch-marked coins (bearing names of <em>Gobhada</em>, <em>Samagopa</em>, and <em>Chhimuka/Simuka</em>) at Kotilingala (Karimnagar) supports an eastern Deccan cradle.</li>
+            <li><strong>Capitals over Time:</strong>
+              <div class="sub-point">
+                ▫ Initial power bases at <strong>Kotilingala</strong> and <strong>Pratishthana (Paithan)</strong> on the Godavari.<br>
+                ▫ Shifted eastwards during foreign Saka pressure, making <strong>Dhanyakataka (Amaravati/Dharanikota)</strong> on the Krishna river their imperial seat.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>II. Political Chronology &amp; Major Rulers</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th>Ruler</th>
+            <th>Regnal Period &amp; Titles</th>
+            <th>Major Military &amp; Political Achievements</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Simuka</strong></td>
+            <td>Founder<br>(c. late 3rd / 2nd Cent BCE)</td>
+            <td>Overthrew Sunga and Kanva remnants; consolidated control over central Deccan; patronized Jainism initially and later Brahmanism.</td>
+          </tr>
+          <tr>
+            <td><strong>Kanha (Krishna)</strong></td>
+            <td>Brother of Simuka</td>
+            <td>Extended realm westward to Nasik; appointed a <em>Maha-matra</em> for Buddhist monks at Nasik caves (earliest epigraphic record of state-monastery linkage).</td>
+          </tr>
+          <tr>
+            <td><strong>Satakarni I</strong></td>
+            <td>3rd King<br><em>Dakshinapathapati</em>, <em>Apratihata-chakra</em></td>
+            <td>Conquered Western Malwa, Narmada valley, and Vidarbha; performed 2 Asvamedhas and 1 Rajasuya; married Nayanika (daughter of Maharathi Tranakayiro). Contemporary of Kharavela.</td>
+          </tr>
+          <tr>
+            <td><strong>Hala</strong></td>
+            <td>17th King<br><em>Kavivatsala</em> (Patron of Poets)</td>
+            <td>Golden age of peace and literature; compiled <em>Gathasaptasati</em> (700 romantic couplets in Maharashtri Prakrit); legendary military expedition to Sri Lanka.</td>
+          </tr>
+          <tr>
+            <td><strong>Gautamiputra Satakarni</strong></td>
+            <td>23rd King (c. 106 – 130 CE)<br><em>Kshatriya-darpa-mana-mardana</em>, <em>Trisamudra-toya-pita-vahana</em></td>
+            <td>Greatest ruler; revived fortunes by crushing the Western Kshatrapas (Kshaharata dynasty under Nahapana); restruck Nahapana's silver coins at Jogalthambi; proclaimed himself <em>Ekabrahmana</em> and champion of the fourfold Varna order.</td>
+          </tr>
+          <tr>
+            <td><strong>Vashishtiputra Pulumavi</strong></td>
+            <td>Son of Gautamiputra<br><em>Navanarasvami</em></td>
+            <td>Consolidated hold over Coastal Andhra; transferred capital permanently to Dhanyakataka; coins with dual legends found in coastal Coromandel.</td>
+          </tr>
+          <tr>
+            <td><strong>Vashishtiputra Siva Sri Satakarni</strong></td>
+            <td>Brother of Pulumavi</td>
+            <td>Married the daughter of Western Kshatrapa ruler Rudradaman I (recorded in the Junagadh rock inscription); defeated twice by Rudradaman but spared due to close marital ties.</td>
+          </tr>
+          <tr>
+            <td><strong>Yajna Sri Satakarni</strong></td>
+            <td>Last Great King<br>(c. 165 – 194 CE)</td>
+            <td>Recovered northern and western territories from the Sakas; active maritime patron; issued coins depicting double-masted ships, symbolizing dominance over the Bay of Bengal trade.</td>
+          </tr>
+          <tr>
+            <td><strong>Successors &amp; Decline</strong></td>
+            <td>Vijaya, Chandra Sri, Pulomavi IV</td>
+            <td>Empire disintegrated into regional fragments: Ikshvakus in Coastal Krishna-Guntur, Abhiras in Western Deccan, Chutus in Kuntala (Karnataka), and early Pallavas in the south.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>III. Administrative Structure</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note purple">
+    
+  
+          <h3 style="color: rgb(107, 33, 168) !important;">1. Central &amp; Provincial Hierarchy</h3>
+          <ul class="bullet-list">
+            <li><strong>Monarchy:</strong> Hereditary monarchy checked by Dharmic codes; kings did not claim absolute divine incarnation but assumed high moral paternalism.</li>
+            <li><strong>Administrative Divisions:</strong>
+              <div class="sub-point">
+                ▫ <strong>Aharas (Rashtras):</strong> Provinces governed by royal governors called <em>Amatyas</em> or <em>Mahamatras</em>.<br>
+                ▫ <strong>Nigamas:</strong> Urban market towns with municipal merchant councils (e.g., Dhanyakataka, Sopara, Kalyan).<br>
+                ▫ <strong>Grama:</strong> Basic rural unit headed by a village officer called <em>Gramani</em>.
+              </div>
+            </li>
+            <li><strong>Feudal Ranks:</strong> Three tiers of hereditary feudatories:
+              <div class="sub-point">
+                1. <em>Raja:</em> Royal feudatory with coin-minting rights.<br>
+                2. <em>Maharathi:</em> Regional military lord empowered to issue land grants.<br>
+                3. <em>Mahabhoja:</em> Chieftain with administrative privileges.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note green">
+    
+  
+          <h3 style="color: rgb(21, 128, 61) !important;">2. Military &amp; Revenue Administration</h3>
+          <ul class="bullet-list">
+            <li><strong>Military Camps (Katakkas &amp; Skandhavaras):</strong> Settlements and forts serving as regional administrative headquarters during royal tours.</li>
+            <li><strong>Gaulmika (Rural Police/Military Chief):</strong> In charge of a military company (<em>Gulma</em>: 9 chariots, 9 elephants, 25 horses, 45 foot soldiers); maintained law, order, and tax collection in rural hinterlands.</li>
+            <li><strong>Taxation Structure:</strong>
+              <div class="sub-point">
+                ▫ <em>Bhaga:</em> State's share of agrarian yield, traditionally set at 1/6th.<br>
+                ▫ <em>Kara:</em> Periodic crop tax levied on peasants.<br>
+                ▫ <em>Deya &amp; Veyya:</em> Assessment duties and customs tolls collected at city gates and ports.
+              </div>
+            </li>
+            <li><strong>Introduction of Land Grants:</strong> First Indian dynasty to issue royal copper plate grants gifting tax-exempt land to Brahmins (<em>Brahmadeya</em>) and Buddhist monasteries (<em>Devabhoga</em>), introducing administrative immunities.</li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>IV. Economy, Guilds &amp; Maritime Trade</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note teal">
+    
+  
+          <h3 style="color: rgb(15, 118, 110) !important;">1. Craft Guilds (Srenis / Nikayas)</h3>
+          <ul class="bullet-list">
+            <li><strong>Autonomous Production Units:</strong> Craft workers organized into self-governing guilds called <em>Srenis</em>, headed by a <em>Sreshthi</em> or <em>Mukhiya</em>.</li>
+            <li><strong>Major Guilds Recorded in Epigraphs:</strong>
+              <div class="sub-point">
+                ▫ <em>Kularikas:</em> Potters<br>
+                ▫ <em>Odayantrikas:</em> Fabricators of water-lifting hydraulic machines<br>
+                ▫ <em>Tilikas:</em> Oil-pressers<br>
+                ▫ <em>Kamarikas:</em> Iron-smiths<br>
+                ▫ <em>Kolikas:</em> Weavers<br>
+                ▫ <em>Tesakaras:</em> Polished stone-cutters
+              </div>
+            </li>
+            <li><strong>Banking Functions:</strong> Guilds acted as modern financial trusts; kings, merchants, and queens deposited cash endowments (*akshayanivi*) with them to pay perpetual interest for supporting monks and lamp offerings.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note amber">
+    
+  
+          <h3 style="color: rgb(180, 83, 9) !important;">2. Internal &amp; Foreign Maritime Commerce</h3>
+          <ul class="bullet-list">
+            <li><strong>Periplus of the Erythraean Sea:</strong> Greco-Roman sailor guide detailing vibrant trade in the Satavahana realm.</li>
+            <li><strong>Western Ports:</strong> Barygaza (Broach), Kalyan, Sopara, and Chaul connecting with Alexandria and Rome.</li>
+            <li><strong>Eastern Coromandel Ports:</strong>
+              <div class="sub-point">
+                ▫ <strong>Maisolos (Machilipatnam):</strong> Renowned for exporting world-class gossamer-thin muslin cloth.<br>
+                ▫ <strong>Kantakosyla (Ghantasala), Koduru, and Mottupalli:</strong> Active trade hubs for Southeast Asian trans-shipment.
+              </div>
+            </li>
+            <li><strong>Roman Trade Imbalance:</strong> Exported muslins, spices, silks, pearls, and diamonds; imported wine amphorae, glass, copper, tin, and vast volumes of Roman gold aurei and silver denarii (Pliny lamented this drain of Roman wealth).</li>
+            <li><strong>Coinage:</strong> Minted coins in <strong>Lead, Potin (copper-zinc alloy), Copper, and Silver</strong> (Karshapanas). Silver was largely reserved for commercial trade in the northern domains.</li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>V. Socio-Cultural Life, Religion, Literature &amp; Art</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note rose">
+    
+  
+          <h3 style="color: rgb(190, 18, 60) !important;">1. Social Life &amp; Status of Women</h3>
+          <ul class="bullet-list">
+            <li><strong>Four Classes:</strong> Society stratified by profession into Maharathis/Mahabhojas (top tier), royal officials and merchants (2nd tier), agriculturalists/artisans (3rd tier), and manual laborers (4th tier).</li>
+            <li><strong>Matronymics:</strong> Kings took names derived from their mothers (e.g., <em>Gautami-putra</em>, <em>Vasishthi-putra</em>), reflecting elevated domestic respect and matriarchal reverence, though the succession itself remained strictly patrilineal.</li>
+            <li><strong>Status of Women:</strong> Royal ladies enjoyed high property ownership, issued personal religious endowments, managed charities, and served as regents during minority successions (e.g., Queen Naganika).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note blue">
+    
+  
+          <h3 style="color: rgb(15, 56, 112) !important;">2. Religion: Buddhism &amp; Vedic Revival</h3>
+          <ul class="bullet-list">
+            <li><strong>Brahmanical Revival:</strong> Kings actively patronized orthodox Vedic rites (Asvamedha, Gavamayana, Aptoryama) and worshipped Vasudeva-Krishna, Siva, Indra, and Surya.</li>
+            <li><strong>Flourishing of Buddhism:</strong>
+              <div class="sub-point">
+                ▫ State maintained religious tolerance; merchant classes and royal women heavily subsidized Mahayana Buddhist institutions.<br>
+                ▫ Major sects: <em>Chaityakas</em>, <em>Purvasailas</em>, and <em>Aparasailas</em> centered along the Krishna valley.<br>
+                ▫ <strong>Acharya Nagarjuna:</strong> Expounded <em>Madhyamika</em> (Sunyavada) philosophy at Sriparvata (Nagarjunakonda); patronized by King Yajna Sri Satakarni (for whom he wrote <em>Suhrullekha</em>).
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note purple">
+    
+  
+          <h3 style="color: rgb(107, 33, 168) !important;">3. Language &amp; Literature</h3>
+          <ul class="bullet-list">
+            <li><strong>Official Language:</strong> <strong>Prakrit</strong> was the court and inscriptional language; written in the Brahmi script.</li>
+            <li><strong>Gathasaptasati (Sattasai):</strong> 700 verses in Maharashtri Prakrit compiled by King Hala, capturing everyday village life, agriculture, love, and folk culture.</li>
+            <li><strong>Brihatkatha:</strong> Masterpiece authored by Gunadhya in the <em>Paisachi Prakrit</em> dialect; laid the base for the later Sanskrit Kathasaritsagara.</li>
+            <li><strong>Katantra Vyakarana:</strong> Sanskrit grammar treatise composed by Sarvavarman to help King Hala master Sanskrit rapidly.</li>
+            <li><strong>Early Telugu Elements:</strong> Prakrit inscriptions and Hala's poetry contain early Telugu words (Desi vocabulary like <em>Atta</em>, <em>Pilla</em>, <em>Vanta</em>, and the inscriptional term <em>Nagabu</em> at Amaravati).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note teal">
+    
+  
+          <h3 style="color: rgb(15, 118, 110) !important;">4. Art &amp; Architecture: Amaravati School</h3>
+          <ul class="bullet-list">
+            <li><strong>Amaravati School of Art:</strong> Indigenous art school flourishing along the lower Krishna; primarily utilized fine-grained <strong>white marble / Palnadu limestone</strong>.</li>
+            <li><strong>Stylistic Features:</strong> Noted for natural grace, physical movement, emotional expressiveness, narrative friezes, and circular medallion carvings depicting Jataka stories.</li>
+            <li><strong>Maha Chaitya at Amaravati:</strong>
+              <div class="sub-point">
+                ▫ Solid dome (Anda) standing on a high circular drum.<br>
+                ▫ Distinctive <strong>Ayaka Platforms</strong> projecting at the four cardinal directions, each crowned by five <strong>Ayaka Pillars</strong> (symbolizing 5 major events of Buddha's life: Birth, Renunciation, Enlightenment, First Sermon, Parinirvana).
+              </div>
+            </li>
+            <li><strong>Cave Architecture:</strong> Excavation of rock-cut Chaityas (prayer halls) and Viharas (monasteries) at Karle, Bhaja, Kanheri, and Bedsa in the Western Ghats; Karle Chaitya is the largest and most magnificent rock-cut prayer hall in India.</li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="exam-trick">
+      <ul class="bullet-list">
+        <li><strong>TRAP 1: "The Satavahanas used Telugu as their official inscriptional language."</strong> ➔ <strong>FALSE!</strong> Their official language was <strong>Prakrit</strong>, and the script was <strong>Brahmi</strong>. Telugu appeared only as loan words and personal names.</li>
+        <li><strong>TRAP 2: "Matronymics indicate that the Satavahanas were a matriarchal society."</strong> ➔ <strong>FALSE!</strong> Throne succession was strictly <strong>patrilineal</strong> (father to son). Matronymics (naming after mothers) indicated social and domestic respect for women, not female rule.</li>
+        <li><strong>TRAP 3: "The Satavahanas minted gold coins for international trade."</strong> ➔ <strong>FALSE!</strong> The Satavahanas <strong>never issued regular gold coins</strong>. They minted Lead, Potin, Copper, and Silver coins. International trade was settled with imported Roman gold coins (Aurei).</li>
+        <li><strong>TRAP 4: "Gautamiputra Satakarni founded the Satavahana dynasty."</strong> ➔ <strong>FALSE!</strong> The dynasty was founded by <strong>Simuka</strong>. Gautamiputra was the 23rd ruler who restored the dynasty after foreign Saka occupations.</li>
+        <li><strong>TRAP 5: "The earliest epigraphic evidence of tax-free land gifts is from the Gupta period."</strong> ➔ <strong>FALSE!</strong> It is found in the <strong>Naneghat Inscription of Queen Naganika (Satavahana era)</strong>, recording land grants to priests and monks.</li>
+      </ul>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky yellow">
+      <strong>Chronological Sequence Hook:</strong><br>
+      Simuka (Founder) ➔ Satakarni I (Vedic Sacrifices/Naneghat) ➔ Hala (Gathasaptasati/Prakrit) ➔ Gautamiputra Satakarni (Crushed Sakas/Ekabrahmana) ➔ Pulumavi (Amaravati Capital) ➔ Yajna Sri Satakarni (Ship-type Coins/Naval Trade) ➔ Disintegration into Ikshvakus, Pallavas &amp; Abhiras.
+    </div></div></div>
+  
+</body>
+</html>

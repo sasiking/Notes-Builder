@@ -66,7 +66,7 @@ function commitFormulaInsertion() {
 }
 
 function addFormulaToCard(btn) {
-  const card = btn.closest('.card-note');
+  const card = btn.closest('.card-note, .grid-col');
   const selection = window.getSelection();
   if (selection.rangeCount && card && card.contains(selection.anchorNode)) {
     savedSelectionRange = selection.getRangeAt(0).cloneRange();

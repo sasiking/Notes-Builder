@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../mobile-pwa.css">
+<meta charset="UTF-8">
+
+<title>Indus Valley Civilization - Master Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+    :root {
+      --bg-page: #fbfbf9;
+      --ruled-line: #e3ebf5;
+      --margin-line: #f7a8b8;
+      --ink-blue: #0f3870;
+      --ink-dark: #1e293b;
+      --ink-red: #b91c1c;
+      --ink-green: #15803d;
+      --ink-purple: #6b21a8;
+      --ink-orange: #c2410c;
+      --ink-yellow: #a16207;
+      --ink-teal: #0f766e;
+      --ink-cyan: #0369a1;
+      --ink-indigo: #4338ca;
+      --ink-rose: #be123c;
+      --ink-amber: #b45309;
+      --highlight-yellow: rgba(254, 240, 138, 0.85);
+      --highlight-green: rgba(187, 247, 208, 0.75);
+      --highlight-pink: rgba(251, 207, 232, 0.75);
+      --highlight-blue: rgba(186, 230, 253, 0.75);
+      --sticky-yellow: #fef9c3;
+      --sticky-pink: #ffe4e6;
+      --sticky-blue: #e0f2fe;
+      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #cbd5e1;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 25px 10px;
+      height: auto;
+      overflow: visible;
+    }
+
+    .notebook-container {
+      width: 100%;
+      max-width: 980px;
+      min-height: 1200px;
+      height: auto;
+      background-color: var(--bg-page);
+      background-image: 
+        linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px),
+        linear-gradient(var(--ruled-line) 1px, transparent 1px);
+      background-size: 100% 28px, 100% 28px;
+      background-repeat: repeat-y, repeat;
+      padding: 35px 35px 80px 65px;
+      border-radius: 4px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      line-height: 28px;
+      font-family: 'Kalam', cursive, sans-serif;
+      color: var(--ink-dark);
+      position: relative;
+    }
+
+    .block-wrapper { position: relative; margin-bottom: 16px; break-inside: avoid; }
+    h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+    
+    .title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; }
+    .title-section h1 { font-size: 40px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; }
+    .title-section .subtitle { font-size: 20px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; }
+    .badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+
+    .section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+    .section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+    .grid-col { display: flex; flex-direction: column; }
+
+    .card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+    .card-note.blue   { border-left: 5px solid var(--ink-blue); }
+    .card-note.green  { border-left: 5px solid var(--ink-green); }
+    .card-note.purple { border-left: 5px solid var(--ink-purple); }
+    .card-note.red    { border-left: 5px solid var(--ink-red); }
+    .card-note.yellow { border-left: 5px solid var(--ink-yellow); }
+    .card-note.teal   { border-left: 5px solid var(--ink-teal); }
+    .card-note.amber  { border-left: 5px solid var(--ink-amber); }
+    .card-note.orange { border-left: 5px solid var(--ink-orange); }
+
+    .bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+    .sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; }
+
+    .sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15.5px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+    .sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+    .sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+    .sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+
+    .hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+    .hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+    .hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+    .hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+
+    .hand-table { width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+    .hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+    .hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+
+    .exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+    .exam-trick::before { content: "⚡ TOPPER'S RED ALERT: HIGH-YIELD TRAPS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+
+    .svg-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 14px 0;
+      background: rgba(255,255,255,0.85);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+    .mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+    .mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+
+    .reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+    .reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+    .reveal-box summary::-webkit-details-marker { display: none; }
+    .reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+    .reveal-box[open] summary::before { transform: rotate(90deg); }
+    .reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+    .reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+
+    /* MAINS SECTION */
+    .mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+    .mains-section::before { content: "✍ UPSC & APPSC MAINS PRACTICE QUESTIONS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; }
+    
+    .mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+    .mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+    .mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+
+    @media print {
+      body { background: none; }
+      .reveal-box { display: block !important; }
+      .reveal-box summary { display: none !important; }
+      .reveal-content { display: block !important; border-top: 1px dashed #93c5fd !important; }
+      .notebook-container { box-shadow: none; width: 100%; max-width: 100%; padding: 10px 15px 15px 45px; margin-bottom: 0; }
+    }
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas">
+    
+    <!-- TITLE BANNER -->
+    <div class="block-wrapper">
+      <div class="title-section">
+        <div class="badge-tag">UPSC / APPSC ANCIENT INDIAN HISTORY BLUEPRINT</div>
+        <h1>Indus Valley Civilization (c. 2500 – 1750 BCE)</h1>
+        <div class="subtitle">Harappan Civilization • Bronze Age • Proto-Historic Urban Revolution</div>
+      </div>
+    </div>
+
+    <!-- SECTION I: DISCOVERY, CHRONOLOGY & EVOLUTION -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>I. Discovery, Geographical Reach &amp; Evolution</span>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <!-- Col 1 -->
+        <div class="grid-col">
+          <div class="card-note blue">
+            <h3 style="color:var(--ink-blue); font-size:20px;">1. Discovery Milestones &amp; Nomenclature</h3>
+            <ul class="bullet-list">
+              <li><strong>Proto-Historic Civilization:</strong> Script existed but remains <span class="hl-yellow">undeciphered</span> (boustrophedon / pictographic).</li>
+              <li><strong>Key Archaeological Pioneers:</strong>
+                <div class="sub-point">
+                  ▫ <strong>1826:</strong> Charles Masson visited Harappa and first reported the mounds.<br>
+                  ▫ <strong>1861 &amp; 1873:</strong> Alexander Cunningham founded ASI (1861) and collected early seals.<br>
+                  ▫ <strong>1904:</strong> Lord Curzon established the formal Archaeological Department.<br>
+                  ▫ <strong>1921:</strong> Sir John Marshall (DG-ASI) announced discovery; <strong>Daya Ram Sahni</strong> excavated Harappa.<br>
+                  ▫ <strong>1922:</strong> <strong>R.D. Banerji</strong> excavated Mohenjodaro ("Mound of the Dead") in Larkana, Sindh.
+                </div>
+              </li>
+              <li><strong>Nomenclature:</strong> Named *Harappan Civilization* after its type-site. Rigveda refers to it as <span class="hl-green">Hariyupiya</span>.</li>
+              <li><strong>Radiocarbon Dating:</strong> D.P. Agrawal dates mature phase to c. 2300–2000 BCE.</li>
+            </ul>
+          </div>
+
+          <div class="card-note amber">
+            <h3 style="color:var(--ink-amber); font-size:20px;">3. The Four Evolutionary Stages</h3>
+            <ul class="bullet-list">
+              <li><strong>Pre-Harappan Stage:</strong> Formative agro-pastoral village settlements (e.g., Mehrgarh, Kili Gul Mohammad, Quetta, Nal).</li>
+              <li><strong>Early / Proto-Harappan Stage:</strong> Emergence of proto-urban characteristics, fort walls, and early crafts (e.g., Kalibangan I, Amri, Kot Diji).</li>
+              <li><strong>Mature Harappan Stage:</strong> Fully developed metropolitan urban centers (Harappa, Mohenjodaro, Lothal, Dholavira).</li>
+              <li><strong>Late / Post-Harappan Stage:</strong> Urban de-densification, ruralization, and localization of material culture.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="grid-col">
+          <div class="card-note teal">
+            <h3 style="color:var(--ink-teal); font-size:20px;">2. Geographical Extent (~13,00,000 sq. km)</h3>
+            <ul class="bullet-list">
+              <li><strong>Total Area:</strong> Over 1.3 million sq. km, forming a vast triangle.</li>
+              <li><strong>Geographical Boundary Matrix:</strong>
+                <div class="sub-point">
+                  ▫ <strong>North:</strong> Manda (Chenab river, Jammu &amp; Kashmir).<br>
+                  ▫ <strong>South:</strong> Daimabad (Pravara river, Maharashtra).<br>
+                  ▫ <strong>West:</strong> Sutkagan Dor (Dasht river, Makran coast, Pak-Iran border).<br>
+                  ▫ <strong>East:</strong> Alamgirpur (Hindon river, Meerut, UP).
+                </div>
+              </li>
+              <li><strong>Demographics &amp; Racial Diversity:</strong> Total population ~2 lakhs (Mohenjodaro alone ~35,000–40,000). Multi-racial synthesis comprising <em>Mediterranean</em> (dominant), <em>Proto-Australoid</em>, <em>Mongoloid</em>, and <em>Alpinoid</em> races.</li>
+            </ul>
+            <div class="sticky yellow">
+              📌 <strong>Contemporary Trade Lands in Mesopotamian Texts:</strong><br>
+              • <strong>Meluhha:</strong> Land of Indus (major exporter of <em>Sindon</em>/cotton).<br>
+              • <strong>Dilmun:</strong> Intermediate clearing station (modern Bahrain).<br>
+              • <strong>Magan:</strong> Contemporary coastal Oman.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION II: MAJOR SITES & EXCAVATED FINDS -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>II. Major Excavated Sites &amp; Archaeological Findings</span>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th style="width: 18%;">Site &amp; Location</th>
+            <th style="width: 17%;">River &amp; Excavator</th>
+            <th style="width: 35%;">Key Architectural &amp; Material Finds</th>
+            <th style="width: 30%;">Exam Importance / Peculiarities</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Harappa</strong><br>(Punjab, Pakistan)</td>
+            <td>Ravi<br>Daya Ram Sahni (1921)</td>
+            <td>• 6 granaries in two rows (12 total) outside citadel.<br>• Red sandstone Naked Male Torso ($ht \approx 4\text{ inches}$).<br>• Single-chambered barrack-style workmen quarters.<br>• Bronze scale and bronze mirrors.<br>• Terracotta Mother Goddess figurines.<br>• Working circular brick threshing floors.</td>
+            <td>First excavated site. Shows Cemetery H &amp; R-37 burial typologies. Copper imported from Khetri mines (Rajasthan). Yielded the maximum number of stone seals.</td>
+          </tr>
+          <tr>
+            <td><strong>Mohenjodaro</strong><br>(Sindh, Pakistan)</td>
+            <td>Indus (Sindhu)<br>R.D. Banerji (1922)</td>
+            <td>• <strong>Great Bath:</strong> $39 \times 23 \times 8\text{ ft}$ lined with burnt brick, gypsum mortar &amp; natural bitumen layer.<br>• <strong>Great Granary:</strong> $150 \times 50\text{ ft}$ inside citadel.<br>• Bronze Dancing Girl (Tribhanga posture, lost-wax technique).<br>• Steatite Priest-King with patterned trefoil shawl.<br>• Multi-pillared Assembly Hall.</td>
+            <td>Largest city population (~40,000). Evidence of 7 layers of flooding. Pashupati Mahadev Seal (proto-Shiva surrounded by elephant, tiger, rhino, buffalo &amp; 2 deer at feet). Great Granary is the largest single IVC structure.</td>
+          </tr>
+          <tr>
+            <td><strong>Chanhudaro</strong><br>(Sindh, Pakistan)</td>
+            <td>Indus<br>N.G. Majumdar (1931) / E. Mackay</td>
+            <td>• Exclusive bead-making and shell-cutting factories.<br>• Inkpot and bronze carts.<br>• Evidence of cosmetics: Lipsticks (ochre).<br>• Footprint imprint of a dog chasing a cat.</td>
+            <td><span class="hl-pink">Only Harappan city without a citadel!</span> Purely industrial craft town; suffered 3 flood cycles.</td>
+          </tr>
+          <tr>
+            <td><strong>Kalibangan</strong><br>(Rajasthan, India)</td>
+            <td>Ghaggar<br>A. Ghosh (1953) / B.B. Lal</td>
+            <td>• Furrowed ploughed agricultural fields (mix cropping).<br>• Row of 7 Fire Altars on raised platforms.<br>• Factory for manufacturing Black Bangles.<br>• Brick-lined grave burials.<br>• Camel bones and decorated floor tiles.</td>
+            <td><span class="hl-pink">TRAP:</span> Lacked underground covered drainage; domestic sewage drained directly into outdoor earthen jars. No Mother Goddess toys found here. Unbaked bricks frequently used in housing.</td>
+          </tr>
+          <tr>
+            <td><strong>Lothal</strong><br>(Gujarat, India)</td>
+            <td>Bhogava<br>S.R. Rao (1957)</td>
+            <td>• Tidal Artificial Dockyard with lock-gate system.<br>• Evidence of Rice husk (along with Rangpur).<br>• Double (joint) burials (male + female in one pit).<br>• Terracotta model of an Egyptian ship &amp; Persian Gulf button seal.<br>• Ivory scale &amp; painted jar (Cunning Fox story).<br>• Fire altars and chess board.</td>
+            <td>Major naval trade port. <span class="hl-pink">TRAP:</span> City entry from East and exit to West (unlike regular North-South gate orientation). Houses had door openings directly onto the main streets!</td>
+          </tr>
+          <tr>
+            <td><strong>Dholavira</strong><br>(Rann of Kutch, Gujarat)</td>
+            <td>Luni basin (Mansar/Manhar)<br>J.P. Joshi / R.S. Bisht (1990–91)</td>
+            <td>• <strong>3-tier division:</strong> Citadel, Middle Town, Lower Town.<br>• Giant interconnected rock-cut water reservoirs (series of 16).<br>• Large ceremonial ground / stadium.<br>• 10-glyph Indus script stone signboard.</td>
+            <td>Masterwork of ancient water engineering and rainwater harvesting. Extensive use of dressed stone masonry over mud brick.</td>
+          </tr>
+          <tr>
+            <td><strong>Rakhigarhi</strong><br>(Haryana, India)</td>
+            <td>Ghaggar-Hakra (Drishadvati)<br>Amarendra Nath</td>
+            <td>• Granary, lapidary workshops, copper fishing hooks.<br>• Terracotta bangles, shell beads.<br>• Wooden coffin burial with terracotta grave goods.</td>
+            <td><span class="hl-green">Largest Harappan site in modern Indian territory</span> (~350+ hectares, surpassing Mohenjodaro in physical area). Over 5,000-year-old antiquity established via radio-carbon dating.</td>
+          </tr>
+          <tr>
+            <td><strong>Banawali</strong><br>(Haryana, India)</td>
+            <td>Ghaggar (Saraswati)<br>R.S. Bisht (1974)</td>
+            <td>• High-quality clay/terracotta models of the plough.<br>• Radial town planning layout rather than strict grid.<br>• High proportion of barley grains recovered.</td>
+            <td>Lacked systematic underground drainage system like Kalibangan. Unconventional radial town layout.</td>
+          </tr>
+          <tr>
+            <td><strong>Surkotada</strong><br>(Gujarat, India)</td>
+            <td>Rann of Kutch<br>J.P. Joshi (1964)</td>
+            <td>• Actual skeletal remains and teeth of horses.<br>• Oval grave / pot burials covered with huge stone slabs.</td>
+            <td>Only authentic disputed physical evidence of equids in mature IVC strata. Citadel fortified with stone and rubble walls.</td>
+          </tr>
+          <tr>
+            <td><strong>Shortughai</strong><br>(N. Afghanistan)</td>
+            <td>Oxus River</td>
+            <td>• Harappan trading outpost and colony.<br>• Network of agricultural irrigation canals.</td>
+            <td>Controlled the coveted trans-Eurasian trade in <strong>Lapis Lazuli</strong> from the Badakhshan mines.</td>
+          </tr>
+          <tr>
+            <td><strong>Rangpur</strong><br>(Gujarat, India)</td>
+            <td>Bhadar River<br>M.S. Vats / S.R. Rao</td>
+            <td>• Abundant remnants of Rice Husk.<br>• Post-Harappan transition layer.</td>
+            <td>Crucial botanical evidence for rice cultivation alongside Lothal. Yellow and grey pottery finds.</td>
+          </tr>
+          <tr>
+            <td><strong>Balakot &amp; Sutkagan Dor</strong><br>(Makran Coast, Pakistan)</td>
+            <td>Arabian Sea / Dasht<br>G.F. Dales / Aurel Stein</td>
+            <td>• Specialized shell-working industry (bangles, ladles).<br>• Westernmost fortified trade garrison.</td>
+            <td>Guarded the maritime trade corridor leading directly to the Persian Gulf and Mesopotamia.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SECTION III: URBAN TOWN PLANNING & ARCHITECTURE -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>III. Urban Town Planning, Sanitation &amp; Architecture</span>
+      </div>
+    </div>
+
+    <!-- Concept Flowchart -->
+    <div class="block-wrapper">
+      <div class="svg-box">
+        <svg viewBox="0 0 850 185" width="100%" height="185" style="font-family:'Kalam', cursive;">
+          <rect x="330" y="8" width="190" height="36" rx="6" fill="#dbeafe" stroke="#1e40af" stroke-width="1.8"/>
+          <text x="425" y="27" text-anchor="middle" font-size="15" fill="#1e40af" font-weight="bold">HARAPPAN DUAL URBAN PLAN</text>
+          <text x="425" y="40" text-anchor="middle" font-size="11" fill="#334155">Standard Urban Grid</text>
+
+          <path d="M 425 44 L 425 72" stroke="#64748b" stroke-width="1.8"/>
+          <path d="M 190 72 L 660 72" stroke="#64748b" stroke-width="1.8"/>
+
+          <path d="M 190 72 L 190 98" stroke="#64748b" stroke-width="1.8"/>
+          <path d="M 660 72 L 660 98" stroke="#64748b" stroke-width="1.8"/>
+
+          <!-- Western Citadel -->
+          <rect x="80" y="98" width="220" height="72" rx="6" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"/>
+          <text x="190" y="118" text-anchor="middle" font-size="14" fill="#b91c1c" font-weight="bold">WESTERN CITADEL (ACROPOLIS)</text>
+          <text x="190" y="135" text-anchor="middle" font-size="11.5" fill="#334155">• Raised Mud-Brick Platform</text>
+          <text x="190" y="152" text-anchor="middle" font-size="11" fill="#475569">• Great Bath, Granaries, Assembly Halls</text>
+
+          <!-- Eastern Lower Town -->
+          <rect x="550" y="98" width="220" height="72" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+          <text x="660" y="118" text-anchor="middle" font-size="14" fill="#15803d" font-weight="bold">EASTERN LOWER TOWN</text>
+          <text x="660" y="135" text-anchor="middle" font-size="11.5" fill="#334155">• Chessboard Street Grid (90° cuts)</text>
+          <text x="660" y="152" text-anchor="middle" font-size="11" fill="#475569">• Residential Quarters, Artisan Shops, Sewers</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <!-- Col 1 -->
+        <div class="grid-col">
+          <div class="card-note purple">
+            <h3 style="color:var(--ink-purple); font-size:20px;">1. The Gridiron Layout &amp; Zonation</h3>
+            <ul class="bullet-list">
+              <li><strong>Grid Pattern ("Chessboard Pattern"):</strong> Streets were straight, wide, running North-South and East-West, cutting each other at precise $90^\circ$ right angles.</li>
+              <li><strong>Dual Citadel-Lower Town Zonation:</strong>
+                <div class="sub-point">
+                  ▫ <strong>Western Citadel (Acropolis):</strong> Raised on mud-brick platforms; fortified; housed public buildings, granaries, and the ruling aristocracy.<br>
+                  ▫ <strong>Eastern Lower City:</strong> Larger, non-citadel grid for housing common citizens, artisans, and merchant classes.<br>
+                  ▫ <em>Exception:</em> <strong>Dholavira</strong> is divided into 3 tiers (Citadel, Middle Town, Lower Town); <strong>Chanhudaro</strong> has no citadel.
+                </div>
+              </li>
+              <li><strong>Brick Dimensions:</strong> Standardized ratio of <span class="hl-yellow">$1 : 2 : 4$</span> (Thickness : Breadth : Length) observed across every site regardless of distance!</li>
+              <li><strong>Orientation:</strong> Gates positioned North and South; streets provided with street lamp posts at ends.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="grid-col">
+          <div class="card-note green">
+            <h3 style="color:var(--ink-green); font-size:20px;">2. Underground Drainage &amp; Domestic Privacy</h3>
+            <ul class="bullet-list">
+              <li><strong>Underground Covered Drainage:</strong> Drains ran beneath streets covered with limestone slabs or kiln-burnt tiles. Provided with <strong>manholes/inspection sumps</strong> at regular intervals for de-silting.</li>
+              <li><strong>Domestic Hygiene:</strong> Bathrooms floored with burnt tiles; kitchen waste drained into street mains through terracotta wall chutes.</li>
+              <li><strong>Residential Privacy Architecture:</strong>
+                <div class="sub-point">
+                  ▫ Outer house walls lacked street-level windows; residential courtyards remained shielded from direct exterior view.<br>
+                  ▫ Doors opened into side alleys rather than main thoroughfares (except at Lothal).<br>
+                  ▫ Street lamps were mounted at street corners for night lighting.<br>
+                  ▫ Wells and backyards for cattle maintenance in houses.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM TRAP 1: FAUNAL & TECHNOLOGICAL KNOWLEDGE -->
+    <div class="block-wrapper">
+      <div class="exam-trick">
+        <ul class="bullet-list" style="margin-top:2px;">
+          <li><strong>CRITICAL NEGATIVE LIST: What the Indus People Did NOT Know:</strong>
+            <div class="sub-point">
+              ▫ <strong>Metals:</strong> Did <strong>NOT know Iron</strong> (IVC was a Bronze Age culture using copper-tin/arsenic alloys; Iron appeared in the Gangetic plains c. 1000 BCE).<br>
+              ▫ <strong>Animals:</strong> Did <strong>NOT know the Lion</strong> (surrounded by tigers, elephants, rhinos, humped bulls; lion is not depicted on seals). Horse knowledge remains marginal and disputed.<br>
+              ▫ <strong>Crops:</strong> No direct evidence for cultivation of <strong>Sugarcane and Potatoes</strong>. Primary staple was wheat and barley.<br>
+              ▫ <strong>Structures:</strong> <strong>NO Temples</strong> or standing monumental palaces have ever been found.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION IV: ECONOMY, TRADE & CRAFTS -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>IV. Agrarian Economy, Trade Routes &amp; Craft Specialization</span>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <!-- Col 1 -->
+        <div class="grid-col">
+          <div class="card-note teal">
+            <h3 style="color:var(--ink-teal); font-size:20px;">1. Agrarian Foundation</h3>
+            <ul class="bullet-list">
+              <li><strong>Crops Grown:</strong> Wheat (two varieties), Barley (primary staples), Mustard, Sesamum, Dates, Peas, and Millets.</li>
+              <li><strong>Cotton Production:</strong> First civilization in the ancient world to domesticate and weave cotton (proven at Mehrgarh). Greeks called it <em>Sindon</em> (derived from Sindh).</li>
+              <li><strong>Irrigation:</strong> Largely based on annual inundation of fertile river alluvium; canals known at Shortughai (Afghanistan) and stone water reservoirs at Dholavira. Gabarbands (stone dams) used in Baluchistan.</li>
+            </ul>
+          </div>
+
+          <div class="card-note yellow">
+            <h3 style="color:var(--ink-yellow); font-size:20px;">2. Craft Specialization</h3>
+            <ul class="bullet-list">
+              <li><strong>Bead-Making Industry:</strong> Highly advanced workshops at Chanhudaro and Lothal using carnelian, agate, lapis lazuli, and steatite.</li>
+              <li><strong>Metallurgy:</strong> Mastered the <em>Cire-Perdue</em> (lost-wax technique) for bronze casting (e.g., Mohenjodaro Dancing Girl).</li>
+              <li><strong>Pottery:</strong> Sturdy red pottery painted with black geometric and animal motifs (Black-on-Red ware / RPW / BPW).</li>
+              <li><strong>Carpentry &amp; Shipbuilding:</strong> Dockyard operations at Lothal and wooden carts.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="grid-col">
+          <div class="card-note blue">
+            <h3 style="color:var(--ink-blue); font-size:20px;">3. Domestic &amp; External Trade Networks</h3>
+            <ul class="bullet-list">
+              <li><strong>Mechanism:</strong> Barter system aided by standardized cubical chert weights (binary ratio: 1, 2, 4, 8, 16, 32, 64; decimal: 160, 320, 640).</li>
+              <li><strong>Provenance of Imported Raw Materials:</strong>
+                <div class="sub-point">
+                  ▫ <strong>Copper:</strong> Khetri Mines (Rajasthan) &amp; Oman.<br>
+                  ▫ <strong>Gold:</strong> Kolar gold fields (South India) and Mesopotamia.<br>
+                  ▫ <strong>Silver &amp; Tin:</strong> Afghanistan and Iran.<br>
+                  ▫ <strong>Lapis Lazuli:</strong> Badakhshan (Afghanistan).<br>
+                  ▫ <strong>Steatite:</strong> Narmada Valley and Gujarat.<br>
+                  ▫ <strong>Jade:</strong> Central Asia.<br>
+                  ▫ <strong>Turquoise:</strong> Khorasan (Iran).
+                </div>
+              </li>
+              <li><strong>Archaeological Trade Evidence:</strong> Indus seals found at Kish, Ur, Lagash, and Tell Asmar (Mesopotamia); Persian Gulf button seal found at Lothal. Cuneiform texts identify Meluhha as a trading partner.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION V: SOCIETY, POLITY & RELIGION -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>V. Social Conditions, Religious Beliefs &amp; Polity</span>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <!-- Col 1 -->
+        <div class="grid-col">
+          <div class="card-note red">
+            <h3 style="color:var(--ink-red); font-size:20px;">1. Social Stratification &amp; Women</h3>
+            <ul class="bullet-list">
+              <li><strong>Class Stratification:</strong> Differentiation between palace/citadel elite and workmen quarters in lower city points to marked socio-economic hierarchy (class-based society, not caste).</li>
+              <li><strong>Matriarchal Tendencies:</strong> Abundant terracotta female figurines and Mother Goddess seals point to a high social status for women and matriarchal reverence.</li>
+              <li><strong>Life &amp; Leisure:</strong> Vegetarian and non-vegetarian food; dressed in cotton and wool; enjoyed board games, dice, chess, and bull-fighting.</li>
+            </ul>
+          </div>
+
+          <div class="card-note amber">
+            <h3 style="color:var(--ink-amber); font-size:20px;">2. Nature of Polity (Who Ruled IVC?)</h3>
+            <ul class="bullet-list">
+              <li><strong>Lack of Monarchy:</strong> Total absence of dynastic war imagery, monuments to kings, or royal tombs.</li>
+              <li><strong>Historiographical Interpretations:</strong>
+                <div class="sub-point">
+                  ▫ <strong>R.S. Sharma:</strong> Ruled by a <em>Merchant Class Oligarchy</em> (urban mercantile focus, standardized weights, contract enforcement).<br>
+                  ▫ <strong>D.D. Kosambi:</strong> Ruled by a <em>Priestly Aristocracy</em> (similar to Sumerian temple-states, citing Great Bath and Priest-King statue).<br>
+                  ▫ <strong>Modern View:</strong> Municipal city councils or localized administrative oligarchies ensuring civic standardization.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="grid-col">
+          <div class="card-note green">
+            <h3 style="color:var(--ink-green); font-size:20px;">3. Religious Beliefs &amp; Practices</h3>
+            <ul class="bullet-list">
+              <li><strong>No Public Temples:</strong> Religion was domestic and personal.</li>
+              <li><strong>Mother Goddess (Matridevi):</strong> Chief female deity symbolizing fertility and vegetation (seal showing plant sprouting from woman’s womb).</li>
+              <li><strong>Pashupati Mahadev (Proto-Shiva):</strong> Three-horned yogic deity surrounded by fauna (elephant, tiger, rhino, buffalo, and 2 deer).</li>
+              <li><strong>Nature &amp; Animal Worship:</strong> Pipal tree (*Ficus religiosa*), humped bull, unicorns, snakes, pigeons.</li>
+              <li><strong>Phallic Cults:</strong> Widespread stone *lingas* and *yonis* (fertility cults).</li>
+              <li><strong>Amulets &amp; Superstition:</strong> Large-scale terracotta amulets to ward off malevolent evil spirits.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION VI: SCRIPT & DECLINE THEORIES -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>VI. Script Enigma &amp; Theories of Collapse</span>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note purple">
+            <h3 style="color:var(--ink-purple); font-size:20px;">The Indus Script</h3>
+            <ul class="bullet-list">
+              <li><strong>Characteristics:</strong> Pictographic and logographic; written in <strong>Boustrophedon style</strong> (right-to-left in first line, left-to-right in second line).</li>
+              <li><strong>Corpus:</strong> ~400 distinct signs found mainly on steatite seals, copper tablets, ivory sticks, and pottery. Over 1,500 seals excavated.</li>
+              <li><strong>Linguistic Affiliation Debates:</strong>
+                <div class="sub-point">
+                  ▫ <em>Iravatham Mahadevan &amp; Asko Parpola:</em> Affinity with the <strong>Proto-Dravidian language</strong>.<br>
+                  ▫ <em>S.R. Rao:</em> Affinity with archaic <strong>Indo-European / Sanskrit</strong> phonetics.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note red">
+            <h3 style="color:var(--ink-red); font-size:20px;">Theories on the Decline of IVC</h3>
+            <ul class="bullet-list">
+              <li><strong>1. Sudden Catastrophe / Aryan Invasion:</strong>
+                <div class="sub-point">
+                  ▫ Proposed by Mortimer Wheeler &amp; Gordon Childe.<br>
+                  ▫ Cited Rigvedic hymns praising <em>Indra as Purandara</em> ("destroyer of forts"), and scattered skeletons at Mohenjodaro.<br>
+                  ▫ <em>Critique:</em> Disproven by modern forensic evidence showing no mass battle trauma.
+                </div>
+              </li>
+              <li><strong>2. Environmental &amp; Ecological Rupture (Consensus View):</strong>
+                <div class="sub-point">
+                  ▫ <strong>Drying up of Saraswati (Ghaggar-Hakra):</strong> H.T. Lambrick &amp; M.R. Mughal.<br>
+                  ▫ <strong>Tectonic Uplift &amp; River Diversion:</strong> Robert Raikes &amp; E.J.H. Mackay.<br>
+                  ▫ <strong>Aridity &amp; Desertification:</strong> Gurdip Singh (pollen analysis showing massive rainfall drop c. 2000 BCE).
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION VII: TOPPER'S MEMORY SHEET & MNEMONICS -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>VII. Topper's Mnemonics &amp; Quick Revision Sheet</span></div>
+      <div class="sticky yellow">
+        <h4 style="color:var(--ink-blue); font-size:20px;">⚡ Quick Formulas &amp; Summary</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; font-size:15.5px;">
+          <div>
+            • <strong>EXTREME BOUNDARIES:</strong> <span class="hl-pink">"M-S-D-A"</span><br>
+            ➔ <strong>M</strong>anda (North - J&amp;K) | <strong>S</strong>utkagen Dor (West - Baluchistan) | <strong>D</strong>aimabad (South - Maharashtra) | <strong>A</strong>lamgirpur (East - UP).<br>
+            • <strong>BRICK DIMENSION RATIO:</strong> <span class="hl-blue">"4 : 2 : 1"</span> (Length : Breadth : Thickness).
+          </div>
+          <div>
+            • <strong>PASHUPATI SEAL ANIMALS:</strong> <span class="hl-green">"E-T-R-B" (+ 2 Deer)</span><br>
+            ➔ <strong>E</strong>lephant &amp; <strong>T</strong>iger (Right) | <strong>R</strong>hinoceros &amp; <strong>B</strong>uffalo (Left) | 2 Deer (Under seat).<br>
+            • <strong>MESOPOTAMIAN TRADE:</strong> Meluhha = Indus | Dilmun = Bahrain | Makan/Magan = Oman/Makran.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION VIII: CRITICAL ARCHAEOLOGICAL CASE EXAMPLES -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>VIII. Critical Archaeological Case Examples</span></div>
+      <div class="card-note blue">
+        <ul class="bullet-list">
+          <li><strong>Hydraulic Engineering at Dholavira:</strong> Positioned between the Mansar and Manhar seasonal streams, Dholavira engineered a series of 16 rock-cut reservoirs to survive hyper-arid Kutch conditions, showcasing advanced rainwater harvesting over 4,500 years ago.</li>
+          <li><strong>Marine Navigation at Lothal:</strong> Excavated by S.R. Rao, Lothal features a trapezoidal burnt-brick basin ($214 \times 36 \text{ m}$) linked via an inlet channel to the Gulf of Khambhat tide, functioning as the world's earliest known tidal dockyard.</li>
+          <li><strong>Craft Specialization at Chanhudaro:</strong> The absence of an administrative citadel paired with bead-polishers, furnaces, steatite seal-cutting workshops, and shell drills proves it operated as an industrial manufacturing hub serving external trade networks.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION IX: QUICK REVISION HIGH-SPEED POINTERS -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>IX. Quick Revision Summary (High-Speed Pointers)</span></div>
+      <div class="sticky pink">
+        <div style="font-size:15px; line-height:23px;">
+          1. Period: Mature phase c. 2600–1900 BCE | First Urbanization of South Asia | Bronze Age.<br>
+          2. Boundaries: Manda (N), Daimabad (S), Alamgirpur (E), Sutkagen Dor (W) | Triangular layout.<br>
+          3. Urban Planning: Rectangular grid | Burnt bricks (4:2:1 ratio) | Covered drainage system with soakage pits.<br>
+          4. Unique Architecture: Great Bath (Mohenjo-daro), Tidal Dockyard (Lothal), 16 Reservoirs (Dholavira), Circular Floors (Harappa).<br>
+          5. Economy: First to cultivate Cotton (Sindon) | Wheat, barley, sesamum | Weight system based on 16.<br>
+          6. Foreign Trade: Maritime commerce with Mesopotamia (Meluhha) via Dilmun (Bahrain) &amp; Makan (Makran).<br>
+          7. Art &amp; Sculpture: Steatite seals (Unicorn motif) | Bronze Dancing Girl (lost-wax) | Bearded Priest (steatite).<br>
+          8. Religion: Pashupati Proto-Shiva seal | Mother Goddess | Pipal tree &amp; animism | No monumental temples.<br>
+          9. Script: Undeciphered pictographic script written Boustrophedon (right-to-left then left-to-right).<br>
+          10. Decline: Multicausal — ecological depletion, drying of Saraswati (Ghaggar), tectonic shifts, and climate drying.
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION X: FINAL SITE-FINDING MATRIX -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>X. Final Master Memory Sheet: Site-Finding Matrix</span></div>
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th style="width:22%;">Key Artifact / Structure</th>
+            <th style="width:28%;">Archaeological Site Found</th>
+            <th style="width:50%;">Core Exam Significance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Great Bath &amp; Great Granary</strong></td><td>Mohenjo-daro</td><td>Largest urban public structures; ritualistic ablutions.</td></tr>
+          <tr><td><strong>Tidal Dockyard</strong></td><td>Lothal (Bhogava River)</td><td>World's oldest engineered maritime commercial dock.</td></tr>
+          <tr><td><strong>Ploughed Furrowed Field</strong></td><td>Kalibangan</td><td>Earliest evidence of agricultural cultivation in grids.</td></tr>
+          <tr><td><strong>Rock-cut Water Reservoirs</strong></td><td>Dholavira (Kutch)</td><td>Pioneering stormwater management and conservation.</td></tr>
+          <tr><td><strong>Clay Toy Plough</strong></td><td>Banawali (Haryana)</td><td>Confirms wooden plough designs through terracotta replica.</td></tr>
+          <tr><td><strong>Bead Manufacturing Factory</strong></td><td>Chanhudaro &amp; Lothal</td><td>Workshops with micro-drills, furnaces, and raw stones.</td></tr>
+          <tr><td><strong>Pashupati Mahadeva Seal</strong></td><td>Mohenjo-daro</td><td>Proto-Shiva surrounded by Elephant, Tiger, Rhino, Buffalo.</td></tr>
+          <tr><td><strong>Bronze Dancing Girl</strong></td><td>Mohenjo-daro</td><td>Mastery of lost-wax casting and artistic expression.</td></tr>
+          <tr><td><strong>10-Signboard Inscription</strong></td><td>Dholavira</td><td>Largest discovered glyphs of the undeciphered script.</td></tr>
+          <tr><td><strong>Joint (Double) Burial</strong></td><td>Lothal</td><td>Male-female buried together; suggests complex funeral rites.</td></tr>
+          <tr><td><strong>Fire Altars</strong></td><td>Kalibangan &amp; Lothal</td><td>Ritual animal offerings outside orthodox domestic walls.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SECTION XI: EXAM-TRICK BOXES (DEDICATED TRAPS SECTION) -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>XI. Exam-Trick Boxes (Avoid Common Traps!)</span></div>
+      <div class="exam-trick">
+        <ul class="bullet-list" style="margin-top:2px;">
+          <li><strong>TRAP 1: "The Harappans used iron weapons and tools."</strong> ➔ <strong>WRONG!</strong> IVC was purely a <strong>Bronze Age civilization</strong>. Iron was completely unknown until c. 1000 BCE in the Later Vedic era.</li>
+          <li><strong>TRAP 2: "The cow was the most depicted animal on Indus seals."</strong> ➔ <strong>WRONG!</strong> The <strong>cow was never depicted on any Harappan seal</strong>! The most frequent motif is the single-horned mythical <em>Unicorn</em>, followed by the humped bull.</li>
+          <li><strong>TRAP 3: "Every Harappan site had a fortified dual citadel."</strong> ➔ <strong>WRONG!</strong> <em>Chanhudaro</em> had <strong>no citadel at all</strong>, while <em>Dholavira</em> had a <strong>3-tier division</strong> (Citadel, Middle Town, Lower Town).</li>
+          <li><strong>TRAP 4: "Monumental temples were found at Mohenjo-daro."</strong> ➔ <strong>WRONG!</strong> <strong>No temples or public shrines</strong> were ever built in IVC. Religious practices centered on home altars, open-air icons, and the Great Bath.</li>
+          <li><strong>TRAP 5: "Harappan script has been deciphered as Sanskrit."</strong> ➔ <strong>WRONG!</strong> The script remains completely <strong>undeciphered</strong>. It is logo-syllabic/pictographic, written boustrophedon.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION XII: PRELIMS MCQS -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>XII. UPSC &amp; APPSC Prelims Practice Check</span></div>
+      <div class="mcq-card">
+        <span class="mcq-badge">UPSC / APPSC Prelims Check • Question 1</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q1. Which of the following characterizes/characterize the people of Indus Civilization? (UPSC CSE 2013)
+          <br>1. They possessed great palaces and temples.
+          <br>2. They worshipped both male and female deities.
+          <br>3. They employed horse-drawn chariots in warfare.
+          <br>Select the correct statement/statements using the codes given below:
+        </div>
+        <div class="mcq-options">
+          1) 1 and 2 only<br>
+          2) 2 only<br>
+          3) 2 and 3 only<br>
+          4) 1, 2 and 3
+        </div>
+        <details class="reveal-box">
+          <summary>Show Answer &amp; Conceptual Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">2) 2 only</span><br>
+              ▫ <strong>Catch 1 (Statement 1 is incorrect):</strong> No temples or royal palaces have ever been excavated in Harappan sites.<br>
+              ▫ <strong>Catch 2 (Statement 2 is correct):</strong> They worshipped the Mother Goddess (female) and Pashupati Mahadev (male).<br>
+              ▫ <strong>Catch 3 (Statement 3 is incorrect):</strong> Horse-drawn war chariots are an exclusive hallmark of the later Vedic Aryans, not the Harappans.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="mcq-card">
+        <span class="mcq-badge">UPSC / APPSC Prelims Check • Question 2</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q2. Consider the following pairs of excavated sites and their distinct archaeological finds:
+          <br>1. Lothal — Tidal dockyard and double burials
+          <br>2. Dholavira — Rock-cut water reservoirs and 10-glyph inscription board
+          <br>3. Kalibangan — Exclusive town without a fortified citadel
+          <br>Which of the pairs given above are correctly matched?
+        </div>
+        <div class="mcq-options">
+          1) 1 and 2 only<br>
+          2) 2 and 3 only<br>
+          3) 1 and 3 only<br>
+          4) 1, 2 and 3
+        </div>
+        <details class="reveal-box">
+          <summary>Show Answer &amp; Conceptual Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">1) 1 and 2 only</span><br>
+              ▫ <strong>Catch:</strong> Pair 3 is incorrectly matched. <strong>Chanhudaro</strong> is the only Harappan city built entirely without a citadel. Kalibangan is renowned for its ploughed field and rows of fire altars.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SECTION XIII: MAINS PRACTICE QUESTIONS -->
+    <div class="block-wrapper">
+      <div class="mains-section">
+        <!-- REQUIRED RED-COLOR QUESTIONS FROM NOTES -->
+        <div class="mains-q-item">
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • Question 1</span> 
+            <strong>"Nature of social conditions of Indus Valley Civilization." Discuss. (10 Marks)</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Model Structuring Framework:</strong><br>
+                • <strong>Introduction:</strong> Define IVC as a proto-historic Bronze Age urban civilization characterized by social complexity without the formal birth-based Varna system of the later Vedic era.<br>
+                • <strong>Socio-Economic Stratification (Class System):</strong> Spatial town planning proves social hierarchy. The elevated western citadel was inhabited by the ruling elite/aristocracy, while the lower town housed traders, artisans, and manual laborers. Uniform 2-room workmen barracks at Harappa indicate an organized working class.<br>
+                • <strong>Status of Women &amp; Family:</strong> The predominance of Mother Goddess terracotta figurines, nursing mothers, and fertility seals suggests a society with matriarchal reverence. Statues like the Bronze Dancing Girl reflect participation in performing arts. Women wore sophisticated jewelry (bead necklaces, bangles of faience/shell, lipsticks/ochre found at Chanhudaro).<br>
+                • <strong>Diet &amp; Lifestyle:</strong> Mixed diet of wheat, barley, mutton, fish, and beef. Leisure centered on board games, terracotta dice, and bull-leaping.<br>
+                • <strong>Conclusion:</strong> Summarize that Harappan society was civic-minded, highly utilitarian, secular, and peaceful, prioritizing public sanitation and commercial welfare over monumental religious display.
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="mains-q-item" style="margin-top: 14px;">
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • Question 2</span> 
+            <strong>"Discuss briefly about the growth of the agrarian system and economic conditions in IVC." (10 Marks)</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Model Structuring Framework:</strong><br>
+                • <strong>Introduction:</strong> Highlight that the urban prosperity of the Indus cities rested on a resilient, high-yield rural agrarian surplus capable of supporting specialized non-food-producing urban centers.<br>
+                • <strong>Agricultural Backbone:</strong> Cultivated two seasonal crops (Rabi and Kharif) across the fertile alluvium. Advanced farming evidenced by terracotta plough models at Banawali and furrowed ploughed fields at Kalibangan. First producers of cotton in the ancient world. Massive state granaries (Harappa, Mohenjodaro) stored surplus as emergency food security.<br>
+                • <strong>Industrial &amp; Secondary Production:</strong> Flourishing craft sectors: metallurgy (bronze casting via lost-wax technique), bead factories at Chanhudaro/Lothal, brick-kilns, and shipbuilding at Lothal.<br>
+                • <strong>Internal &amp; Maritime External Trade:</strong> Sophisticated trade via coastal dockyards (Lothal, Sutkagan Dor, Balakot). Extensive sea and caravan routes linked to the Persian Gulf (Dilmun) and Mesopotamia (Meluhha). Standardized cubical chert weights prevented market fraud.<br>
+                • <strong>Conclusion:</strong> Connect the collapse of this delicate agrarian surplus (due to ecological desiccation of rivers) directly to the de-urbanization of the civilization.
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- COMPREHENSIVE BONUS QUESTION -->
+        <div class="mains-q-item" style="margin-top: 14px;">
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • Question 3</span> 
+            <strong>"To what extent can the urban planning and drainage architecture of the Harappan civilization offer sustainable solutions to modern Indian urban challenges?" (15 Marks)</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Model Structuring Framework:</strong><br>
+                • <strong>Introduction:</strong> Point out that Harappan town planning represents the "First Urbanization" of South Asia, demonstrating engineering foresight over 4,500 years ago.<br>
+                • <strong>Key Ancient Solutions vs. Modern Challenges:</strong><br>
+                  ▫ <em>Urban Flooding &amp; Drainage:</em> Harappan covered underground sewers with access inspection chambers contrast sharply with modern open, clogged urban nullahs causing waterlogging in cities like Bengaluru and Delhi.<br>
+                  ▫ <em>Water Scarcity &amp; Rainwater Harvesting:</em> Dholavira's stepwells, bunds, and rock-cut reservoirs present a sustainable blueprint for decentralized rainwater harvesting in drought-prone zones.<br>
+                  ▫ <em>Grid Zoning &amp; Standardization:</em> Clear separation between industrial/artisan zones (Chanhudaro), residential quarters, and commercial corridors prevents the unregulated mixed-use urban sprawl common today.<br>
+                  ▫ <em>Building Materials:</em> Standardized, reusable kiln-burnt bricks and natural bitumen water-proofing offer natural, durable alternatives to heat-retaining concrete facades.<br>
+                • <strong>Conclusion:</strong> End with a quote or perspective that modern city missions (such as AMRUT and Smart Cities Mission) can draw inspiration from Harappa's civic discipline, zero-waste drainage, and climate-resilient water engineering.
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

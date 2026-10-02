@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andhra Pradesh History: Ancient to Early Medieval Outline</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg-page: #fbfbf9; --ruled-line: #e3ebf5; --margin-line: #f7a8b8;
+  --ink-blue: #0f3870; --ink-dark: #1e293b; --ink-red: #b91c1c; --ink-green: #15803d;
+  --ink-purple: #6b21a8; --ink-orange: #c2410c; --ink-yellow: #a16207; --ink-teal: #0f766e;
+  --ink-cyan: #0369a1; --ink-indigo: #4338ca; --ink-rose: #be123c; --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85); --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75); --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85); --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75); --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3; --sticky-pink: #ffe4e6; --sticky-blue: #e0f2fe; --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: #cbd5e1; display: flex; justify-content: center; padding: 25px 10px; height: auto; overflow: visible; font-family: 'Kalam', cursive, sans-serif; color: var(--ink-dark); }
+.notebook-container { width: 100%; max-width: 940px; min-height: 1200px; background-color: var(--bg-page); background-image: linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px), linear-gradient(var(--ruled-line) 1px, transparent 1px); background-size: 100% 28px, 100% 28px; background-repeat: repeat-y, repeat; padding: 35px 35px 80px 65px; border-radius: 4px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); line-height: 28px; position: relative; }
+.block-wrapper { position: relative; margin-bottom: 16px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; background: transparent !important; }
+.title-section h1 { font-size: 38px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; background: transparent !important; }
+.title-section .subtitle { font-size: 19px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; background: transparent !important; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+.section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+.canvas-multi-row { display: flex; flex-direction: row; align-items: stretch; gap: 16px; width: 100%; margin-bottom: 16px; }
+.canvas-multi-row > .block-wrapper { flex: 1 1 0; min-width: 0; margin-bottom: 0; }
+.card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+.card-note.rose   { border-left: 6px solid var(--ink-rose) !important; }
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+.card-note.orange h3 { color: var(--ink-orange) !important; }
+.card-note.rose h3   { color: var(--ink-rose) !important; }
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; }
+.dot-point { margin-left: 14px; position: relative; padding-left: 16px; font-size: 15.5px; line-height: 23px; margin-top: 3px; margin-bottom: 5px; }
+.dot-point::before { content: "•"; position: absolute; left: 2px; color: var(--ink-dark); font-weight: 900; font-size: 16px; }
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15.5px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+.sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S SPEED TRICKS & FORMULA HACKS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+.fs-sm { font-size: 12px !important; line-height: 18px !important; }
+.fs-md { font-size: 16px !important; line-height: 24px !important; }
+.fs-lg { font-size: 20px !important; line-height: 28px !important; }
+.fs-xl { font-size: 25px !important; line-height: 32px !important; }
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+.expand-block-wrapper { position: relative; margin: 12px 0; width: 100%; }
+.expand-block-wrapper.blue .reveal-box summary { color: var(--ink-blue); background: #eff6ff; border-color: #93c5fd; }
+.expand-block-wrapper.blue .reveal-box summary::before { color: var(--ink-blue); }
+.expand-block-wrapper.blue .reveal-box[open] summary { background: #dbeafe; }
+.expand-block-wrapper.blue .reveal-content { border-color: #93c5fd; }
+.expand-block-wrapper.green .reveal-box summary { color: var(--ink-green); background: #f0fdf4; border-color: #86efac; }
+.expand-block-wrapper.green .reveal-box summary::before { color: var(--ink-green); }
+.expand-block-wrapper.green .reveal-box[open] summary { background: #dcfce7; }
+.expand-block-wrapper.green .reveal-content { border-color: #86efac; }
+.expand-block-wrapper.yellow .reveal-box summary { color: var(--ink-yellow); background: #fefce8; border-color: #fde047; }
+.expand-block-wrapper.yellow .reveal-box summary::before { color: var(--ink-yellow); }
+.expand-block-wrapper.yellow .reveal-box[open] summary { background: #fef08a; }
+.expand-block-wrapper.yellow .reveal-content { border-color: #fde047; }
+.expand-block-wrapper.purple .reveal-box summary { color: var(--ink-purple); background: #faf5ff; border-color: #d8b4fe; }
+.expand-block-wrapper.purple .reveal-box summary::before { color: var(--ink-purple); }
+.expand-block-wrapper.purple .reveal-box[open] summary { background: #f3e8ff; }
+.expand-block-wrapper.purple .reveal-content { border-color: #d8b4fe; }
+.expand-block-wrapper.red .reveal-box summary { color: var(--ink-red); background: #fef2f2; border-color: #fca5a5; }
+.expand-block-wrapper.red .reveal-box summary::before { color: var(--ink-red); }
+.expand-block-wrapper.red .reveal-box[open] summary { background: #fee2e2; }
+.expand-block-wrapper.red .reveal-content { border-color: #fca5a5; }
+.expand-block-wrapper.teal .reveal-box summary { color: var(--ink-teal); background: #f0fdfa; border-color: #5eead4; }
+.expand-block-wrapper.teal .reveal-box summary::before { color: var(--ink-teal); }
+.expand-block-wrapper.teal .reveal-box[open] summary { background: #ccfbf1; }
+.expand-block-wrapper.teal .reveal-content { border-color: #5eead4; }
+.expand-block-wrapper.amber .reveal-box summary { color: var(--ink-amber); background: #fffbeb; border-color: #fcd34d; }
+.expand-block-wrapper.amber .reveal-box summary::before { color: var(--ink-amber); }
+.expand-block-wrapper.amber .reveal-box[open] summary { background: #fef3c7; }
+.expand-block-wrapper.amber .reveal-content { border-color: #fcd34d; }
+.expand-block-wrapper.orange .reveal-box summary { color: var(--ink-orange); background: #fff7ed; border-color: #fdba74; }
+.expand-block-wrapper.orange .reveal-box summary::before { color: var(--ink-orange); }
+.expand-block-wrapper.orange .reveal-box[open] summary { background: #ffedd5; }
+.expand-block-wrapper.orange .reveal-content { border-color: #fdba74; }
+.expand-block-wrapper.rose .reveal-box summary { color: var(--ink-rose); background: #fff1f2; border-color: #fda4af; }
+.expand-block-wrapper.rose .reveal-box summary::before { color: var(--ink-rose); }
+.expand-block-wrapper.rose .reveal-box[open] summary { background: #ffe4e6; }
+.expand-block-wrapper.rose .reveal-content { border-color: #fda4af; }
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ UPSC & STATE PSC MAINS PRACTICE QUESTIONS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; font-family: 'Inter', sans-serif; }
+.mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+.mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+.eq { position: relative; font-family: 'Inter', sans-serif; font-weight: 700; color: #0f3870; background: rgba(224, 242, 254, 0.75); padding: 1px 6px; border-radius: 4px; border: 1px solid rgba(186, 230, 253, 0.95); display: inline-flex; align-items: center; gap: 4px; line-height: 1.35; margin: 1px 2px; vertical-align: middle; }
+.math-block { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-left: 4px solid var(--ink-purple); border-radius: 6px; padding: 10px 14px; margin: 10px 0; font-family: 'Inter', sans-serif; font-weight: 700; color: var(--ink-dark); font-size: 15px; }
+.fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px; }
+.fraction-top { border-bottom: 2px solid var(--ink-dark); padding-bottom: 2px; }
+.fraction-bottom { padding-top: 2px; }
+.note-image-container { position: relative; margin: 16px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
+.note-image-wrapper { position: relative; overflow: hidden; display: inline-block; min-width: 140px; max-width: 100%; border: 1.5px dashed #94a3b8; border-radius: 6px; padding: 6px; background: #ffffff; box-shadow: var(--shadow); }
+.note-image-wrapper img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; }
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+  
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas"><div class="block-wrapper" draggable="false">
+    
+  <div class="title-section">
+      <div class="badge-tag">APPSC GROUP-I &amp; II | UPSC CSE OPTIONAL | HISTORY OF ANDHRA</div>
+      <h1>Andhra Pradesh History: Ancient to Early Medieval Outline</h1>
+      <div class="subtitle">Satavahanas to Vishnukundins • Eastern Chalukyas, Rashtrakutas &amp; Renati Cholas • Socio-Economic, Religious &amp; Linguistic Evolution</div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>I. Ancient Dynasties of Andhra (Political Outline)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th>Dynasty</th>
+            <th>Capital / Core Region</th>
+            <th>Prominent Rulers</th>
+            <th>Key Historical Significance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Satavahanas</strong><br>(225 Bc - 225 AD)</td>
+            <td>Kotilingala, Dhanyakataka (Amaravati), Pratishthana</td>
+            <td>Simukha, Satakarni I, Hala, Gautamiputra Satakarni, Yajna Sri Satakarni</td>
+            <td>Unified the Deccan; introduced royal land grants (Brahmadeya); flourishing Indo-Roman trade; patrons of Prakrit literature and Amaravati art.</td>
+          </tr>
+          <tr>
+            <td><strong>Ikshvakus</strong><br>(225 AD - 200 AD)</td>
+            <td>Vijayapuri (Nagarjunakonda)</td>
+            <td>Vasishthiputra Santamula, Virapurushadatta, Ehuvula Santamula</td>
+            <td>Successors of Satavahanas in Krishna valley; kings patronized Vedic sacrifices while royal ladies extensively patronized Mahayana Buddhism.</td>
+          </tr>
+          <tr>
+            <td><strong>Salankayanas</strong><br>(200 AD - 420 AD)</td>
+            <td>Vengipura (Pedavegi, near Eluru)</td>
+            <td>Hastivarman (contemporary of Samudragupta), Nandivarman</td>
+            <td>Replaced the Ikshvakus in Vengi region; recognized by the totem of the bull (Chitrarathaswami); key transition from Prakrit to Sanskrit charters.</td>
+          </tr>
+          <tr>
+            <td><strong>Early Pallavas</strong><br>(c. 4th Cent – 6th Cent CE)</td>
+            <td>Kanchipuram (held Southern Andhra: Guntur, Nellore)</td>
+            <td>Simhavarman, Sivaskandavarman, Vishnugopa</td>
+            <td>Issued early Prakrit and Sanskrit copper plates in Andhra (Mayidavolu, Omgodu charters); established bureaucratic administrative patterns.</td>
+          </tr>
+          <tr>
+            <td><strong>Vishnukundins</strong><br>(c. 5th Cent – 7th Cent CE)</td>
+            <td>Amrabad, Vinukonda, Denduluru</td>
+            <td>Madhavavarma II (Janashraya), Govindavarman</td>
+            <td>Champions of Brahmanical revival (performed Asvamedha, Purushamedha); carved rock-cut cave temples at Mogalrajapuram and Undavalli.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>II. Ancient Social &amp; Economic Conditions</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note blue">
+    
+  
+          <h3 style="color: rgb(15, 56, 112) !important;">1. Social Structure &amp; Status of Women</h3>
+          <ul class="bullet-list">
+            <li><strong>Varna System:</strong> Four-fold division existed, but traditional caste rigidity was flexible due to dominant merchant classes and Buddhist ethos.</li>
+            <li><strong>Matronymics:</strong> Satavahana kings used mothers' names (e.g., Gautamiputra, Vashishtiputra), demonstrating high social reverence for maternal lineage.</li>
+            <li><strong>Role of Women:</strong> Royal women enjoyed property rights, issued independent donations, built viharas, and controlled religious philanthropy (especially among Ikshvaku queens like Chamtisri).</li>
+            <li><strong>Joint Family System:</strong> Patriarchal nuclear and joint households (Grihas) formed the base, with the Grihapati as social unit head.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note green">
+    
+  
+          <h3 style="color: rgb(21, 128, 61) !important;">2. Agrarian &amp; Commercial Economy</h3>
+          <ul class="bullet-list">
+            <li><strong>Merchant Guilds (Srenis/Nikayas):</strong> Autonomous craft and merchant guilds operated as banks, receiving deposits, paying interest, and regulating production.</li>
+            <li><strong>Internal &amp; Maritime Trade:</strong> Extensive maritime contacts with the Roman Empire through ports like Motupalli, Ghantasala, and Koduru.</li>
+            <li><strong>Currency Economy:</strong> Circulation of Potin, Lead, Copper, and Silver coins (Karshapanas); abundant Roman gold aurei found along coastal Andhra.</li>
+            <li><strong>Land Grants:</strong> Introduction of tax-free land donations to priests and Buddhist monasteries, laying early foundations for localized agrarian estates.</li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>III. Religion, Language, Literature, Art &amp; Architecture</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note amber">
+    
+  
+          <h3 style="color: rgb(180, 83, 9) !important;">1. Religion: Buddhism, Jainism &amp; Brahmanism</h3>
+          <ul class="bullet-list">
+            <li><strong>Buddhism in Andhra:</strong>
+              <div class="sub-point">
+                ▫ Flourished under state and guild patronage; major sects included Chaityakas, Purvasailas, and Aparasailas.<br>
+                ▫ <strong>Acharya Nagarjuna:</strong> Expounded the Madhyamika (Sunyavada) philosophy at Sriparvata (Nagarjunakonda).
+              </div>
+            </li>
+            <li><strong>Jainism in Andhra:</strong>
+              <div class="sub-point">
+                ▫ Early centers at Munugodu, Vaddamanu; Acharya Kundakunda preached Digambara Jainism from Konakondla.
+              </div>
+            </li>
+            <li><strong>Vedic &amp; Puranic Revival:</strong>
+              <div class="sub-point">
+                ▫ Kings performed Vedic sacrifices (Asvamedha, Rajasuya, Gavamayana).<br>
+                ▫ Gradual rise of Shaivism and Vaishnavism under the Vishnukundins (Sriparvataswami as family deity).
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note purple">
+    
+  
+          <h3 style="color: rgb(107, 33, 168) !important;">2. Language, Literature &amp; Epigraphy</h3>
+          <ul class="bullet-list">
+            <li><strong>Court Language:</strong> Prakrit was the official language of early royal inscriptions; Sanskrit gained primacy under the late Ikshvakus and Vishnukundins.</li>
+            <li><strong>Early Telugu Traces:</strong>
+              <div class="sub-point">
+                ▫ Archaic Telugu words found embedded in Hala's Prakrit anthology <em>Gathasaptasati</em> (e.g., Atta, Vanta, Pilla).<br>
+                ▫ Amaravati inscription (1st Cent CE) contains the word <em>"Nagabu"</em>, representing early Telugu linguistic traces.
+              </div>
+            </li>
+            <li><strong>Key Literary Works:</strong>
+              <div class="sub-point">
+                ▫ <em>Gathasaptasati</em> by King Hala (Maharashtri Prakrit).<br>
+                ▫ <em>Brihatkatha</em> by Gunadhya (Paisachi Prakrit).<br>
+                ▫ <em>Katantra Vyakarana</em> by Sarvavarman (Sanskrit grammar).<br>
+                ▫ <em>Suhrullekha</em> and <em>Prajnaparamita</em> by Nagarjuna.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note teal">
+    
+  
+      <h3 style="color: rgb(15, 118, 110) !important;">3. Art and Architecture: Amaravati School &amp; Cave Temples</h3>
+      <ul class="bullet-list">
+        <li><strong>Amaravati School of Art:</strong> Indigenous aesthetic school using white marble/limestone; noted for physical grace, human emotion, dynamic narrative relief panels, and medallion carvings.</li>
+        <li><strong>Stupa Architecture:</strong> Maha Chaitya at Amaravati, Bhattiprolu, Ghantasala, and Salihundam; distinctive features include Ayaka platforms with five Ayaka pillars representing five events in Buddha's life.</li>
+        <li><strong>Nagarjunakonda Architecture:</strong> Unique coexistence of Buddhist stupas, viharas, and chaityas alongside earliest Brahmanical brick shrines (Pushpabhadraswami temple, Sarvadeva temple, Asvamedha arena).</li>
+        <li><strong>Rock-Cut Cave Architecture:</strong> Vishnukundins introduced rock-cut cave temples in Andhra at Undavalli (Anantasayana Vishnu) and Mogalrajapuram (Trikuta cave and Nataraja relief).</li>
+      </ul>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>IV. Early Medieval Dynasties: Eastern Chalukyas, Rashtrakutas &amp; Renati Cholas</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note blue">
+    
+  
+          <h3 style="color: rgb(15, 56, 112) !important;">1. Eastern Chalukyas of Vengi (c. 624 – 1070 CE)</h3>
+          <ul class="bullet-list">
+            <li><strong>Founding:</strong> Established by Kubja Vishnuvardhana (brother of Badami Chalukya ruler Pulakesin II).</li>
+            <li><strong>Prominent Monarchs:</strong> Jayasimha I, Vijayaditya II (Narendra Mrigaraja, credited with building 108 Shiva temples), Gunaga Vijayaditya, Rajaraja Narendra.</li>
+            <li><strong>Administrative Shift:</strong> Shifted capital from Vengipura to Rajahmundry; transformed Andhra into a unified geopolitical linguistic entity (Vengi Mandala).</li>
+            <li><strong>Matrimonial Ties:</strong> Extensive marital alliances with the Imperial Cholas, culminating in Kulottunga Chola I uniting the Vengi and Chola crowns.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note amber">
+    
+  
+          <h3 style="color: rgb(180, 83, 9) !important;">2. Renati Cholas &amp; Rashtrakuta Hegemony</h3>
+          <ul class="bullet-list">
+            <li><strong>Renati Cholas (Rayalaseema Region):</strong>
+              <div class="sub-point">
+                ▫ Ruled Renadu (Cuddapah, Kurnool, Chittoor regions).<br>
+                ▫ Famous ruler: <strong>Erikal Mutthuraju Dhananjaya</strong>.<br>
+                ▫ Issued the celebrated <strong>Kalamalla Inscription</strong> (c. 575 CE), the earliest complete epigraph in Telugu prose.
+              </div>
+            </li>
+            <li><strong>Rashtrakutas in Andhra:</strong>
+              <div class="sub-point">
+                ▫ Continual power struggles with Eastern Chalukyas for control of the fertile Vengi and Krishna-Tungabhadra Doabs.<br>
+                ▫ Rulers like Govinda III and Amoghavarsha I exercised overlordship over western Telangana and Rayalaseema pockets.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>V. Socio-Cultural Life, Religion &amp; Architecture of the Medieval Era</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+      <div class="grid-col">
+        <div class="card-note red">
+    
+  
+          <h3 style="color: rgb(185, 28, 28) !important;">1. Medieval Society &amp; Religion</h3>
+          <ul class="bullet-list">
+            <li><strong>Decline of Heterodox Faiths:</strong> Buddhism practically disappeared; Jainism retained patronage in isolated trade hubs and hill shrines (e.g., Danavulapadu in Kadapa district).</li>
+            <li><strong>Triumph of Puranic Hinduism:</strong>
+              <div class="sub-point">
+                ▫ Widespread adoption of Shaivism (Pasupata, Kalamukha sects) and Vaishnavism.<br>
+                ▫ Temple became the nucleus of economic, religious, and cultural activity (managing lands, dancing schools, hospitals).
+              </div>
+            </li>
+            <li><strong>Social Stratification:</strong> Proliferation of sub-castes (Jatis), rise of feudal landed intermediaries (Samantas, Mahasamantas), and development of village service groups.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-col">
+        <div class="card-note green">
+    
+  
+          <h3 style="color: rgb(21, 128, 61) !important;">2. Rise of Classical Telugu Literature &amp; Epigraphy</h3>
+          <ul class="bullet-list">
+            <li><strong>Birth of Classical Literature:</strong>
+              <div class="sub-point">
+                ▫ <strong>Nannaya Bhattu (11th Cent CE):</strong> Court poet of Rajaraja Narendra; revered as <em>Adi Kavi</em>; translated initial cantos of the <em>Andhra Mahabharatamu</em> (Adi, Sabha, part of Aranya Parva).<br>
+                ▫ Author of <em>Andhra Sabda Chintamani</em>, establishing early Telugu grammatical standards.
+              </div>
+            </li>
+            <li><strong>Milestone Epigraphs:</strong>
+              <div class="sub-point">
+                ▫ <strong>Kalamalla Inscription (c. 575 CE):</strong> First standalone Telugu inscription by Renati Cholas.<br>
+                ▫ <strong>Addanki Inscription of Panduranga (848 CE):</strong> Earliest occurrence of Telugu metrical poetry (<em>Taruvoja</em> verse).<br>
+                ▫ <strong>Bezwada Inscription of Yuddhamalla:</strong> Earliest instance of the <em>Madhyakkara</em> meter in Telugu verse.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note teal">
+    
+  
+      <h3 style="color: rgb(15, 118, 110) !important;">3. Art &amp; Architecture: Chalukyan Temple Traditions</h3>
+      <ul class="bullet-list">
+        <li><strong>Draksharama &amp; Kumararama (Bhimavaram):</strong> Monumental Pancharama temples constructed during the reign of Eastern Chalukya King Bhima I; feature colossal, two-story tall granite Shiva lingas.</li>
+        <li><strong>Biccavolu Temple Group:</strong> Exceptional early Chalukyan stone shrines (Golingeswara, Raja Raja, Chandrasekhara temples) reflecting a blend of Nagara spires with southern Dravidian decorative niches.</li>
+        <li><strong>Alampur Nava Brahma Temples:</strong> Situated along the Tungabhadra; pristine execution of Rekha-Nagara vimanas showcasing Badami and early medieval Chalukya architectural idioms.</li>
+      </ul>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="exam-trick">
+      <ul class="bullet-list">
+        <li><strong>TRAP 1: "Telugu became the court language under the Satavahanas."</strong> ➔ <strong>FALSE!</strong> Satavahanas used <strong>Prakrit</strong> for administration and inscriptions. Early Telugu existed primarily as spoken dialects and place/proper names.</li>
+        <li><strong>TRAP 2: "The earliest Telugu inscription was issued by the Eastern Chalukyas."</strong> ➔ <strong>FALSE!</strong> The earliest standalone Telugu inscription is the <strong>Kalamalla Inscription (c. 575 CE)</strong> issued by the <strong>Renati Cholas</strong>.</li>
+        <li><strong>TRAP 3: "Ikshvaku kings were fervent Mahayana Buddhists."</strong> ➔ <strong>FALSE!</strong> The Ikshvaku kings performed orthodox Vedic sacrifices (Asvamedha, Vajapeya); it was the <strong>royal female consorts and princesses</strong> who patronized Buddhism at Nagarjunakonda.</li>
+        <li><strong>TRAP 4: "Nannaya translated the entire Mahabharata into Telugu."</strong> ➔ <strong>FALSE!</strong> Nannaya translated only 2.5 cantos (Adi, Sabha, and part of Aranya Parva). The epic was later completed by Tikkana (13th Cent) and Errana (14th Cent), forming the <em>Kavitrayam</em>.</li>
+      </ul>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky yellow">
+      <strong>Chronological Hook for Revision:</strong><br>
+      Satavahanas (Prakrit/Buddhism/Trade) ➔ Ikshvakus (Nagarjunakonda/Royal Ladies Patronage) ➔ Salankayanas (Bull Crest/Vengi) ➔ Vishnukundins (Undavalli Caves/Vedic Revival) ➔ Renati Cholas (Kalamalla Telugu Stone Record) ➔ Eastern Chalukyas (Vengi/Nannaya/Pancharamas).
+    </div></div></div>
+  
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

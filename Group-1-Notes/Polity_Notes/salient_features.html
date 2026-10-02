@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../mobile-pwa.css">
+<meta charset="UTF-8">
+
+<title>Salient Features, Schedules and Parts of the Indian Constitution</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+    :root {
+      --bg-page: #fbfbf9;
+      --ruled-line: #e3ebf5;
+      --margin-line: #f7a8b8;
+      --ink-blue: #0f3870;
+      --ink-dark: #1e293b;
+      --ink-red: #b91c1c;
+      --ink-green: #15803d;
+      --ink-purple: #6b21a8;
+      --ink-orange: #c2410c;
+      --ink-yellow: #a16207;
+      --ink-teal: #0f766e;
+      --ink-cyan: #0369a1;
+      --ink-indigo: #4338ca;
+      --ink-rose: #be123c;
+      --ink-amber: #b45309;
+      --ink-emerald: #047857;
+      --ink-violet: #7c2d12;
+      --highlight-yellow: rgba(254, 240, 138, 0.85);
+      --highlight-green: rgba(187, 247, 208, 0.75);
+      --highlight-pink: rgba(251, 207, 232, 0.75);
+      --highlight-blue: rgba(186, 230, 253, 0.75);
+      --highlight-orange: rgba(254, 215, 170, 0.85);
+      --sticky-yellow: #fef9c3;
+      --sticky-pink: #ffe4e6;
+      --sticky-blue: #e0f2fe;
+      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #cbd5e1;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 25px 10px;
+      height: auto;
+      overflow: visible;
+    }
+
+    .canvas-wrapper { height: auto; overflow: visible; padding: 0; background: none; }
+
+    .notebook-container {
+      width: 100%;
+      max-width: 980px;
+      min-height: 1200px;
+      height: auto;
+      background-color: var(--bg-page);
+      background-image: 
+        linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px),
+        linear-gradient(var(--ruled-line) 1px, transparent 1px);
+      background-size: 100% 28px, 100% 28px;
+      background-repeat: repeat-y, repeat;
+      padding: 35px 35px 80px 65px;
+      border-radius: 4px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      line-height: 28px;
+      font-family: 'Kalam', cursive, sans-serif;
+      color: var(--ink-dark);
+      position: relative;
+      margin-bottom: 0;
+    }
+
+    .block-wrapper {
+      position: relative;
+      margin-bottom: 16px;
+      break-inside: avoid;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+    
+    .title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; }
+    .title-section h1 { font-size: 40px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; }
+    .title-section .subtitle { font-size: 20px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; }
+    .badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+
+    .section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+    .section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+
+    /* Grids */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+    .grid-col { display: flex; flex-direction: column; }
+
+    /* Thematic Cards */
+    .card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+    .card-note.blue   { border-left: 5px solid var(--ink-blue); }
+    .card-note.green  { border-left: 5px solid var(--ink-green); }
+    .card-note.purple { border-left: 5px solid var(--ink-purple); }
+    .card-note.red    { border-left: 5px solid var(--ink-red); }
+    .card-note.orange { border-left: 5px solid var(--ink-orange); }
+    .card-note.yellow { border-left: 5px solid var(--ink-yellow); }
+    .card-note.teal   { border-left: 5px solid var(--ink-teal); }
+    .card-note.cyan   { border-left: 5px solid var(--ink-cyan); }
+    .card-note.indigo { border-left: 5px solid var(--ink-indigo); }
+    .card-note.rose   { border-left: 5px solid var(--ink-rose); }
+    .card-note.amber  { border-left: 5px solid var(--ink-amber); }
+
+    .bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+
+    .sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; min-height: 22px; }
+    
+    .regular-text {
+      margin: 8px 0;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--ink-dark);
+      padding-left: 2px;
+    }
+
+    /* Sticky Notes */
+    .sticky { 
+      position: relative;
+      padding: 14px 16px; 
+      border-radius: 2px; 
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.1); 
+      transform: rotate(-0.5deg); 
+      margin: 12px 0; 
+      font-size: 15.5px; 
+      line-height: 22px; 
+      font-family: 'Patrick Hand', cursive; 
+    }
+    .sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+    .sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+    .sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+
+    /* Highlight Spans */
+    .hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+    .hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+    .hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+    .hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+    .hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+
+    /* Dropdowns */
+    .reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+    .reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+    .reveal-box summary::-webkit-details-marker { display: none; }
+    .reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+    .reveal-box[open] summary::before { transform: rotate(90deg); }
+    .reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+    .reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+
+    /* MCQ Cards */
+    .mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+    .mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+    .mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+
+    /* Tables */
+    .hand-table { width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+    .hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+    .hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+
+    /* Exam Traps */
+    .exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+    .exam-trick::before { content: "⚡ TOPPER'S RED ALERT: CONSTITUTIONAL TRAPS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+
+    /* Mains Section */
+    .mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+    .mains-section::before { content: "✍ APPSC MAINS PRACTICE & PREVIOUS YEAR QUESTIONS (PYQs)"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; font-family: 'Inter', sans-serif; }
+    
+    .mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+    .mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+    .mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+
+    @media print {
+      body { background: none; }
+      .reveal-box { display: block !important; }
+      .reveal-box summary { display: none !important; }
+      .reveal-content { display: block !important; border-top: 1px dashed #93c5fd !important; }
+      .notebook-container { box-shadow: none; width: 100%; max-width: 100%; padding: 10px 15px 15px 45px; margin-bottom: 0; }
+    }
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas">
+    
+    <!-- TITLE BANNER -->
+    <div class="block-wrapper">
+      <div class="title-section">
+        <div class="badge-tag">UPSC / APPSC POLITY MASTER BLUEPRINT</div>
+        <h1>Salient Features, Schedules &amp; Parts of the Indian Constitution</h1>
+        <div class="subtitle">Philosophical Foundations • Structural Architecture • Exhaustive Framework</div>
+      </div>
+    </div>
+
+    <!-- SECTION I -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>I. Structural Nature &amp; Foundational Synthesis</span>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <!-- Col 1 -->
+        <div class="grid-col">
+          <div class="card-note blue">
+            <h3 style="color:var(--ink-blue); font-size:20px;">1. Lengthiest Written Constitution</h3>
+            <ul class="bullet-list">
+              <li><strong>Original (1949):</strong> Preamble, 395 Articles (22 Parts), 8 Schedules[cite: 5].</li>
+              <li><strong>Present:</strong> ~470 Articles<span class="hl-green">[Including sub-clauses]</span> (25 Parts), 12 Schedules[cite: 5].</li>
+              <div class="sub-point">
+                ▫ <strong>Causative Factors:</strong> Vast geographical diversity, historical weight of the Government of India Act 1935, single constitution for both Union and States, dominance of legal luminaries in the Constituent Assembly[cite: 5].
+              </div>
+            </ul>
+            <div class="sticky yellow">
+              📌 <strong>Elephantine Size Catch:</strong> Unlike the US Constitution (7 articles) or Australia (128 sections), India embedded administrative details, civil service protections (Part XIV), and emergency mechanics directly into the core text[cite: 5].
+            </div>
+          </div>
+
+          <div class="card-note purple">
+            <h3 style="color:var(--ink-purple); font-size:20px;">3. Blend of Rigidity &amp; Flexibility</h3>
+            <ul class="bullet-list">
+              <li><strong>Article 368 Mechanisms:</strong> Synthesizes rigid amendment processes (US model) with flexible ones (UK model)[cite: 5].</li>
+              <div class="sub-point">
+                ▫ <strong>Special Majority (Art 368):</strong> 50% total membership + 2/3rd present and voting (e.g., Fundamental Rights, DPSP)[cite: 5].<br>
+                ▫ <strong>Special Majority + State Ratification:</strong> Requires consent of half the state legislatures (e.g., federal provisions, GST Council)[cite: 5].<br>
+                ▫ <strong>Simple Majority (Outside 368):</strong> Articles 2, 3, 4 (creation/reorganization of states), official languages, citizenship rules[cite: 5].
+              </div>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="grid-col">
+          <div class="card-note teal">
+            <h3 style="color:var(--ink-teal); font-size:20px;">2. Drawn from Diverse Sources</h3>
+            <ul class="bullet-list">
+              <li><strong>Dr. Ambedkar:</strong> Framed after <em>"ransacking all the known constitutions of the world."</em>[cite: 5]</li>
+              <div class="sub-point">
+                ▫ <strong>Structural Backbone:</strong> Government of India Act 1935 (Federal Scheme, Office of Governor, Judiciary, Public Service Commissions, Emergency Provisions)[cite: 5].<br>
+                ▫ <strong>Philosophical Core:</strong> American (Fundamental Rights, Judicial Review) &amp; Irish (DPSP, nomination of Rajya Sabha members)[cite: 5].<br>
+                ▫ <strong>Political Machinery:</strong> British Constitution (Parliamentary form, Rule of Law, Cabinet system, Prerogative writs, Single citizenship)[cite: 5].
+              </div>
+            </ul>
+            <div class="sticky pink">
+              📌 <strong>Critique vs. Reality:</strong> Often labeled a "borrowed constitution" or "patchwork," but the Framers deliberately modified overseas models to eliminate systemic flaws and adapt them to Indian conditions[cite: 5].
+            </div>
+          </div>
+
+          <div class="card-note amber">
+            <h3 style="color:var(--ink-amber); font-size:20px;">4. Federal System with Unitary Bias</h3>
+            <ul class="bullet-list">
+              <li><strong>Federal Traits:</strong> Two governments, division of powers (Seventh Schedule), written constitution, supremacy of the constitution, independent judiciary, bicameralism[cite: 5].</li>
+              <li><strong>Unitary / Non-Federal Traits:</strong> Strong Centre, single constitution, single citizenship, integrated judiciary, flexibility of constitution, emergency provisions, appointment of Governor by the Centre, All-India Services[cite: 5].</li>
+              <div class="sub-point">
+                ▫ <strong>Article 1:</strong> Designates India as a <em>"Union of States"</em> (not a federation), signaling that states have no right to secede and the union is not the result of an agreement among states[cite: 5].
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM TRAP 1 -->
+    <div class="block-wrapper">
+      <div class="exam-trick">
+        <ul class="bullet-list" style="margin-top:2px;">
+          <li><strong>TRAP: "The term 'Federation' is an explicit, defined constitutional feature in Article 1."</strong> ➔ <strong>WRONG!</strong>[cite: 5]
+            <div class="sub-point">
+              ▫ <strong>Constitutional Reality:</strong> The word <em>"Federation"</em> is <strong>nowhere mentioned</strong> in the entire text of the Constitution[cite: 5].<br>
+              ▫ <strong>Jurisprudential Characterizations:</strong> 
+              • <em>K.C. Wheare:</em> "Quasi-federal"[cite: 5]<br>
+              • <em>Morris Jones:</em> "Bargaining federalism"[cite: 5]<br>
+              • <em>Granville Austin:</em> "Cooperative federalism"[cite: 5]<br>
+              • <em>S.R. Bommai case (1994):</em> Supreme Court definitively affirmed that <strong>federalism is part of the Basic Structure</strong>[cite: 5].
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION II -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>II. Institutional Architecture &amp; Governance Systems</span>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Feature</th>
+            <th style="width: 40%;">Constitutional Mechanics</th>
+            <th style="width: 35%;">Key Nuances / Precedents</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Parliamentary Form of Government</strong></td>
+            <td>Executive is drawn from and directly accountable to the Legislature[cite: 5]. Built on collective responsibility of the Council of Ministers to the Lok Sabha (Art 75(3))[cite: 5].</td>
+            <td>British model adopted at both Centre &amp; States[cite: 5]. Operates on coordination and cooperation rather than rigid presidential separation of powers[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Sovereignty vs. Supremacy Synthesis</strong></td>
+            <td>Synthesizes <strong>British Parliamentary Sovereignty</strong> with <strong>American Judicial Supremacy</strong>[cite: 5].</td>
+            <td>Supreme Court checks laws via Judicial Review (Arts 13, 32, 226); Parliament retains authority to amend the constitution within the Basic Structure envelope[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Integrated &amp; Independent Judiciary</strong></td>
+            <td>Single pyramid hierarchy enforcing both Union and State laws (SC ➔ High Courts ➔ Subordinate Courts)[cite: 5]. Distinct from dual US court systems[cite: 5].</td>
+            <td>Security of tenure, expenses charged on the Consolidated Fund of India, ban on post-retirement practice, power to punish for contempt (Art 129/215)[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Universal Adult Suffrage (Art 326)</strong></td>
+            <td>Democratic voting basis with zero communal or property qualifications[cite: 5]. Expanded via the <strong>61st CAA (1988)</strong>, reducing the voting age from 21 to 18[cite: 5].</td>
+            <td>Described as a bold experiment given India’s literacy rates and poverty levels during adoption[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Integrated Tier-3 Governance</strong></td>
+            <td><strong>73rd &amp; 74th CAAs (1992):</strong> Constitutionalized Panchayati Raj (Part IX, 11th Sched) and Municipalities (Part IX-A, 12th Sched)[cite: 5].</td>
+            <td>Transforms a dual-polity system into a formal <strong>Three-Tier Federal Structure</strong> unique among world federations[cite: 5].</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SECTION III -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>III. Rights, Directives &amp; Secular Character</span>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <!-- Col 1 -->
+        <div class="grid-col">
+          <div class="card-note green">
+            <h3 style="color:var(--ink-green); font-size:20px;">Fundamental Rights (Part III)</h3>
+            <ul class="bullet-list">
+              <li><strong>Magna Carta of India:</strong> Enforceable, justiciable rights against the State (Articles 12–35)[cite: 5].</li>
+              <li><strong>Current 6 Categories:</strong>
+                <div class="sub-point">
+                  ▫ Right to Equality (14–18)[cite: 5]<br>
+                  ▫ Right to Freedom (19–22)[cite: 5]<br>
+                  ▫ Right against Exploitation (23–24)[cite: 5]<br>
+                  ▫ Freedom of Religion (25–28)[cite: 5]<br>
+                  ▫ Cultural and Educational Rights (29–30)[cite: 5]<br>
+                  ▫ Right to Constitutional Remedies (Art 32 — <em>"Heart and Soul"</em>)[cite: 5]
+                </div>
+              </li>
+              <p class="regular-text">
+                <strong>Check on State Power:</strong> Fundamental rights are not absolute; they are subject to reasonable restrictions (public order, morality, security of state)[cite: 5]. The Right to Property (Art 31) was stripped from Part III via the <strong>44th CAA (1978)</strong> and made a legal right under Article 300A[cite: 5].
+              </p>
+            </ul>
+          </div>
+
+          <div class="card-note red">
+            <h3 style="color:var(--ink-red); font-size:20px;">Fundamental Duties (Part IV-A)</h3>
+            <ul class="bullet-list">
+              <li><strong>Origin:</strong> Absent in original draft; added via <strong>42nd CAA (1976)</strong> on Swaran Singh Committee recommendations[cite: 5].</li>
+              <li><strong>Source:</strong> USSR Constitution[cite: 5].</li>
+              <li><strong>Scope (Art 51A):</strong> Started with 10 duties; 11th duty added by <strong>86th CAA (2002)</strong> (education for children 6–14)[cite: 5].</li>
+              <div class="sub-point">
+                ▫ <strong>Nature:</strong> Non-justiciable moral obligations; serve as interpretive guides for constitutional validity of statutes[cite: 5].
+              </div>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="grid-col">
+          <div class="card-note yellow">
+            <h3 style="color:var(--ink-yellow); font-size:20px;">Directive Principles (Part IV)</h3>
+            <ul class="bullet-list">
+              <li><strong>Instruments of Instructions:</strong> Non-justiciable socio-economic targets for the State (Articles 36–51)[cite: 5].</li>
+              <li><strong>Granville Austin:</strong> DPSP + Fundamental Rights constitute the <em>"Conscience of the Constitution."</em>[cite: 5]</li>
+              <div class="sub-point">
+                ▫ <strong>Three Categories (Ideological):</strong> Socialistic (Arts 38, 39), Gandhian (Arts 40, 43, 47), Liberal-Intellectual (Arts 44, 45, 50, 51)[cite: 5].
+              </div>
+            </ul>
+            <div class="sticky yellow">
+              📌 <strong>Minerva Mills Case (1980):</strong> The Indian Constitution is founded on the bedrock of the balance between Fundamental Rights and Directive Principles[cite: 5]. Neither is absolute over the other[cite: 5].
+            </div>
+          </div>
+
+          <div class="card-note teal">
+            <h3 style="color:var(--ink-teal); font-size:20px;">Positive Concept of Secularism</h3>
+            <ul class="bullet-list">
+              <li><strong>No State Religion:</strong> Equal respect and protection for all religions (<em>Sarva Dharma Sambhava</em>)[cite: 5].</li>
+              <div class="sub-point">
+                ▫ <strong>Western vs. Indian Secularism:</strong> Western model enforces strict, mutual non-intervention between Church and State[cite: 5]. Indian model practices principled intervention (e.g., banning untouchability under Art 17, reforming Hindu religious trusts under Art 25(2)(b))[cite: 5].<br>
+                ▫ <strong>Preamble:</strong> The term "Secular" was inserted into the Preamble by the <strong>42nd CAA (1976)</strong>, though implicitly codified from 1950 via Articles 25–28[cite: 5].
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION IV -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>IV. Emergency Machinery &amp; Independent Safeguards</span>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <!-- Col 1 -->
+        <div class="grid-col">
+          <div class="card-note rose">
+            <h3 style="color:var(--ink-rose); font-size:20px;">Emergency Provisions (Part XVIII)</h3>
+            <ul class="bullet-list">
+              <li><strong>Article 352 (National Emergency):</strong> War, external aggression, or <em>armed rebellion</em> (substituted "internal disturbance" via 44th CAA)[cite: 5].</li>
+              <li><strong>Article 356 (President's Rule):</strong> Breakdown of constitutional machinery in states[cite: 5].</li>
+              <li><strong>Article 360 (Financial Emergency):</strong> Threat to financial stability/credit of India (never invoked)[cite: 5].</li>
+              <div class="sub-point">
+                ▫ <strong>Federal Transformation:</strong> Converts federal arrangement into a unitary structure without formal constitutional amendment[cite: 5].
+              </div>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="grid-col">
+          <div class="card-note blue">
+            <h3 style="color:var(--ink-blue); font-size:20px;">Independent Watchdog Bodies</h3>
+            <ul class="bullet-list">
+              <li><strong>Election Commission (Art 324):</strong> Free and fair elections to Parliament, State Legislatures, President, and VP[cite: 5].</li>
+              <li><strong>Comptroller and Auditor General (Art 148):</strong> Guardian of the public purse[cite: 5].</li>
+              <li><strong>UPSC &amp; State PSCs (Arts 315–323):</strong> Merit-based recruitment watchdogs for administrative machinery[cite: 5].</li>
+              <div class="sub-point">
+                ▫ Protected via fixed tenures, charged expenditures, and removal mechanisms aligned with Supreme Court judges[cite: 5].
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION V: SCHEDULES OF THE CONSTITUTION -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>V. Schedules of the Indian Constitution (1 to 12)</span>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="card-note indigo">
+        <h3 style="color:var(--ink-indigo); font-size:22px;">Memory Engine: "TEARS OF OLD PM"</h3>
+        <p class="regular-text">
+          The original 1949 Constitution contained <strong>8 Schedules</strong>[cite: 5]. Through subsequent constitutional amendments, 4 additional schedules were added, taking the current tally to <strong>12 Schedules</strong>[cite: 5]:
+        </p>
+        <div class="grid-2" style="margin-top: 6px; margin-bottom: 4px;">
+          <div>
+            <ul class="bullet-list">
+              <li><strong>T</strong> - 1st: <strong>T</strong>erritories &amp; States (Arts 1 &amp; 4)</li>
+              <li><strong>E</strong> - 2nd: <strong>E</strong>moluments, Salaries &amp; Perks (Arts 59, 65, 75, 97, 125, 148, 158, 164, 186, 221)</li>
+              <li><strong>A</strong> - 3rd: <strong>A</strong>ffirmations &amp; Oaths (Arts 75, 84, 99, 124, 146, 173, 188, 219)</li>
+              <li><strong>R</strong> - 4th: <strong>R</strong>ajya Sabha Seat Allocation (Arts 4 &amp; 80)</li>
+              <li><strong>S</strong> - 5th: <strong>S</strong>cheduled Areas &amp; Scheduled Tribes (Art 244(1))</li>
+              <li><strong>O</strong> - 6th: <strong>O</strong>ther Tribal Areas [AMTM states] (Arts 244(2) &amp; 275(1))</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="bullet-list">
+              <li><strong>F</strong> - 7th: <strong>F</strong>ederal Legislative Lists [Union, State, Concurrent] (Art 246)</li>
+              <li><strong>O</strong> - 8th: <strong>O</strong>fficial Recognised Languages [22 languages] (Arts 344(1) &amp; 351)</li>
+              <li><strong>L</strong> - 9th: <strong>L</strong>and Reforms &amp; Regulatory Validity [1st CAA, 1951] (Art 31B)</li>
+              <li><strong>D</strong> - 10th: <strong>D</strong>efection Disqualification [52nd CAA, 1985] (Arts 102(2) &amp; 191(2))</li>
+              <li><strong>P</strong> - 11th: <strong>P</strong>anchayat Powers &amp; 29 Functional Matters [73rd CAA, 1992] (Art 243G)[cite: 5]</li>
+              <li><strong>M</strong> - 12th: <strong>M</strong>unicipalities &amp; 18 Functional Matters [74th CAA, 1992] (Art 243W)[cite: 5]</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHEDULES DETAILED BREAKDOWN TABLE -->
+    <div class="block-wrapper">
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th style="width: 14%;">Schedule</th>
+            <th style="width: 26%;">Subject Matter</th>
+            <th style="width: 32%;">Constitutional Scope &amp; Provisions</th>
+            <th style="width: 28%;">Exam Traps &amp; CAAs Linkage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>First Schedule</strong></td>
+            <td>States &amp; Union Territories</td>
+            <td>Names of the 28 States and 8 UTs along with their territorial jurisdictions and boundary extents (Arts 1 &amp; 4).</td>
+            <td>Any change in state boundaries under Art 3 automatically amends the 1st Schedule via <strong>Simple Majority</strong> outside Art 368[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Second Schedule</strong></td>
+            <td>Salaries &amp; Emoluments</td>
+            <td>Covers President, Governors, Speaker/Dy. Speaker (LS &amp; SLA), Chairman/Dy. Chairman (RS &amp; SLC), SC/HC Judges, and CAG.</td>
+            <td><span class="hl-pink">TRAP:</span> Prime Minister, Union Ministers, MPs, and Chief Ministers are <strong>NOT</strong> listed in the 2nd Schedule (their salaries are fixed by Parliament law).</td>
+          </tr>
+          <tr>
+            <td><strong>Third Schedule</strong></td>
+            <td>Forms of Oaths or Affirmations</td>
+            <td>Covers Union/State Ministers, MP/MLA candidates, MPs/MLAs, SC/HC Judges, and CAG.</td>
+            <td><span class="hl-pink">TRAP:</span> Oaths of the <strong>President (Art 60)</strong>, <strong>Vice-President (Art 69)</strong>, and <strong>Governor (Art 159)</strong> are specified in their respective articles, <strong>not</strong> in the 3rd Schedule.</td>
+          </tr>
+          <tr>
+            <td><strong>Fourth Schedule</strong></td>
+            <td>Allocation of Rajya Sabha Seats</td>
+            <td>Allots seats to States and UTs on the basis of population (Arts 4(1) &amp; 80(2)).</td>
+            <td>Only 3 UTs currently have representation in Rajya Sabha: <strong>Delhi (3), Puducherry (1), and Jammu &amp; Kashmir (4)</strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Fifth Schedule</strong></td>
+            <td>Scheduled Areas &amp; ST Administration</td>
+            <td>Deals with control and administration of Scheduled Areas and Scheduled Tribes in states <em>other than</em> the 4 northeastern states (Art 244(1)).</td>
+            <td>Requires constitution of a <strong>Tribes Advisory Council (TAC)</strong> (up to 20 members). Governor can direct that an Act of Parliament/State legislature does not apply.</td>
+          </tr>
+          <tr>
+            <td><strong>Sixth Schedule</strong></td>
+            <td>Northeastern Tribal Areas (AMTM)</td>
+            <td>Autonomous District Councils (ADCs) and Regional Councils in 4 specific states: <strong>Assam, Meghalaya, Tripura, Mizoram</strong> (Arts 244(2) &amp; 275(1)).</td>
+            <td><span class="hl-pink">TRAP:</span> <strong>Manipur, Nagaland, and Arunachal Pradesh</strong> are NOT under the 6th Schedule. ADCs have legislative, judicial, and taxing powers under Governor's assent.</td>
+          </tr>
+          <tr>
+            <td><strong>Seventh Schedule</strong></td>
+            <td>Division of Legislative Powers</td>
+            <td>Three legislative lists (Art 246):<br>
+              • <strong>Union List:</strong> 100 items (originally 97)<br>
+              • <strong>State List:</strong> 61 items (originally 66)<br>
+              • <strong>Concurrent List:</strong> 52 items (originally 47)
+            </td>
+            <td><strong>42nd CAA (1976)</strong> transferred 5 subjects from State to Concurrent List: <em>Education, Forests, Weights &amp; Measures, Protection of Wild Animals/Birds, and Administration of Justice</em>. Residual powers belong to Centre (Art 248).</td>
+          </tr>
+          <tr>
+            <td><strong>Eighth Schedule</strong></td>
+            <td>Recognised Languages</td>
+            <td>Lists the <strong>22 official languages</strong> (originally 14) (Arts 344(1) &amp; 351).</td>
+            <td>Added via 3 Constitutional Amendments:<br>
+              • <strong>21st CAA (1967):</strong> Sindhi<br>
+              • <strong>71st CAA (1992):</strong> Konkani, Manipuri, Nepali (KMN)<br>
+              • <strong>92nd CAA (2003):</strong> Bodo, Dogri, Maithili, Santhali (BDMS)<br>
+              <span class="hl-pink">TRAP:</span> <strong>English and Rajasthani are NOT</strong> in the 8th Schedule.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Ninth Schedule</strong></td>
+            <td>Validation of Certain Acts &amp; Regulations</td>
+            <td>Added by <strong>1st CAA (1951)</strong> to protect land reform laws from judicial scrutiny under Fundamental Rights (Art 31B). Contains ~284 laws.</td>
+            <td><span class="hl-pink">I.R. Coelho Case (2007):</span> Supreme Court ruled that laws placed in the 9th Schedule after <strong>April 24, 1973</strong> (Kesavananda Bharati verdict date) are <strong>open to Judicial Review</strong> if they violate the Basic Structure.</td>
+          </tr>
+          <tr>
+            <td><strong>Tenth Schedule</strong></td>
+            <td>Anti-Defection Law</td>
+            <td>Added by <strong>52nd CAA (1985)</strong>; sets disqualification grounds for legislators defecting from political parties (Arts 102(2) &amp; 191(2)).</td>
+            <td>• <strong>91st CAA (2003):</strong> Omitted the split defense (1/3rd split no longer valid; only 2/3rd merger is protected).<br>
+              • <span class="hl-pink">Kihoto Hollohan (1992):</span> Presiding Officer's decision is subject to <strong>judicial review</strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Eleventh Schedule</strong></td>
+            <td>Panchayati Raj Functional Domains</td>
+            <td>Added by <strong>73rd CAA (1992)</strong>; enumerates <strong>29 functional items</strong> placed within the purview of Panchayats (Art 243G)[cite: 5].</td>
+            <td>Includes agriculture, minor irrigation, animal husbandry, rural housing, drinking water, poverty alleviation, and primary/secondary schools.</td>
+          </tr>
+          <tr>
+            <td><strong>Twelfth Schedule</strong></td>
+            <td>Municipal Functional Domains</td>
+            <td>Added by <strong>74th CAA (1992)</strong>; enumerates <strong>18 functional items</strong> placed within the purview of Urban Local Bodies (Art 243W)[cite: 5].</td>
+            <td>Includes urban planning, regulation of land use, roads, bridges, water supply, public health, fire services, and slum improvement.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SECTION VI: PARTS OF THE INDIAN CONSTITUTION -->
+    <div class="block-wrapper">
+      <div class="section-header">
+        <span>VI. Parts of the Indian Constitution (Original 22 vs. Present 25)</span>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="card-note purple">
+        <h3 style="color:var(--ink-purple); font-size:22px;">Structural Evolution of Parts</h3>
+        <p class="regular-text">
+          Originally in 1949, the Constitution was divided into <strong>22 Parts</strong>[cite: 5]. Through subsequent constitutional amendments:
+        </p>
+        <ul class="bullet-list">
+          <li><strong>1 Part Deleted:</strong> <strong>Part VII</strong> (dealing with Part B States) was deleted by the <strong>7th CAA (1956)</strong>.</li>
+          <li><strong>4 Parts Added:</strong>
+            <div class="sub-point">
+              ▫ <strong>Part IV-A</strong> (Fundamental Duties) — inserted by <strong>42nd CAA (1976)</strong>[cite: 5].<br>
+              ▫ <strong>Part IX-A</strong> (The Municipalities) — inserted by <strong>74th CAA (1992)</strong>[cite: 5].<br>
+              ▫ <strong>Part IX-B</strong> (The Co-operative Societies) — inserted by <strong>97th CAA (2011)</strong>.<br>
+              ▫ <strong>Part XIV-A</strong> (Tribunals) — inserted by <strong>42nd CAA (1976)</strong>.
+            </div>
+          </li>
+          <li><strong>Result:</strong> 22 - 1 + 4 = <strong>25 Parts</strong> in numerical enumeration, though the last numbered part remains numbered up to XXII[cite: 5].</li>
+        </ul>
+        <div class="sticky yellow" style="margin-top:8px;">
+          📌 <strong>Memory Mnemonic (Parts I to XI):</strong> <em>"<strong>U</strong> <strong>C</strong>an <strong>F</strong>ly <strong>D</strong>irectly <strong>F</strong>rom <strong>U</strong>S <strong>U</strong>P <strong>T</strong>o <strong>M</strong>eet <strong>C</strong>hild <strong>S</strong>hool"</em><br>
+          (<strong>U</strong>nion ➔ <strong>C</strong>itizenship ➔ <strong>F</strong>undamental Rights ➔ <strong>D</strong>PSP ➔ <strong>F</strong>undamental Duties ➔ <strong>U</strong>nion Govt ➔ <strong>S</strong>tate Govt ➔ [Part VII repealed] ➔ <strong>U</strong>nion Territories ➔ <strong>P</strong>anchayats ➔ <strong>M</strong>unicipalities ➔ <strong>C</strong>o-operatives ➔ <strong>S</strong>cheduled/Tribal Areas).
+        </div>
+      </div>
+    </div>
+
+    <!-- PARTS COMPLETE REFERENCE TABLE -->
+    <div class="block-wrapper">
+      <table class="hand-table">
+        <thead>
+          <tr>
+            <th style="width: 12%;">Part</th>
+            <th style="width: 28%;">Subject Matter</th>
+            <th style="width: 22%;">Articles Covered</th>
+            <th style="width: 38%;">Core Constitutional Features &amp; Exam Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Part I</strong></td>
+            <td>The Union and its Territory</td>
+            <td>Articles 1 to 4</td>
+            <td>Art 1 (Union of States)[cite: 5], Art 2 (Admission/establishment of new states), Art 3 (Alteration of areas, boundaries or names of existing states by simple majority)[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Part II</strong></td>
+            <td>Citizenship</td>
+            <td>Articles 5 to 11</td>
+            <td>Single citizenship; deals with citizenship at the commencement of the Constitution; Parliament given plenary power to regulate rights by law (Art 11).</td>
+          </tr>
+          <tr>
+            <td><strong>Part III</strong></td>
+            <td>Fundamental Rights</td>
+            <td>Articles 12 to 35</td>
+            <td>Justiciable rights; Magna Carta of India; Art 13 (Judicial Review)[cite: 5], Art 21 (Right to Life &amp; Liberty), Art 32 (Constitutional Remedies)[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Part IV</strong></td>
+            <td>Directive Principles of State Policy</td>
+            <td>Articles 36 to 51</td>
+            <td>Non-justiciable socio-economic charter[cite: 5]; Art 40 (Village Panchayats)[cite: 5], Art 44 (Uniform Civil Code)[cite: 5], Art 50 (Separation of judiciary from executive)[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Part IV-A</strong></td>
+            <td>Fundamental Duties</td>
+            <td>Article 51A</td>
+            <td>Added by <strong>42nd CAA (1976)</strong>[cite: 5]; contains 11 non-justiciable duties[cite: 5]; 11th duty added by 86th CAA (2002)[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Part V</strong></td>
+            <td>The Union Government</td>
+            <td>Articles 52 to 151</td>
+            <td>• Ch I: The Executive (President, VP, PM, Council, AG)<br>
+                • Ch II: Parliament (Lok Sabha, Rajya Sabha)<br>
+                • Ch III: Legislative Powers of President (Ordinance - Art 123)<br>
+                • Ch IV: Union Judiciary (Supreme Court - Arts 124–147)<br>
+                • Ch V: Comptroller and Auditor-General of India (Arts 148–151)[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Part VI</strong></td>
+            <td>The State Governments</td>
+            <td>Articles 152 to 237</td>
+            <td>• Ch I: General<br>
+                • Ch II: The Executive (Governor, CM, Council, Adv. General)<br>
+                • Ch III: State Legislature<br>
+                • Ch IV: Legislative Power of Governor (Ordinance - Art 213)<br>
+                • Ch V: High Courts (Arts 214–231)<br>
+                • Ch VI: Subordinate Courts (Arts 233–237).</td>
+          </tr>
+          <tr>
+            <td><del>Part VII</del></td>
+            <td><del>States in Part B of First Schedule</del></td>
+            <td><del>Article 238</del></td>
+            <td><span class="hl-pink">REPEALED</span> by the <strong>Constitution (7th Amendment) Act, 1956</strong> following the States Reorganisation Act.</td>
+          </tr>
+          <tr>
+            <td><strong>Part VIII</strong></td>
+            <td>The Union Territories</td>
+            <td>Articles 239 to 242</td>
+            <td>Administration by President through Administrator/LG; Art 239AA (Special provisions with respect to National Capital Territory of Delhi - 69th CAA, 1991).</td>
+          </tr>
+          <tr>
+            <td><strong>Part IX</strong></td>
+            <td>The Panchayats</td>
+            <td>Articles 243 to 243-O</td>
+            <td>Constitutionalized by <strong>73rd CAA (1992)</strong>[cite: 5]; 3-tier Panchayati Raj system, State Election Commission (243K), State Finance Commission (243I).</td>
+          </tr>
+          <tr>
+            <td><strong>Part IX-A</strong></td>
+            <td>The Municipalities</td>
+            <td>Articles 243-P to 243-ZG</td>
+            <td>Constitutionalized by <strong>74th CAA (1992)</strong>[cite: 5]; Nagar Panchayats, Municipal Councils, Municipal Corporations, District Planning Committees (243ZD).</td>
+          </tr>
+          <tr>
+            <td><strong>Part IX-B</strong></td>
+            <td>The Co-operative Societies</td>
+            <td>Articles 243-ZH to 243-ZT</td>
+            <td>Added by <strong>97th CAA (2011)</strong>; democratic control of multi-state co-operatives; SC in 2021 struck down parts affecting state cooperatives for lack of state ratification.</td>
+          </tr>
+          <tr>
+            <td><strong>Part X</strong></td>
+            <td>The Scheduled and Tribal Areas</td>
+            <td>Articles 244 to 244A</td>
+            <td>Administration of 5th Schedule (Scheduled Areas) and 6th Schedule (Tribal Areas in Assam, Meghalaya, Tripura, Mizoram).</td>
+          </tr>
+          <tr>
+            <td><strong>Part XI</strong></td>
+            <td>Relations between Union and States</td>
+            <td>Articles 245 to 263</td>
+            <td>• Ch I: Legislative Relations (Territorial &amp; Subject-matter distribution - Arts 245–255)<br>
+                • Ch II: Administrative Relations (Inter-State Waters - Art 262, Inter-State Council - Art 263).</td>
+          </tr>
+          <tr>
+            <td><strong>Part XII</strong></td>
+            <td>Finance, Property, Contracts &amp; Suits</td>
+            <td>Articles 264 to 300A</td>
+            <td>• Ch I: Finance (Consolidated/Contingency Funds, Finance Commission - Art 280, GST Council - Art 279A)<br>
+                • Ch II: Borrowing<br>
+                • Ch III: Property, Contracts, Rights, Liabilities<br>
+                • Ch IV: <strong>Right to Property (Article 300A)</strong> — shifted from Part III by 44th CAA[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Part XIII</strong></td>
+            <td>Trade, Commerce &amp; Intercourse within India</td>
+            <td>Articles 301 to 307</td>
+            <td>Freedom of inter-state trade and commerce (Art 301 inspired by Australian Constitution); Parliament's power to impose restrictions in public interest.</td>
+          </tr>
+          <tr>
+            <td><strong>Part XIV</strong></td>
+            <td>Services Under the Union and States</td>
+            <td>Articles 308 to 323</td>
+            <td>• Ch I: Services (All-India Services - Art 312, Doctrine of Pleasure - Art 310, Protections - Art 311)<br>
+                • Ch II: Public Service Commissions (UPSC &amp; SPSC - Arts 315–323)[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Part XIV-A</strong></td>
+            <td>Tribunals</td>
+            <td>Articles 323A &amp; 323B</td>
+            <td>Inserted by <strong>42nd CAA (1976)</strong> based on Swaran Singh Committee; Art 323A (Administrative Tribunals - CAT/SAT), Art 323B (Tribunals for other matters - taxation, tenancy, labor).</td>
+          </tr>
+          <tr>
+            <td><strong>Part XV</strong></td>
+            <td>Elections</td>
+            <td>Articles 324 to 329A</td>
+            <td>Art 324 (Election Commission of India superintendence and control)[cite: 5]; Art 325 (No discrimination in electoral rolls); Art 326 (Universal Adult Suffrage)[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Part XVI</strong></td>
+            <td>Special Provisions Relating to Certain Classes</td>
+            <td>Articles 330 to 342A</td>
+            <td>Reservations for SCs and STs in Lok Sabha (Art 330) and State Assemblies (Art 332); National Commissions: NCSC (Art 338), NCST (Art 338A), NCBC (Art 338B - 102nd CAA).</td>
+          </tr>
+          <tr>
+            <td><strong>Part XVII</strong></td>
+            <td>Official Language</td>
+            <td>Articles 343 to 351</td>
+            <td>• Ch I: Language of the Union (Hindi in Devanagari script - Art 343)<br>
+                • Ch II: Regional Languages<br>
+                • Ch III: Language of SC and HCs (English until Parliament laws - Art 348)<br>
+                • Ch IV: Special Directives (Art 350A, Art 351).</td>
+          </tr>
+          <tr>
+            <td><strong>Part XVIII</strong></td>
+            <td>Emergency Provisions</td>
+            <td>Articles 352 to 360</td>
+            <td>Art 352 (National Emergency), Art 356 (State Emergency / President's Rule), Art 360 (Financial Emergency), Arts 358 &amp; 359 (Suspension of Fundamental Rights)[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Part XIX</strong></td>
+            <td>Miscellaneous</td>
+            <td>Articles 361 to 367</td>
+            <td>Art 361 (Immunities and protections to President and Governors from criminal prosecution while in office); definition of terms.</td>
+          </tr>
+          <tr>
+            <td><strong>Part XX</strong></td>
+            <td>Amendment of the Constitution</td>
+            <td>Article 368</td>
+            <td>Constituent power of Parliament to amend the Constitution and procedure thereof; requires Special Majority / State Ratification[cite: 5]; subject to Basic Structure[cite: 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Part XXI</strong></td>
+            <td>Temporary, Transitional and Special Provisions</td>
+            <td>Articles 369 to 392</td>
+            <td>Special asymmetric provisions for certain states: Art 371 (Maharashtra/Gujarat), 371A (Nagaland), 371B (Assam), 371C (Manipur), 371D/E (AP/Telangana), 371F (Sikkim), 371G (Mizoram), 371H (Arunachal), 371-I (Goa), 371J (Karnataka). (Art 370 effectively abrogated in 2019).</td>
+          </tr>
+          <tr>
+            <td><strong>Part XXII</strong></td>
+            <td>Short Title, Commencement, Authoritative Text in Hindi and Repeals</td>
+            <td>Articles 393 to 395</td>
+            <td>Art 393 ("This Constitution may be called the Constitution of India"); Art 394 (Commencement); Art 394A (Authoritative text in Hindi - added by 58th CAA, 1987); Art 395 (Repeals of Indian Independence Act 1947 &amp; GoI Act 1935).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- EXAM TRAP 3: PARTS & JURISPRUDENTIAL TRAPS -->
+    <div class="block-wrapper">
+      <div class="exam-trick">
+        <ul class="bullet-list" style="margin-top:2px;">
+          <li><strong>HIGH-YIELD TRAP: Numerical Numbering vs. Sub-clause Parts</strong> ➔ <strong>MUST KNOW!</strong>
+            <div class="sub-point">
+              ▫ <strong>Common Error:</strong> Claiming the Constitution ends at Part XXV.<br>
+              ▫ <strong>Constitutional Fact:</strong> The final numbered Part of the Indian Constitution is <strong>still Part XXII (Article 395)</strong>. The 4 additions (IV-A, IX-A, IX-B, XIV-A) were added alphabetically to maintain the original numbering framework[cite: 5].<br>
+              ▫ <strong>Chandra Kumar Case (1997):</strong> SC held that the power of judicial review under Arts 226/227 and 32 is an integral part of the Basic Structure. Hence, the exclusion of High Court jurisdiction under Part XIV-A (Art 323A/B) was declared unconstitutional.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRELIMS MCQ CHECK -->
+    <div class="block-wrapper">
+      <div class="mcq-card">
+        <span class="mcq-badge">UPSC / APPSC Prelims Check</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q1. Match List-I (Parts of Constitution) with List-II (Provisions):
+          <br>A. Part IX-A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Fundamental Duties
+          <br>B. Part IV-A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Tribunals
+          <br>C. Part XIV-A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. The Municipalities
+          <br>D. Part XII &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. Right to Property
+          <br>Select the correct code:
+        </div>
+        <div class="mcq-options">
+          1) A-3, B-1, C-2, D-4<br>
+          2) A-1, B-3, C-2, D-4<br>
+          3) A-3, B-1, C-4, D-2<br>
+          4) A-2, B-4, C-1, D-3
+        </div>
+        <details class="reveal-box">
+          <summary>Show Answer &amp; Constitutional Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">1) A-3, B-1, C-2, D-4</span><br>
+              ▫ <strong>Part IX-A:</strong> The Municipalities (74th CAA, 1992)[cite: 5].<br>
+              ▫ <strong>Part IV-A:</strong> Fundamental Duties (42nd CAA, 1976)[cite: 5].<br>
+              ▫ <strong>Part XIV-A:</strong> Tribunals (Articles 323A and 323B).<br>
+              ▫ <strong>Part XII:</strong> Right to Property under Article 300A (shifted out of Part III by 44th CAA, 1978)[cite: 5].
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- PRELIMS MCQ CHECK 2 -->
+    <div class="block-wrapper">
+      <div class="mcq-card">
+        <span class="mcq-badge">UPSC / APPSC Prelims Check</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q2. Consider the following statements regarding the Schedules of the Indian Constitution:
+          <br>1. The forms of oaths for the President and the Vice-President of India are enshrined under the Third Schedule.
+          <br>2. The Ninth Schedule was inserted by the 1st Constitutional Amendment Act, 1951, to immunize agrarian reform laws.
+          <br>3. English is one of the 22 languages officially recognized under the Eighth Schedule.
+          <br>Which of the statements given above is/are correct?
+        </div>
+        <div class="mcq-options">
+          1) 2 only<br>
+          2) 1 and 2 only<br>
+          3) 2 and 3 only<br>
+          4) 1, 2 and 3
+        </div>
+        <details class="reveal-box">
+          <summary>Show Answer &amp; Constitutional Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">1) 2 only</span><br>
+              ▫ <strong>Catch 1 (Statement 1 is Incorrect):</strong> The oaths of the President (Art 60), Vice-President (Art 69), and Governor (Art 159) are contained inside their respective articles, <em>not</em> the 3rd Schedule.<br>
+              ▫ <strong>Catch 2 (Statement 2 is Correct):</strong> The 9th Schedule was introduced by the 1st CAA (1951) under Prime Minister Nehru via Article 31B.<br>
+              ▫ <strong>Catch 3 (Statement 3 is Incorrect):</strong> English and Rajasthani are <em>not</em> among the 22 languages of the 8th Schedule.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- MAINS QUESTION SECTION -->
+    <div class="block-wrapper">
+      <div class="mains-section">
+        <div class="mains-q-item">
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 15 Marks</span> 
+            <strong>Q1. "The Indian Constitution is an organic document that balances functional stability with dynamic adaptability." Analyze this statement with reference to the interplay between the Basic Structure Doctrine and the amending powers under Article 368[cite: 5].</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Answer Framework:</strong>[cite: 5]<br>
+                • <em>Introduction:</em> Define an "organic document" as one that grows and evolves while maintaining core constitutional continuity[cite: 5]. Cite Justice Khanna's observation that the Constitution is a vehicle of a nation’s life, not a static legal text[cite: 5].<br>
+                • <em>Dynamic Adaptability (Article 368):</em> Detail how over 105 constitutional amendments have addressed emerging socio-economic demands (e.g., 1st CAA for land reforms, 73rd/74th CAAs for local self-governance, 101st CAA for GST, 103rd CAA for EWS)[cite: 5].<br>
+                • <em>Functional Stability (The Basic Structure Shield):</em> Trace the judicial evolution from <em>Shankari Prasad (1951)</em> and <em>Golaknath (1967)</em> to the landmark <em>Kesavananda Bharati (1973)</em> verdict[cite: 5]. Explain how the doctrine sets boundary markers (Rule of Law, Federalism, Secularism, Judicial Review, Separation of Powers) that prevent majoritarian overreach[cite: 5].<br>
+                • <em>The Interplay:</em> The doctrine does not halt amendments; it channels them[cite: 5]. Contrast India's stable constitutional survival with neighbors that rewrote constitutions entirely when political systems fractured[cite: 5].<br>
+                • <em>Conclusion:</em> Reiterate that the synthesis of flexible amendment powers and the basic structure boundary creates an equilibrium: keeping the Constitution durable against erosion without rendering it brittle to changing societal values[cite: 5].
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="mains-q-item" style="margin-top: 14px;">
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 15 Marks</span> 
+            <strong>Q2. "The structural compartmentalization of the Constitution into Parts and Schedules reflects an asymmetric federal architecture and a calibrated balance between administrative governance and judicial accountability." Discuss with examples.</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Answer Framework:</strong><br>
+                • <em>Introduction:</em> Note how the Constitution departs from traditional symmetric federations by integrating unique governance charters across 25 Parts and 12 Schedules[cite: 5].<br>
+                • <em>Asymmetric Federal Architecture:</em>
+                  ▫ <strong>Part XXI (Articles 371 to 371-J):</strong> Accommodates regional socio-cultural specificities (e.g., Article 371A for Nagaland protects customary laws; 371D for Andhra Pradesh education quotas).<br>
+                  ▫ <strong>5th &amp; 6th Schedules (Part X):</strong> Tailored tribal self-rule; Autonomous District Councils in AMTM states enjoy legislative autonomy distinct from mainstream local governance under Part IX &amp; IX-A[cite: 5].<br>
+                • <em>Administrative Governance vs. Judicial Check:</em>
+                  ▫ <strong>Part XIV &amp; XIV-A:</strong> Balance public servant security (Art 311) with specialized dispute resolution tribunals (Arts 323A/B), subject to High Court review per <em>L. Chandra Kumar</em>.<br>
+                  ▫ <strong>Part XII (Article 300A):</strong> Transition of the right to property from a fundamental right to a constitutional right strikes a balance between eminent domain for development and individual safeguards against arbitrary deprivation[cite: 5].<br>
+                • <em>Conclusion:</em> The division of the Constitution into detailed Parts and Schedules acts as an institutional roadmap, balancing administrative flexibility with rule-of-law constraints.
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

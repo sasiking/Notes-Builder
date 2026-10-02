@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../mobile-pwa.css">
+<meta charset="UTF-8">
+
+<title>Vedic Civilization</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg-page: #fbfbf9;
+  --ruled-line: #e3ebf5;
+  --margin-line: #f7a8b8;
+  --ink-blue: #0f3870;
+  --ink-dark: #1e293b;
+  --ink-red: #b91c1c;
+  --ink-green: #15803d;
+  --ink-purple: #6b21a8;
+  --ink-orange: #c2410c;
+  --ink-yellow: #a16207;
+  --ink-teal: #0f766e;
+  --ink-cyan: #0369a1;
+  --ink-indigo: #4338ca;
+  --ink-rose: #be123c;
+  --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85);
+  --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75);
+  --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85);
+  --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75);
+  --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3;
+  --sticky-pink: #ffe4e6;
+  --sticky-blue: #e0f2fe;
+  --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  background-color: #cbd5e1; 
+  display: flex; 
+  justify-content: center; 
+  padding: 25px 10px; 
+  height: auto; 
+  overflow: visible; 
+  font-family: 'Kalam', cursive, sans-serif;
+  color: var(--ink-dark);
+}
+.notebook-container { 
+  width: 100%;
+  max-width: 940px;
+  min-height: 1200px;
+  background-color: var(--bg-page);
+  background-image: 
+    linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px),
+    linear-gradient(var(--ruled-line) 1px, transparent 1px);
+  background-size: 100% 28px, 100% 28px;
+  background-repeat: repeat-y, repeat;
+  padding: 35px 35px 80px 65px;
+  border-radius: 4px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15); 
+  line-height: 28px;
+  position: relative;
+}
+.block-wrapper { position: relative; margin-bottom: 16px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; }
+.title-section h1 { font-size: 38px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; }
+.title-section .subtitle { font-size: 19px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+.section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+.card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; }
+.dot-point { margin-left: 14px; position: relative; padding-left: 16px; font-size: 15.5px; line-height: 23px; margin-top: 3px; margin-bottom: 5px; }
+.dot-point::before { content: "•"; position: absolute; left: 2px; color: var(--ink-dark); font-weight: 900; font-size: 16px; }
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15.5px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S RED ALERT: EXAM TRAPS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+.fs-sm { font-size: 12px !important; line-height: 18px !important; }
+.fs-md { font-size: 16px !important; line-height: 24px !important; }
+.fs-lg { font-size: 20px !important; line-height: 28px !important; }
+.fs-xl { font-size: 25px !important; line-height: 32px !important; }
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ UPSC & STATE PSC MAINS PRACTICE QUESTIONS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; font-family: 'Inter', sans-serif; }
+.mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+.mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+.eq { position: relative; font-family: 'Inter', sans-serif; font-weight: 700; color: #0f3870; background: rgba(224, 242, 254, 0.75); padding: 1px 6px; border-radius: 4px; border: 1px solid rgba(186, 230, 253, 0.95); display: inline-flex; align-items: center; gap: 4px; line-height: 1.35; margin: 1px 2px; vertical-align: middle; }
+.math-block { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-left: 4px solid var(--ink-purple); border-radius: 6px; padding: 10px 14px; margin: 10px 0; font-family: 'Inter', sans-serif; font-weight: 700; color: var(--ink-dark); font-size: 15px; }
+.fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px; }
+.fraction-top { border-bottom: 2px solid var(--ink-dark); padding-bottom: 2px; }
+.fraction-bottom { padding-top: 2px; }
+.note-image-container { position: relative; margin: 16px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
+.note-image-wrapper { position: relative; overflow: hidden; display: inline-block; min-width: 140px; max-width: 100%; border: 1.5px dashed #94a3b8; border-radius: 6px; padding: 6px; background: #ffffff; box-shadow: var(--shadow); }
+.note-image-wrapper img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; }
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+    
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas"><div class="block-wrapper" draggable="false">
+    
+  <div class="title-section">
+        <div class="badge-tag">UPSC / APPSC ANCIENT INDIAN HISTORY BLUEPRINT</div>
+        <h1>The Vedic Civilization (c. 1500 – 600 BCE)</h1>
+        <div class="subtitle">Early Vedic (Rigvedic) Pastoralism • Later Vedic Transformation • Literature &amp; Philosophy</div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>I. Aryan Origins, Chronology &amp; Geography</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note blue">
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: var(--ink-blue) !important;">1. Linguistic Identity &amp; Theories of Origin</h3>
+            <ul class="bullet-list">
+              <li><strong>Meaning of 'Arya':</strong> Denotes a <span class="hl-yellow">linguistic group</span> (Indo-European), not a race. Signifies "noble birth" or "free-born".</li>
+              <li><strong>Major Theories of Original Homeland:</strong>
+                <div class="sub-point">
+                  ▫ <strong>Central Asian Steppes (Most Accepted):</strong> Proposed by <strong>Max Müller</strong> via comparative philology between Sanskrit, Greek, Latin, and Avestan.<br>
+                  ▫ <strong>Arctic Home Theory:</strong> <strong>Bal Gangadhar Tilak</strong> (wrote <em>The Arctic Home in the Vedas</em> &amp; <em>Gitarahasya</em>).<br>
+                  ▫ <strong>Tibetan Theory:</strong> <strong>Swami Dayananda Saraswati</strong> (founder of Arya Samaj).<br>
+                  ▫ <strong>German Plains:</strong> Professor Penka.<br>
+                  ▫ <strong>Himalayan Region:</strong> L.D. Kalla.
+                </div>
+              </li>
+              <li><strong>External Archaeological Inscriptions:</strong>
+                <div class="sub-point">
+                  ▫ <strong>Boghazköy Inscription (14th C. BCE, Turkey):</strong> Mentions 4 Rigvedic deities as treaty witnesses: <em>Indra, Varuna, Mitra, and Nasatya</em>.<br>
+                  ▫ <strong>Kassite &amp; Mittani Inscriptions (Iraq/Syria):</strong> Confirm Aryan presence in West Asia migrating toward Sapta-Sindhu.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note amber">
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: var(--ink-amber) !important;">2. Chronology &amp; River Geography</h3>
+            <ul class="bullet-list">
+              <li><strong>Broad Periodization:</strong>
+                <div class="sub-point">
+                  ▫ <strong>Early Vedic (Rigvedic) Period (1500 – 1000 BCE):</strong> Centered around <em>Sapta-Sindhu</em>; pastoral, semi-nomadic, copper/bronze (<em>Ayas</em>).<br>
+                  ▫ <strong>Later Vedic Period (1000 – 600 BCE):</strong> Upper Gangetic plains; iron technology (<em>Krishna Ayas / Syama Ayas</em>), settled farming, territorial states, migration from <em>Prakmadyama desha</em> to <em>Drihyamadyama desha</em>.
+                </div>
+              </li>
+              <li><strong>Rigvedic Rivers (Ancient vs. Modern Names):</strong>
+                <div class="sub-point">
+                  ▫ <strong>Sindhu:</strong> Indus (most frequently mentioned river).<br>
+                  ▫ <strong>Saraswati (Naditama / best of rivers):</strong> Ghaggar-Hakra.<br>
+                  ▫ <strong>Parushni:</strong> Ravi.<br>
+                  ▫ <strong>Sutudri:</strong> Sutlej.<br>
+                  ▫ <strong>Vipas / Vipasa:</strong> Beas.<br>
+                  ▫ <strong>Vitasta:</strong> Jhelum.<br>
+                  ▫ <strong>Asikni:</strong> Chenab.<br>
+                  ▫ <strong>Kubha:</strong>&nbsp;Kabul<br><strong><span style="font-weight: 400;">▫</span>&nbsp;Kurram:&nbsp;</strong>Kuramu (Afghanistan).
+                </div>
+              </li>
+            </ul>
+            <div class="sticky yellow">
+              📌 <strong>River Frequency Trap:</strong> Ganga is mentioned only <strong>once (1 time)</strong> and Yamuna only <strong>three times (3 times)</strong> in the Rigveda! Indus (Sindhu) and Saraswati dominate the text.
+            </div>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="exam-trick">
+        <ul class="bullet-list" style="margin-top:2px;">
+          <li><strong>BATTLE OF TEN KINGS (DASARAJNA YUDDHA) — MANDALA 7:</strong>
+            <div class="sub-point">
+              ▫ <strong>Location:</strong> Fought on the banks of the <strong>Parushni (Ravi) River</strong>.<br>
+              ▫ <strong>Protagonists:</strong> King <strong>Sudas</strong> (Tritsu family of the Bharata clan, guided by sage <strong>Vasishtha</strong>) against a confederacy of 10 tribes (5 Aryan: <em>Puru, Yadu, Turvasa, Anu, Druhyu</em> + 5 non-Aryan tribes, guided by sage <strong>Vishwamitra</strong>).<br>
+              ▫ <strong>Outcome:</strong> Sudas won decisively, establishing the supremacy of the Bharatas, from whom the name <strong>Bharatavarsha</strong> originates. <b>Trasadasyo</b> was given to Sudas</div>
+          </li>
+        </ul>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>II. Classification of Vedic Literature</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note teal">
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: var(--ink-teal) !important;">1. Shruti ("To be heard" / Divine Revelation)</h3>
+            <ul class="bullet-list">
+              <li>Considered <strong>Apaurusheya</strong> (not of human origin; revealed directly by gods to sages) and eternal.</li>
+              <li>Consists of 4 successive evolutionary tiers:
+                <div class="sub-point">
+                  1. <strong>Vedas:</strong> The core poetic hymns praising gods.<br>
+                  2. <strong>Brahmanas:</strong> Prose treatises detailing the execution of rituals and sacrifices (Karma Marga).<br>
+                  3. <strong>Aranyakas:</strong> "Forest books" dealing with mysticism, meditation, and philosophy for ascetics.<br>
+                  4. <strong>Upanishads:</strong> Culmination of Vedic thought (Vedanta); speculative philosophy on Atman, Brahman, and Salvation (Jnana Marga).
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note purple">
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: var(--ink-purple) !important;">2. Smriti ("To be remembered" / Tradition)</h3>
+            <ul class="bullet-list">
+              <li>Composed by human sages; auxiliary sciences and codes of conduct.</li>
+              <li>Constituents:
+                <div class="sub-point">
+                  ▫ <strong>Vedangas (6 limbs):</strong> Shiksha, Kalpa, Vyakarana, Nirukta, Chhanda, Jyotisha.<br>
+                  ▫ <strong>Upavedas (4 applied sciences):</strong> Dhanurveda, Ayurveda, Gandharvaveda, Shilpaveda.<br>
+                  ▫ <strong>Dharmashastras / Smritis:</strong> Legal codes (Manusmriti, Yajnavalkya Smriti).<br>
+                  ▫ <strong>Epics (Itihasas):</strong> Ramayana and Mahabharata.<br>
+                  ▫ <strong>Puranas:</strong> 18 major mythological treatises (Vishnu, Garuda, Matsya, etc.).
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>III. The Four Vedas &amp; Associated Texts</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+    
+  
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 15%;">Veda</th>
+              <th style="width: 25%;">Core Content &amp; Metrics</th>
+              <th style="width: 20%;">Presiding Priest</th>
+              <th style="width: 40%;">Key Features, Brahmanas &amp; Upanishads</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Rigveda</strong></td>
+              <td>• One of the oldest surviving Indo-Aryan religious/literary texts.<br>• 1,028 hymns (1,017 Sakala + 11 Valakhilya).<br>• Divided into 10 Mandalas (chapters).<br>• Mandalas 2 to 7 are oldest ("Family Books").<br>• Mandalas 1 &amp; 10 were added later.</td>
+              <td><strong>Hotri</strong><br>(Reciter of invocations)</td>
+              <td>• <strong>Mandala 3:</strong> Contains the <em>Gayatri Mantra</em> composed by Vishwamitra.<br>• <strong>Mandala 9:</strong> Exclusively dedicated to <em>Soma</em> (sacred drink from Mt. Mujavat).<br>• <strong>Mandala 10:</strong> Contains the <em>Purusha Sukta</em> (four-fold varna division).<br>• <strong>Brahmanas:</strong> Aitareya (first mention of 'Andhra') and Kaushitaki.</td>
+            </tr>
+            <tr>
+              <td><strong>Samaveda</strong></td>
+              <td>• Book of Chants / Melodies.<br>• 1,810 (or 1,549) verses set to musical meters.</td>
+              <td><strong>Udgatri</strong><br>(Singer of chants)</td>
+              <td>• Important early textual foundation for the tradition of Indian musical chanting.<br>• <strong>Brahmanas:</strong> Tandya, Jaiminiya.<br>• <strong>Upanishads:</strong> <em>Chandogya Upanishad</em> (earliest mention of 3 ashramas and rebirth).</td>
+            </tr>
+            <tr>
+              <td><strong>Yajurveda</strong></td>
+              <td>• Book of Sacrificial Prayers &amp; Ritual Formulas.<br>• Divided into:<br>&nbsp;▫ <em>Shukla (White):</em> Pure verse hymns.<br>&nbsp;▫ <em>Krishna (Black):</em> Verses mixed with prose commentaries.</td>
+              <td><strong>Adhvaryu</strong><br>(Performer of physical sacrificial rites)</td>
+              <td>• Prescribes mechanics of royal rituals: <em>Rajasuya, Asvamedha, Vajapeya</em>.<br>• <strong>Brahmanas:</strong> <em>Shatapatha Brahmana</em> (longest; details ploughing rites, flood legends, and sage Videgha Mathava).<br>• <strong>Upanishads:</strong> <em>Brihadaranyaka</em> (Yajnavalkya-Gargi dialogue, transmigration of soul).</td>
+            </tr>
+            <tr>
+              <td><strong>Atharvaveda</strong></td>
+              <td>• Non-Aryan synthesis.<br>• 711 / 730 hymns in 20 books (Kandas).<br>• Not included in the original <em>Trayi</em> trio.</td>
+              <td><strong>Brahma</strong><br>(General supervisor of the sacrifice)</td>
+              <td>• Contains charms, spells, and incantations to ward off evil spirits and diseases.<br>• Details ancient Indian medicine and mathematics.<br>• Names <strong>Sabha and Samiti as twin daughters of Prajapati</strong>.<br>• <strong>Brahmana:</strong> Gopatha Brahmana.<br>• <strong>Upanishad:</strong> <em>Mundaka Upanishad</em> (Source of national motto <em>"Satyameva Jayate"</em>).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>IV. Upanishads, Vedangas &amp; Ritual Sacrifices</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note green">
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: var(--ink-green) !important;">Key Upanishadic Dictums (Out of 108)</h3>
+            <ul class="bullet-list">
+              <li><strong>Mundaka Upanishad:</strong> Contains <em>"Satyameva Jayate"</em> ("Truth alone triumphs"). Compares rituals to leaky boats.</li>
+              <li><strong>Maha Upanishad:</strong> Proclaims <em>"Vasudhaiva Kutumbakam"</em> ("The world is one family").</li>
+              <li><strong>Chandogya Upanishad:</strong> Earliest exposition on the cycle of <strong>Rebirth (Punarjanma)</strong> and first 3 Ashramas (Brahmacharya, Grihastha, Vanaprastha).</li>
+              <li><strong>Brihadaranyaka Upanishad:</strong> Philosophical debate on Atman and the <strong>Transmigration of the Soul</strong>; records the famous intellectual debate between <strong>Sage Yajnavalkya and Gargi</strong>.</li>
+              <li><strong>Svetasvatara Upanishad:</strong> Earliest systematic mention of <strong>Bhakti</strong> (devotion).</li>
+              <li><strong>Mandukya Upanishad:</strong> Shortest Upanishad; analyzes the 4 states of consciousness (AUM).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note blue">
+    
+  
+    
+  
+    
+  
+            <h3 style="font-size: 20px; color: var(--ink-blue) !important;">The 6 Vedangas &amp; Kalpa Sutras</h3>
+            <ul class="bullet-list">
+              <li><strong>1. Shiksha:</strong> Phonetics / correct pronunciation.</li>
+              <li><strong>2. Kalpa:</strong> Ritual mechanics and sacrificial rules.
+                <div class="sub-point">
+                  ▫ <em>Srauta Sutras:</em> Grand royal sacrifices (Rajasuya, Asvamedha).<br>
+                  ▫ <em>Grihya Sutras:</em> Domestic rites and 16 Samskaras.<br>
+                  ▫ <em>Sulva Sutras:</em> Geometry of fire altars&nbsp;</div>
+              </li>
+              <li><strong>3. Vyakarana:</strong> Grammar (culminating in Panini’s <em>Ashtadhyayi</em>).</li>
+              <li><strong>4. Nirukta:</strong> Etymology / word origins (Yaska).</li>
+              <li><strong>5. Chhanda:</strong> Metrical composition / metrics.</li>
+              <li><strong>6. Jyotisha:</strong> Astronomy / fixing auspicious times for sacrifices.</li>
+            </ul>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note purple">
+    
+  
+    
+  
+    
+  
+        <h3 style="font-size: 20px; color: var(--ink-purple) !important;">Royal Sacrifices &amp; Social Rites</h3>
+        <div class="grid-2">
+          <div>
+            <strong style="color:var(--ink-red);">Three Great Royal Sacrifices (Srauta Sutra):</strong>
+            <ul class="bullet-list" style="margin-top:4px;">
+              <li><strong>Rajasuya: Swarat</strong> — Royal consecration sacrifice conferring supreme sovereignty; king drinks soma and plays a symbolic dice game where he is declared winner.</li>
+              <li><strong>Asvamedha: Virat</strong> — Horse sacrifice for imperial expansion; an unobstructed royal horse roams for a year to establish sovereignty over territories.</li>
+              <li><strong>Vajapeya: Indra</strong> — "Drink of strength"; chariot race in which the royal chariot is deliberately made to win, restoring youth and vigor to the king.<br>• Kings who completed all 3 = <b><span class="hl-blue">Samrat</span></b></li>
+            </ul>
+          </div>
+          <div>
+            <strong style="color:var(--ink-blue);">Prominent Samskaras (Out of 16 Grihya Rites):</strong>
+            <ul class="bullet-list" style="margin-top:4px;">
+              <li><strong>Garbhadhana:</strong> Conception rite.</li>
+              <li><strong>Pumsavana:</strong> Invocation for a male child.</li>
+              <li><strong>Simantonnayana:</strong> Parting of the pregnant mother's hair.</li>
+              <li><strong>Jatakarma:</strong> Birth ceremonies before severing umbilical cord.</li>
+              <li><strong>Upanayana (8th):</strong> Sacred thread ceremony marking formal initiation into studenthood and second birth (<em>Dvija</em>).</li>
+              <li><strong>Antyeshti (16th):</strong> Funeral rites / cremation.</li>
+            </ul>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>V. Socio-Political &amp; Economic Evolution</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+    
+  
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 18%;">Feature</th>
+              <th style="width: 41%;">Early Vedic (Rigvedic) Period (1500–1000 BCE)</th>
+              <th style="width: 41%;">Later Vedic Period (1000–600 BCE)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Polity &amp; Kingship</strong></td>
+              <td>• Tribal polity (Kinship-based <em><span class="hl-green">Jana</span></em> or <em>Gana</em>; Head is called <em><span class="hl-yellow">Ganapati</span></em> or <em>Rajan</em>).<br>• King (<em>Rajan</em>) had no absolute power; chosen/ratified by assemblies <span class="hl-blue">(Democracy)</span>.<br>• No standing army; relied on tribal militias (Vrata, Gana, Sardha).<br>• Rajan assisted by <em>Purohita, Senani, Gramani</em>.</td>
+              <td>• Territorial kingdoms emerged (<em>Rashtra / Janapada</em>).<br>• Gopala became Bhoopala; Puru and Bharata merged to form <em><span class="hl-amber">Kuru</span></em>.<br>• Kingship became <span class="hl-pink">hereditary;</span> divine origins claimed (titles: <em>Samrat, Ekarat, Virat, Bhoopala</em>).<br>• Army still non-standing, but administrative retinue expanded to 12 <em>Ratnins</em> (Kingmakers).</td>
+            </tr>
+            <tr>
+              <td><strong>Tribal Assemblies</strong></td>
+              <td>• <strong>Sabha:</strong> Council of elders and elites.<br>• <strong>Samiti:</strong> General assembly of the entire clan (elected king).<br>• <strong>Vidhata:</strong> Oldest assembly; attended by women, dealt with military loot distribution and rituals.</td>
+              <td>• Assemblies lost military and democratic character.<br>• <strong>Women completely excluded</strong> from Sabha and Samiti.<br>• Vidhata disappeared entirely; Sabha transformed into an aristocratic court.</td>
+            </tr>
+            <tr>
+              <td><strong>Taxation System</strong></td>
+              <td>• No regular or formal taxation.<br>• People offered <strong>Bali</strong> (purely voluntary gift/offering) to the Rajan for protection.</td>
+              <td>• Regular taxes institutionalized: <strong>Bhaga</strong> (1/6th of produce), and <strong>Shulka</strong>.<br>• Collected by <em><span class="hl-pink">Bhagadugha</span></em> (tax collector) and kept by <em>Sangrahitri</em> (treasurer).</td>
+            </tr>
+            <tr>
+              <td><strong>Economy &amp; Livelihood</strong></td>
+              <td>• Pastoral economy; cattle-rearing was primary, agriculture secondary.<br>• Staple grain: <em>Yava</em> (barley).<br>• Wealth calculated in cows (<em>Gomat</em>); wealth transactions in cows or gold <em>Nishka</em>.<br>• Cattle-raids called <strong>Gavishti</strong> ("Search for cows").</td>
+              <td>• Widespread use of <strong>Iron</strong> (<em>Krishna Ayas</em>) cleared dense Gangetic forests.<br>• Settled agriculture became the primary occupation.<br>• Crops expanded: <em>Vrihi</em> (rice), <em>Godhuma</em> (wheat), pulses, sugarcane.<br>• Agricultural surplus sparked craft specialization and local trade.<br>• Painted Grey Ware (PGW) pottery culture.</td>
+            </tr>
+            <tr>
+              <td><strong>Social Structure &amp; Varna</strong></td>
+              <td>• Patriarchal society; head of family (<em>Kula</em>) called <strong>Kulapa</strong>.<br>• Flexible, occupation-based social differentiation (class, not rigid caste).<br>• Hymn in Mandala 9: <em>"I am a poet, my father is a physician, my mother grinds corn on stone."</em><br>• Initial <em>Varna</em> meant color/complexion (<em>Arya Varna</em> vs. <em>Dasa/Dasyu Varna</em>).<br>• Functional stages: Brahmana (prayer), Kshatriya (protection), Vaishya (agriculture/trade).<br>• Interchangeable mobility; no varna discrimination.<br>• Child marriage and Sati absent; widow remarriage (<strong>Niyoga</strong>) permitted.</td>
+              <td>• Absolute Patriarchal control intensified.<br>• Rigid, birth-based four-fold <strong>Varna System</strong> solidified as Brahmana, Kshatriya, Vaishya, Shudra (Purusha Sukta in 10th Mandala).<br>• Divinity was given to Caste System.<br>• <strong>Dvija vs. Ekaja:</strong> Upper 3 varnas = <em>Dvija</em> (twice-born via Upanayana); Shudras and women = <em>Ekaja</em> (once-born).<br>• <strong>Gotra System:</strong> Evolved from cow-pen to ancestral lineage; same-gotra marriage banned.<br>• Status of women declined sharply; denied Upanayana and education.<br>• <strong>Ashramas:</strong> Chandogya gives first 3 stages; post-Vedic Jabala gives 4 stages: Brahmacharya (5–14), Grihastha (14–55), Vanaprastha (55–75), Sanyasa (75–100).<br>• Incipient untouchability: outcasts like <em>Chandala</em> and <em>Paulkasa</em> recorded in texts.<br>• <strong>Eight Marriages:</strong> Approved: <em>Brahma, Daiva, Arsha, Prajapatya</em>; Unapproved: <em>Gandharva, Asura, Rakshasa, Paishacha</em>.</td>
+            </tr>
+            <tr>
+              <td><strong>Status of Women</strong></td>
+              <td>• Women given equal respect and education.<br>• Women wore sacred thread after Upanayana and attended rituals.<br>• No child marriage; post-puberty marriages exist.<br>• No evidence of Sati; widow remarriage allowed.<br>• Swayamvaras were held.<br>• Unmarried female scholars called <strong>Brahmavadinis</strong> (e.g., <em>Lopamudra, Apala, Ghosha, Vishwavara, Sikata</em>).<br>• Attended political assemblies (Sabha and Vidhata).</td>
+              <td>• Status declined sharply.<br>• Upanayana ceremony and Vedic chanting denied.<br>• Excluded from Sabha and Samiti.<br>• Child marriage emerged; women treated as dependents.<br>• Elite intellectual exceptions persisted in royal courts (e.g., <strong>Gargi</strong> and <strong>Maitreyi</strong> in the court of King Janaka of Videha in the <em>Brihadaranyaka Upanishad</em>).</td>
+            </tr>
+            <tr>
+              <td><strong>Religion &amp; Deities</strong></td>
+              <td>• Simple prayers; nature worship without priestly monopoly.<br>• Prayers sought cattle, health, and progeny, not salvation.<br>• Universe originated from cosmic sacrifice of Purusha (Mandala 10).<br>• <strong>Three Spheres of Gods (Yaska):<br></strong><span style="color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);">• According to rig veda univers is divided in to 3 layers.<br></span><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><span style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);">▫</span><span style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);"> </span><b>Celestial</b><em style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);"><b>(Dyausthana)</b></em><b>&nbsp; :&nbsp;</b><span style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);">Varuna (Rta/moral order), Surya, Usha (dawn), Savitr, Ashvins.</span></div><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><span style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);">▫ </span><em style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);"><b>Aerial (Antarikshasthana) :&nbsp;</b></em><span style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);">Indra (Purandara, 250 hymns), Rudra, Maruts, Vayu.</span></div><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><span style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);">▫ </span><em style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);"><b>Terrestrial (Prithvisthana) :&nbsp;</b></em><span style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);">Agni (Havyavahana, 200 hymns), Prithvi, Soma (Mandala 9), Brihaspati.</span></div><div class="sub-point" style="margin: 4px 0px 8px 18px; background-color: rgb(255, 255, 255);"><span style="background-color: rgba(255, 255, 255, 0.85);">Ashvins: God of healing/herbs</span></div><div class="sub-point" style="margin: 4px 0px 8px 18px; background-color: rgb(255, 255, 255);"><span style="background-color: rgba(255, 255, 255, 0.85);">Aranyani: God of forests</span></div><div class="sub-point" style="margin: 4px 0px 8px 18px; background-color: rgb(255, 255, 255);"><span style="background-color: rgba(255, 255, 255, 0.85);">Tvastri: Divine artisan/architect.</span></div></td>
+              <td>• Sacrifices became complex, prolonged, and monopolized by Brahmins.<br>• Nature gods lost prime importance.<br>• Rise of the supreme triad: <strong>Prajapati</strong> (creator), <strong>Rudra</strong> (god of beasts), and <strong>Vishnu</strong> (preserver).<br>• Shudras worshipped there own god <b>Poosan</b>(guardian of cattle and herds)<br>• Heavy animal slaughter in royal rituals (<em>Rajasuya, Asvamedha</em>).<br>• Emergency of 6 Philosophies:&nbsp;Ṣaḍdarśana<br><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫&nbsp;</b><b>Sankya -&nbsp;</b>Kapila Maharshi: Athiest, belived creation is from natiure</div><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ </b><b>Yoga -&nbsp;</b>Pathanjali : 8 stages of yoga</div><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><div class="sub-point" style="margin: 4px 0px 8px 18px;"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ </b><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">Yama</span></div><div class="sub-point" style="margin: 4px 0px 8px 18px;"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ </b><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">Niyama</span><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);"></span></div><div class="sub-point" style="margin: 4px 0px 8px 18px;"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ </b><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">Asana</span><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);"></span></div><div class="sub-point" style="margin: 4px 0px 8px 18px;"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ </b><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">Pranayama</span><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);"></span></div><div class="sub-point" style="margin: 4px 0px 8px 18px;"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ </b><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">Pratyahara</span><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);"></span></div><div class="sub-point" style="margin: 4px 0px 8px 18px;"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ </b><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">Dharana</span><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);"></span></div><div class="sub-point" style="margin: 4px 0px 8px 18px;"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ </b><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">Dhyana</span><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);"></span></div><div class="sub-point" style="margin: 4px 0px 8px 18px;"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ </b><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">Samadhi</span><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);"></span></div></div><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ </b><b>Nyaya -&nbsp;</b>Gautama: Logic and Reasoning</div><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ Vaisheshika</b><b>&nbsp;-&nbsp;</b>Kanadha: Athiest, belives that the universe in born out of atoms</div><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><br></div><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ </b><b>Purvamimamsa-&nbsp;</b>Jaimini:</div><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><b style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.88);">▫ Uttaramimamsa</b><b>-&nbsp;</b>Badarayana:</div><div class="sub-point" style="margin: 4px 0px 8px 18px; color: rgb(51, 65, 85); background-color: rgb(255, 255, 255);"><span style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);">•</span><span style="background-color: rgba(255, 255, 255, 0.85); color: rgb(30, 41, 59);"> </span>Both belived that vedas are ultimate source for salvation</div><br></td>
+            </tr>
+          </tbody>
+        </table>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky yellow">
+        <div>📌 <strong>Key Bureaucratic Officers:</strong> Bhagadugha (tax collector), Sangrahitri (treasurer), Senani (commander), Purohit (priest), Yuvaraj (crown prince), Vrajapati (in charge of pasture lands), Spasa (spies), Suta (charioteer/chronicler).</div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note yellow">
+    
+  
+    
+  
+    
+  
+        <h3 style="font-size: 20px; color: var(--ink-yellow) !important;">Vedic Economic &amp; Social Terminology</h3>
+        <ul class="bullet-list">
+          <li><strong>Gomat:</strong> A wealthy man (literally "one who possesses many cattle").</li>
+          <li><strong>Gavishti / Gaveshana:</strong> War or fight (literally "search for cows").</li>
+          <li><strong>Duhitr:</strong> Daughter (literally "one who milks the cow").</li>
+          <li><strong>Aghanya:</strong> "Not to be killed" — applied to the cow; heavy penalties for injuring cattle.</li>
+          <li><strong>Karmara:</strong> Metal smiths / artisans working with bronze/copper.</li>
+          <li><strong>Hiranyakara:</strong> Goldsmiths making ornaments like <em>Nishka (gold)</em> and <em>Satamana (silver)</em>.</li>
+          <li><strong>Pani:</strong> Non-Aryan trading communities who frequently stole Aryan cattle.</li>
+          <li><strong>Kusidin:</strong> Money lender / usurer (earliest mention of interest in <em>Shatapatha Brahmana</em>).</li>
+          <li><strong>Vratyastoma:</strong> A special purification ritual conducted by Brahmins to convert non-Aryans into the Aryan fold.</li>
+          <li><strong>Brahmavadini:</strong> Unmarried lifelong female scholars who composed Vedic hymns (20 seers recorded in Rigveda).</li>
+        </ul>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VI. Visual Map, Formulas &amp; Speed Recall Keys</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky yellow">
+        <h4 style="color:var(--ink-blue); font-size:20px;">⚡ Topper's Mnemonics &amp; Speed Recall Keys</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; font-size:16px;">
+          <div>
+            • <strong>LINEAGE STRUCTURE:</strong> <span class="hl-pink">Kula ➔ Grama ➔ Vis ➔ Jana ➔ Rashtra</span>.<br>
+            ➔ Kula (Family / Kulapa) ➔ Grama (Village / Gramani) ➔ Vis (Clan / Vispati) ➔ Jana (Tribe / Rajan) ➔ Rashtra (Territory / Samrat).<br>
+            • <strong>FOUR PRIESTS LINK:</strong> <span class="hl-blue">H-U-A-B</span>.<br>
+            ➔ Rigveda = <strong>H</strong>otri | Samaveda = <strong>U</strong>dgatri | Yajurveda = <strong>A</strong>dhvaryu | Atharvaveda = <strong>B</strong>rahma.
+          </div>
+          <div>
+            • <strong>VEDANGAS (6 LIMBS):</strong> <span class="hl-green">"S-K-V-N-C-J"</span>.<br>
+            ➔ <strong>S</strong>hiksha (Phonetics) ➔ <strong>K</strong>alpa (Rituals) ➔ <strong>V</strong>yakarana (Grammar) ➔ <strong>N</strong>irukta (Etymology) ➔ <strong>C</strong>hhanda (Metrics) ➔ <strong>J</strong>yotisha (Astronomy).<br>
+            • <strong>RIVER PAIRINGS:</strong> Vitasta = Jhelum | Asikni = Chenab | Parushni = Ravi | Vipas = Beas | Sutudri = Sutlej.
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="svg-box">
+        <svg viewBox="0 0 850 190" width="100%" height="190" style="font-family:'Kalam', cursive;">
+          <rect x="310" y="10" width="230" height="38" rx="6" fill="#dbeafe" stroke="#1e40af" stroke-width="1.8"></rect>
+          <text x="425" y="30" text-anchor="middle" font-size="15" fill="#1e40af" font-weight="bold">THE VEDIC AGE TRANSFORMATION</text>
+          <text x="425" y="43" text-anchor="middle" font-size="11" fill="#334155">c. 1500 BCE to c. 600 BCE</text>
+
+          <path d="M 425 48 L 425 76" stroke="#64748b" stroke-width="1.8"></path>
+          <path d="M 120 76 L 730 76" stroke="#64748b" stroke-width="1.8"></path>
+
+          <path d="M 120 76 L 120 102" stroke="#64748b" stroke-width="1.8"></path>
+          <path d="M 730 76 L 730 102" stroke="#64748b" stroke-width="1.8"></path>
+
+          <!-- Early Vedic -->
+          <rect x="20" y="102" width="200" height="75" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"></rect>
+          <text x="120" y="123" text-anchor="middle" font-size="14" fill="#15803d" font-weight="bold">EARLY VEDIC (RIGVEDIC)</text>
+          <text x="120" y="140" text-anchor="middle" font-size="11.5" fill="#334155">• Sapta-Sindhu • Pastoral Wealth</text>
+          <text x="120" y="156" text-anchor="middle" font-size="11" fill="#475569">• Sabha/Samiti/Vidhata • Gender Equality</text>
+
+          <!-- Arrow -->
+          <path d="M 230 140 L 610 140" stroke="#b91c1c" stroke-width="2" stroke-dasharray="4"></path>
+          <text x="425" y="132" text-anchor="middle" font-size="12" fill="#b91c1c" font-weight="bold">IRON (Syama Ayas) + AGRICULTURAL SURPLUS</text>
+
+          <!-- Later Vedic -->
+          <rect x="630" y="102" width="200" height="75" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"></rect>
+          <text x="730" y="123" text-anchor="middle" font-size="14" fill="#b45309" font-weight="bold">LATER VEDIC (PGW)</text>
+          <text x="730" y="140" text-anchor="middle" font-size="11.5" fill="#334155">• Ganga Valley • Settled Agrarian</text>
+          <text x="730" y="156" text-anchor="middle" font-size="11" fill="#475569">• Rigid Varna • Monarchical Rashtras</text>
+        </svg>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VII. Critical Exam Anchors &amp; Case Examples</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note blue">
+    
+  
+    
+  
+    
+  
+        <ul class="bullet-list">
+          <li><strong>Videgha Mathava Legend (Satapatha Brahmana):</strong> Recounts the eastward spread of Aryan culture via Agni (fire) burning across the land until stopping at the Sadayira (Gandak river), illustrating agricultural colonization of the Gangetic plain.</li>
+          <li><strong>The Philosopher Debates:</strong> The <em>Brihadaranyaka Upanishad</em> details the scholarly challenge posed by <strong>Gargi Vachaknavi</strong> to sage <strong>Yajnavalkya</strong> in the court of King Janaka of Videha, demonstrating that elite female intellectual engagement persisted despite broader social decline.</li>
+          <li><strong>The Dasrajan War (Battle of Ten Kings):</strong> Fought on the Parushni (Ravi) river; King Sudas of the Tritsu-Bharata clan defeated an alliance of 5 Aryan and 5 non-Aryan tribes, establishing Bharata supremacy and giving India the name <em>Bharatavarsha</em>.</li>
+        </ul>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>VIII. Exam-Trick Boxes (Avoid Common Traps!)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="exam-trick">
+        <ul class="bullet-list" style="margin-top:2px;">
+          <li><strong>TRAP 1: "The quote 'Yatra Naryastu Pujyante...' comes from the Rigveda."</strong> ➔ <strong>WRONG!</strong> It is from the <strong>Manusmriti (3.56)</strong>, composed much later in the post-Vedic era.</li>
+          <li><strong>TRAP 2: "Gargi and Maitreyi were seers in the Early Rigvedic age."</strong> ➔ <strong>WRONG!</strong> Gargi and Maitreyi belong to the <strong>Later Vedic / Upanishadic period</strong> (Brihadaranyaka Upanishad). Early Rigvedic female seers were <em>Lopamudra, Apala, Ghosha, and Vishwavara</em>.</li>
+          <li><strong>TRAP 3: "Iron was known to the Early Rigvedic people."</strong> ➔ <strong>WRONG!</strong> In the Rigveda, <em>Ayas</em> referred to copper or bronze. Iron (<em>Syama Ayas / Krishna Ayas</em>) appears only in the Later Vedic texts (c. 1000 BCE onward).</li>
+          <li><strong>TRAP 4: "Satyameva Jayate is taken from the Mandukya Upanishad."</strong> ➔ <strong>WRONG!</strong> It is taken from the <strong>Mundaka Upanishad</strong> (do not confuse *Mundaka* with *Mandukya*!).</li>
+          <li><strong>TRAP 5: "Bali was a compulsory tax throughout the Vedic period."</strong> ➔ <strong>WRONG!</strong> In the Early Vedic period, <em>Bali</em> was a purely <strong>voluntary gift/tribute</strong> to the Rajan. It became mandatory only in the Later Vedic period.</li>
+          <li><strong>TRAP 6: "Women never attended political assemblies."</strong> ➔ <strong>WRONG!</strong> Women attended both the <strong>Sabha</strong> and <strong>Vidhata</strong> in the Early Vedic period.&nbsp;Women's participation in public/political institutions appears to have declined.</li>
+        </ul>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>IX. Quick Revision Summary (High-Speed Pointers)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky pink">
+        <div style="font-size:15px; line-height:23px;">
+          1. Early Vedic (1500–1000 BCE, Sapta-Sindhu, pastoral) vs. Later Vedic (1000–600 BCE, Ganga Valley, agrarian, PGW).<br>
+          2. Literature: Rigveda (hymns), Samaveda (music), Yajurveda (rituals), Atharvaveda (charms/medicine).<br>
+          3. Assemblies: Sabha (elders), Samiti (general folk), Vidhata (tribal/religious with women), Gana (military).<br>
+          4. Economy: Early Vedic = Cattle-centric (Gavishti); Later Vedic = Iron plows (Krishna Ayas), Rice (Vrihi), Wheat (Godhuma).<br>
+          5. Taxes: Voluntary tribute (Bali) transformed into compulsory dues under the Bhagadugha (tax officer).<br>
+          6. Society: Early Vedic = flexible occupation-based varna; Later Vedic = hereditary 4 varnas, untouchability origin, Gotra system.<br>
+          7. Women's Status: Equal in early phase (Upanayana, female seers: Lopamudra, Apala); restricted in later phase (excluded from Sabha).<br>
+          8. Religion: Nature gods (Indra 250 hymns, Agni 200, Varuna Rta) replaced by Prajapati, Rudra, and Vishnu; rise of Upanishadic philosophy.
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>X. Final Master Memory Sheet: Early vs. Later Vedic Period</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+    
+  
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width:20%;">Core Feature</th>
+              <th style="width:40%;">Early Vedic (Rigvedic) Period</th>
+              <th style="width:40%;">Later Vedic Period</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Geographical Realm</strong></td><td>Sapta-Sindhu (Punjab, NWFP, Western UP).</td><td>Kuru-Panchala, Kosala, Videha (Middle Ganga).</td></tr>
+            <tr><td><strong>Primary Wealth &amp; Unit</strong></td><td>Cows (Gau, Gomat, Gavishti).</td><td>Land and settled agricultural surplus.</td></tr>
+            <tr><td><strong>Political Character</strong></td><td>Tribal polity; Rajan elected by Samiti.</td><td>Hereditary territorial monarchy (Rashtra).</td></tr>
+            <tr><td><strong>Taxation System</strong></td><td>Voluntary tribute (Bali). No standing army.</td><td>Compulsory taxes (Bali, Bhaga, Sulka).</td></tr>
+            <tr><td><strong>Social Stratification</strong></td><td>Flexible, based on deeds/occupation.</td><td>Rigid, birth-based 4 Varnas; Dvijas vs. Sudras.</td></tr>
+            <tr><td><strong>Status of Women</strong></td><td>Comparatively greater social and intellectual participation.</td><td>Deteriorated; no Upanayana; Women's participation in public/political institutions appears to have declined.</td></tr>
+            <tr><td><strong>Metals Known</strong></td><td>Ayas (Copper / Bronze only).</td><td>Syama/Krishna Ayas (Iron introduced c. 1000 BCE).</td></tr>
+            <tr><td><strong>Dominant Deities</strong></td><td>Indra, Agni, Varuna, Soma.</td><td>Prajapati (Creator), Rudra (Destroyer), Vishnu.</td></tr>
+            <tr><td><strong>Sacrificial Nature</strong></td><td>Simple household prayers for material goods.</td><td>Complex, expensive rituals (Rajasuya, Asvamedha).</td></tr>
+            <tr><td><strong>Philosophical Focus</strong></td><td>Polytheism &amp; Henotheism (Max Müller).</td><td>Monism; Atman &amp; Brahman (Upanishads).</td></tr>
+          </tbody>
+        </table>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>XI. UPSC &amp; APPSC Prelims Practice Check</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mcq-card">
+        <span class="mcq-badge">UPSC Prelims Practice • Question 1</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">Q1. With reference to the differences between the Rigvedic Aryans and the Indus Valley people, which of the following statements is/are correct? (UPSC CSE 2017).<br>1. Rigvedic Aryans used the coat of mail and helmet in warfare whereas the people of Indus Valley Civilization did not leave any evidence of using them.<br>2. Rigvedic Aryans knew gold, silver and copper whereas Indus Valley people knew only copper and iron.<br>3. Rigvedic Aryans had domesticated the horse whereas there is no evidence of Indus Valley people having been aware of this animal.<br>Select the correct answer using the code given below:.</div>
+        <div class="mcq-options">1) Option 1<br>2) Option 2<br>3) Option 3<br>4) Option 4</div>
+        <details class="reveal-box" open="">
+          <summary>Show Answer &amp; Catch</summary>
+          <div class="reveal-content"><div style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;"><span style="background-color: rgb(248, 250, 252);">➔ </span><strong style="background-color: rgb(248, 250, 252);">Correct Answer:</strong><span style="background-color: rgb(248, 250, 252);"> </span><span class="hl-pink" style="background: none 0% 0% / auto repeat scroll padding-box border-box rgba(251, 207, 232, 0.75);">3) 1 and 3 only</span><span style="background-color: rgb(248, 250, 252);">.</span><br><span style="background-color: rgb(248, 250, 252);">▫ </span><strong style="background-color: rgb(248, 250, 252);">Statement 1 is correct:</strong><span style="background-color: rgb(248, 250, 252);"> Rigvedic warfare was martial, featuring helmets (Sipra) and armor (Varman). IVC was an un-militarized commercial society.</span><br style="background-color: rgb(248, 250, 252);"><span style="background-color: rgb(248, 250, 252);">▫ </span><strong style="background-color: rgb(248, 250, 252);">Statement 2 is incorrect:</strong><span style="background-color: rgb(248, 250, 252);"> The Indus Valley people did NOT know iron; iron was discovered much later (c. 1000 BCE). They used bronze, gold, and silver.<br></span><div><span class="iNqyIf" data-sfc-cp="" jsaction="" jscontroller="KdQfFc#d5Qebf" data-sfc-root="ep" jsuid="tsluc_1p" data-complete="true" data-copy-service-computed-style="font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240);" style="font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; border-bottom: 0px rgb(230, 232, 240);"><span class="rQesXe MPyX" data-sfc-cp="" jsaction="" jscontroller="tP2kf#s32ZS" data-sfc-root="ep" jsuid="tsluc_1q" data-complete="true" data-copy-service-computed-style="font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 700; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240);" style="font-weight: 700; border-bottom: 0px rgb(230, 232, 240);"><span class="yADgie" data-copy-service-computed-style="font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 700; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240);" style="border-bottom: 0px rgb(230, 232, 240);"><span style="font-family: Kalam, cursive, sans-serif; background-color: rgb(248, 250, 252);">▫</span><span style="font-family: Kalam, cursive, sans-serif; background-color: rgb(248, 250, 252);">&nbsp;</span></span></span></span><b><span style="background-color: rgb(248, 250, 252);"></span>Statement 3 is correct: </b>The horse held a central position in the social, religious, and military life of the Rigvedic Aryans, as extensively documented in the Vedic texts. On the other hand, there is no conclusive or widespread archaeological evidence indicating that the Indus Valley people domesticated or heavily utilized horses. Although controversial, isolated bone fragments (such as those found at Surkotada) have been debated, the overall consensus is that they were not a horse-centric society.</div></div></div>
+        </details>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mcq-card">
+        <span class="mcq-badge">UPSC / APPSC Prelims Check • Question 2</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q2. Consider the following statements regarding Early Vedic tribal assemblies:<br>
+          1. Women actively attended the meetings of the Vidhata and the Sabha in the Rigvedic period.<br>
+          2. The king had absolute power and regular land taxes were collected by royal officials called Bhagadugha.<br>
+          Which of the statements given above is/are correct?.
+        </div>
+        <div class="mcq-options">
+          1) 1 only<br>
+          2) 2 only<br>
+          3) Both 1 and 2<br>
+          4) Neither 1 nor 2.
+        </div>
+        <details class="reveal-box" open="">
+          <summary>Show Answer &amp; Exam Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">1) 1 only</span>.<br>
+              ▫ <strong>Statement 1 is correct:</strong> Women attended the Vidhata and Sabha during the Rigvedic period; they were excluded from both during the Later Vedic period.<br>
+              ▫ <strong>Statement 2 is incorrect:</strong> Rigvedic kingship was not absolute (checked by the Samiti), there was no standing army, and no regular taxes existed; people paid only voluntary <em>Bali</em>. <em>Bhagadugha</em> appeared in the Later Vedic era.
+            </div>
+          </div>
+        </details>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mains-section">
+        
+        <!-- Question 1 -->
+        <div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+            <strong>Q1. "Evaluate the socio-political changes that marked the transition from the Early Vedic period to the Later Vedic period."</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Model Structuring Framework:</strong><br>
+                • <strong>Introduction:</strong> Characterize the Early Vedic era as a pastoral, egalitarian, tribal society (1500–1000 BCE) that transformed into an agrarian, hierarchical, territorial society in the Later Vedic era (1000–600 BCE), propelled by the introduction of iron technology.<br>
+                • <strong>Political Transformation:</strong><br>
+                  ▫ <em>Kinship to Territory:</em> Tribal <em>Janas</em> merged into territorial <em>Janapadas</em> (e.g., Kuru-Panchalas).<br>
+                  ▫ <em>Kingship &amp; Legitimacy:</em> The democratic election of the <em>Rajan</em> gave way to hereditary absolute monarchy, legitimized through elaborate Vedic rituals (<em>Rajasuya, Asvamedha</em>).<br>
+                  ▫ <em>Decline of Assemblies:</em> The <em>Vidhata</em> vanished completely; the <em>Sabha</em> turned into an aristocratic body; women were completely disenfranchised.<br>
+                  ▫ <em>Taxation:</em> Voluntary offerings (<em>Bali</em>) transformed into mandatory exactions (<em>Bhaga</em>, <em>Shulka</em>) collected by <em>Bhagadugha</em>.<br>
+                • <strong>Social Transformation:</strong><br>
+                  ▫ <em>Caste Rigidity:</em> The flexible, occupation-based Varna system hardened into a hereditary, endogamous four-fold caste structure.<br>
+                  ▫ <em>Decline of Women:</em> Loss of the Upanayana right, denial of assembly participation, and prevalence of child marriage.<br>
+                  ▫ <em>Gotra System:</em> Institutionalization of exogamous clan identities and strict marriage prohibitions.<br>
+                • <strong>Conclusion:</strong> Summarize that this socio-political transition laid the foundational groundwork for the "Second Urbanization" and the emergence of the 16 Mahajanapadas in the 6th century BCE.
+              </div>
+            </div>
+          </details>
+        
+    
+  
+    
+  
+    
+  </div>
+
+        <!-- Question 2 -->
+        <div class="mains-q-item" style="margin-top: 14px;">
+            
+          
+            
+          
+            
+          
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 15 Marks</span> 
+            <strong>Q2. "The Upanishads represent a powerful philosophical revolt against the ritualistic orthodoxy of the Brahmanas." Elucidate.</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Model Structuring Framework:</strong><br>
+                • <strong>Introduction:</strong> Define the Upanishads as <em>Vedanta</em> (the end of the Vedas), composed between 800–500 BCE by sages and intellectual Kshatriyas who shifted the Vedic focus from external animal sacrifices (<em>Karma Kanda</em>) to inner spiritual inquiry (<em>Jnana Kanda</em>).<br>
+                • <strong>Critique of Sacrificial Mechanics:</strong><br>
+                  ▫ <em>Rejection of Animal Sacrifices:</em> The <em>Mundaka Upanishad</em> explicitly decried ritual sacrifices as "frail, leaky rafts" incapable of carrying man across the ocean of rebirth and death.<br>
+                  ▫ <em>Sacerdotal Monopoly Broken:</em> Questioned the commercialized priestly fees (<em>Dakshina</em>) and the belief that material oblations could manipulate cosmic forces.<br>
+                • <strong>The Core Philosophical Pillars:</strong><br>
+                  ▫ <em>Atman-Brahman Monism:</em> Taught that the individual soul (<em>Atman</em>) is identical to the universal cosmic consciousness (<em>Brahman</em>) — expressed in the Mahavakya <em>"Tat Tvam Asi"</em> ("That Thou Art") in the Chandogya Upanishad.<br>
+                  ▫ <em>Metaphysical Inquiries:</em> Focused on the doctrines of <em>Karma</em> (ethical cause and effect), <em>Samsara</em> (transmigration of soul), and <em>Moksha</em> (spiritual liberation through self-knowledge).<br>
+                  ▫ <em>Intellectual Participation:</em> Fostered open, gender-inclusive debates (e.g., the Gargi-Yajnavalkya dialogue in the Brihadaranyaka Upanishad) and elevated philosopher-kings (Janaka of Videha, Pravahana Jaivali).<br>
+                • <strong>Conclusion:</strong> Note that the spiritual revolt of the Upanishads paved the way for the heterodox reform movements of Buddhism and Jainism, cementing the enduring philosophical core of Indian thought.
+              </div>
+            </div>
+          </details>
+        
+    
+  
+    
+  
+    
+  </div>
+
+        <!-- Question 3 -->
+        <div class="mains-q-item" style="margin-top: 14px;">
+            
+          
+            
+          
+            
+          
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+            <strong>Q3. "Discuss briefly the socio-religious conditions of the Early Vedic age."</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+                <strong>Answer Framework:</strong><br>
+                • <strong>Introduction:</strong> Early Vedic life (c. 1500–1000 BCE) was a rural, pastoral tribal society centered around the Sapta-Sindhu, characterized by nature worship and an egalitarian social order.<br>
+                • <strong>Social Conditions:</strong><br>
+                ▫ <em>Family Structure:</em> Patriarchal joint family (<em>Kula</em>), headed by the <strong>Kulapa</strong>.<br>
+                ▫ <em>Varna Flexibility:</em> Varna signified color or functional groups (Brahmana, Kshatriya, Vis); social mobility was fluid with no birth-based discrimination (Mandala 9: <em>"I am a poet, my father a physician..."</em>).<br>
+                ▫ <em>High Status of Women:</em> Underwent Upanayana and received Vedic education; unmarried scholar seers were called <strong>Brahmavadinis</strong> (e.g., <em>Lopamudra, Apala, Ghosha, Vishwavara</em>). Marriages occurred post-puberty; Swayamvara was held; no Sati, no child marriage, and <strong>Niyoga</strong> was permitted. Women actively took part in assemblies (Sabha, Vidhata).<br>
+                • <strong>Religious Conditions:</strong><br>
+                ▫ <em>Nature Worship:</em> Simple prayers seeking cattle (<em>Pashu</em>), children (<em>Praja</em>), and health; no temples or idol worship.<br>
+                ▫ <em>Three Cosmic Spheres:</em> Celestial (Varuna, Surya, Usha), Aerial (Indra, Rudra, Maruts), and Terrestrial (Agni, Prithvi, Soma).<br>
+                ▫ <em>Leading Deities:</em> <strong>Indra</strong> (Purandara, 250 hymns for rain and battle), <strong>Agni</strong> (fire messenger between gods and humans, 200 hymns), and <strong>Varuna</strong> (moral custodian of <em>Rta</em>).<br>
+                • <strong>Conclusion:</strong> Early Vedic society was open and kinship-based, contrasting sharply with the rigid ritualism and hereditary hierarchies of the Later Vedic era.
+              </div>
+            </div>
+          </details>
+        
+    
+  
+    
+  
+    
+  </div>
+
+      <div class="mains-q-item">
+      
+      <div class="mains-q-title">
+        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+        <strong>Q4. "</strong><strong>Explain the role of Guilds in 6th century BCE</strong><strong>"</strong>
+      </div>
+      <details class="reveal-box" style="margin-top:8px;">
+        <summary>View Model Answer Structuring Framework</summary>
+        <div class="reveal-content">
+          <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;"><strong>Answer Framework:</strong><br>• <em><b>Introduction:</b></em> The 6th century BCE marked the dawn of the <b data-path-to-node="1" data-index-in-node="59">Second Urbanisation</b> in the middle Gangetic basin, characterized by agricultural surpluses, monetization via punch-marked coins, and the expansion of craft specialization.<br><div class="sub-point">▫ <strong>Note:</strong> As specialized artisanal manufacture outgrew domestic production, craftsmen and merchants organized into corporate associations known as <b data-path-to-node="1" data-index-in-node="375">Srenis (guilds)</b>, <b data-path-to-node="1" data-index-in-node="392">Nigamas</b>, and <b data-path-to-node="1" data-index-in-node="405">Pugas</b>, headed by influential leaders called <b data-path-to-node="1" data-index-in-node="449">Pramukhas</b>, <b data-path-to-node="1" data-index-in-node="460">Jyestakas</b>, or <b data-path-to-node="1" data-index-in-node="475">Shresthi</b>.</div><div class="sub-point"><div class="table-block-wrapper"><table class="hand-table" style="margin: 10px 0px 12px; width: 719.2px; font-size: 14px;"><thead><tr><th style="color: rgb(15, 56, 112); width: 287.35px;">Sreni</th><th style="color: rgb(15, 56, 112); width: 431.05px;">Profession</th></tr></thead><tbody><tr><td><strong>Kolika</strong></td><td>Weavers</td></tr><tr><td><strong>Kularika</strong></td><td>Potters</td></tr><tr><td><strong>Telika</strong></td><td>Oil</td></tr><tr><td><strong>Gandhika</strong></td><td>Perfumes</td></tr><tr><td><strong>Mithika</strong></td><td>Stone cutters</td></tr></tbody></table></div></div><div class="sub-point">• Every Guild turned into a caste and consolidated the caste system.<br></div>• <b data-path-to-node="2" data-index-in-node="2">Core Analysis:</b><div>▫ <i data-path-to-node="2" data-index-in-node="19" style="text-decoration-line: underline;">Economic Organization &amp; Quality Control:</i> Guilds bought raw materials in bulk, trained young apprentices, set fixed product prices, and checked the quality of goods like cloth, metal tools, pots, and woodwork.&nbsp;</div><div>▫ <i data-path-to-node="2" data-index-in-node="230" style="text-decoration-line: underline;">Early Banking &amp; Loans:</i> Srenis took cash deposits from kings and the public on interest, gave loans to traders, and funded long-distance bullock caravan trade on the <i data-path-to-node="2" data-index-in-node="395">Uttarapatha</i> and <i data-path-to-node="2" data-index-in-node="411">Dakshinapatha</i> routes.&nbsp;</div><div>▫ <i data-path-to-node="2" data-index-in-node="435" style="text-decoration-line: underline;">Internal Rules &amp; Justice:</i> Guilds functioned under their own customary laws (<b data-path-to-node="2" data-index-in-node="511">Srenidharma</b>); local kings recognized these customs, allowing guild heads to resolve conflicts between their own members without royal interference.&nbsp;</div><div>▫ <u><i data-path-to-node="2" data-index-in-node="661">Support to Buddhism &amp; Jainism:</i> </u>Traders (<i data-path-to-node="2" data-index-in-node="701">Setthis</i> and <i data-path-to-node="2" data-index-in-node="713">Vaishyas</i>) disliked the strict Vedic caste hierarchy that looked down on interest-earning money-lending (<b data-path-to-node="2" data-index-in-node="817">Kusida</b>); to gain social respect, guilds donated heavily to build monasteries (<i data-path-to-node="2" data-index-in-node="895">viharas</i>), rest halls, and stupas for Buddhist and Jain monks.&nbsp;</div><div>▫ <i data-path-to-node="2" data-index-in-node="959"><u>City Building &amp; Welfare:</u></i> Guilds helped build urban centers by digging public water wells and tanks, running free food kitchens, constructing rest houses, and maintaining town defenses in capitals like Rajagriha, Kaushambi, and Shravasti.</div><div><div><br></div><div>• <b><em>Conclusion:</em> </b>By moving economic life away from simple barter into organized business unions, 6th-century BCE guilds created the wealth and stability needed for early kingdoms to grow into the Mauryan Empire.</div></div></div>
+        </div>
+      </details>
+      
+    
+  
+    </div><div class="mains-q-item">
+      
+      <div class="mains-q-title">
+        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+        <strong>Q5. "Discuss the problems in 6th Century BCE"</strong>
+      </div>
+      <details class="reveal-box" style="margin-top:8px;">
+        <summary>View Model Answer Structuring Framework</summary>
+        <div class="reveal-content">
+          <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+            <strong>Answer Framework:</strong><br>
+            • <em>Introduction:</em> Contextualize premises.<br>
+            <div class="sub-point">▫ <strong>Note:</strong> Sub-point elaboration...</div>
+            • <em>Core Analysis:</em> Arguments and empirical evidence.<br>
+            • <em>Conclusion:</em> Long-term impact and way forward.
+          </div>
+        </div>
+      </details>
+      
+    
+  
+    </div></div></div><div class="block-wrapper" draggable="false">
+    
+  <div style="text-align:center; font-family:'Patrick Hand', cursive; font-size:18px; color:var(--ink-blue); margin-top:16px;">
+        ★ Vedic Age Master Notes Complete • Print-Perfect &amp; Exam-Ready ★
+      </div></div></div>
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../mobile-pwa.css">
+<meta charset="UTF-8">
+
+<title>Bharat Ratna & Padma Awards Master Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page: #fbfbf9;
+  --ruled-line: #e3ebf5;
+  --margin-line: #f7a8b8;
+  --ink-blue: #0f3870;
+  --ink-dark: #1e293b;
+  --ink-red: #b91c1c;
+  --ink-green: #15803d;
+  --ink-purple: #6b21a8;
+  --ink-orange: #c2410c;
+  --ink-yellow: #a16207;
+  --ink-teal: #0f766e;
+  --ink-cyan: #0369a1;
+  --ink-indigo: #4338ca;
+  --ink-rose: #be123c;
+  --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85);
+  --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75);
+  --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85);
+  --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75);
+  --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3;
+  --sticky-pink: #ffe4e6;
+  --sticky-blue: #e0f2fe;
+  --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body { 
+  background-color: #cbd5e1; 
+  display: flex; 
+  justify-content: center; 
+  padding: 25px 10px; 
+  height: auto; 
+  overflow: visible; 
+  font-family: 'Kalam', cursive, sans-serif;
+  color: var(--ink-dark);
+}
+
+.notebook-container { 
+  width: 100%;
+  max-width: 940px;
+  min-height: 1200px;
+  background-color: var(--bg-page);
+  background-image: 
+    linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px),
+    linear-gradient(var(--ruled-line) 1px, transparent 1px);
+  background-size: 100% 28px, 100% 28px;
+  background-repeat: repeat-y, repeat;
+  padding: 35px 35px 80px 65px;
+  border-radius: 4px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15); 
+  line-height: 28px;
+  position: relative;
+}
+
+.block-wrapper { position: relative; margin-bottom: 18px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; }
+.title-section h1 { font-size: 34px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; }
+.title-section .subtitle { font-size: 18px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+
+.section-header { font-size: 24px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+
+.card-note { 
+  background: rgba(255,255,255,0.92); 
+  border: 1.5px solid #cbd5e1; 
+  border-radius: 6px; 
+  padding: 12px 16px; 
+  box-shadow: var(--shadow); 
+  margin-bottom: 12px; 
+}
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+.card-note.orange h3 { color: var(--ink-orange) !important; }
+
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 14px; line-height: 21px; margin-top: 4px; margin-bottom: 8px; }
+
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+.sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.92); font-size: 14px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 8px 10px; text-align: left; line-height: 21px; vertical-align: top; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 18px; }
+
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S RED ALERT: EXAM TRAPS & SUBTLETIES ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+
+.svg-box { margin: 16px 0; padding: 10px; background: #ffffff; border-radius: 6px; box-shadow: var(--shadow); }
+
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 10px 14px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ UPSC & APPSC MAINS MODEL FRAMEWORKS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 13.5px; display: inline-block; font-family: 'Inter', sans-serif; }
+
+.mains-q-item { position: relative; margin-bottom: 16px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 14px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 16.5px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 20px; }
+.mains-framework { font-size: 14px; color: #334155; margin-top: 6px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas">
+
+    <!-- TITLE BANNER -->
+    <div class="block-wrapper">
+      <div class="title-section">
+        <div class="badge-tag">INDIAN POLITY &amp; CIVIC AWARDS MASTER BLUEPRINT</div>
+        <h1>Bharat Ratna &amp; Padma Awards</h1>
+        <div class="subtitle">Complete Chronology (1954 to Latest) • Women Recipients • Record Limits • Business Leaders &amp; Key Exceptions</div>
+      </div>
+    </div>
+
+    <!-- SECTION I: CORE STATUTORY RULES & KEY COMPARISONS -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>I. Core Rules, Age Extremes &amp; Award Limits</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note blue">
+            <h3 style="font-size: 20px;">1. Basic Award Architecture</h3>
+            <ul class="bullet-list">
+              <li><strong>Started:</strong> Instituted on <strong>2 January 1954</strong> by the President of India. It is India's highest civilian honor.</li>
+              <li><strong>Normal Annual Cap:</strong> Usually restricted to a maximum of <strong>3 awards per year</strong>.</li>
+              <li><strong>Exceptions to the Cap (Most Given at One Time):</strong>
+                <div class="sub-point">
+                  ▫ <strong>1999:</strong> 4 awards given at a time (Jayaprakash Narayan, Amartya Sen, Gopinath Bordoloi, Ravi Shankar).<br>
+                  ▫ <strong>2024:</strong> <strong>5 awards given in a single year</strong> (Karpoori Thakur, L.K. Advani, P.V. Narasimha Rao, Charan Singh, M.S. Swaminathan). This is the highest number ever announced at one time.
+                </div>
+              </li>
+              <li><strong>Total Recipients:</strong> 53 individuals conferred till date.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note amber">
+            <h3 style="font-size: 20px;">2. Record Holders &amp; Business Leaders</h3>
+            <ul class="bullet-list">
+              <li><strong>Youngest Recipient:</strong> <strong>Sachin Tendulkar</strong>. Awarded in 2014 at the age of <strong>40</strong> (also the first and only sportsperson).</li>
+              <li><strong>Oldest Recipient:</strong> <strong>Dhondo Keshav Karve</strong>. Awarded in 1958 on his <strong>100th birthday</strong>.<br><em>(L.K. Advani received it while living at age 96 in 2024).</em></li>
+              <li><strong>Business Leaders / Industrialists:</strong>
+                <div class="sub-point">
+                  ▫ <strong>J.R.D. Tata (1992):</strong> The only industrialist and corporate leader to receive the Bharat Ratna. He founded Tata Airlines (Air India) and built modern Indian industry.
+                </div>
+              </li>
+              <li><strong>Foreign Non-Citizen Recipients:</strong> Khan Abdul Ghaffar Khan (Pakistan, 1987) and Nelson Mandela (South Africa, 1990).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION II: WOMEN RECIPIENTS CARD -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>II. Women Recipients of Bharat Ratna (5 Total)</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="table-block-wrapper">
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 8%;">S.No</th>
+              <th style="width: 27%;">Recipient</th>
+              <th style="width: 15%;">Year</th>
+              <th style="width: 50%;">Major Contribution &amp; Key Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>Indira Gandhi</strong></td>
+              <td><strong>1971</strong></td>
+              <td>First woman Prime Minister of India. Led the nation during the 1971 war that resulted in the liberation of Bangladesh.</td>
+            </tr>
+            <tr>
+              <td><strong>2</strong></td>
+              <td><strong>Mother Teresa</strong></td>
+              <td><strong>1980</strong></td>
+              <td>Founder of Missionaries of Charity. Dedicated her life to serving the destitute in Kolkata. Nobel Peace Prize laureate (1979) and naturalized Indian citizen.</td>
+            </tr>
+            <tr>
+              <td><strong>3</strong></td>
+              <td><strong>Aruna Asaf Ali</strong></td>
+              <td><strong>1997</strong><br><em>(Posthumous)</em></td>
+              <td>Heroine of the 1942 Quit India Movement. Famously hoisted the Indian National Congress tricolor flag at Gowalia Tank Ground, Mumbai during the freedom struggle.</td>
+            </tr>
+            <tr>
+              <td><strong>4</strong></td>
+              <td><strong>M.S. Subbulakshmi</strong></td>
+              <td><strong>1998</strong></td>
+              <td>Legendary Carnatic classical vocalist. First musician to receive the Bharat Ratna and first Indian musician to perform at the United Nations General Assembly (1966).</td>
+            </tr>
+            <tr>
+              <td><strong>5</strong></td>
+              <td><strong>Lata Mangeshkar</strong></td>
+              <td><strong>2001</strong></td>
+              <td>Known as the "Nightingale of India". Legendary playback singer who recorded thousands of songs across numerous Indian and foreign languages over seven decades.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION III: COMPLETE CHRONOLOGY TABLE -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>III. Complete Chronological List (1954 to 2024)</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="table-block-wrapper">
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 12%;">Year</th>
+              <th style="width: 38%;">Recipient Name</th>
+              <th style="width: 50%;">Primary Field / Public Identity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1954</strong></td>
+              <td>
+                • C. Rajagopalachari<br>
+                • Sarvepalli Radhakrishnan<br>
+                • C.V. Raman
+              </td>
+              <td>
+                • Last Governor-General of India and freedom fighter.<br>
+                • Philosopher, India's 1st Vice-President &amp; 2nd President.<br>
+                • Nobel Laureate Physicist (Raman Effect, 1930).
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1955</strong></td>
+              <td>
+                • Bhagwan Das<br>
+                • M. Visvesvaraya<br>
+                • Jawaharlal Nehru
+              </td>
+              <td>
+                • Freedom activist, philosopher, and co-founder of Kashi Vidyapith.<br>
+                • Pioneer civil engineer and former Diwan of Mysore.<br>
+                • First Prime Minister of independent India.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1957</strong></td>
+              <td>• Govind Ballabh Pant</td>
+              <td>Freedom fighter and first Chief Minister of Uttar Pradesh.</td>
+            </tr>
+            <tr>
+              <td><strong>1958</strong></td>
+              <td>• Dhondo Keshav Karve</td>
+              <td>Pioneered women's education and widow remarriage (Oldest recipient at 100).</td>
+            </tr>
+            <tr>
+              <td><strong>1961</strong></td>
+              <td>
+                • Bidhan Chandra Roy<br>
+                • Purushottam Das Tandon
+              </td>
+              <td>
+                • Physician and former Chief Minister of West Bengal.<br>
+                • Freedom fighter and Hindi language crusader (Rajarshi).
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1962</strong></td>
+              <td>• Rajendra Prasad</td>
+              <td>First President of the Republic of India and freedom fighter.</td>
+            </tr>
+            <tr>
+              <td><strong>1963</strong></td>
+              <td>
+                • Zakir Husain<br>
+                • Pandurang Vaman Kane
+              </td>
+              <td>
+                • Educationist and third President of India.<br>
+                • Indologist and Sanskrit scholar (History of Dharmasastra).
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1966</strong></td>
+              <td>• Lal Bahadur Shastri <em>(Posthumous)</em></td>
+              <td>Second Prime Minister of India; first posthumous recipient.</td>
+            </tr>
+            <tr>
+              <td><strong>1971</strong></td>
+              <td>• <strong>Indira Gandhi</strong></td>
+              <td>First woman Prime Minister of India; led 1971 liberation war.</td>
+            </tr>
+            <tr>
+              <td><strong>1975</strong></td>
+              <td>• V.V. Giri</td>
+              <td>Fourth President of India and prominent trade union leader.</td>
+            </tr>
+            <tr>
+              <td><strong>1976</strong></td>
+              <td>• K. Kamaraj <em>(Posthumous)</em></td>
+              <td>Freedom fighter, Kingmaker, and former Chief Minister of Tamil Nadu.</td>
+            </tr>
+            <tr>
+              <td><strong>1980</strong></td>
+              <td>• <strong>Mother Teresa</strong></td>
+              <td>Founder of Missionaries of Charity and Nobel Peace laureate.</td>
+            </tr>
+            <tr>
+              <td><strong>1983</strong></td>
+              <td>• Vinoba Bhave <em>(Posthumous)</em></td>
+              <td>Social reformer and founder of the Bhoodan Movement.</td>
+            </tr>
+            <tr>
+              <td><strong>1987</strong></td>
+              <td>• Khan Abdul Ghaffar Khan</td>
+              <td>"Frontier Gandhi"; Pashtun independence activist (First foreign citizen).</td>
+            </tr>
+            <tr>
+              <td><strong>1988</strong></td>
+              <td>• M.G. Ramachandran <em>(Posthumous)</em></td>
+              <td>Actor-politician and former Chief Minister of Tamil Nadu.</td>
+            </tr>
+            <tr>
+              <td><strong>1990</strong></td>
+              <td>
+                • B.R. Ambedkar <em>(Posthumous)</em><br>
+                • Nelson Mandela
+              </td>
+              <td>
+                • Chief architect of the Indian Constitution and social reformer.<br>
+                • Anti-apartheid leader and former President of South Africa.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1991</strong></td>
+              <td>
+                • Rajiv Gandhi <em>(Posthumous)</em><br>
+                • Vallabhbhai Patel <em>(Posthumous)</em><br>
+                • Morarji Desai
+              </td>
+              <td>
+                • Former Prime Minister who promoted modern telecoms.<br>
+                • "Iron Man of India", first Deputy Prime Minister &amp; Home Minister.<br>
+                • Freedom activist and 4th Prime Minister of India.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1992</strong></td>
+              <td>
+                • Abul Kalam Azad <em>(Posthumous)</em><br>
+                • <strong>J.R.D. Tata</strong><br>
+                • Satyajit Ray
+              </td>
+              <td>
+                • Freedom fighter and India's first Education Minister.<br>
+                • Industrialist, aviation pioneer, founder of Tata enterprises.<br>
+                • Master filmmaker and Oscar-winning cinema director.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1997</strong></td>
+              <td>
+                • Gulzarilal Nanda<br>
+                • <strong>Aruna Asaf Ali</strong> <em>(Posthumous)</em><br>
+                • A.P.J. Abdul Kalam
+              </td>
+              <td>
+                • Freedom activist and two-time interim Prime Minister.<br>
+                • Freedom fighter and 1942 Quit India Movement leader.<br>
+                • "Missile Man of India", aerospace scientist, 11th President.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1998</strong></td>
+              <td>
+                • <strong>M.S. Subbulakshmi</strong><br>
+                • C. Subramaniam
+              </td>
+              <td>
+                • Renowned Carnatic classical vocalist.<br>
+                • Statesman who drove the Indian Green Revolution.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>1999</strong></td>
+              <td>
+                • Jayaprakash Narayan <em>(Posthumous)</em><br>
+                • Amartya Sen<br>
+                • Gopinath Bordoloi <em>(Posthumous)</em><br>
+                • Ravi Shankar
+              </td>
+              <td>
+                • Leader of the Total Revolution movement.<br>
+                • Economist and Nobel Memorial Prize winner.<br>
+                • First Chief Minister of Assam after independence.<br>
+                • World-renowned Sitar maestro.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2001</strong></td>
+              <td>
+                • <strong>Lata Mangeshkar</strong><br>
+                • Bismillah Khan
+              </td>
+              <td>
+                • Iconic playback singer across seven decades.<br>
+                • Shehnai maestro who popularized classical instruments.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2009</strong></td>
+              <td>• Bhimsen Joshi</td>
+              <td>Hindustani classical vocalist of the Kirana gharana.</td>
+            </tr>
+            <tr>
+              <td><strong>2014</strong></td>
+              <td>
+                • C.N.R. Rao<br>
+                • Sachin Tendulkar
+              </td>
+              <td>
+                • Solid-state chemist and materials scientist.<br>
+                • Cricket legend (Youngest recipient at age 40).
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2015</strong></td>
+              <td>
+                • Madan Mohan Malaviya <em>(Posthumous)</em><br>
+                • Atal Bihari Vajpayee
+              </td>
+              <td>
+                • Educationist and founder of Banaras Hindu University.<br>
+                • Statesman, poet, and 10th Prime Minister of India.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2019</strong></td>
+              <td>
+                • Pranab Mukherjee<br>
+                • Nanaji Deshmukh <em>(Posthumous)</em><br>
+                • Bhupen Hazarika <em>(Posthumous)</em>
+              </td>
+              <td>
+                • Statesman and 13th President of India.<br>
+                • Social reformer and rural development leader.<br>
+                • Renowned lyricist, musician, and singer from Assam.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2024</strong></td>
+              <td>
+                • Karpoori Thakur <em>(Posthumous)</em><br>
+                • Lal Krishna Advani<br>
+                • P.V. Narasimha Rao <em>(Posthumous)</em><br>
+                • Chaudhary Charan Singh <em>(Posthumous)</em><br>
+                • M.S. Swaminathan <em>(Posthumous)</em>
+              </td>
+              <td>
+                • Socialist leader and former Chief Minister of Bihar (Jan Nayak).<br>
+                • Statesman and former Deputy Prime Minister of India.<br>
+                • 9th Prime Minister who pioneered 1991 economic reforms.<br>
+                • 5th Prime Minister of India and champion of farmers' rights.<br>
+                • Renowned agricultural scientist, father of Green Revolution.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION IV: VISUAL FLOWCHART -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>IV. Visual Map: Milestone Dimensions</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="svg-box">
+        <svg viewBox="0 0 850 190" width="100%" height="190" style="font-family:'Kalam', cursive;">
+          <rect x="300" y="10" width="250" height="38" rx="6" fill="#dbeafe" stroke="#1e40af" stroke-width="1.8"></rect>
+          <text x="425" y="30" text-anchor="middle" font-size="14.5" fill="#1e40af" font-weight="bold">BHARAT RATNA RECORD BENCHMARKS</text>
+          <text x="425" y="43" text-anchor="middle" font-size="11" fill="#334155">Inception 1954 to 2024</text>
+
+          <path d="M 425 48 L 425 76" stroke="#64748b" stroke-width="1.8"></path>
+          <path d="M 120 76 L 730 76" stroke="#64748b" stroke-width="1.8"></path>
+
+          <path d="M 120 76 L 120 102" stroke="#64748b" stroke-width="1.8"></path>
+          <path d="M 425 76 L 425 102" stroke="#64748b" stroke-width="1.8"></path>
+          <path d="M 730 76 L 730 102" stroke="#64748b" stroke-width="1.8"></path>
+
+          <!-- Branch 1 -->
+          <rect x="20" y="102" width="200" height="75" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"></rect>
+          <text x="120" y="123" text-anchor="middle" font-size="13" fill="#b45309" font-weight="bold">WOMEN (5 TOTAL)</text>
+          <text x="120" y="140" text-anchor="middle" font-size="11" fill="#334155">• Indira Gandhi (1971)</text>
+          <text x="120" y="156" text-anchor="middle" font-size="11" fill="#475569">• Mother Teresa (1980)</text>
+          <text x="120" y="170" text-anchor="middle" font-size="10" fill="#475569">• Aruna, M.S. Subbulakshmi, Lata</text>
+
+          <!-- Branch 2 -->
+          <rect x="325" y="102" width="200" height="75" rx="6" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"></rect>
+          <text x="425" y="123" text-anchor="middle" font-size="13" fill="#b91c1c" font-weight="bold">AGE EXTREMES</text>
+          <text x="425" y="140" text-anchor="middle" font-size="11" fill="#334155">• Youngest: Tendulkar (Age 40)</text>
+          <text x="425" y="156" text-anchor="middle" font-size="11" fill="#475569">• Oldest: D.K. Karve (Age 100)</text>
+          <text x="425" y="170" text-anchor="middle" font-size="10" fill="#475569">• Living Senior: Advani (Age 96)</text>
+
+          <!-- Branch 3 -->
+          <rect x="630" y="102" width="200" height="75" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"></rect>
+          <text x="730" y="123" text-anchor="middle" font-size="13" fill="#15803d" font-weight="bold">MAX GIVEN AT A TIME</text>
+          <text x="730" y="140" text-anchor="middle" font-size="11" fill="#334155">• Normal rule: Max 3 / year</text>
+          <text x="730" y="156" text-anchor="middle" font-size="11" fill="#475569">• 1999: 4 recipients</text>
+          <text x="730" y="170" text-anchor="middle" font-size="10.5" fill="#b91c1c" font-weight="bold">• 2024: Record 5 recipients</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- SECTION V: EXAM TRICK BOXES -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>V. Exam-Trick Boxes (Avoid Common Traps!)</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="exam-trick">
+        <ul class="bullet-list" style="margin-top:2px;">
+          <li><strong>TRAP 1: "Bharat Ratna can be used as a prefix or suffix to the recipient's name."</strong> ➔ <strong>WRONG!</strong> In <em>Balaji Raghavan v. UOI (1996)</em>, the Supreme Court ruled that National Awards are not titles under Article 18(1), but they cannot be used as prefixes or suffixes on letterheads, invitation cards, or publications.</li>
+          <li><strong>TRAP 2: "Only Indian citizens can receive the Bharat Ratna."</strong> ➔ <strong>WRONG!</strong> There is no written rule restricting the award to Indian citizens. Two foreign nationals have received it: Khan Abdul Ghaffar Khan (1987) and Nelson Mandela (1990). Mother Teresa was a naturalized citizen.</li>
+          <li><strong>TRAP 3: "Posthumous awards were part of the original 1954 statutes."</strong> ➔ <strong>WRONG!</strong> The 1954 statutes had no provision for posthumous awards. The rules were amended in January 1966 to honor Lal Bahadur Shastri as the first posthumous awardee.</li>
+          <li><strong>TRAP 4: "More than one business leader has received the Bharat Ratna."</strong> ➔ <strong>WRONG!</strong> <strong>J.R.D. Tata (1992)</strong> is the only industrialist to receive the Bharat Ratna.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION VI: SPECIAL NOTE ON PADMA AWARDS -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>VI. Special Note: Padma Awards Statutory Limits</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="sticky yellow">
+        <h4 style="color:var(--ink-blue); font-size:20px;">📌 Annual Limits on Padma Awards (Padma Vibhushan, Padma Bhushan, Padma Shri)</h4>
+        <div style="font-size:15px; line-height:23px; margin-top:6px;">
+          • <strong>Total Annual Cap:</strong> The total number of Padma Awards given in any single year <strong>cannot exceed 120</strong>.<br>
+          • <strong>Important Exclusions (Do Not Count in the 120 Limit):</strong><br>
+          &nbsp;&nbsp;1. <strong>Posthumous awards</strong> are completely excluded from this 120 limit.<br>
+          &nbsp;&nbsp;2. Awards given to <strong>foreigners, Non-Resident Indians (NRIs), and Overseas Citizens of India (OCIs)</strong> are also excluded from the 120 limit.<br>
+          • <strong>Duo Award Rule:</strong> In the case of a duo award (presented to two people together), the award is counted as one single award for the purpose of the 120 limit.
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION VII: PRACTICE QUESTIONS -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>VII. Practice Check</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="mcq-card">
+        <span class="mcq-badge">UPSC / State PSC Practice • Question 1</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q1. Consider the following statements regarding the Bharat Ratna:<br>
+          1. The maximum number of Bharat Ratna awards given in a single calendar year is three, without any exceptions.<br>
+          2. J.R.D. Tata is the only industrialist to be conferred the Bharat Ratna.<br>
+          3. Sachin Tendulkar is the youngest person to receive the award.<br>
+          Which of the statements given above are correct?
+        </div>
+        <div class="mcq-options">
+          1) 1 and 2 only<br>
+          2) 2 and 3 only<br>
+          3) 1 and 3 only<br>
+          4) 1, 2 and 3
+        </div>
+        <details class="reveal-box" open="">
+          <summary>Show Answer &amp; Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">2) 2 and 3 only</span>.<br>
+              ▫ <strong>Statement 1 is incorrect:</strong> While the normal rule is a maximum of three, exceptions occurred in 1999 (4 awards) and 2024 (5 awards).<br>
+              ▫ <strong>Statements 2 and 3 are correct:</strong> J.R.D. Tata is the only industrialist (1992), and Sachin Tendulkar is the youngest recipient (awarded in 2014 at age 40).
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="mcq-card">
+        <span class="mcq-badge">UPSC / State PSC Practice • Question 2</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q2. In a single year, the total number of Padma Awards cannot exceed 120. Which of the following categories are excluded from this 120-person cap?<br>
+          1. Posthumous awards<br>
+          2. Awards given to foreign nationals and NRIs<br>
+          3. Awards given to women recipients<br>
+          Select the correct answer:
+        </div>
+        <div class="mcq-options">
+          1) 1 only<br>
+          2) 1 and 2 only<br>
+          3) 2 and 3 only<br>
+          4) 1, 2 and 3
+        </div>
+        <details class="reveal-box" open="">
+          <summary>Show Answer &amp; Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">2) 1 and 2 only</span>.<br>
+              ▫ <strong>Explanation:</strong> Under official Padma Award regulations, posthumous awards and awards conferred upon foreigners, NRIs, and OCIs are excluded from the annual maximum limit of 120. There is no exclusion for women recipients.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SECTION VIII: MAINS FRAMEWORK -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>VIII. Mains Model Framework</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="mains-section">
+        <div class="mains-q-item">
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+            <strong>Q. "National civilian honors recognize exceptional public contribution while remaining distinct from pre-independence titles." Examine this statement with reference to constitutional limits and the convention governing Bharat Ratna and Padma awards.</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;" open="">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Answer Framework:</strong><br>
+                • <strong>Introduction:</strong> State that national civilian honors (Bharat Ratna, Padma awards) were created in 1954 to recognize merit and public service in a democratic republic.<br>
+                • <strong>Constitutional Distinction under Article 18(1):</strong><br>
+                ▫ Pre-independence titles (Rai Bahadur, Sir, Maharaja) created aristocratic hierarchies, which Article 18 abolished.<br>
+                ▫ In <em>Balaji Raghavan v. UOI (1996)</em>, the Supreme Court confirmed that these awards are state decorations recognizing merit, not titles of nobility.<br>
+                ▫ To preserve equality, awardees cannot use these awards as prefixes or suffixes to their names.<br>
+                • <strong>Conventions and Statutory Limits:</strong><br>
+                ▫ <em>Bharat Ratna:</em> Conventionally limited to 3 per year, though exceptional years like 1999 (4) and 2024 (5) expanded this to honor national stalwarts across fields.<br>
+                ▫ <em>Padma Awards:</em> Capped at 120 per year to maintain exclusivity, excluding posthumous awards and awards to foreigners.<br>
+                • <strong>Conclusion:</strong> Civilian awards balance democratic equality under Article 14 with state recognition of outstanding service to the nation.
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="block-wrapper">
+      <div style="text-align:center; font-family:'Patrick Hand', cursive; font-size:18px; color:var(--ink-blue); margin-top:16px;">
+        ★ Bharat Ratna &amp; Padma Awards Master Notes Complete • Print-Perfect &amp; Exam-Ready ★
+      </div>
+    </div>
+
+  </div>
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

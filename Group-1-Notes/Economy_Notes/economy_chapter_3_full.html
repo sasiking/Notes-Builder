@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../mobile-pwa.css">
+<meta charset="UTF-8">
+
+<title>Resource Mobilization in Andhra Pradesh - Master Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page: #fbfbf9;
+  --ruled-line: #e3ebf5;
+  --margin-line: #f7a8b8;
+  --ink-blue: #0f3870;
+  --ink-dark: #1e293b;
+  --ink-red: #b91c1c;
+  --ink-green: #15803d;
+  --ink-purple: #6b21a8;
+  --ink-orange: #c2410c;
+  --ink-yellow: #a16207;
+  --ink-teal: #0f766e;
+  --ink-cyan: #0369a1;
+  --ink-indigo: #4338ca;
+  --ink-rose: #be123c;
+  --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85);
+  --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75);
+  --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85);
+  --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75);
+  --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3;
+  --sticky-pink: #ffe4e6;
+  --sticky-blue: #e0f2fe;
+  --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body { 
+  background-color: #cbd5e1; 
+  display: flex; 
+  justify-content: center; 
+  padding: 25px 10px; 
+  height: auto; 
+  overflow: visible; 
+  font-family: 'Kalam', cursive, sans-serif;
+  color: var(--ink-dark);
+}
+
+.notebook-container { 
+  width: 100%;
+  max-width: 940px;
+  min-height: 1200px;
+  background-color: var(--bg-page);
+  background-image: 
+    linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px),
+    linear-gradient(var(--ruled-line) 1px, transparent 1px);
+  background-size: 100% 28px, 100% 28px;
+  background-repeat: repeat-y, repeat;
+  padding: 35px 35px 80px 65px;
+  border-radius: 4px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15); 
+  line-height: 28px;
+  position: relative;
+}
+
+.block-wrapper { position: relative; margin-bottom: 18px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; }
+.title-section h1 { font-size: 34px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; }
+.title-section .subtitle { font-size: 18px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+
+.section-header { font-size: 24px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+
+.card-note { 
+  background: rgba(255,255,255,0.92); 
+  border: 1.5px solid #cbd5e1; 
+  border-radius: 6px; 
+  padding: 12px 16px; 
+  box-shadow: var(--shadow); 
+  margin-bottom: 12px; 
+}
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+.card-note.orange h3 { color: var(--ink-orange) !important; }
+
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 14px; line-height: 21px; margin-top: 4px; margin-bottom: 8px; }
+
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+.sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.92); font-size: 14px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 8px 10px; text-align: left; line-height: 21px; vertical-align: top; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 18px; }
+
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S RED ALERT: EXAM TRAPS & SUBTLETIES ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+
+.svg-box { margin: 16px 0; padding: 10px; background: #ffffff; border-radius: 6px; box-shadow: var(--shadow); }
+
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 10px 14px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ APPSC GROUP-I & UPSC MAINS MODEL FRAMEWORKS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 13.5px; display: inline-block; font-family: 'Inter', sans-serif; }
+
+.mains-q-item { position: relative; margin-bottom: 16px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 14px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 16.5px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 20px; }
+.mains-framework { font-size: 14px; color: #334155; margin-top: 6px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas">
+
+    <!-- TITLE BANNER -->
+    <div class="block-wrapper">
+      <div class="title-section">
+        <div class="badge-tag">APPSC GROUP-I &amp; UPSC MAINS • PAPER-IV COMPREHENSIVE TEXTBOOK DECODED</div>
+        <h1>Chapter 3: Resource Mobilization in Andhra Pradesh</h1>
+        <div class="subtitle">Budgetary Resources &amp; Constraints • AP Bifurcation Act (2014) • Debt &amp; External Projects • Minerals, Forests &amp; Water Conflicts</div>
+      </div>
+    </div>
+
+    <!-- CHAPTER SYLLABUS OVERVIEW -->
+    <div class="block-wrapper">
+      <div class="card-note purple">
+        <h3 style="font-size: 20px;">Syllabus Scope &amp; Core Themes</h3>
+        <ul class="bullet-list">
+          <li><strong>Core Concepts:</strong> Resource mobilization covers gathering money to run state welfare and growth projects.</li>
+          <li><strong>Key Syllabus Points:</strong> State budget sources and fiscal limits.; fulfillment of AP Bifurcation Act (2014).; Central grants and state conflicts.; public debt and Externally Aided Projects (EAPs).; physical resources like minerals and forests.; and river water disputes with neighboring states (Krishna, Godavari, Polavaram, Telugu Ganga).</li>
+          <li><strong>Root Cause of State Fiscal Stress:</strong> High interest payments on debt., big welfare spending commitments., high staff salaries., and the loss of revenue-rich Hyderabad city.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION I: BUDGETARY RESOURCES & CONSTRAINTS -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>I. Budgetary Resources &amp; Constraints in Andhra Pradesh</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note blue">
+            <h3 style="font-size: 20px;">1. Sources of Budgetary Money in AP</h3>
+            <ul class="bullet-list">
+              <li><strong>Tax Revenues:</strong> Money collected via State GST, sales tax (fuel, alcohol), stamp duty, land registration, vehicle tax, and excise duty.</li>
+              <li><strong>Central Grants:</strong> Funds given by the Central government for specific development projects and welfare schemes.</li>
+              <li><strong>Borrowings:</strong> Taking loans from financial institutions and issuing market bonds to fund big infrastructure works.</li>
+              <li><strong>State-Owned Enterprises (PSUs):</strong> Dividends and profits earned from public-sector units and state companies.</li>
+              <li><strong>Natural Resources:</strong> Mining royalties, farm produce, and forest sales.</li>
+              <li><strong>Public-Private Partnerships (PPPs):</strong> Getting private companies to invest in building public roads and energy projects.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note red">
+            <h3 style="font-size: 20px;">2. Main Budgetary Constraints (Limits)</h3>
+            <ul class="bullet-list">
+              <li><strong>Loss of Hyderabad Hub:</strong> Losing Hyderabad took away the state's biggest commercial, tax, and IT money generator.</li>
+              <li><strong>Heavy Debt Burden:</strong> High debt means paying large interest amounts, which leaves less money for public services.</li>
+              <li><strong>Welfare &amp; Salary Demands:</strong> Huge ongoing spending on social welfare programs, pensions, and staff salaries strains the treasury.</li>
+              <li><strong>Fiscal Deficits:</strong> Spending more than revenue causes high fiscal deficits.</li>
+              <li><strong>Economic Downturns:</strong> Slumps in trade hurt tax collections.</li>
+              <li><strong>Infrastructure Needs:</strong> Massive money is required to build a new greenfield capital, ports, and power plants.</li>
+              <li><strong>Administrative Hurdles:</strong> Checking tax evasion and reducing leakages needs strong governance systems.</li>
+              <li><strong>Natural &amp; Weather Risks:</strong> Cyclone damages along the coast and drought in Rayalaseema divert funds.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARISON TABLE: ALL-INDIA (CH 2) VS AP (CH 3) -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>II. Side-by-Side Comparison: India (Ch. 2) vs. Andhra Pradesh (Ch. 3)</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="table-block-wrapper">
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Macroeconomic Metric</th>
+              <th style="width: 40%;">All-India Level (Chapter 2 Stats)</th>
+              <th style="width: 40%;">Andhra Pradesh Level (Chapter 3 Stats)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Economic Growth Rate</strong></td>
+              <td>• <strong>GDP Growth:</strong> 6.0%–6.5% sustained baseline[cite: 10].<br>• Driven by capital spending, PLI schemes, and exports[cite: 10].</td>
+              <td>• <strong>GSDP Growth:</strong> Compound growth (CAGR) of <strong>11.7%</strong> at current prices.<br>• <strong>NSDP Growth:</strong> CAGR of <strong>10.3%</strong> at current prices.</td>
+            </tr>
+            <tr>
+              <td><strong>Annual Fiscal Deficit</strong></td>
+              <td>• Controlled down from pandemic peak of 9.3% in FY21 to <strong>5.1%–5.6%</strong> of GDP (targeting 4.4%)[cite: 10].</td>
+              <td>• Targeted at <strong>₹75,868 crore</strong>, which equals <strong>3.8% of GSDP</strong> for the 2026-27 financial year.</td>
+            </tr>
+            <tr>
+              <td><strong>Revenue Deficit Position</strong></td>
+              <td>• Controlled strictly under statutory fiscal responsibility rules[cite: 10].</td>
+              <td>• Budgeted at <strong>₹22,003 crore</strong> (accounting for <strong>1.1% of GSDP</strong>) in 2026-27.</td>
+            </tr>
+            <tr>
+              <td><strong>Total Public Debt Burden</strong></td>
+              <td>• <strong>General Government Debt:</strong> Reduced to <strong>~81.4% of GDP</strong> from its pandemic high of 89.2%[cite: 10].</td>
+              <td>• <strong>State Public Debt:</strong> Expected to reach <strong>₹7,11,094 crore</strong> by the end of 2026-27 (up from ₹6,35,177 crore), standing at <strong>36% of GSDP</strong>.<br>• <strong>Total Liabilities (including PSUs):</strong> Rose to <strong>₹9,74,556 crore</strong> by mid-2024.</td>
+            </tr>
+            <tr>
+              <td><strong>Net Borrowings to Plug Deficit</strong></td>
+              <td>• Raised via RBI through marketable Treasury Bills and long-dated bonds (G-Secs)[cite: 11].</td>
+              <td>• Total net borrowings needed to cover the annual budget shortfall are budgeted at <strong>₹97,315 crore</strong> for 2026-27.</td>
+            </tr>
+            <tr>
+              <td><strong>Foreign Investment &amp; External Aid</strong></td>
+              <td>• Gross FDI hit an all-time record of <strong>$94.53 billion</strong> in 2025-26[cite: 11].</td>
+              <td>• High reliance on external aid projects (World Bank, ADB, NDB, AIIB, JICA) for irrigation, power, and road repairs.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION III: BIFURCATION ACT & CONFLICTS -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>III. AP Bifurcation Act (2014): Promises &amp; Issues of Conflict</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note teal">
+            <h3 style="font-size: 20px;">1. Promised Central Assistance</h3>
+            <ul class="bullet-list">
+              <li><strong>Revenue Deficit Grant:</strong> The 2014 Act mandated the Centre to give revenue deficit grants to cover the sudden loss of revenue-generating areas to Telangana. But funds were often delayed; for example, in FY 2019-20, AP received only ₹2,500 crore against a much larger demand.</li>
+              <li><strong>Special Development Package:</strong> The Act promised financial packages to develop backward districts in Rayalaseema and North Coastal Andhra. However, slow monitoring and project delays slowed results.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note amber">
+            <h3 style="font-size: 20px;">2. Ongoing Points of Conflict</h3>
+            <ul class="bullet-list">
+              <li><strong>Division of Assets &amp; Liabilities:</strong> Sharing government buildings, state corporations, and training centers located in Hyderabad remains a point of dispute.</li>
+              <li><strong>Apportionment of Public Debt:</strong> Disputes remain over who should repay historical loans taken for irrigation and infrastructure.</li>
+              <li><strong>Division of Government Employees:</strong> Shifting and allocating state workers caused personnel disputes and administrative delays.</li>
+              <li><strong>Capital City Problem:</strong> Building the new capital Amaravati faced disagreements over plans, decentralization ideas, and funding between the state and central government.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION IV: PUBLIC DEBT & EAPs -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>IV. Public Debt &amp; Externally Aided Projects (EAPs)</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="card-note blue">
+        <h3 style="font-size: 20px;">Andhra Pradesh Public Debt Profile (2026-27)</h3>
+        <ul class="bullet-list">
+          <li><strong>State Public Debt:</strong> Expected to climb to <strong>₹7,11,094 crore</strong> by the end of 2026-27, up from ₹6,35,177 crore in the previous year.</li>
+          <li><strong>Debt to GSDP Ratio:</strong> Holds steady at <strong>36%</strong>, matching the baseline level of FY 2024-25.</li>
+          <li><strong>All Public Liabilities (including PSUs):</strong> When adding state public sector units, total liabilities rose to <strong>₹9,74,556 crore</strong> by mid-2024.</li>
+          <li><strong>Budgeted Borrowings:</strong> State budgeted <strong>₹97,315 crore</strong> in net borrowings to cover a fiscal deficit of ₹75,868 crore (3.8% of GSDP) and a revenue deficit of ₹22,003 crore (1.1% of GSDP).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="table-block-wrapper">
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Funding Agency</th>
+              <th style="width: 35%;">Key Project in AP</th>
+              <th style="width: 40%;">Project Scope &amp; Core Pillars</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>World Bank</strong></td>
+              <td><strong>AP Integrated Irrigation &amp; Agriculture Transformation Project (APIIATP)</strong>.</td>
+              <td>
+                Improves farm productivity, profits, and climate resilience for small farmers across 4 pillars.:<br>
+                1. <em>Irrigated Agriculture Efficiency:</em> Training Water User Associations (WUAs) and modernizing small-scale community tanks.<br>
+                2. <em>Climate-Smart Farming:</em> Crop diversification, resilient crops, and smart aquaculture.<br>
+                3. <em>Post-Harvest &amp; Marketing:</em> Cold storage, better market access, and agribusiness support.<br>
+                4. <em>Project Management:</em> Technical training, monitoring, and financial auditing.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Asian Development Bank (ADB)</strong></td>
+              <td>• <strong>VCICDP:</strong> Visakhapatnam-Chennai Industrial Corridor[cite: 11]<br>• AP Irrigation &amp; Livelihood Project.</td>
+              <td>Finances water pipelines, power connections, industrial roads in Kopparthy, Chittoor, and Nakkapalli[cite: 11]; canal repairs.</td>
+            </tr>
+            <tr>
+              <td><strong>New Development Bank (NDB) &amp; AIIB</strong></td>
+              <td>• Green National Highways Corridor Project (GNHCP).<br>• Rural Roads &amp; Bridges Project</td>
+              <td>Constructs climate-safe state highways and improves rural connectivity.</td>
+            </tr>
+            <tr>
+              <td><strong>JICA (Japan)</strong></td>
+              <td>• Transmission Modernization Project.<br>• Lake Catchment Area Eco-Restoration.</td>
+              <td>Upgrades high-voltage power transmission grids, cuts line losses, and restores water bodies.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION V: PHYSICAL RESOURCES (MINERALS & FORESTS) -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>V. Physical Resources: Minerals &amp; Forests in AP</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note amber">
+            <h3 style="font-size: 20px;">1. Major Mineral Wealth</h3>
+            <ul class="bullet-list">
+              <li><strong>Bauxite:</strong> Abundant in the Eastern Ghats; Andhra Pradesh produces about <strong>7% of India's total bauxite</strong>.</li>
+              <li><strong>Limestone:</strong> Plentiful in Guntur, Krishna, and Kurnool; forms the raw material backbone for cement factories.</li>
+              <li><strong>Gold:</strong> Gold deposits are located along the Kurnool-Guntur-Cuddapah-Anantapur belt, drawing mining investments.</li>
+              <li><strong>Mica:</strong> Concentrated in large amounts in the <strong>Nellore district</strong>, contributing heavily to national mica supply.</li>
+              <li><strong>Granite:</strong> High-quality commercial granite is quarried in Prakasam, Chittoor, and Kurnool for local and overseas markets.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note green">
+            <h3 style="font-size: 20px;">2. Forest Resources &amp; Green Targets</h3>
+            <ul class="bullet-list">
+              <li><strong>Forest Area:</strong> Recorded forest cover occupies <strong>23.4% of total state land</strong>.</li>
+              <li><strong>Red Sandalwood:</strong> Precious red sandalwood (<em>Pterocarpus santalinus</em>) grows in the <strong>Seshachalam Hills</strong> of the Eastern Ghats and is heavily protected from illegal trade.</li>
+              <li><strong>Mangroves:</strong> Coastal mangrove forests flourish in the Godavari and Krishna river deltas, shielding shorelines from tidal erosion.</li>
+              <li><strong>Wildlife:</strong> Houses rich animal species, including the large Nagarjunasagar-Srisailam Tiger Reserve.</li>
+              <li><strong>Total Green Baseline:</strong> Broader green cover baseline (forests + trees outside forests) stands at <strong>30%</strong>.</li>
+              <li><strong>Mission Haritha Andhra Pradesh Targets:</strong> Sets official goals to reach <strong>37% green cover by 2030</strong> and <strong>50% total cover by 2047</strong>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION VI: WATER DISPUTES -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>VI. Inter-State River Water Disputes</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="table-block-wrapper">
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Dispute Area</th>
+              <th style="width: 38%;">Tribunal Awards &amp; Historical Shares</th>
+              <th style="width: 42%;">Active Conflicts, Court Petitions &amp; Ratios</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Krishna River Dispute</strong></td>
+              <td>• <strong>Bachawat Tribunal (1976):</strong> Awarded <strong>811 TMC</strong> of Krishna water to undivided Andhra Pradesh.<br>• Regulated by the <em>Interstate River Water Disputes Act, 1956</em>.</td>
+              <td>• <strong>Interim Share:</strong> Working sharing ratio stands at <strong>66:34 (AP : Telangana)</strong>.<br>• <strong>Active Conflicts:</strong> In January 2025, AP rejected Telangana's call for a 50:50 equal split. In early 2026 hearings, AP challenged Telangana's claim that Amaravati's capital city modernization should lower AP's farm water share.</td>
+            </tr>
+            <tr>
+              <td><strong>2. Godavari River Dispute</strong></td>
+              <td>• <strong>GWDT Award (1980):</strong> Allocated <strong>949 TMC</strong> of Godavari water to undivided Andhra Pradesh.</td>
+              <td>• <strong>Polavaram-Banakacherla Friction:</strong> Telangana filed a Supreme Court petition opposing AP's tenders for the Polavaram-Banakacherla Link Project (PBLP), attempting to halt central clearances and funds.</td>
+            </tr>
+            <tr>
+              <td><strong>3. Polavaram Project Controversy</strong></td>
+              <td>• Large multi-purpose dam on the Godavari river.; declared a <strong>National Project</strong> under the AP Bifurcation Act.<br>• Requires clearances from CWC, Environment Ministry (MoEFCC), and the Polavaram Project Authority.</td>
+              <td>• <strong>Project Cost:</strong> Total estimated cost exceeds <strong>₹62,000 crore</strong>.; AP's 2026-27 Budget allocated <strong>₹6,105 crore</strong> with matching Central support.<br>• <strong>Interstate Protests:</strong> Odisha and Chhattisgarh challenge submergence and rehabilitation issues.<br>• <strong>Supreme Court Action:</strong> On July 13, 2026, the Supreme Court refused Telangana's plea to freeze work on the 200 TMC flood lift project, telling states to resolve technical points through central bodies.</td>
+            </tr>
+            <tr>
+              <td><strong>4. Telugu Ganga Project Dispute</strong></td>
+              <td>• Canal taking flood water from Srisailam reservoir to provide drinking water to Chennai and irrigate Rayalaseema.<br>• <strong>15 TMC Sharing:</strong> Maharashtra, Karnataka, and undivided AP each agreed to give 5 TMC (total 15 TMC at source, giving a net <strong>12 TMC</strong> at the Tamil Nadu border after transmission losses).</td>
+              <td>• <strong>New Basin Conflict:</strong> Telangana challenged AP before KWDT-II, arguing that diverting Krishna water outside the river basin hurts irrigation within the basin.<br>• <strong>Operational Changes:</strong> AP resumed water via the KP Canal in May 2026; poor rains dropped flow to 188 cusecs in July 2026, prompting Tamil Nadu delegations to visit AP for emergency water releases.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION VII: VISUAL TRANSMISSION DIAGRAM -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>VII. Diagram: AP Resource Flow &amp; Water Balance</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="svg-box">
+        <svg viewBox="0 0 850 190" width="100%" height="190" style="font-family:'Kalam', cursive;">
+          <rect x="290" y="10" width="270" height="38" rx="6" fill="#dbeafe" stroke="#1e40af" stroke-width="1.8"></rect>
+          <text x="425" y="30" text-anchor="middle" font-size="14" fill="#1e40af" font-weight="bold">ANDHRA PRADESH RESOURCE PROFILE</text>
+          <text x="425" y="43" text-anchor="middle" font-size="11" fill="#334155">Post-Bifurcation Fiscal and Water Balances</text>
+
+          <path d="M 425 48 L 425 76" stroke="#64748b" stroke-width="1.8"></path>
+          <path d="M 140 76 L 710 76" stroke="#64748b" stroke-width="1.8"></path>
+
+          <path d="M 140 76 L 140 102" stroke="#64748b" stroke-width="1.8"></path>
+          <path d="M 710 76 L 710 102" stroke="#64748b" stroke-width="1.8"></path>
+
+          <!-- Box 1 -->
+          <rect x="30" y="102" width="220" height="75" rx="6" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"></rect>
+          <text x="140" y="122" text-anchor="middle" font-size="13" fill="#b91c1c" font-weight="bold">BUDGET &amp; DEBT STRESS</text>
+          <text x="140" y="139" text-anchor="middle" font-size="11" fill="#334155">• Public Debt: ₹7.11 Lakh Cr (36% GSDP)</text>
+          <text x="140" y="155" text-anchor="middle" font-size="11" fill="#475569">• Revenue Deficit: ₹22,003 Cr (1.1%)</text>
+          <text x="140" y="169" text-anchor="middle" font-size="10.5" fill="#475569">• High Welfare and Debt Servicing</text>
+
+          <!-- Middle Arrow -->
+          <path d="M 260 140 L 590 140" stroke="#b91c1c" stroke-width="2" stroke-dasharray="4"></path>
+          <text x="425" y="132" text-anchor="middle" font-size="11.5" fill="#b91c1c" font-weight="bold">EXTERNALLY AIDED PROJECTS (EAPs)</text>
+
+          <!-- Box 2 -->
+          <rect x="600" y="102" width="220" height="75" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"></rect>
+          <text x="710" y="122" text-anchor="middle" font-size="13" fill="#15803d" font-weight="bold">WATER DISPUTES MATRIX</text>
+          <text x="710" y="139" text-anchor="middle" font-size="11" fill="#334155">• Krishna Interim Ratio: 66:34</text>
+          <text x="710" y="155" text-anchor="middle" font-size="11" fill="#475569">• Polavaram Dam: Over ₹62,000 Cr Cost</text>
+          <text x="710" y="169" text-anchor="middle" font-size="10.5" fill="#475569">• Telugu Ganga: 12 TMC to Chennai</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- SECTION VIII: EXAM TRICK BOXES -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>VIII. Exam-Trick Boxes (Avoid Common Mistakes!)</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="exam-trick">
+        <ul class="bullet-list" style="margin-top:2px;">
+          <li><strong>TRAP 1: "Krishna river water is shared equally (50:50) between AP and Telangana."</strong> ➔ <strong>WRONG!</strong> The official working arrangement is <strong>66:34 (AP : Telangana)</strong>. In early 2025, AP rejected Telangana's demand for equal 50:50 sharing.</li>
+          <li><strong>TRAP 2: "The Telugu Ganga Project was built to irrigate farmland in Tamil Nadu."</strong> ➔ <strong>WRONG!</strong> It was built exclusively to provide <strong>drinking water to Chennai city</strong> (supplying a net 12 TMC after transmission losses). Irrigation benefits are limited to Andhra Pradesh.</li>
+          <li><strong>TRAP 3: "All public debt from undivided Andhra Pradesh was divided based only on population."</strong> ➔ <strong>WRONG!</strong> While general debts were shared by population ratio, debts taken for specific irrigation and infrastructure projects were divided based on project location., which caused continuing disputes.</li>
+          <li><strong>TRAP 4: "Mission Haritha Andhra Pradesh aims for 30% green cover by 2047."</strong> ➔ <strong>WRONG!</strong> <strong>30% is the current baseline</strong>. The official targets are <strong>37% by 2030</strong> and <strong>50% by 2047</strong>.</li>
+          <li><strong>TRAP 5: "The Polavaram project is completely funded by the State of Andhra Pradesh."</strong> ➔ <strong>WRONG!</strong> Polavaram is a <strong>National Project</strong> under the 2014 Act. The Central Government reimburses the construction costs through the Polavaram Project Authority.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION IX: CURRENT AFFAIRS SECTION -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>IX. Latest Current Affairs &amp; Developments (2024–2026)</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note blue">
+            <h3 style="font-size: 20px;">1. Amaravati Capital Funding Approvals</h3>
+            <ul class="bullet-list">
+              <li><strong>$1.6 Billion Multilateral Package:</strong> World Bank and Asian Development Bank (ADB) committed <strong>$800 million each</strong> (total $1,600 million / ~₹13,600 crore) for Phase-I development of Amaravati capital city.</li>
+              <li><strong>Central Support:</strong> Central government committed ₹15,000 crore through multilateral facilitation.</li>
+              <li><strong>Disbursement Status:</strong> World Bank released its first tranche of $207 million in March 2025, with a second installment of $200 million scheduled for disbursement, backed by monthly reviews.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-col">
+          <div class="card-note green">
+            <h3 style="font-size: 20px;">2. Polavaram Dam &amp; Krishna Basin Disputes</h3>
+            <ul class="bullet-list">
+              <li><strong>Union Budget Central Allocations:</strong> The Central Government allocated <strong>₹5,936 crore</strong> in the 2025-26 Union Budget to expedite Polavaram project construction, with water storage permitted up to 41.15 meters.</li>
+              <li><strong>Polavaram-Banakacherla Link (PBLP):</strong> The Supreme Court declined Telangana's stay petition against AP's 200 TMC flood lift link, directing technical issues to the Godavari River Management Board.</li>
+              <li><strong>66:34 Krishna Formula Extension:</strong> Andhra Pradesh proposed extending the <strong>66:34 water-sharing ratio until July 2027</strong>, whereas Telangana continues to seek a 50:50 allocation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION X: PRELIMS PRACTICE -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>X. APPSC &amp; UPSC Prelims Practice Check</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="mcq-card">
+        <span class="mcq-badge">APPSC Group-I Prelims Practice • Question 1</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q1. Which of the following conditions were mandated by the Andhra Pradesh Reorganisation Act, 2014 to help the finances of successor Andhra Pradesh?<br>
+          1. Payment of Revenue Deficit Grants by the Central Government.<br>
+          2. Special Development Packages for backward districts of Rayalaseema and North Coastal Andhra.<br>
+          3. Declaration of the Polavaram Project as a National Project.<br>
+          4. Permanent sharing of commercial tax revenue from Hyderabad for 20 years<br>
+          Select the correct answer:
+        </div>
+        <div class="mcq-options">
+          1) 1 and 2 only<br>
+          2) 1, 2 and 3 only<br>
+          3) 2, 3 and 4 only<br>
+          4) 1, 2, 3 and 4
+        </div>
+        <details class="reveal-box" open="">
+          <summary>Show Answer &amp; Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">2) 1, 2 and 3 only</span>.<br>
+              ▫ <strong>Statements 1, 2, and 3 are correct:</strong> The 2014 Act promised revenue deficit grants, backward area development packages, and national status for Polavaram.<br>
+              ▫ <strong>Statement 4 is incorrect:</strong> Hyderabad was made a common capital for up to 10 years, but its commercial tax revenues went entirely to Telangana, causing a big revenue loss to AP.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="mcq-card">
+        <span class="mcq-badge">APPSC / UPSC Prelims Practice • Question 2</span>
+        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+          Q2. Regarding the physical resources and environment of Andhra Pradesh, consider the following statements:<br>
+          1. The state contributes about 7% of India's total bauxite production.<br>
+          2. Red Sandalwood (Pterocarpus santalinus) grows naturally in the Seshachalam Hills.<br>
+          3. Mission Haritha Andhra Pradesh aims to achieve 50% green cover by 2047.<br>
+          Which of the statements given above are correct?
+        </div>
+        <div class="mcq-options">
+          1) 1 and 2 only<br>
+          2) 2 and 3 only<br>
+          3) 1 and 3 only<br>
+          4) 1, 2 and 3
+        </div>
+        <details class="reveal-box" open="">
+          <summary>Show Answer &amp; Catch</summary>
+          <div class="reveal-content">
+            <div>
+              ➔ <strong>Correct Answer:</strong> <span class="hl-pink">4) 1, 2 and 3</span>.<br>
+              ▫ <strong>All statements are correct:</strong> AP accounts for ~7% of bauxite., red sandalwood is endemic to Seshachalam., and Mission Haritha targets 37% cover by 2030 and 50% by 2047.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SECTION XI: MAINS MODEL FRAMEWORKS -->
+    <div class="block-wrapper">
+      <div class="section-header"><span>XI. APPSC &amp; UPSC Mains Model Frameworks</span></div>
+    </div>
+
+    <div class="block-wrapper">
+      <div class="mains-section">
+        
+        <!-- Question 1 -->
+        <div class="mains-q-item">
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+            <strong>Q1. "Examine the root causes behind the fiscal stress in post-bifurcation Andhra Pradesh. How have rising debt and bifurcation constraints affected the state's budget?"</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;" open="">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Answer Framework:</strong><br>
+                • <strong>Introduction:</strong> The 2014 bifurcation separated Andhra Pradesh from Hyderabad, removing its main commercial tax revenue base while leaving it with heavy liabilities.<br>
+                • <strong>Causes of Fiscal Stress:</strong><br>
+                ▫ <em>Loss of Hyderabad:</em> Corporate tax and IT revenues stayed with Telangana, creating an immediate revenue deficit.<br>
+                ▫ <em>High Debt Burden:</em> State public debt is projected at ₹7,11,094 crore (36% of GSDP) in 2026-27.; total debt including PSUs stands at ₹9,74,556 crore.<br>
+                ▫ <em>High Committed Costs:</em> Heavy spending on salaries, pensions, and welfare schemes leaves less money for building assets.<br>
+                ▫ <em>Central Grant Delays:</em> Disagreements and delays over the amount of Revenue Deficit Grants and Special Packages.<br>
+                • <strong>Comparison with All-India Stats:</strong> India's fiscal deficit is around 5.1%–5.6%[cite: 10], while AP targets a 3.8% fiscal deficit (₹75,868 crore) and a 1.1% revenue deficit (₹22,003 crore).<br>
+                • <strong>Solutions:</strong> Broaden state GST revenues., complete industrial corridors (VCIC) with ADB funding[cite: 11], and secure multilateral loans for Amaravati development.<br>
+                • <strong>Conclusion:</strong> Prudent debt management and capital creation are vital to stabilize Andhra Pradesh's finances.
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="mains-q-item" style="margin-top: 14px;">
+          <div class="mains-q-title">
+            <span class="hl-dark-red">Mains Practice • 15 Marks</span> 
+            <strong>Q2. "Analyze the river water disputes between Andhra Pradesh and neighboring states, focusing on the Krishna, Godavari, Polavaram, and Telugu Ganga projects."</strong>
+          </div>
+          <details class="reveal-box" style="margin-top:8px;" open="">
+            <summary>View Model Answer Structuring Framework</summary>
+            <div class="reveal-content">
+              <div class="mains-framework">
+                <strong>Answer Framework:</strong><br>
+                • <strong>Introduction:</strong> Unequal water availability and asset division after bifurcation have made river water sharing a major issue between AP and its neighbors.<br>
+                • <strong>Project-by-Project Analysis:</strong><br>
+                <div class="table-block-wrapper">
+                  <table class="hand-table" style="margin: 10px 0 12px 0; font-size: 14px;">
+                    <thead>
+                      <tr>
+                        <th style="width: 25%;">River / Project</th>
+                        <th style="width: 37.5%;">Tribunal Quota &amp; Agreement</th>
+                        <th style="width: 37.5%;">Current Point of Conflict</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Krishna River</strong></td>
+                        <td>KWDT-I awarded 811 TMC to undivided AP. Interim ratio is 66:34 (AP:Telangana).</td>
+                        <td>Telangana demands a 50:50 split.; AP opposes changes before KWDT-II.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Godavari &amp; Polavaram</strong></td>
+                        <td>GWDT awarded 949 TMC to undivided AP. Polavaram is a National Project costing &gt;₹62,000 crore.</td>
+                        <td>Telangana filed court cases against the Polavaram-Banakacherla link.; Odisha and Chhattisgarh raise submergence concerns.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Telugu Ganga Project</strong></td>
+                        <td>Supplies net 12 TMC drinking water to Chennai from a pooled 15 TMC source.</td>
+                        <td>Telangana challenges water diversion outside the river basin before KWDT-II.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                • <strong>Court &amp; Administrative Decisions:</strong> The Supreme Court declined to stop work on the 200 TMC flood link, directing both states to follow central board guidelines.<br>
+                • <strong>Way Forward:</strong> Expedite final adjudication before KWDT-II, install automated telemetry meters under KRMB and GRMB, and resolve inter-state issues through dialogue.<br>
+                • <strong>Conclusion:</strong> Fair water sharing is necessary to safeguard farm incomes in drought-prone areas like Rayalaseema.
+              </div>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="block-wrapper">
+      <div style="text-align:center; font-family:'Patrick Hand', cursive; font-size:18px; color:var(--ink-blue); margin-top:16px;">
+        ★ Andhra Pradesh Economy Chapter 3 Master Notes Complete • Print-Perfect &amp; Exam-Ready ★
+      </div>
+    </div>
+
+  </div>
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

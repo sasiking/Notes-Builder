@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../mobile-pwa.css">
+  <meta charset="UTF-8">
+<title>Fundamental Rights (Part III, Articles 12–35)</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg-page: #fbfbf9; --ruled-line: #e3ebf5; --margin-line: #f7a8b8;
+  --ink-blue: #0f3870; --ink-dark: #1e293b; --ink-red: #b91c1c; --ink-green: #15803d;
+  --ink-purple: #6b21a8; --ink-orange: #c2410c; --ink-yellow: #a16207; --ink-teal: #0f766e;
+  --ink-cyan: #0369a1; --ink-indigo: #4338ca; --ink-rose: #be123c; --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85); --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75); --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85); --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75); --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3; --sticky-pink: #ffe4e6; --sticky-blue: #e0f2fe; --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: #cbd5e1; display: flex; justify-content: center; padding: 25px 10px; height: auto; overflow: visible; font-family: 'Kalam', cursive, sans-serif; color: var(--ink-dark); }
+.notebook-container { width: 100%; max-width: 940px; min-height: 1200px; background-color: var(--bg-page); background-image: linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px), linear-gradient(var(--ruled-line) 1px, transparent 1px); background-size: 100% 28px, 100% 28px; background-repeat: repeat-y, repeat; padding: 35px 35px 80px 65px; border-radius: 4px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); line-height: 28px; position: relative; }
+.block-wrapper { position: relative; margin-bottom: 16px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; background: transparent !important; }
+.title-section h1 { font-size: 38px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; background: transparent !important; }
+.title-section .subtitle { font-size: 19px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; background: transparent !important; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+.section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+.canvas-multi-row { display: flex; flex-direction: row; align-items: stretch; gap: 16px; width: 100%; margin-bottom: 16px; }
+.canvas-multi-row > .block-wrapper { flex: 1 1 0; min-width: 0; margin-bottom: 0; }
+.card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+.card-note.rose   { border-left: 6px solid var(--ink-rose) !important; }
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+.card-note.orange h3 { color: var(--ink-orange) !important; }
+.card-note.rose h3   { color: var(--ink-rose) !important; }
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; }
+.dot-point { margin-left: 14px; position: relative; padding-left: 16px; font-size: 15.5px; line-height: 23px; margin-top: 3px; margin-bottom: 5px; }
+.dot-point::before { content: "•"; position: absolute; left: 2px; color: var(--ink-dark); font-weight: 900; font-size: 16px; }
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15.5px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+.sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S SPEED TRICKS & FORMULA HACKS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+.fs-sm { font-size: 12px !important; line-height: 18px !important; }
+.fs-md { font-size: 16px !important; line-height: 24px !important; }
+.fs-lg { font-size: 20px !important; line-height: 28px !important; }
+.fs-xl { font-size: 25px !important; line-height: 32px !important; }
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+.expand-block-wrapper { position: relative; margin: 12px 0; width: 100%; }
+.expand-block-wrapper.blue .reveal-box summary { color: var(--ink-blue); background: #eff6ff; border-color: #93c5fd; }
+.expand-block-wrapper.blue .reveal-box summary::before { color: var(--ink-blue); }
+.expand-block-wrapper.blue .reveal-box[open] summary { background: #dbeafe; }
+.expand-block-wrapper.blue .reveal-content { border-color: #93c5fd; }
+.expand-block-wrapper.green .reveal-box summary { color: var(--ink-green); background: #f0fdf4; border-color: #86efac; }
+.expand-block-wrapper.green .reveal-box summary::before { color: var(--ink-green); }
+.expand-block-wrapper.green .reveal-box[open] summary { background: #dcfce7; }
+.expand-block-wrapper.green .reveal-content { border-color: #86efac; }
+.expand-block-wrapper.yellow .reveal-box summary { color: var(--ink-yellow); background: #fefce8; border-color: #fde047; }
+.expand-block-wrapper.yellow .reveal-box summary::before { color: var(--ink-yellow); }
+.expand-block-wrapper.yellow .reveal-box[open] summary { background: #fef08a; }
+.expand-block-wrapper.yellow .reveal-content { border-color: #fde047; }
+.expand-block-wrapper.purple .reveal-box summary { color: var(--ink-purple); background: #faf5ff; border-color: #d8b4fe; }
+.expand-block-wrapper.purple .reveal-box summary::before { color: var(--ink-purple); }
+.expand-block-wrapper.purple .reveal-box[open] summary { background: #f3e8ff; }
+.expand-block-wrapper.purple .reveal-content { border-color: #d8b4fe; }
+.expand-block-wrapper.red .reveal-box summary { color: var(--ink-red); background: #fef2f2; border-color: #fca5a5; }
+.expand-block-wrapper.red .reveal-box summary::before { color: var(--ink-red); }
+.expand-block-wrapper.red .reveal-box[open] summary { background: #fee2e2; }
+.expand-block-wrapper.red .reveal-content { border-color: #fca5a5; }
+.expand-block-wrapper.teal .reveal-box summary { color: var(--ink-teal); background: #f0fdfa; border-color: #5eead4; }
+.expand-block-wrapper.teal .reveal-box summary::before { color: var(--ink-teal); }
+.expand-block-wrapper.teal .reveal-box[open] summary { background: #ccfbf1; }
+.expand-block-wrapper.teal .reveal-content { border-color: #5eead4; }
+.expand-block-wrapper.amber .reveal-box summary { color: var(--ink-amber); background: #fffbeb; border-color: #fcd34d; }
+.expand-block-wrapper.amber .reveal-box summary::before { color: var(--ink-amber); }
+.expand-block-wrapper.amber .reveal-box[open] summary { background: #fef3c7; }
+.expand-block-wrapper.amber .reveal-content { border-color: #fcd34d; }
+.expand-block-wrapper.orange .reveal-box summary { color: var(--ink-orange); background: #fff7ed; border-color: #fdba74; }
+.expand-block-wrapper.orange .reveal-box summary::before { color: var(--ink-orange); }
+.expand-block-wrapper.orange .reveal-box[open] summary { background: #ffedd5; }
+.expand-block-wrapper.orange .reveal-content { border-color: #fdba74; }
+.expand-block-wrapper.rose .reveal-box summary { color: var(--ink-rose); background: #fff1f2; border-color: #fda4af; }
+.expand-block-wrapper.rose .reveal-box summary::before { color: var(--ink-rose); }
+.expand-block-wrapper.rose .reveal-box[open] summary { background: #ffe4e6; }
+.expand-block-wrapper.rose .reveal-content { border-color: #fda4af; }
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ UPSC & STATE PSC MAINS PRACTICE QUESTIONS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; font-family: 'Inter', sans-serif; }
+.mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+.mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+.eq { position: relative; font-family: 'Inter', sans-serif; font-weight: 700; color: #0f3870; background: rgba(224, 242, 254, 0.75); padding: 1px 6px; border-radius: 4px; border: 1px solid rgba(186, 230, 253, 0.95); display: inline-flex; align-items: center; gap: 4px; line-height: 1.35; margin: 1px 2px; vertical-align: middle; }
+.math-block { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-left: 4px solid var(--ink-purple); border-radius: 6px; padding: 10px 14px; margin: 10px 0; font-family: 'Inter', sans-serif; font-weight: 700; color: var(--ink-dark); font-size: 15px; }
+.fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px; }
+.fraction-top { border-bottom: 2px solid var(--ink-dark); padding-bottom: 2px; }
+.fraction-bottom { padding-top: 2px; }
+.note-image-container { position: relative; margin: 16px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
+.note-image-wrapper { position: relative; overflow: hidden; display: inline-block; min-width: 140px; max-width: 100%; border: 1.5px dashed #94a3b8; border-radius: 6px; padding: 6px; background: #ffffff; box-shadow: var(--shadow); }
+.note-image-wrapper img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; }
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+  
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas"><div class="block-wrapper" draggable="false">
+    
+  <div class="title-section">
+    <div class="badge-tag">UPSC / STATE PSC INDIAN POLITY HIGH-YIELD REVISION NOTES</div>
+    <h1>Fundamental Rights (Part III, Articles 12–35)</h1>
+    <div class="subtitle">The Magna Carta of India • Judicial Review • 6 Categories of Rights • Writs &amp; Exceptions</div>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>1. Overview &amp; General Principles</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+    <div class="card-note blue">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <h3 style="color: rgb(15, 56, 112) !important; font-size: 21px;">Philosophical Foundations</h3>
+      <ul class="bullet-list">
+        <li><strong>Source Origin:</strong> Borrowed from the <span class="hl-yellow">US Bill of Rights</span>.</li>
+        <li><strong>Historical Identity:</strong> Termed the <strong>"Magna Carta of India"</strong>.</li>
+        <li><strong>Core Objective:</strong> Establish a <span class="hl-green">"Government of Laws and not of Men"</span>; preserve political democracy and individual liberty against State encroachment.</li>
+        <li><strong>Justiciability:</strong> Directly enforceable by the courts (<span class="hl-blue">Art 32</span> via Supreme Court, <span class="hl-blue">Art 226</span> via High Courts).</li>
+      </ul>
+    </div>
+    <div class="card-note red">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <h3 style="color: rgb(185, 28, 28) !important; font-size: 21px;">Limits, Amendments &amp; Emergency</h3>
+      <ul class="bullet-list">
+        <li><strong>Not Absolute:</strong> Subject to <span class="hl-yellow">reasonable restrictions</span> (public order, morality, sovereignty, state security).</li>
+        <li><strong>Amendability:</strong> Amendable by Parliament via <strong>Art 368</strong> without altering the <em>Basic Structure</em> (<em>Kesavananda Bharati</em>, 1973).</li>
+        <li><strong>Emergency Immunity (Art 352):</strong>
+          <br>• <span class="hl-pink">Articles 20 &amp; 21 can NEVER be suspended</span> (44th Amendment Act, 1978).
+          <br>• <strong>Art 19</strong> is automatically suspended <em>only</em> during war or external aggression (Art 358), <strong>NOT armed rebellion</strong>.</li>
+      </ul>
+    </div>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>2. Preliminary Provisions (Articles 12 &amp; 13)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+    <div class="card-note purple">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <h3 style="color: rgb(107, 33, 168) !important; font-size: 20px;">Article 12: Definition of "State"</h3>
+      <p style="font-size:14.5px; margin-bottom:4px;">Authorities against whom Fundamental Rights are primarily enforceable:</p>
+      <ul class="bullet-list">
+        <li><strong>Union:</strong> Govt &amp; Parliament of India (Executive + Legislature).</li>
+        <li><strong>States:</strong> Govt &amp; Legislature of each State.</li>
+        <li><strong>Local Authorities:</strong> Municipalities, Panchayats, District Boards, Improvement Trusts.</li>
+        <li><strong>Other Authorities:</strong> Statutory bodies &amp; instrumentalities (LIC, ONGC, SAIL).</li>
+        <li><strong>Judiciary:</strong> Excluded when performing <em>judicial functions</em>; included when performing <em>administrative tasks</em> (<em>Naresh Mirajkar</em> case).</li>
+        <li><strong>Bodies NOT Falling Under "State" (Article 12 Exclusions):</strong>
+          <div class="sub-point">
+            ▫ <strong>BCCI:</strong> <span class="hl-pink">Zeev Telefilms v. Union of India (2005)</span> — Held that BCCI is a private autonomous society, not financially, functionally, or administratively dominated by the Government, hence <strong>NOT "State"</strong> under Art 12 (though amenability to public duty writs under Art 226 remains open).<br>
+            ▫ <strong>NCERT:</strong> <span class="hl-yellow">Chander Mohan Khanna v. NCERT (1991)</span> — Supreme Court held that NCERT is largely an autonomous registered society engaged in research and training without sovereign or governmental monopoly character, hence <strong>NOT an instrumentality of the State</strong>.
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="card-note green">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <h3 style="color: rgb(21, 128, 61) !important; font-size: 20px;">Article 13: Shield of FRs &amp; Judicial Review</h3>
+      <ul class="bullet-list">
+        <li><strong>13(1) Pre-Constitutional Laws:</strong> If these violates fundamental rights are of no values (<span class="hl-yellow">Doctrine of Severability</span> &amp; <span class="hl-blue">Doctrine of Eclipse</span>).</li>
+            <div class="sub-point">
+              ▫ <strong>Pre-Constitutional Example (IPC, 1860):</strong> <span class="hl-green">Section 377 IPC</span> (enacted under British rule in 1860) was challenged under Art 13(1) for violating Arts 14, 15, 19, and 21 in 
+              <span class="hl-pink">Naz Foundation v. Govt. of NCT of Delhi (Delhi HC, 2009)</span>, reversed in <em>Suresh Koushal (2013)</em>, and finally read down unanimously by the Supreme Court Constitution Bench in 
+              <span class="hl-yellow">Navtej Singh Johar v. Union of India (2018)</span> to decriminalize consensual same-sex relations among adults applying the <em>Doctrine of Severability</em>.
+            </div>
+        <li><strong>13(2) Post-Constitutional Laws:</strong> State shall not make laws taking away FRs; void <em>ab initio</em>.</li>
+        <li><strong>13(3) Definition of "Law":</strong> Includes Ordinances, orders, bye-laws, rules, regulations, notifications, customs having force of law.</li>
+        <li><strong>13(4) Constitutional Amendments:</strong> Added by 24th Amendment (1971) — amends are not "laws" under Art 13. Upheld in <em>Kesavananda</em>, subject to Basic Structure.</li>
+      </ul>
+    </div>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>3. Category I: Right to Equality (Articles 14–18)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note blue" style="margin-bottom: 14px;">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <h3 style="color: rgb(15, 56, 112) !important; font-size: 20px;">Article 14</h3>
+  <ul class="bullet-list">
+    <li><strong>Art 14: Equality Before Law &amp; Equal Protection of the Laws:</strong>
+      <br>• <strong>14(a)</strong> Equality Before Law
+      <div class="sub-point">
+        ▫ <strong>Origin:</strong> British constitutional tradition; core element of <span class="hl-blue">A.V. Dicey's Rule of Law</span> (expounded in <em>The Law of the Constitution</em>).<br>
+        ▫ <strong>Dicey's 3 Core Postulates:</strong>
+          <br>&nbsp;&nbsp;1. <em> No one is above law:</em> 
+          <br>&nbsp;&nbsp;2. <em>Equality Before the Law:</em>
+          <br>&nbsp;&nbsp;3. <em>Rights of the citizens are decided by court</em> 
+        <br>▫ <strong>★ Exam Distinction (India vs. UK):</strong> 
+          <br>&nbsp;&nbsp;• Postulates <strong>(1) and (2)</strong> apply directly to the Indian constitutional framework.
+          <br>&nbsp;&nbsp;• Postulate <strong>(3) does NOT apply to India</strong>: in india rights of citizens is decide by<span class="hl-yellow"> indian constitution</span> because we have <span class="hl-green">written constitution.</span> 
+      </div>
+
+      • <strong>14(b)</strong> Equal Protection of the Laws
+      <div class="sub-point">
+        ▫ <strong>Origin:</strong> Adopted from <span class="hl-green"> USA</span>.<br>
+        ▫ <strong>Core Principle:</strong> <em>Equality between equal people and equal circumstances.</em><br>
+        ▫ <strong>Protects Natural Justice:</strong> A retired principal and a fresher applying for a clerk post cannot be treated as identical unequals.<br>
+        ▫ <strong>Exceptions:</strong> In India, the President, Governors, and foreign ambassadors enjoy special constitutional privileges (immunities).</div></li>
+  </ul>
+</div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+
+  <!-- ARTICLE 15 -->
+  <div class="card-note yellow">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <h3 style="color: rgb(161, 98, 7) !important; font-size: 20px;">Article 15</h3>
+    <ul class="bullet-list">
+      <li><strong>Art 15: No Discrimination on 5 Grounds:</strong> Religion, race, caste, sex, place of birth (only).
+        <br>• 15(1)<span class="hl-yellow">[State]</span>&amp;15(2)<span class="hl-yellow">[Citizen]</span>: Equal access to public places, wells, shops.
+        <br>• 15(3): Special provisions for women &amp; children.
+        <br>• 15(4): SC, ST advancement in education.
+        <div class="sub-point">
+          ▫ <strong>1951:</strong> 15(4) was added via <span class="hl-green">1st constitutional Ammendment </span>, based on <span class="hl-pink"> Educational backwardness and untouchability</span><br>
+          ▫ <strong>Religious Conversion Example (AP / Telangana):</strong> This happened as there is no untouchability exists in Christianity, said by the court. <br> • Under the <em>Constitution (Scheduled Castes) Order, 1950</em> (Para 3), SC status is restricted strictly to Hindu, Sikh, and Buddhist persons.<br>• When persons from <strong>SC convert to Christianity</strong>, they lose their SC status, state governments classify them as <strong>BC-C (Backward Class Group-C)</strong> and issue BC-C community certificate
+        </div>
+        <br>• 15(5): OBC Reservation in higher education
+        <div class="sub-point">
+          ▫ <strong>2005:</strong> Enacted via <span class="hl-yellow">93rd Constitutional Amendment Act</span>.<br>
+          ▫ <strong>2006:</strong> Enacted the <em>Central Educational Institutions (Reservation in Admission) Act</em> (27% OBC quota).<br>
+          ▫ <strong>2007–08:</strong> Challenged and upheld by the Supreme Court in <span class="hl-pink">Ashoka Kumar Thakur v. Union of India</span> (upheld 15(5) &amp; <span class="hl-green"> OBC quota is not against equality).</span>
+        </div>
+        <br>• 15(6): <strong>10% EWS quota</strong> <span class="hl-green"> (103rd Amendment Act, 2019). </span>
+        <div class="sticky yellow" style="margin-top: 6px; margin-bottom: 10px; font-size: 15.5px; line-height: 22px;">
+          📌 <strong>Basis of resesvation: Neither caste nor financial backwardness:</strong><br>
+          • <strong>Target Group:</strong> Exclusively for citizens who are <em>NOT</em> covered under SC, ST, or OBC/SEBC quotas (General Category poor).<br>
+          • <strong>Basis:</strong> Purely <span class="hl-yellow">economic weakness</span> (income/assets), completely divorced from caste/social backwardness.<br>
+          • <strong>Institutional Exception:</strong> Applies to all educational institutions (private aided &amp; unaided), but <span class="hl-pink">does NOT apply to Minority Educational Institutions</span> covered under Article 30(1).
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ARTICLE 16 -->
+  <div class="card-note teal">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <h3 style="color: rgb(15, 118, 110) !important; font-size: 20px;">Article 16</h3>
+    <ul class="bullet-list">
+      <li><strong>Art 16: Equal Employment Opportunities:</strong>
+        <br>• 16(1): Government is not allow to show discrimination in government employments
+        <br>• 16(2): Defined discrimination on 7 grounds Religion, race, caste, sex, place of birth, descent &amp; residence.
+        <br>• 16(3): Any state government, local government or union territory govenrment can decide local general reservartions
+        <br>• <strong>16(4): </strong>Initial Entry-Level Quotas for Backward Classes in government employment
+        <div class="sub-point">
+          ▫ <strong>Core Mandate:</strong> Enables the State to provide reservations in appointments for any <em>"backward class of citizens"</em> which, in the opinion of the State, is <strong>not adequately represented</strong> in public services.<br>
+          ▫ <strong>1992 Landmark Verdict:</strong> In <span class="hl-pink">Indra Sawhney v. Union of India (Mandal Case)</span>, a 9-judge Constitution Bench held:
+            <br>&nbsp;&nbsp;• <strong>50% Vertical Cap:</strong> Total reservations cannot exceed 50% in a given year (except in far-flung/extraordinary areas).
+            <br>&nbsp;&nbsp;• <strong>Exclusion of Creamy Layer:</strong> Applies strictly to OBCs/SEBCs.
+            <br>&nbsp;&nbsp;• <strong>Bar on Promotions:</strong> Article 16(4) applies <em>only at the entry stage of initial recruitment</em>, explicitly outlawing reservations in promotions.
+        </div>
+        • <strong>16(4A):</strong> Reservations in Promotions for SCs &amp; STs:
+        <div class="sub-point">
+          ▫ <strong>1995 (Legislative Counter):</strong> To nullify the promotional ban from <em>Indra Sawhney</em>, Parliament enacted the <span class="hl-green">77th Constitutional Amendment Act, 1995</span>, inserting <strong>Article 16(4A)</strong> to permit reservation in promotions for SCs and STs if inadequately represented.<br>
+          ▫ <strong>2001 (Consequential Seniority):</strong> Strengthened by the <span class="hl-yellow">85th Constitutional Amendment Act, 2001</span>, conferring retrospective <em>consequential seniority</em> to SC/ST officers promoted through reservation quotas.<br>
+          ▫ <strong>Constitutional Scrutiny:</strong>
+            <br>&nbsp;&nbsp;• <span class="hl-pink">M. Nagaraj v. Union of India (2006):</span> Upheld 16(4A) validity, but placed 3 preconditions on the State: prove (i) backwardness, (ii) inadequacy of representation, and (iii) maintenance of administrative efficiency (under Art 335).
+            <br>&nbsp;&nbsp;• <span class="hl-blue">Jarnail Singh v. Lachhmi Narain Gupta (2018):</span> Modified <em>M. Nagaraj</em> — ruled that the State <strong>need not collect quantifiable data on backwardness</strong> for SCs/STs (presumed backward), but introduced the <span class="hl-yellow">Creamy Layer exclusion for SC/ST promotions</span>.
+        </div>
+        • <strong>16(4B):</strong> 50% rule not applicable for backward posts
+        <div class="sub-point">
+          ▫ <strong>Enacted:</strong> <span class="hl-green">81st Constitutional Amendment Act, 2000</span> (overruling the carry-forward limitation imposed in <em>Indra Sawhney</em>).<br>
+          ▫ <strong>Operational Mechanism:</strong> Unfilled reserved vacancies of an earlier recruitment year are treated as a distinct, independent class of <strong>"backlog vacancies"</strong>.<br>
+          ▫ <strong>Ceiling Immunity:</strong> When filled in subsequent recruitment years, backlog vacancies <span class="hl-pink">shall NOT be combined with the regular vacancies of that year</span> to determine the 50% ceiling (can exceed 50% for that drive).
+        </div>
+        <div class="sticky yellow" style="margin: 10px 0; font-size: 15px; line-height: 22px;">
+          📌 <strong>APPSC Prelims Catch:</strong><br>
+          • <strong>Art 16(4)</strong> applies to <em>all</em> backward classes (OBCs, SCs, STs) for <strong>initial recruitment</strong>.<br>
+          • <strong>Art 16(4A)</strong> applies <em>strictly</em> to <strong>SCs and STs only</strong> (OBCs have NO promotional reservation).<br>
+          • <strong>Art 16(4B)</strong> is the constitutional shield that prevents backlog recruitment drives from being struck down under the 50% quota rule.
+        </div>
+        • 16(5): Religion-Specific Office Exception:
+        <div class="sub-point">
+          ▫ <strong>Constitutional Shield:</strong> Permits laws requiring that the holder of an office connected with a <em>religious or denominational institution</em> (or member of its governing body) must profess that <strong>particular religion or denomination</strong>.<br>
+          ▫ <strong>Exemption from 16(2):</strong> Operates as a legitimate exception to the rule barring religious discrimination in public/state-regulated appointments (e.g., Hindu Religious Endowments/TTD board posts, Waqf Boards).
+        </div>
+        <br>• 16(6): <strong>10% EWS quota</strong> in government jobs <span class="hl-green"> (103rd Amendment Act, 2019). </span>
+      </li>
+    </ul>
+  </div>
+
+</div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2" style="margin-top: 14px;">
+
+  <!-- ARTICLE 17 -->
+  <div class="card-note purple">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <h3 style="color: rgb(107, 33, 168) !important; font-size: 20px;">Article 17: Abolition of Untouchability</h3>
+    <ul class="bullet-list">
+      <li><strong>Art 17: Abolition of Untouchability:</strong>
+        <br>• <span class="hl-pink">Absolute Right</span> (No exceptions!).
+        <br>• Enforced via the <em>Protection of Civil Rights Act, 1955</em>.<br>• Directly available against both <strong>State and private individuals</strong>.
+      </li>
+    <div class="sub-point">▫ <strong>Note:</strong>&nbsp;What is untouchability is not defined by the constitution as untouchability can be varied for different people<br> • Court will decide what is untouchability according to circumstance&nbsp;<br></div></ul>
+    
+  <p class="regular-text">• Maximum death penalty can be given when proved untouchability<br>• Laws made by government to Abolish Untouchability<br></p><div class="sub-point">▫ <strong>1955:</strong>&nbsp;Prohibition of Untouchability Act<br>▫ <strong>1976: </strong>Civil Rights Protection Act<br>▫ <strong>1989: </strong>Prevention of Atrocities Act(Implemented 1990 Jan 30th)</div><p></p></div>
+
+  <!-- ARTICLE 18 -->
+  <div class="card-note red">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <h3 style="color: rgb(185, 28, 28) !important; font-size: 20px;">Article 18: Abolition of Titles</h3>
+    <ul class="bullet-list">
+      <li><strong>Art 18: Abolition of Titles:<br>• </strong><span data-path-to-node="4,0,0" data-index-in-node="0">Article <b>18(1):</b></span> The State cannot give titles to anyone. Only military and academic ranks are allowed.<br>• <span data-path-to-node="4,1,0" data-index-in-node="0">Article <b>18(2):</b></span> No citizen of India shall accept any title from any foreign State. <i data-path-to-node="4,1,0" data-index-in-node="89">(Absolute ban; no provision for Presidential consent)</i>.<br>• <span data-path-to-node="4,2,0" data-index-in-node="0">Article <b>18(3):</b></span> A foreigner working for the Indian government cannot accept a foreign title without the President's permission.<br>• <span data-path-to-node="4,3,0" data-index-in-node="0">Article <b>18(4):</b></span> Prohibits any person (citizen or foreigner)  working for the Indian government from taking gifts, pay, or jobs from a foreign country without the President's permission.<br><br>• <span data-path-to-node="4,4,0" data-index-in-node="0">Judicial Precedent </span><b data-path-to-node="4,4,0" data-index-in-node="0">— <i data-path-to-node="4,4,0" data-index-in-node="21">Balaji Raghavan v. UOI (1996)</i>:</b> National Awards (Bharat Ratna, Padma Vibhushan, Padma Bhushan, Padma Shri) are civilian decorations, not titles within the meaning of Article 18(1). However, they cannot be used as prefixes or suffixes to the awardee's name.</li>
+    </ul>
+  </div>
+
+</div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <table class="hand-table" style="margin: 10px 0 12px 0; font-size: 14px;">
+        <thead><tr><th style="width: 25%;">&nbsp; &nbsp; &nbsp; &nbsp;Dimension</th><th style="width: 37.5%;">Advantages</th><th style="width: 37.5%;">Dis-Advantages</th></tr></thead>
+        <tbody><tr><td><strong>&nbsp; &nbsp;</strong><strong>Caste System</strong><strong><br></strong></td><td>• Unity in people<br>• Marriages in same caste have less approximately divorce rate<br>• Strengthens Family system as the both of them are of same caste<br>• Lower caste people can have reservations based on minorities</td><td>• Caste based discrimination<br>• Untouchability<br>• Inferiority in Lower caste people<br>•&nbsp;</td></tr></tbody>
+      </table>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>4. Category II: Right to Freedom (Articles 19–22)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <table class="hand-table" style="margin: 10px 0 12px 0; font-size: 14px;">
+      <thead>
+        <tr>
+          <th style="width: 14%;">Clause</th>
+          <th style="width: 36%;">Fundamental Freedom (Citizens Only)</th>
+          <th style="width: 50%;">Reasonable Restrictions &amp; Grounds</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>19(1)(a)</strong></td>
+          <td>
+            <strong>Freedom of Speech &amp; Expression:<br></strong>• Right to express their opinion like word of mouth, pictures, silence, in any other manner<br>• It ensure every citizen can freely express their view, opinions, beliefs in writing or visual representation without fear of state censorship<strong><br></strong>
+            <div class="sub-point">
+              ▫ Press freedom &amp; Right to silence.<br>
+              ▫ Commercial speech (advertisements).<br>
+              ▫ Right to Information (RTI).</div><div class="sub-point">▫ <b>Secrecy:</b> Puttu Swamy Case - 2017</div><div class="sub-point">▫ Bijoe Emmanuel <b>1986</b>: Not compel to sing the national Anthem.</div><div class="sub-point">
+              ▫ <em>Naveen Jindal case:</em> Right to fly the National Flag with dignity.<br>
+              ▫ <em>Personal tapping - PUCL case 1997:</em>&nbsp;Right against phone tapping / privacy.
+            </div>
+          </td>
+          <td>
+            <strong>Article 19(2) — Restricted on 8 specific grounds:</strong>
+            <div class="sub-point">
+              ▫ <strong>Sovereignty &amp; Integrity of India:</strong> No speech aimed at dividing or breaking the country.<br>
+              ▫ <strong>Security of the State:</strong> No leaking defense secrets or supporting rebellion.<br>
+              ▫ <strong>Friendly Relations with Foreign States:</strong> No spreading hate or propaganda against friendly foreign nations.<br>
+              ▫ <strong>Public Order:</strong> No inciting violence, riots, or public panic.<br>
+              ▫ <strong>Decency or Morality:</strong> No promoting vulgar, obscene, or indecent content.<br>
+              ▫ <strong>Contempt of Court:</strong> No disobeying court orders or scandalizing the judiciary.<br>
+              ▫ <strong>Defamation:</strong> No harming someone's reputation through false statements.<br>
+              ▫ <strong>Incitement to an Offence:</strong> No urging or provoking a crowd to commit a crime.
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>19(1)(b)</strong></td>
+          <td>
+            <strong>Assemble Peaceably:</strong>
+            <div class="sub-point">
+              ▫ Freedom of conducting meetings.<br>
+              ▫ Permissions to organize the meetings.<br>
+              ▫ Without arms, except sikh community.<br>
+              ▫ <span class="hl-pink">No right to strike</span>.<br>
+              ▫ Exhibitions: Conveys Information.<br>
+              ▫ Vureginpu: Conveys emotion.
+            </div>
+          </td>
+          <td>
+            <strong>Article 19(3) — Restricted on 2 grounds:</strong>
+            <div class="sub-point">
+              ▫ <strong>Sovereignty &amp; Integrity of India:</strong> Prohibits assemblies that challenge national unity.<br>
+              ▫ <strong>Public Order:</strong> Allows imposing rules (like Section 144) to prevent riots, violence, or severe traffic blocks.
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>19(1)(c)</strong></td>
+          <td>
+            <strong>Form Associations / Unions:</strong>
+            <div class="sub-point">
+              ▫ Includes Co-operatives via <span class="hl-blue">97th</span> Amendment, <span class="hl-amber">2011</span>.<br>
+              ▫ Student Bodies.<br>
+              ▫ Parties also come under Associations.
+            </div>
+          </td>
+          <td>
+            <strong>Article 19(4) — Restricted on 3 grounds:</strong>
+            <div class="sub-point">
+              ▫ <strong>Sovereignty &amp; Integrity of India:</strong> Banning secessionist or anti-national groups.<br>
+              ▫ <strong>Public Order:</strong> Banning criminal or violent organizations.<br>
+              ▫ <strong>Morality:</strong> Banning associations engaged in illegal or harmful activities (e.g., human trafficking syndicates).
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>19(1)(d)</strong></td>
+          <td>
+            <strong>Move Freely:</strong>
+            <div class="sub-point">
+              ▫ Move freely throughout Indian territory.
+            </div>
+          </td>
+          <td rowspan="2">
+            <strong>Article 19(5) — Restricted on 2 grounds:</strong>
+            <div class="sub-point">
+              ▫ <strong>General Public Interest:</strong> Enforcing lockdowns/quarantines during epidemics or restricting entry of convicted criminals into specific areas.<br>
+              ▫ <strong>Protection of Scheduled Tribes:</strong> Restricting outside entry to protect tribal land, identity, and customs (e.g., Inner Line Permit areas).
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>19(1)(e)</strong></td>
+          <td>
+            <strong>Reside &amp; Settle:</strong>
+            <div class="sub-point">
+              ▫ Reside &amp; settle in any part of India.
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><em>19(1)(f)</em></td>
+          <td colspan="2" style="background:#fff1f2; color:#991b1b;">
+            <em>[Right to Property repealed in 1978 by 44th Amendment Act — made a legal right under Art 300A].</em>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>19(1)(g)</strong></td>
+          <td>
+            <strong>Practice any Profession:</strong>
+            <div class="sub-point">
+              ▫ Practice any profession or carry on trade/business.
+            </div>
+          </td>
+          <td>
+            <strong>Article 19(6) — Restricted on 3 grounds:</strong>
+            <div class="sub-point">
+              ▫ <strong>General Public Interest:</strong> Banning hazardous, illegal, or unethical trades (e.g., child labor, unregulated explosives).<br>
+              ▫ <strong>Professional Qualifications:</strong> Mandating technical degrees or licenses for specialized roles (e.g., doctors, advocates).<br>
+              ▫ <strong>State Monopolies:</strong> Allowing the government to run essential sectors entirely on its own (e.g., atomic energy), keeping out private players.
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky yellow"><div>📌 <strong>Profession: </strong>Professions bringing badname to people should not be practiced</div><div>•<b> Begging </b>is prohibited in india</div><div><b>•</b> <b>Labour Scavenging</b> is Prohibited</div></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note blue">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <h3 style="font-size: 20px; color: rgb(15, 56, 112) !important;">Article 20: Protection Against Conviction</h3><ul class="bullet-list"><li><strong>20(1) No Ex-Post Facto Law:</strong> No retroactive criminal conviction or enhanced penalty (applies to <em>criminal</em> law only, not civil/tax).<br><div class="sub-point">▫ Can take forcible finger prints<br>▫ Can't force people&nbsp;</div></li><li><strong>20(2) No Double Jeopardy:</strong> Cannot be prosecuted &amp; punished twice for the same offence (applies only before judicial courts/tribunals).</li><li><strong>20(3) No Self-Incrimination:</strong> Accused cannot be compelled to witness against self.<br>• <em>Selvi Case:</em> Involuntary narco-analysis, polygraph, brain mapping violate Art 20(3).</li></ul></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+    <div class="card-note red">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <h3 style="color: rgb(185, 28, 28) !important; font-size: 20px;">Article 21 &amp; 21A: Life, Liberty &amp; Education</h3>
+      <ul class="bullet-list">
+        <li><strong>Article 21: Life &amp; Personal Liberty:</strong>
+          <br>• <em>A.K. Gopalan (1950):</em> Narrow view (Procedure Established by Law; executive protection only, not parliamentary law).
+          <br>• <em>Maneka Gandhi (1978):</em> Broad view (Procedure must be <strong>just, fair &amp; reasonable</strong> ➔ imports American <strong>Due Process Law</strong>).
+        </li>
+        <li><b>Implied Rights under Art 21:</b><div class="sub-point" style=""><b>▫ </b>Road facility in hill areas<br><b>▫ </b>Sufficient life insurance policy<br><b>▫ </b>Shouldn't do encounters or custodian Deaths<br><b>▫ </b>Rajya Bhahiskarana<br><b>▫ </b>Shouldn't do Hand Cuffing, Public Hanging<br><b>▫ </b>Sound Sleep.<br><b>▫ </b>Marriage</div>
+          <br>• Privacy (<em>Puttaswamy</em>, 2017) | Livelihood (<em>Olga Tellis</em>)
+          <br>• Clean Environment (<em>M.C. Mehta</em>) | Speedy Trial
+          <br>• Die with Dignity / Passive Euthanasia (<em>Common Cause</em>, 2018)
+        </li>
+        <li><strong>Article 21A: Right to Education:</strong>
+          <br>• Added by <strong>86th Amendment Act, 2002</strong>.
+          <br>• <span class="hl-teal"><b><i>Free</i></b> &amp; <i><b>compulsory education</b></i></span> for children aged <strong>6 to 14 years</strong> (enacted via RTE Act, 2009, April 2010 implemented).<br>• <b>1992:</b> Mohini Jain vs State of Karnataka, Higher education is a fundamental right<br>• <b>1993: </b>Unni Krishnan vs State of Andhra Pradesh, Only primary education is a fundamental right.</li>
+      </ul>
+    </div>
+    <div class="card-note yellow">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <h3 style="color: rgb(161, 98, 7) !important; font-size: 20px;">Article 22: Protection Against Arrest &amp; Detention</h3>
+      <ul class="bullet-list">
+        <li><strong>Part I: Punitive Detention (After a Crime is Committed):</strong>
+          <div class="sub-point">
+            ▫ <strong>22(1) Two Core Rights:</strong><br>
+            &nbsp;&nbsp;• <em>Right to know grounds:</em> Police must inform the arrested person why they are arrested as soon as possible.<br>
+            &nbsp;&nbsp;• <em>Right to a lawyer:</em> Right to consult and be defended by a legal practitioner of one's choice.<br>
+            ▫ <strong>22(2) 24-Hour Production Rule:</strong> Must produce the arrested person before the nearest Magistrate within <span class="hl-yellow">24 hours</span> (excluding travel time).<br>
+            ▫ <strong>22(2) Continued Detention:</strong> Cannot keep the person in police custody beyond 24 hours without the Magistrate's permission.<br>
+            ▫ <strong>22(3) Exceptions to Part I:</strong> The rights in 22(1) and 22(2) do <strong>NOT</strong> apply to:<br>
+            &nbsp;&nbsp;• An <em>enemy alien</em> (citizen of a country at war with India).<br>
+            &nbsp;&nbsp;• A person arrested under any <em>preventive detention law</em>.
+          </div>
+        </li>
+        <li><strong>Part II: Preventive Detention (Before a Crime is Committed):</strong>
+          <div class="sub-point">
+            ▫ <strong>Nature of Detention:</strong> Precautionary action to prevent future harm; based on suspicion, not a formal criminal charge or trial.<br>
+            ▫ <strong>22(4) Maximum 3-Month Limit:</strong> A person cannot be held longer than <span class="hl-pink">3 months</span> unless an <strong>Advisory Board</strong> (judges/qualified to be High Court judges) reviews and approves the extension.<br>
+            &nbsp;&nbsp;• <em>Note:</em> The 44th Amendment Act (1978) reduced this to 2 months, but that reduction has never been officially notified/implemented by the government.<br>
+            ▫ <strong>22(5) Informing Grounds &amp; Representation:</strong><br>
+            &nbsp;&nbsp;• The authority must communicate the grounds of detention to the person as soon as possible.<br>
+            &nbsp;&nbsp;• Must give the earliest opportunity to make a representation against the detention order.<br>
+            ▫ <strong>22(6) Public Interest Exception:</strong> The authority can withhold facts if disclosing them is against public interest.<br>
+            ▫ <strong>22(7) Parliament's Law-Making Powers:</strong> Parliament alone has power to prescribe:<br>
+            &nbsp;&nbsp;• Circumstances/classes of cases where detention can exceed 3 months without an Advisory Board opinion.<br>
+            &nbsp;&nbsp;• The maximum period of detention under any preventive detention law.<br>
+            &nbsp;&nbsp;• Procedure to be followed by the Advisory Board.
+          </div>
+        </li>
+        <li><strong>Key Judicial Precedents &amp; Distinctions:</strong>
+          <div class="sub-point">
+            ▫ <em>D.K. Basu v. State of West Bengal (1997):</em> Supreme Court laid down mandatory arrest guidelines (arrest memo, informing relatives, medical checkup every 48 hours).<br>
+            ▫ <em>Civil vs Criminal Arrest:</em> Protections under 22(1) and 22(2) apply to criminal arrests by police, not to civil arrests, tax recovery, or deportation of foreigners.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="expand-block-wrapper blue">
+    
+  
+      
+    
+  
+      <details class="reveal-box" open="">
+        <summary>Different&nbsp;Acts</summary>
+        <div class="reveal-content">
+          <div class="expand-content-inner" style="background-color: #ffffff; padding: 12px; margin-top: 2px; border-radius: 4px; font-size: 15px; line-height: 23px; min-height: 60px;"><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+      
+    <br><table class="hand-table" style="margin: 10px 0 12px 0; font-size: 14px;"><thead><tr><th style="width: 25%;">Acts</th><th style="width: 37.5%;">Time Period</th></tr></thead>
+        <tbody><tr><td><strong>PD Act</strong></td><td>1950 - 1969</td></tr><tr><td><strong>Dimension</strong></td><td>Details...</td></tr></tbody>
+      </table>
+    </div></div>
+          </div>
+        </div>
+      </details>
+    </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>5. Exploitation, Religion &amp; Minority Rights (Arts 23–30)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-3">
+    <div class="card-note red">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <h3 style="color: rgb(185, 28, 28) !important; font-size: 19px;">Exploitation (23–24)</h3>
+      <ul class="bullet-list" style="font-size:14.5px;">
+        <li><strong>Art 23:</strong> Bans human trafficking and <em>Boanded Labour System</em>(Begar, unpaid forced labour).
+          <br>• Available vs State &amp; private persons.
+          <br>• <em>Exception:</em> Compulsory state service for public purpose (no bias on religion/caste).
+        </li>
+        <li><strong>Art 24:</strong> Bans child labour under <span class="hl-yellow">14 years</span> in factories, mines, hazardous work.
+          <br>• Child &amp; Adolescence Labour Prohibition Act (2016): Complete ban &lt;14 yrs; 14–18 yrs banned in hazardous jobs.
+        </li>
+      </ul>
+    </div>
+    <div class="card-note green">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <h3 style="color: rgb(21, 128, 61) !important; font-size: 19px;">Religious Freedom (25–28)</h3>
+      <ul class="bullet-list" style="font-size:14.5px;">
+        <li><strong>Art 25:</strong> Conscience, practice, profess, propagate (no right to forcibly convert). Kirpans allowed.
+          <br>• Subject to: Public order, morality, health.
+        </li>
+        <li><strong>Art 26:</strong> Denominational rights to manage religious affairs &amp; property.</li>
+        <li><strong>Art 27:</strong> No taxes for promoting any religion (Fee permitted, Tax banned).</li>
+        <li><strong>Art 28:</strong> Religious instruction:
+          <br>• State-funded: <span class="hl-pink">Prohibited</span>.
+          <br>• State-aided/recognized: Voluntary.
+          <br>• Endowments/Trusts: Permitted.
+        </li>
+      </ul>
+    </div>
+    <div class="card-note blue">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <h3 style="color: rgb(15, 56, 112) !important; font-size: 19px;">Minority Rights (29–30)</h3>
+      <ul class="bullet-list" style="font-size:14.5px;">
+        <li><strong>Art 29: Cultural Protection:</strong>
+          <br>• 29(1): Right to conserve language, script, culture (all citizen groups).
+          <br>• 29(2): No denial of admission to state-aided schools on religion, race, caste, language.
+        </li>
+        <li><strong>Art 30: Educational Setup:</strong>
+          <br>• Exclusively for <strong>Religious &amp; Linguistic</strong> Minorities (not caste/race!).
+          <br>• 30(1): Right to establish &amp; run institutions of choice.
+          <br>• 30(1A): Fair compensation on property acquisition.
+          <br>• 30(2): Non-discrimination in state aid.
+        </li>
+      </ul>
+    </div>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>6. Constitutional Remedies (Art 32) &amp; The 5 Writs</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note blue">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <p style="font-size:16.5px;">
+      Dr. B.R. Ambedkar: <strong>"Heart and Soul of the Constitution"</strong>. Article 32 is itself a Fundamental Right!
+      <br>➔ <strong>Art 32 vs Art 226:</strong> SC jurisdiction under Art 32 is narrow (FRs only) but mandatory; HC jurisdiction under Art 226 is broader (FRs + ordinary legal rights) but discretionary.
+    </p>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+          <table class="hand-table">
+    <thead>
+      <tr>
+        <th style="width:16%;">Writ</th>
+        <th style="width:20%;">Literal Meaning</th>
+        <th style="width:40%;">Purpose &amp; Target</th>
+        <th style="width:24%;">Key Limitations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Habeas Corpus</strong></td>
+        <td><em>"To have the body of"</em></td>
+        <td>Releases persons illegally detained. Enforceable against <strong>BOTH public &amp; private</strong> entities.</td>
+        <td>Cannot be issued if detention is lawful or authorized by court.</td>
+      </tr>
+      <tr>
+        <td><strong>Mandamus</strong></td>
+        <td><em>"We Command"</em></td>
+        <td>Commands public officials/bodies to perform an official statutory duty.</td>
+        <td>Cannot be issued vs President, Governors, or private individuals.</td>
+      </tr>
+      <tr>
+        <td><strong>Prohibition</strong></td>
+        <td><em>"To forbid"</em></td>
+        <td>Issued by higher court to lower court/tribunal to prevent exceeding jurisdiction (<strong>Preventive</strong>).</td>
+        <td>Available only against judicial &amp; quasi-judicial authorities.</td>
+      </tr>
+      <tr>
+        <td><strong>Certiorari</strong></td>
+        <td><em>"To be certified"</em></td>
+        <td>Quashes order already passed by lower court/tribunal without jurisdiction or in legal error (<strong>Curative + Preventive</strong>).</td>
+        <td>Available vs judicial, quasi-judicial, and administrative bodies (post-1991).</td>
+      </tr>
+      <tr>
+        <td><strong>Quo-Warranto</strong></td>
+        <td><em>"By what authority"</em></td>
+        <td>Inquires into legality of claim to a substantive public office; prevents illegal usurpation.</td>
+        <td>Cannot be issued for ministerial or private offices. Can be filed by non-aggrieved.</td>
+      </tr>
+    </tbody>
+  </table>
+        </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>7. Operational Exceptions (Articles 31A–35)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+    <div class="card-note purple">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <h3 style="color: rgb(107, 33, 168) !important; font-size: 20px;">Saving of Certain Laws (31A, 31B, 31C)</h3>
+      <ul class="bullet-list">
+        <li><strong>Art 31A:</strong> Saves agrarian reform laws, acquisition of estates, amalgamation of corporations from challenge under Arts 14 and 19.</li>
+        <li><strong>Art 31B &amp; Ninth Schedule:</strong> Shields specified Acts from FR violations.
+          <br>• <em>I.R. Coelho (2007):</em> Laws put in 9th Schedule after <span class="hl-yellow">April 24, 1973</span> (<em>Kesavananda</em> date) are subject to Judicial Review if they violate Basic Structure.
+        </li>
+        <li><strong>Art 31C:</strong> Saves laws implementing Directive Principles under <strong>Art 39(b) &amp; 39(c)</strong> from Arts 14 &amp; 19. <em>"Where Art 31C comes in, Art 14 goes out."</em></li>
+      </ul>
+    </div>
+    <div class="card-note green">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+      <h3 style="color: rgb(21, 128, 61) !important; font-size: 20px;">Armed Forces, Martial Law &amp; Legislation (33–35)</h3>
+      <ul class="bullet-list">
+        <li><strong>Art 33:</strong> Empowers <span class="hl-yellow">Parliament alone</span> to restrict/abrogate FRs of Armed Forces, Police, Intelligence personnel for discipline.</li>
+        <li><strong>Art 34:</strong> Restricts FRs during <strong>Martial Law</strong> in any area; empowers Parliament to indemnify acts done.</li>
+        <li><strong>Art 35:</strong> Power to make laws giving effect to specific FRs (16(3), 32(3), 33, 34) and punishing offences under Art 17 and Art 23 belongs <strong>ONLY to Parliament</strong> (not State Legislatures).</li>
+      </ul>
+    </div>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>8. Formula &amp; Shortcut Zone</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky yellow">
+    <h4 style="color:var(--ink-blue); font-size:20px;">⚡ Topper's Mnemonics &amp; Speed Formulas</h4>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; font-size:16px;">
+      <div>
+        • <strong>CITIZENS-ONLY FRs:</strong> <span class="hl-pink">"15, 16, 19, 29, 30"</span> (Odd teens 15, 19 + 16 + Cultural 29, 30).<br>
+        • <strong>ARTICLE 19 FREEDOMS MNEMONIC:</strong> <span class="hl-blue">"SAAM RP"</span><br>
+        ➔ <strong>S</strong>peech (19a), <strong>A</strong>ssemble (19b), <strong>A</strong>ssociation (19c), <strong>M</strong>ovement (19d), <strong>R</strong>esidence (19e), <strong>P</strong>rofession (19g).
+      </div>
+      <div>
+        • <strong>WRITS HIERARCHY:</strong> <span class="hl-green">"H-M-P-C-Q"</span><br>
+        ➔ <strong>H</strong>abeas Corpus (body) ➔ <strong>M</strong>andamus (duty) ➔ <strong>P</strong>rohibition (stay) ➔ <strong>C</strong>ertiorari (quash) ➔ <strong>Q</strong>uo-Warranto (authority).<br>
+        • <strong>EMERGENCY IMMUNITY:</strong> Arts 20 &amp; 21 are immortal under Art 352!
+      </div>
+    </div>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>9. Concept Maps &amp; Visual Flowcharts</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="svg-box">
+    <svg viewBox="0 0 850 190" width="100%" height="190" style="font-family:'Kalam', cursive;">
+      <rect x="325" y="10" width="205" height="45" rx="6" fill="#dbeafe" stroke="#1e40af" stroke-width="1.8"></rect>
+      <text x="425" y="30" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="bold">PART III: FUNDAMENTAL RIGHTS</text>
+      <text x="425" y="43" text-anchor="middle" font-size="11" fill="#334155">Articles 12 to 35 (Justiciable)</text>
+
+      <path d="M 425 48 L 425 76" stroke="#64748b" stroke-width="1.8"></path>
+      <path d="M 75 76 L 775 76" stroke="#64748b" stroke-width="1.8"></path>
+
+      <path d="M 75 76 L 75 102" stroke="#64748b" stroke-width="1.8"></path>
+      <path d="M 215 76 L 215 102" stroke="#64748b" stroke-width="1.8"></path>
+      <path d="M 355 76 L 355 102" stroke="#64748b" stroke-width="1.8"></path>
+      <path d="M 495 76 L 495 102" stroke="#64748b" stroke-width="1.8"></path>
+      <path d="M 635 76 L 635 102" stroke="#64748b" stroke-width="1.8"></path>
+      <path d="M 775 76 L 775 102" stroke="#64748b" stroke-width="1.8"></path>
+
+      <rect x="15" y="102" width="120" height="68" rx="5" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"></rect>
+      <text x="75" y="123" text-anchor="middle" font-size="13.5" fill="#b45309" font-weight="bold">EQUALITY</text>
+      <text x="75" y="140" text-anchor="middle" font-size="11.5" fill="#334155">Arts 14 – 18</text>
+      <text x="75" y="156" text-anchor="middle" font-size="10.5" fill="#475569">Rule of Law</text>
+
+      <rect x="155" y="102" width="120" height="68" rx="5" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"></rect>
+      <text x="215" y="123" text-anchor="middle" font-size="13.5" fill="#15803d" font-weight="bold">FREEDOM</text>
+      <text x="215" y="140" text-anchor="middle" font-size="11.5" fill="#334155">Arts 19 – 22</text>
+      <text x="215" y="156" text-anchor="middle" font-size="10.5" fill="#475569">Life &amp; Liberty</text>
+
+      <rect x="295" y="102" width="120" height="68" rx="5" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"></rect>
+      <text x="355" y="123" text-anchor="middle" font-size="13.5" fill="#b91c1c" font-weight="bold">EXPLOITATION</text>
+      <text x="355" y="140" text-anchor="middle" font-size="11.5" fill="#334155">Arts 23 – 24</text>
+      <text x="355" y="156" text-anchor="middle" font-size="10.5" fill="#475569">Anti-Trafficking</text>
+
+      <rect x="435" y="102" width="120" height="68" rx="5" fill="#f3e8ff" stroke="#6b21a8" stroke-width="1.5"></rect>
+      <text x="495" y="123" text-anchor="middle" font-size="13.5" fill="#6b21a8" font-weight="bold">RELIGION</text>
+      <text x="495" y="140" text-anchor="middle" font-size="11.5" fill="#334155">Arts 25 – 28</text>
+      <text x="495" y="156" text-anchor="middle" font-size="10.5" fill="#475569">Secular State</text>
+
+      <rect x="575" y="102" width="120" height="68" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"></rect>
+      <text x="635" y="123" text-anchor="middle" font-size="13.5" fill="#0284c7" font-weight="bold">CULTURE/EDU</text>
+      <text x="635" y="140" text-anchor="middle" font-size="11.5" fill="#334155">Arts 29 – 30</text>
+      <text x="635" y="156" text-anchor="middle" font-size="10.5" fill="#475569">Minorities</text>
+
+      <rect x="715" y="102" width="120" height="68" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="1.5"></rect>
+      <text x="775" y="123" text-anchor="middle" font-size="13.5" fill="#ea580c" font-weight="bold">REMEDIES</text>
+      <text x="775" y="140" text-anchor="middle" font-size="11.5" fill="#334155">Article 32</text>
+      <text x="775" y="156" text-anchor="middle" font-size="10.5" fill="#475569">5 Writs (SC)</text>
+    </svg>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>10. Important Judicial Precedents &amp; Examples</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note blue">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    <ul class="bullet-list">
+      <li><strong>Evolution of Art 21 (Procedure vs Due Process):</strong> In <em>A.K. Gopalan (1950)</em>, court held that executive compliance with formal law is sufficient. In <em>Maneka Gandhi (1978)</em>, SC expanded this: procedure itself must be <strong>just, fair, and reasonable</strong>, incorporating American Due Process into Indian law.</li>
+      <li><strong>Creamy Layer &amp; Reservation Cap:</strong> In <em>Indra Sawhney (1992)</em>, SC upheld backward class quotas under 16(4) but capped reservations at <strong>50%</strong> and excluded the creamy layer.</li>
+      <li><strong>Involuntary Scientific Tests as Self-Incrimination:</strong> In <em>Selvi v. State of Karnataka</em>, SC ruled that involuntary narco-analysis and lie-detector tests violate the protection against self-incrimination under Art 20(3).</li>
+    </ul>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>11. Exam-Trick Boxes (Avoid Common Traps!)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="exam-trick">
+    <ul class="bullet-list" style="margin-top:2px;">
+      <li><strong>TRAP 1: "Article 19 is suspended during all emergencies."</strong> ➔ <strong>WRONG!</strong> Under Art 358, Art 19 is suspended <em>only</em> in external emergencies (war or external aggression). During an internal emergency (armed rebellion), Art 19 <strong>cannot</strong> be suspended!</li>
+      
+      <li><strong>TRAP 2: "Article 30 protects ethnic and racial minorities."</strong> ➔ <strong>WRONG!</strong> Article 30 exclusively covers <strong>Religious and Linguistic</strong> minorities only! (No recognition for ethnic, racial, or regional minorities).</li>
+      
+      <li><strong>TRAP 3: "Fundamental Rights are enforceable only against the State."</strong> ➔ <strong>WRONG!</strong> Articles <strong>15(2)</strong> (access to public shops/wells), <strong>17</strong> (untouchability), <strong>23</strong> (trafficking/begar), and <strong>24</strong> (hazardous child labour) are enforceable directly against private individuals too!</li>
+      
+      <li><strong>TRAP 4: "National Awards like Bharat Ratna are titles prohibited under Art 18."</strong> ➔ <strong>WRONG!</strong> In <em>Balaji Raghavan (1996)</em>, SC held they are valid constitutional decorations, but they cannot be used as prefixes or suffixes to the recipient's name.</li>
+      
+      <li><strong>TRAP 5: "Article 32 can be invoked for ordinary legal rights."</strong> ➔ <strong>WRONG!</strong> Art 32 is strictly limited to Part III Fundamental Rights. For ordinary legal or statutory rights, approach the High Court under Art 226.</li>
+
+      <li><strong>TRAP 6: "The 50% reservation ceiling bars the 10% EWS quota."</strong> ➔ <strong>WRONG!</strong> In <em>Janhit Abhiyan (2022)</em>, SC held that the 50% ceiling from <em>Indra Sawhney</em> applies strictly to caste-based reservations (SEBCs/SCs/STs) under 15(4) and 16(4), not to economic criteria under 15(6) and 16(6).</li>
+
+      <li><strong>TRAP 7: "Fundamental Rights can never be amended."</strong> ➔ <strong>WRONG!</strong> Parliament can amend any Fundamental Right under Art 368 provided the amendment does not violate the <strong>Basic Structure of the Constitution</strong> (<em>Kesavananda Bharati, 1973</em>).</li>
+      <li><strong>TRAP 8: "A person can claim reservation benefits by marrying into an SC/ST family or obtaining a post-marriage community certificate."</strong> ➔ <strong>WRONG!</strong> 
+        <div class="sub-point">
+          ▫ <strong>Constitutional Mandate:</strong> Caste and tribal status are strictly determined by <strong>birth</strong> and lifelong disadvantage, not by marriage, relocation, or voluntary association.<br>
+          ▫ <strong>Recent Regional Precedent (Adilabad ST Reserved Seat — Godam Nagesh v. Soyam Bapu Rao / Athram Sakku &amp; Atram Suguna Controversy):</strong>
+            <br>&nbsp;&nbsp;• In electoral disputes arising from the <strong>Adilabad (ST) Parliamentary / Assembly constituencies</strong>, non-tribal women who married Scheduled Tribe (Gond / Pardhan) men claimed ST status and contested reserved elections on the basis of social acceptance into the husband's tribe.
+            <br>&nbsp;&nbsp;• <strong>Legal Verdict:</strong> The High Court and Scrutiny Committees, upholding the constitutional mandate of the Supreme Court in <span class="hl-pink">Valsamma Paul (1996)</span> and <span class="hl-yellow">Sunita Singh v. State of UP (2018)</span>, reiterated that a non-tribal woman does not acquire ST status by marrying a tribal man. Consequently, caste certificates obtained on the basis of marriage were declared invalid, and candidates face disqualification from contesting seats reserved under Articles 330 and 332.
+        </div>
+      </li>
+    </ul>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>12. Prelims Practice &amp; Previous Year Questions (PYQs)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mcq-card">
+    <div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><span class="mcq-badge">APPSC / UPSC High-Yield Trap</span></div></div></div></div></div></div>
+    <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+      Q1. Under which Article of the Constitution of India is reservation in primary school education explicitly provided?
+    </div>
+    <div class="mcq-options">
+      1) Article 15<br>
+      2) Article 15(3)<br>
+      3) Article 15(4)<br>
+      4) None of the above
+    </div>
+
+    <!-- Dropdown Trigger -->
+    <div class="mcq-solution-wrapper" style="position: relative; margin-top: 8px;"><details class="reveal-box">
+      <summary>Show Answer &amp; Constitutional Catch</summary>
+      <div class="reveal-content">
+        <div style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+          ➔ <strong>Correct Answer:</strong> <span class="hl-pink">4) None of the above</span><br>
+          ▫ <strong>Explanation:</strong> The Constitution does <em>not</em> contain an explicit clause for "reservation" in primary school education. The mandatory 25% quota for disadvantaged and EWS children in private unaided schools is a statutory provision under <strong>Section 12(1)(c) of the RTE Act, 2009</strong>, which operationalizes <span class="hl-green">Article 21A</span> (Free and Compulsory Elementary Education).<br>
+          ▫ <strong>Crucial Difference:</strong> Articles 15(4) and 15(5) apply to admissions in <em>higher educational institutions</em> (colleges and professional degree seats), not primary schools.
+        </div>
+      </div>
+    </details></div>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mcq-card">
+    <div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><span class="mcq-badge">APPSC Group-1 Prelims Standard</span></div></div></div></div></div></div>
+    <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+      Q2. Under which constitutional provision is reservation for women in public employment legally enabled?
+    </div>
+    <div class="mcq-options">
+      1) Article 16(2)<br>
+      2) Article 16(4)<br>
+      3) Article 15(3)<br>
+      4) Article 16(3)
+    </div>
+
+    <!-- Dropdown Trigger -->
+    <div class="mcq-solution-wrapper" style="position: relative; margin-top: 8px;"><details class="reveal-box">
+      <summary>Show Answer &amp; Constitutional Catch</summary>
+      <div class="reveal-content">
+        <div style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+          ➔ <strong>Correct Answer:</strong> <span class="hl-pink">3) Article 15(3)</span><br>
+          ▫ <strong>Explanation:</strong> <strong>Article 16 has NO provision for women's reservation</strong>; Art 16(4) applies solely to socially and educationally backward classes lacking adequate representation.<br>
+          ▫ <strong>Judicial Benchmark:</strong> In <span class="hl-pink">Govt. of Andhra Pradesh v. P.B. Vijaykumar (1995)</span>, the Supreme Court ruled that <strong>Article 15(3)</strong> ("special provisions for women and children") empowers the State to create job reservations for women across government services.<br>
+          ▫ <strong>Vertical vs Horizontal:</strong> SC/ST/OBC quotas under 16(4) are <em>Vertical Reservations</em>, whereas women's quotas operate as <em>Horizontal Reservations</em> cutting across all vertical categories.
+        </div>
+      </div>
+    </details></div>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mcq-card">
+    <div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><span class="mcq-badge">UPSC / APPSC Standard</span></div></div></div></div></div></div>
+    <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+      Q3. Which of the following bodies does NOT fall under the definition of "State" as per Article 12 of the Constitution?
+    </div>
+    <div class="mcq-options">
+      1) Life Insurance Corporation (LIC)<br>
+      2) National Council of Educational Research and Training (NCERT)<br>
+      3) Oil and Natural Gas Corporation (ONGC)<br>
+      4) Delhi Municipal Corporation
+    </div>
+
+    <!-- Dropdown Trigger -->
+    <div class="mcq-solution-wrapper" style="position: relative; margin-top: 8px;"><details class="reveal-box">
+      <summary>Show Answer &amp; Constitutional Catch</summary>
+      <div class="reveal-content">
+        <div style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+          ➔ <strong>Correct Answer:</strong> <span class="hl-pink">2) NCERT</span><br>
+          ▫ <strong>Explanation:</strong> In <span class="hl-yellow">Chander Mohan Khanna v. NCERT (1991)</span>, the Supreme Court ruled that NCERT is an autonomous registered society for academic research and training without governmental monopoly or deep pervasive state control; thus, it is not an instrumentality of the State under Article 12.<br>
+          ▫ <strong>Other Exclusions to Remember:</strong> <strong>BCCI</strong> (<em>Zee Telefilms, 2005</em>) and purely private un-aided educational bodies are also excluded from Article 12.
+        </div>
+      </div>
+    </details></div>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mcq-card">
+  <div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><div class="mcq-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;"><span class="mcq-badge">APPSC Group-1 Prelims Standard</span></div></div></div></div></div></div>
+  <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">
+    Q2. Under which constitutional provision is reservation for women in public employment legally enabled?
+  </div>
+  <div class="mcq-options">
+    1) Article 16(2)<br>
+    2) Article 16(4)<br>
+    3) Article 15(3)<br>
+    4) Article 16(3)
+  </div>
+
+  <!-- Dropdown Trigger -->
+  <div class="mcq-solution-wrapper" style="position: relative; margin-top: 8px;"><details class="reveal-box">
+    <summary>Show Answer &amp; Constitutional Catch</summary>
+    <div class="reveal-content">
+      <div style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+        ➔ <strong>Correct Answer:</strong> <span class="hl-pink">3) Article 15(3)</span><br>
+        ▫ <strong>Explanation:</strong> <strong>Article 16 has NO provision for women's reservation</strong>; Art 16(4) applies solely to socially and educationally backward classes lacking adequate representation.<br>
+        ▫ <strong>Judicial Benchmark:</strong> In <span class="hl-pink">Govt. of Andhra Pradesh v. P.B. Vijaykumar (1995)</span>, the Supreme Court ruled that <strong>Article 15(3)</strong> ("special provisions for women and children") empowers the State to create job reservations for women across government services.<br>
+        ▫ <strong>Vertical vs Horizontal:</strong> SC/ST/OBC quotas under 16(4) are <em>Vertical Reservations</em>, whereas women's quotas operate as <em>Horizontal Reservations</em> cutting across all vertical categories.
+      </div>
+    </div>
+  </details></div>
+</div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>13. Quick Revision Summary (High-Speed Pointers)</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky pink">
+    <div style="font-size:15px; line-height:23px;">
+      1. Magna Carta of India | Part III | Articles 12–35 | Borrowed from US Bill of Rights.<br>
+      2. Art 12 defines "State" (Govt, Parliament, State Leg, Local, Statutory bodies; Judiciary administrative only).<br>
+      3. Art 13 provides basis for Judicial Review; pre-constitutional (eclipse/severability) &amp; post-constitutional.<br>
+      4. Art 14: Equality before law (UK) &amp; Equal protection of laws (US) | Reasonable classification permitted.<br>
+      5. Art 15: No bias on religion, race, caste, sex, place of birth | 15(6) = 10% EWS quota.<br>
+      6. Art 16: Public jobs equality | 16(4) Backward classes (Indra Sawhney 50% cap) | 16(6) = 10% EWS.<br>
+      7. Art 17: Abolition of untouchability (Absolute right, enforceable vs private individuals).<br>
+      8. Art 18: Abolition of titles (Military/Academic permitted; Bharat Ratna is decoration not title).<br>
+      9. Art 19: 6 freedoms (SAAM RP) for citizens only | Reasonable restrictions under 19(2)–19(6).<br>
+      10. Art 20: No ex-post facto law, no double jeopardy, no self-incrimination.<br>
+      11. Art 21: Life and personal liberty (Maneka Gandhi: procedure must be just, fair &amp; reasonable).<br>
+      12. Art 21A: Right to free &amp; compulsory education (6–14 yrs) | Added by 86th CAA, 2002.<br>
+      13. Art 22: Preventive detention max 3 months without Advisory Board approval.<br>
+      14. Art 23: Anti-trafficking &amp; begar | Art 24: Anti-child labour under 14 yrs.<br>
+      15. Religion (25-28): 25 (individual), 26 (denomination), 27 (no taxes), 28 (instruction bans).<br>
+      16. Minorities (29-30): Art 29 (all citizens language/culture), Art 30 (religious/linguistic only).<br>
+      17. Art 32: Heart &amp; soul (Ambedkar) | 5 Writs: Habeas Corpus, Mandamus, Prohibition, Certiorari, Quo-Warranto.<br>
+      18. Arts 33-35: 33 (Armed forces FRs curb), 34 (Martial law), 35 (Parliament alone enacts FR penalty laws).
+    </div>
+  </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>14. Final Master Memory Sheet</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+          <table class="hand-table">
+    <thead>
+      <tr>
+        <th style="width:14%;">Article</th>
+        <th style="width:36%;">Core Constitutional Subject</th>
+        <th style="width:50%;">Exam Anchor / Exceptions / Landmark Case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Art 12</td><td>Definition of "State"</td><td>Includes statutory bodies (LIC, ONGC); judicial admin work.</td></tr>
+      <tr><td>Art 13</td><td>Laws violating FRs void</td><td>Severability, Eclipse; Basic Structure (<em>Kesavananda</em>).</td></tr>
+      <tr><td>Art 14</td><td>Equality before law &amp; Equal protection</td><td>Non-arbitrariness; Intelligible Differentia test.</td></tr>
+      <tr><td>Art 15</td><td>Prohibition of discrimination (5 grounds)</td><td>Special clauses for women/children, SC/ST, EWS (15(6)).</td></tr>
+      <tr><td>Art 16</td><td>Equal opportunity in public employment</td><td>50% reservation limit (<em>Indra Sawhney</em>); 10% EWS (16(6)).</td></tr>
+      <tr><td>Art 17</td><td>Abolition of Untouchability</td><td>Absolute right; no exceptions; enforceable vs private persons.</td></tr>
+      <tr><td>Art 18</td><td>Abolition of Titles</td><td>Military/academic allowed; National Awards valid decorations.</td></tr>
+      <tr><td>Art 19</td><td>6 Fundamental Freedoms</td><td>Citizens only; automatically suspended during war/external crisis.</td></tr>
+      <tr><td>Art 20</td><td>Protection regarding conviction</td><td>No retroactive criminal penalty; double jeopardy; self-incrimination.</td></tr>
+      <tr><td>Art 21</td><td>Right to Life &amp; Personal Liberty</td><td><em>Maneka Gandhi</em> (Due Process); Privacy (<em>Puttaswamy</em>).</td></tr>
+      <tr><td>Art 21A</td><td>Right to Elementary Education</td><td>6–14 years; 86th Constitutional Amendment Act, 2002.</td></tr>
+      <tr><td>Art 22</td><td>Protection against arrest &amp; detention</td><td>24 hr magistrate presentation; Preventive detention max 3 mos.</td></tr>
+      <tr><td>Art 23</td><td>Prohibition of trafficking &amp; forced labour</td><td>Bans <em>begar</em>; compulsory public service exception.</td></tr>
+      <tr><td>Art 24</td><td>Prohibition of child labour</td><td>Under 14 banned everywhere; adolescents banned in hazardous.</td></tr>
+      <tr><td>Art 25</td><td>Freedom of conscience, profess, practice</td><td>Subject to public order, health, morality; Kirpans allowed.</td></tr>
+      <tr><td>Art 26</td><td>Denominational religious affairs</td><td>Manage own affairs, institutions, and religious property.</td></tr>
+      <tr><td>Art 27</td><td>Freedom from taxation for religion</td><td>Taxes prohibited; reasonable regulatory fee permitted.</td></tr>
+      <tr><td>Art 28</td><td>Religious instruction in schools</td><td>Prohibited in 100% state-funded; voluntary in aided schools.</td></tr>
+      <tr><td>Art 29</td><td>Protection of language, script, culture</td><td>Applies to all distinct citizen groups (majority &amp; minority).</td></tr>
+      <tr><td>Art 30</td><td>Minority educational institutions</td><td>Exclusively for Religious &amp; Linguistic minorities.</td></tr>
+      <tr><td>Art 31A/B/C</td><td>Saving of estate laws &amp; 9th Schedule</td><td>Post-1973 9th schedule laws subject to review (<em>I.R. Coelho</em>).</td></tr>
+      <tr><td>Art 32</td><td>Right to Constitutional Remedies</td><td>5 Writs; Heart &amp; Soul; enforceable directly in Supreme Court.</td></tr>
+      <tr><td>Art 33</td><td>Armed Forces &amp; Intelligence FRs</td><td>Parliament alone can restrict to preserve discipline.</td></tr>
+      <tr><td>Art 34</td><td>Martial Law restrictions</td><td>Protects acts done under military rule by indemnity.</td></tr>
+      <tr><td>Art 35</td><td>Legislation to enforce Part III</td><td>Parliament alone has authority; State Legislatures barred.</td></tr>
+    </tbody>
+  </table>
+        </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header"><span>15. APPSC Mains Question Bank &amp; Model Answer Frameworks</span></div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="mains-section">
+  
+  
+<!-- PYQ 1: Fundamental Rights Philosophy & Article 21 Expansion -->
+  <div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+    <div class="mains-q-title">
+      <span class="hl-dark-red">APPSC Group-1 Mains PYQ • 10 Marks</span> 
+      <strong>Q1. "The transformation from 'Procedure Established by Law' to 'Due Process of Law' has revolutionized the scope of personal liberty under Article 21." Critically examine with landmark judicial pronouncements.</strong>
+    </div>
+    <details class="reveal-box">
+      <summary>View Model Answer Structuring Framework</summary>
+      <div class="reveal-content">
+        <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+          <strong>Answer Framework:</strong><br>
+          • <em>Introduction:</em> Define Article 21 and contrast the British concept of "Procedure Established by Law" (strict procedural compliance) with the American doctrine of "Due Process of Law" (substantive justice, fairness, and reasonableness).<br>
+          • <em>The Restrictive Phase:</em> Discuss <em>A.K. Gopalan v. State of Madras (1950)</em> — literal interpretation, silo approach to Fundamental Rights, and protection restricted solely against arbitrary executive actions.<br>
+          • <em>The Watershed Paradigm Shift:</em> Analyze <em>Maneka Gandhi v. Union of India (1978)</em> — the "Golden Triangle" doctrine (interlinking Articles 14, 19, and 21) establishing that the procedure must be <em>just, fair, and reasonable</em> (substantive due process).<br>
+          • <em>Modern Rights Derivative Cascade:</em> Cite key derived rights: Right to Privacy (<em>K.S. Puttaswamy</em>), Livelihood (<em>Olga Tellis</em>), Speedy Trial (<em>Hussainara Khatoon</em>), and Right to Die with Dignity (<em>Common Cause</em>).<br>
+          • <em>Conclusion:</em> Conclude on how the judiciary transformed Article 21 into the organic, expanding bedrock of human rights and democratic governance in India.
+        </div>
+      </div>
+    </details>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  </div>
+
+  <!-- PYQ 2: Reservation Jurisprudence, Articles 15 & 16 -->
+  <div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+    <div class="mains-q-title">
+      <span class="hl-dark-red">APPSC Group-1 Mains PYQ • 10 Marks</span> 
+      <strong>Q2. Trace the constitutional evolution of affirmative action under Articles 15 and 16. How did the 103rd Constitutional Amendment Act reconcile substantive equality with the 50% reservation ceiling?</strong>
+    </div>
+    <details class="reveal-box">
+      <summary>View Model Answer Structuring Framework</summary>
+      <div class="reveal-content">
+        <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+          <strong>Answer Framework:</strong><br>
+          • <em>Introduction:</em> State that Articles 15 and 16 embody substantive equality (treating unequals unequally to achieve real equality) rather than mere formal equality.<br>
+          • <em>Historical Evolution &amp; Amendments:</em><br>
+          &nbsp;&nbsp;▫ <em>1st CAA (1951):</em> Inserted Art 15(4) after <em>Champakam Dorairajan</em> to enable social and educational advancement.<br>
+          &nbsp;&nbsp;▫ <em>93rd CAA (2005):</em> Inserted Art 15(5) providing quotas in higher educational institutions (upheld in <em>Ashoka Kumar Thakur</em>).<br>
+          &nbsp;&nbsp;▫ <em>Indra Sawhney (1992):</em> Established the 50% reservation ceiling and mandated the exclusion of the creamy layer.<br>
+          • <em>The 103rd CAA Paradigm Shift:</em> Addition of Articles 15(6) and 16(6) providing up to 10% EWS reservation exclusively on economic criteria.<br>
+          • <em>Judicial Reconciliation:</em> Explain <em>Janhit Abhiyan v. Union of India (2022)</em> — Supreme Court upheld that poverty is an independent deprivation factor and ruled that the 50% ceiling applies strictly to caste-based affirmative actions (SEBCs/SCs/STs), not EWS.<br>
+          • <em>Conclusion:</em> Emphasize that affirmative action has expanded from rectifying historical social injustice to addressing multi-dimensional modern economic vulnerabilities.
+        </div>
+      </div>
+    </details>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  </div>
+
+  <!-- PYQ 3: Judicial Review & Basic Structure -->
+  <div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+    <div class="mains-q-title">
+      <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+      <strong>Q3. "Article 32 is not merely a mechanism to enforce Fundamental Rights; it is the cornerstone of the rule of law and constitutionalism." Discuss its relation with Article 226 and judicial review.</strong>
+    </div>
+    <details class="reveal-box">
+      <summary>View Model Answer Structuring Framework</summary>
+      <div class="reveal-content">
+        <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+          <strong>Answer Framework:</strong><br>
+          • <em>Introduction:</em> Quote Dr. B.R. Ambedkar designating Article 32 as the "Heart and Soul" of the Constitution; explain that the remedy itself is a Fundamental Right guaranteed under Part III.<br>
+          • <em>Comparative Scope (Art 32 vs Art 226):</em><br>
+          &nbsp;&nbsp;▫ <em>Territorial &amp; Legal Reach:</em> Art 32 is limited only to Part III violations by the Supreme Court; Art 226 empowers High Courts to issue writs for both Fundamental Rights and any ordinary legal right.<br>
+          &nbsp;&nbsp;▫ <em>Constitutional Character:</em> Art 32 is a guaranteed fundamental right (cannot be refused), whereas Art 226 is a discretionary constitutional power.<br>
+          • <em>Writ Jurisprudence:</em> Briefly illustrate how writs like <em>Habeas Corpus</em> (anti-detention) and <em>Mandamus</em> (compelling statutory duty) preserve the separation of powers and rule of law.<br>
+          • <em>Basic Structure Status:</em> Mention <em>Fertilizer Corporation Kamgar Union</em> and <em>L. Chandra Kumar</em> confirming that judicial review under Articles 32 and 226 is an untouchable part of the Basic Structure.<br>
+          • <em>Conclusion:</em> End with how Public Interest Litigation (PIL) transformed Article 32 from a rigid judicial remedy into a participatory human rights tool for underprivileged classes.<br>
+        </div>
+      </div>
+    </details>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  </div>
+
+  <!-- PYQ 4: Difference between Article 15 and Article 16 (Side-by-Side Comparison) -->
+  <div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+    <div class="mains-q-title">
+      <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+      <strong>Q4. "While Article 15 provides a comprehensive guarantee against discrimination, Article 16 is a specialized facet tailored to public employment." Differentiate between Articles 15 and 16 with respect to their scope, prohibited grounds, and affirmative action frameworks.</strong>
+    </div>
+    <details class="reveal-box">
+      <summary>View Model Answer Structuring Framework</summary>
+      <div class="reveal-content">
+        <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+          <strong>Answer Framework:</strong><br>
+          • <em>Introduction:</em> Frame the constitutional nexus — Article 15 is the general genus prohibiting discrimination across civic life, while Article 16 is the specific species applying equality strictly to public employment under the State.
+
+          <!-- Side-by-Side Comparison Table -->
+          <table class="hand-table" style="margin: 10px 0 12px 0; font-size: 14px;">
+            <thead>
+              <tr>
+                <th style="width: 22%;">Dimension</th>
+                <th style="width: 39%;">Article 15 (General Non-Discrimination)</th>
+                <th style="width: 39%;">Article 16 (Public Employment Equality)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Core Scope &amp; Operative Field</strong></td>
+                <td>Broad civic realm: applies to state action, access to public places, educational institutions, shops, wells, and tanks.</td>
+                <td>Narrow vertical field: applies strictly to employment, appointment, or office held under the <em>State</em>.</td>
+              </tr>
+              <tr>
+                <td><strong>Enforceability</strong></td>
+                <td>Available against <strong>both the State and Private Individuals</strong> (under Art 15(2) for public venues/amenities).</td>
+                <td>Available <strong>only against the State</strong> (as defined under Article 12); no horizontal enforcement against private jobs.</td>
+              </tr>
+              <tr>
+                <td><strong>Prohibited Grounds of Discrimination</strong></td>
+                <td><strong>5 grounds:</strong> Religion, race, caste, sex, place of birth (only).</td>
+                <td><strong>7 grounds:</strong> Adds <span class="hl-pink">Descent</span> and <span class="hl-yellow">Residence</span> to the 5 grounds of Article 15.</td>
+              </tr>
+              <tr>
+                <td><strong>Protective Discrimination (Women &amp; Children)</strong></td>
+                <td><strong>Article 15(3)</strong> explicitly empowers special provisions/welfare measures for women and children.</td>
+                <td>No identical clause for women/children; focus is strictly on backward classes lacking representation.</td>
+              </tr>
+              <tr>
+                <td><strong>Educational Quotas vs Job Reservations</strong></td>
+                <td>• <strong>15(4):</strong> Educational advancement of SEBCs/SCs/STs (1st CAA, 1951).<br>• <strong>15(5):</strong> Higher educational admissions including private unaided colleges (93rd CAA, 2005).</td>
+                <td>• <strong>16(4):</strong> Entry-level quotas for backward classes <em>not adequately represented</em> in public services.<br>• <strong>16(4A):</strong> Promotional quotas for SCs/STs (77th CAA, 1995).</td>
+              </tr>
+              <tr>
+                <td><strong>Promotions &amp; Consequential Seniority</strong></td>
+                <td><strong>Not applicable</strong> (education admissions occur only at entry levels).</td>
+                <td>Permitted exclusively for SCs/STs under <strong>Article 16(4A)</strong> along with consequential seniority (85th CAA, 2001).</td>
+              </tr>
+              <tr>
+                <td><strong>Backlog &amp; Carry-Forward Rule</strong></td>
+                <td><strong>Not applicable</strong> to academic seat quotas.</td>
+                <td><strong>Article 16(4B)</strong> exempts backlog vacancies from the 50% yearly ceiling rule (81st CAA, 2000).</td>
+              </tr>
+              <tr>
+                <td><strong>Denominational Office Exception</strong></td>
+                <td>No specific religious office exception.</td>
+                <td><strong>Article 16(5)</strong> allows religious affiliation criteria for offices connected to religious/denominational institutions.</td>
+              </tr>
+              <tr>
+                <td><strong>EWS Reservations (103rd CAA, 2019)</strong></td>
+                <td><strong>Article 15(6):</strong> Up to 10% seats in educational admissions (excluding minority institutions under Art 30(1)).</td>
+                <td><strong>Article 16(6):</strong> Up to 10% posts in initial public appointments for EWS outside existing SC/ST/OBC quotas.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          • <em>Conclusion:</em> Conclude by showing how Articles 15 and 16 together balance formal equality (non-discrimination) with substantive equality (affirmative action), upholding social justice as part of the Basic Structure.
+        </div>
+      </div>
+    </details>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  </div>
+
+  <!-- PYQ 5: Caste as a Parameter for Reservation -->
+  <div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+    <div class="mains-q-title">
+      <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+      <strong>Q5. "Caste can be a starting point, but cannot be the sole determinant for affirmative action." Discuss the constitutional and judicial evolution of caste as a parameter for reservations in India.</strong>
+    </div>
+    <details class="reveal-box">
+      <summary>View Model Answer Structuring Framework</summary>
+      <div class="reveal-content">
+        <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+          <strong>Answer Framework:</strong><br>
+          • <em>Introduction:</em> Contextualize Articles 15(4) and 16(4) which use the term <em>"classes"</em> and not <em>"castes"</em>, highlighting the constitutional intent to achieve substantive equality through socio-educational upliftment.<br>
+          we can mention that Ambedkar mentioned the basis of social untouchability is caste but judicary interprets that it is not caste
+          • <em>Judicial Trajectory:</em><br>
+          &nbsp;&nbsp;▫ <em>M.R. Balaji v. State of Mysore (1963):</em> Supreme Court ruled that backwardness must be social and educational; caste cannot be the sole or dominant criterion for identifying backward classes.<br>
+          &nbsp;&nbsp;▫ <em>Indra Sawhney v. Union of India (1992):</em> Held that a caste can represent a social class and serve as an entry point for backwardness identification, but mandated the exclusion of the <strong>Creamy Layer</strong> to prevent elite monopolization.<br>
+          • <em>Recent Paradigms Beyond Caste:</em><br>
+          &nbsp;&nbsp;▫ <em>103rd CAA (2019) &amp; Janhit Abhiyan (2022):</em> Validated <strong>economic vulnerability (EWS)</strong> as an independent marker of affirmative action completely divorced from caste origins.<br>
+          &nbsp;&nbsp;▫ <em>State of Punjab v. Davinder Singh (2024):</em> Allowed sub-classification within SCs/STs to prioritize the most marginalized, proving that caste is not a monolithic block.<br>
+          • <em>Conclusion:</em> Conclude that affirmative action has evolved from a caste-centric compensatory model toward a multidimensional social justice framework balancing historical marginalization with modern socio-economic deprivations.
+        </div>
+      </div>
+    </details>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  </div>  
+      <div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+      <div class="mains-q-title">
+        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+        <strong>Q6. "Right to Liberty is overly-expanding, Explain"</strong>
+      </div>
+      <details class="reveal-box" style="margin-top:8px;">
+        <summary>View Model Answer Structuring Framework</summary>
+        <div class="reveal-content">
+          <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+            <strong>Answer Framework:</strong><br>
+            • <em>Introduction:</em> Explain what is article 21 and more about article<br>
+            <div class="sub-point">▫ <strong>Note:</strong> Sub-point elaboration...</div>
+            • <em>Core Analysis:</em>&nbsp;<div class="sub-point">▫ Law is flexible:&nbsp;</div><div class="sub-point">▫&nbsp;</div><div><br>
+            • <em>Conclusion:</em> Conclude with Article 21 is Rationally Expanded.</div></div>
+        </div>
+      </details>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  </div><div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+      <div class="mains-q-title">
+        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+        <strong>Q7. "Why untouchability is not defined. What are the reasons to make different acts for prohibition of Untouchability."</strong>
+      </div>
+      <details class="reveal-box" style="margin-top:8px;">
+        <summary>View Model Answer Structuring Framework</summary>
+        <div class="reveal-content">
+          <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+            <strong>Answer Framework:</strong><br>
+            • <em>Introduction:</em>&nbsp;Appa ingale case, Banamali das case&nbsp;<br>
+            <div class="sub-point">▫ <strong>Note:</strong> Sub-point elaboration...</div>
+            • <em>Core Analysis:</em> Arguments and empirical evidence.<br>
+            • <em>Conclusion:</em> Long-term impact and way forward.
+          </div>
+        </div>
+      </details>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  </div><div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+      <div class="mains-q-title">
+        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+        <strong>Q8. "Indian Education system mertis and de-merits"</strong>
+      </div>
+      <details class="reveal-box" style="margin-top:8px;">
+        <summary>View Model Answer Structuring Framework</summary>
+        <div class="reveal-content">
+          <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+            <strong>Answer Framework:</strong><br>
+            • <em>Introduction:</em> Contextualize premises.<br>
+            <div class="sub-point">▫ <strong>Note:</strong> Sub-point elaboration...</div>
+            • <em>Body:<br>• Not according to market standards<br>• Mecale education system: Law memeber in vice-roy. We make manager not leaders<div class="sub-point">▫ <span class="subpoint-text">No individual thought process, no creativity, Very Narrow<br>▫ law comminsion<br></span></div></em><br>
+            • <em>Conclusion:</em> Long-term impact and way forward.
+          </div>
+        </div>
+      </details>
+    
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  </div><div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+            
+          
+      
+      <div class="mains-q-title">
+        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+        <strong>Q9. "In context of&nbsp;</strong>Syed Iftikhar Andrabi v. National Investigation Agency<strong>, Really the bail is a rule or not"</strong>
+      </div>
+      <details class="reveal-box" style="margin-top:8px;">
+        <summary>View Model Answer Structuring Framework</summary>
+        <div class="reveal-content">
+          <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+            <strong>Answer Framework:</strong><br>
+            • <em>Introduction:</em>&nbsp;The case highlights the constitutional tension between stringent anti-terror laws such as the <strong data-start="232" data-end="240">UAPA</strong> and the fundamental right to <strong data-start="270" data-end="307">personal liberty under Article 21</strong>, particularly when an accused remains in custody for a prolonged period without conclusion of trial.<br>
+            
+            • Andrabi had been in custody for <strong data-start="349" data-end="373">more than five years</strong> in a UAPA-related Jammu &amp; Kashmir case involving allegations of narco-terror financing. The Special NIA Court and subsequently the High Court had denied bail.<br>•&nbsp;<strong data-start="1545" data-end="1726">Syed Iftikhar Andrabi v. NIA (2026): </strong><span data-start="1545" data-end="1726">Prolonged pre-trial incarceration and trial delay can justify bail under constitutional protections of personal liberty, even in UAPA cases.</span><br>
+            • <em>Conclusion:</em>&nbsp;The judgment reinforces the principle that <strong data-start="1378" data-end="1483">national security legislation and individual liberty must operate within the constitutional framework</strong>. Ensuring timely investigation and trial can help maintain this balance while preventing prolonged incarceration without adjudication.</div>
+        </div>
+      </details>
+      
+    
+  
+    
+    
+  
+    
+  
+    
+  
+    
+  </div><div class="mains-q-item">
+            
+          
+            
+          
+            
+          
+      
+      <div class="mains-q-title">
+        <span class="hl-dark-red">Mains Practice • 10 Marks</span> 
+        <strong>Q10. "What are the guidelines in Jaya thakur case in&nbsp;</strong><strong data-start="570" data-end="602" style="color: rgb(51, 65, 85); font-size: 15px; background-color: rgb(255, 255, 255);">menstrual </strong><strong>Hygiene"</strong>
+      </div>
+      <details class="reveal-box" style="margin-top:8px;">
+        <summary>View Model Answer Structuring Framework</summary>
+        <div class="reveal-content">
+          <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+            <strong>Answer Framework:</strong><br>
+            • <em>Introduction:</em> Jaya Thakur v. Government of India (2026): Supreme Court recognized menstrual health as integral to dignity, privacy, health and education, directing governments to ensure accessible menstrual-hygiene facilities in schools.<br>
+            <div class="sub-point">▫ <strong>Note:</strong>&nbsp;<strong data-start="629" data-end="666">Constitutional significance<br></strong><strong data-start="669" data-end="684">Article 21:</strong> Right to life and personal liberty includes the right to dignified menstrual health.<br><strong data-start="772" data-end="787">Article 14:</strong> Lack of menstrual facilities can create unequal opportunities for girls.<br><strong data-start="863" data-end="879">Article 21A:</strong> Menstrual hygiene is connected with effective access to education.<br><strong data-start="949" data-end="967">RTE Act, 2009:</strong> School infrastructure and menstrual-management facilities are linked to the statutory right to education.&nbsp;</div><li data-section-id="g995o3" data-start="210" data-end="287"><br><strong data-start="212" data-end="235"><span style="font-weight: 400;">• </span>Free sanitary pads:</strong> Schools should provide menstrual products to girls.<br>• <strong data-start="290" data-end="302">Toilets:</strong> Separate, clean and functional toilets with <strong data-start="347" data-end="374">water, soap and privacy</strong>.<br><strong data-start="378" data-end="391"><span style="font-weight: 400;">• </span>Disposal:</strong> Proper bins and safe disposal of menstrual waste.<br><strong data-start="444" data-end="462"><span style="font-weight: 400;">• </span>Accessibility:</strong> Facilities should also be accessible to <strong data-start="503" data-end="530">girls with disabilities</strong>.<br><strong data-start="534" data-end="548"><span style="font-weight: 400;">• </span>Awareness:</strong> Teach students about <strong data-start="570" data-end="602">menstrual health and puberty</strong> and reduce social stigma.<br><strong data-start="631" data-end="652"><span style="font-weight: 400;">• </span>Teacher training:</strong> Teachers should be trained to provide correct information and support.<br><strong data-start="726" data-end="741"><span style="font-weight: 400;">• </span>Monitoring:</strong> Authorities should regularly check whether schools actually have these facilities.<br><strong data-start="827" data-end="846"><span style="font-weight: 400;">• </span>Education link:</strong> Poor menstrual facilities can contribute to <strong data-start="891" data-end="941">absenteeism and disruption of girls' education</strong>.<br><br>•<em>Conclusion:</em>&nbsp;The judgment treats <strong data-start="980" data-end="1061">menstrual hygiene as a dignity and education issue, not merely a health issue</strong>. Effective implementation requires <strong data-start="1097" data-end="1172">better school infrastructure, awareness, funding and regular monitoring</strong>.</li></div>
+        </div>
+      </details>
+      
+    
+  
+    
+    
+  
+    
+  
+    
+  </div><div class="mains-q-item">
+            
+          
+            
+          
+      
+      <div class="mains-q-title">
+        <span class="hl-dark-red">UPSC Exam - 2014 • 10 Marks</span> 
+        <strong>Q11. "What do you understand by the concept of freedom of speech and expression? Does it covers hate speech also? Why do the films in India stand on slightly different plane from other forms of expression? Discuss"</strong>
+      </div>
+      <details class="reveal-box" style="margin-top:8px;">
+        <summary>View Model Answer Structuring Framework</summary>
+        <div class="reveal-content">
+          <div class="mains-framework" style="background-color: #ffffff; padding: 8px 10px; margin-top: 2px;">
+            <strong>Answer Framework:</strong><br>
+            • <em>Introduction:</em>&nbsp;Freedom of speech and expression is a fundamental right mentioned in 19(1)(a). Fundamental rights are not absolute. According to 19(2), government can impose limitations on fundamental rights.<br>• Hate speech is not allowed.<br><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.85);"><b>▫ Body:</b></span><br>• According to 267th report of law commission of India, hate speech is crime. Hate speech is incitement to crimes.<br>• According to <b>1951</b> Public representative act section 8, prevents a person convicted illegally using freedom of speech from contesting on election.<br>. In Pravasi Bhalai sangatan vs Government of India case <b>2014</b> and Shreya shingal vs government of India&nbsp;<b>2015,</b> the supreme court has underlined the significance of considering the context and intent of the speech.<br>• Freedom of speech and expression is regulated according to the situation.<br><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.85);">▫ Write the limitations here according to 19(2)<br><br><br></span><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.85);">▫ Hate speech of Rahul Gandhi's case in karnataka , Supreme court dismissed rahul gandhi's mp disqualification. He apologized&nbsp; about words on modi.</span><span style="color: rgb(30, 41, 59); background-color: rgba(255, 255, 255, 0.85);"><br></span>• Indian films are different from other forms of expression. movies of are an art form purely based on entertainment, freedom of speech and expression are safe guarded, they are currently under the scanner for propaganda of movies.<br>• Rangarajan vs Jag Jeevan ram <b>1989</b>, Supreme case "Movies must be judged entirely and not based on isolated scenes.<br>• Padmavat case <b>2018</b>, "this film faced significant opposition and was asked to change several changes before releasing to address public sentiments and maintain order".<br><br>
+            • <em>Conclusion:</em>&nbsp;Freedom of speech doesn't include hate speech, which insist to violence and discrimination according to cinematography act.</div>
+        </div>
+      </details>
+      
+    
+  
+    
+    
+  
+    
+  </div></div></div><div class="block-wrapper" draggable="false">
+    
+  <div style="text-align:center; font-family:'Patrick Hand', cursive; font-size:18px; color:var(--ink-blue); margin-top:16px;">
+    ★ Fundamental Rights Master Notes Complete • 100% Exam-Ready Recall ★
+  </div></div></div>
+  <a href="../Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>

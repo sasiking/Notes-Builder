@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3870">
+  <link rel="manifest" href="./manifest.json">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timetable</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg-page: #fbfbf9; --ruled-line: #e3ebf5; --margin-line: #f7a8b8;
+  --ink-blue: #0f3870; --ink-dark: #1e293b; --ink-red: #b91c1c; --ink-green: #15803d;
+  --ink-purple: #6b21a8; --ink-orange: #c2410c; --ink-yellow: #a16207; --ink-teal: #0f766e;
+  --ink-cyan: #0369a1; --ink-indigo: #4338ca; --ink-rose: #be123c; --ink-amber: #b45309;
+  --highlight-yellow: rgba(254, 240, 138, 0.85); --highlight-green: rgba(187, 247, 208, 0.75);
+  --highlight-pink: rgba(251, 207, 232, 0.75); --highlight-blue: rgba(186, 230, 253, 0.75);
+  --highlight-orange: rgba(254, 215, 170, 0.85); --highlight-purple: rgba(233, 213, 255, 0.75);
+  --highlight-teal: rgba(153, 246, 228, 0.75); --highlight-amber: rgba(253, 230, 138, 0.85);
+  --sticky-yellow: #fef9c3; --sticky-pink: #ffe4e6; --sticky-blue: #e0f2fe; --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: #cbd5e1; display: flex; justify-content: center; padding: 25px 10px; height: auto; overflow: visible; font-family: 'Kalam', cursive, sans-serif; color: var(--ink-dark); }
+.notebook-container { width: 100%; max-width: 940px; min-height: 1200px; background-color: var(--bg-page); background-image: linear-gradient(90deg, transparent 48px, var(--margin-line) 48px, var(--margin-line) 50px, transparent 50px), linear-gradient(var(--ruled-line) 1px, transparent 1px); background-size: 100% 28px, 100% 28px; background-repeat: repeat-y, repeat; padding: 35px 35px 80px 65px; border-radius: 4px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); line-height: 28px; position: relative; }
+.block-wrapper { position: relative; margin-bottom: 16px; break-inside: avoid; }
+h1, h2, h3, h4 { font-family: 'Caveat', cursive; font-weight: 700; }
+.title-section { text-align: center; border-bottom: 3px double var(--ink-blue); padding-bottom: 12px; margin-bottom: 20px; background: transparent !important; }
+.title-section h1 { font-size: 38px; color: var(--ink-blue); letter-spacing: 0.5px; line-height: 1.15; background: transparent !important; }
+.title-section .subtitle { font-size: 19px; color: var(--ink-red); font-family: 'Patrick Hand', cursive; background: transparent !important; }
+.badge-tag { display: inline-block; background: var(--ink-purple); color: #fff; padding: 2px 14px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; margin-top: 4px; }
+.section-header { font-size: 26px; color: var(--ink-red); margin: 24px 0 10px 0; display: flex; align-items: center; border-bottom: 2px dashed rgba(185, 28, 28, 0.4); padding-bottom: 2px; }
+.section-header span { background: var(--highlight-yellow); padding: 0 8px; border-radius: 4px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
+.grid-col { display: flex; flex-direction: column; }
+.canvas-multi-row { display: flex; flex-direction: row; align-items: stretch; gap: 16px; width: 100%; margin-bottom: 16px; }
+.canvas-multi-row > .block-wrapper { flex: 1 1 0; min-width: 0; margin-bottom: 0; }
+.card-note { background: rgba(255,255,255,0.88); border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.card-note.blue   { border-left: 6px solid var(--ink-blue) !important; }
+.card-note.green  { border-left: 6px solid var(--ink-green) !important; }
+.card-note.purple { border-left: 6px solid var(--ink-purple) !important; }
+.card-note.red    { border-left: 6px solid var(--ink-red) !important; }
+.card-note.yellow { border-left: 6px solid var(--ink-yellow) !important; }
+.card-note.teal   { border-left: 6px solid var(--ink-teal) !important; }
+.card-note.amber  { border-left: 6px solid var(--ink-amber) !important; }
+.card-note.orange { border-left: 6px solid var(--ink-orange) !important; }
+.card-note.rose   { border-left: 6px solid var(--ink-rose) !important; }
+.card-note.blue h3   { color: var(--ink-blue) !important; }
+.card-note.green h3  { color: var(--ink-green) !important; }
+.card-note.purple h3 { color: var(--ink-purple) !important; }
+.card-note.red h3    { color: var(--ink-red) !important; }
+.card-note.yellow h3 { color: var(--ink-yellow) !important; }
+.card-note.teal h3   { color: var(--ink-teal) !important; }
+.card-note.amber h3  { color: var(--ink-amber) !important; }
+.card-note.orange h3 { color: var(--ink-orange) !important; }
+.card-note.rose h3   { color: var(--ink-rose) !important; }
+.bullet-list, .card-note ul, .card-text-body ul { list-style: none; padding-left: 2px; }
+.bullet-list li, .card-note li, .card-text-body li { margin-bottom: 5px; position: relative; padding-left: 22px; font-size: 16px; line-height: 24px; list-style: none; }
+.bullet-list li::before, .card-note li::before, .card-text-body li::before { content: "➔"; position: absolute; left: 0; color: var(--ink-blue); font-weight: bold; }
+.card-note.blue li::before   { color: var(--ink-blue) !important; }
+.card-note.green li::before  { color: var(--ink-green) !important; }
+.card-note.yellow li::before { color: var(--ink-yellow) !important; }
+.card-note.purple li::before { color: var(--ink-purple) !important; }
+.card-note.red li::before    { color: var(--ink-red) !important; }
+.card-note.teal li::before   { color: var(--ink-teal) !important; }
+.card-note.amber li::before  { color: var(--ink-amber) !important; }
+.card-note.orange li::before { color: var(--ink-orange) !important; }
+.sub-point { margin-left: 18px; padding-left: 10px; border-left: 2px dashed #94a3b8; font-size: 15px; line-height: 22px; margin-top: 4px; margin-bottom: 8px; }
+.dot-point { margin-left: 14px; position: relative; padding-left: 16px; font-size: 15.5px; line-height: 23px; margin-top: 3px; margin-bottom: 5px; }
+.dot-point::before { content: "•"; position: absolute; left: 2px; color: var(--ink-dark); font-weight: 900; font-size: 16px; }
+.sticky { position: relative; padding: 14px 16px; border-radius: 2px; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); transform: rotate(-0.5deg); margin: 12px 0; font-size: 15.5px; line-height: 22px; font-family: 'Patrick Hand', cursive; }
+.sticky.yellow { background: var(--sticky-yellow); border-top: 8px solid #fef08a; }
+.sticky.pink { background: var(--sticky-pink); border-top: 8px solid #fbcfe8; transform: rotate(0.6deg); }
+.sticky.blue { background: var(--sticky-blue); border-top: 8px solid #bae6fd; }
+.table-block-wrapper { position: relative; margin: 14px 0 18px 0; }
+.hand-table { width: 100%; border-collapse: collapse; margin: 4px 0 10px 0; background: rgba(255,255,255,0.85); font-size: 15px; }
+.hand-table th, .hand-table td { border: 1px solid #94a3b8; padding: 7px 10px; text-align: left; line-height: 20px; }
+.hand-table th { background: #e2e8f0; color: var(--ink-blue); font-family: 'Caveat', cursive; font-size: 19px; }
+.exam-trick { background: #fff1f2; border: 2px dashed var(--ink-red); border-radius: 8px; padding: 14px 18px; margin: 16px 0; position: relative; }
+.exam-trick::before { content: "⚡ TOPPER'S SPEED TRICKS & FORMULA HACKS ⚡"; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--ink-red); position: absolute; top: -11px; left: 18px; background: #fff; padding: 0 8px; border: 1px solid var(--ink-red); border-radius: 4px; }
+.hl-yellow { background: var(--highlight-yellow); padding: 1px 4px; border-radius: 3px; }
+.hl-green  { background: var(--highlight-green); padding: 1px 4px; border-radius: 3px; }
+.hl-pink   { background: var(--highlight-pink); padding: 1px 4px; border-radius: 3px; }
+.hl-blue   { background: var(--highlight-blue); padding: 1px 4px; border-radius: 3px; }
+.hl-orange { background: var(--highlight-orange); padding: 1px 4px; border-radius: 3px; }
+.hl-purple { background: var(--highlight-purple); padding: 1px 4px; border-radius: 3px; }
+.hl-teal   { background: var(--highlight-teal); padding: 1px 4px; border-radius: 3px; }
+.hl-amber  { background: var(--highlight-amber); padding: 1px 4px; border-radius: 3px; }
+.fs-sm { font-size: 12px !important; line-height: 18px !important; }
+.fs-md { font-size: 16px !important; line-height: 24px !important; }
+.fs-lg { font-size: 20px !important; line-height: 28px !important; }
+.fs-xl { font-size: 25px !important; line-height: 32px !important; }
+.reveal-box { margin-top: 8px; border-radius: 5px; overflow: hidden; }
+.reveal-box summary { cursor: pointer; user-select: none; font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700; color: #1e40af; background: #eff6ff; border: 1px dashed #93c5fd; padding: 6px 12px; border-radius: 5px; outline: none; list-style: none; display: flex; align-items: center; gap: 6px; }
+.reveal-box summary::-webkit-details-marker { display: none; }
+.reveal-box summary::before { content: "▶"; font-size: 11px; color: #2563eb; transition: transform 0.2s ease; }
+.reveal-box[open] summary::before { transform: rotate(90deg); }
+.reveal-box[open] summary { background: #dbeafe; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.reveal-content { background: #f8fafc; border: 1px dashed #93c5fd; border-top: none; padding: 8px 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+.expand-block-wrapper { position: relative; margin: 12px 0; width: 100%; }
+.expand-block-wrapper.blue .reveal-box summary { color: var(--ink-blue); background: #eff6ff; border-color: #93c5fd; }
+.expand-block-wrapper.blue .reveal-box summary::before { color: var(--ink-blue); }
+.expand-block-wrapper.blue .reveal-box[open] summary { background: #dbeafe; }
+.expand-block-wrapper.blue .reveal-content { border-color: #93c5fd; }
+.expand-block-wrapper.green .reveal-box summary { color: var(--ink-green); background: #f0fdf4; border-color: #86efac; }
+.expand-block-wrapper.green .reveal-box summary::before { color: var(--ink-green); }
+.expand-block-wrapper.green .reveal-box[open] summary { background: #dcfce7; }
+.expand-block-wrapper.green .reveal-content { border-color: #86efac; }
+.expand-block-wrapper.yellow .reveal-box summary { color: var(--ink-yellow); background: #fefce8; border-color: #fde047; }
+.expand-block-wrapper.yellow .reveal-box summary::before { color: var(--ink-yellow); }
+.expand-block-wrapper.yellow .reveal-box[open] summary { background: #fef08a; }
+.expand-block-wrapper.yellow .reveal-content { border-color: #fde047; }
+.expand-block-wrapper.purple .reveal-box summary { color: var(--ink-purple); background: #faf5ff; border-color: #d8b4fe; }
+.expand-block-wrapper.purple .reveal-box summary::before { color: var(--ink-purple); }
+.expand-block-wrapper.purple .reveal-box[open] summary { background: #f3e8ff; }
+.expand-block-wrapper.purple .reveal-content { border-color: #d8b4fe; }
+.expand-block-wrapper.red .reveal-box summary { color: var(--ink-red); background: #fef2f2; border-color: #fca5a5; }
+.expand-block-wrapper.red .reveal-box summary::before { color: var(--ink-red); }
+.expand-block-wrapper.red .reveal-box[open] summary { background: #fee2e2; }
+.expand-block-wrapper.red .reveal-content { border-color: #fca5a5; }
+.expand-block-wrapper.teal .reveal-box summary { color: var(--ink-teal); background: #f0fdfa; border-color: #5eead4; }
+.expand-block-wrapper.teal .reveal-box summary::before { color: var(--ink-teal); }
+.expand-block-wrapper.teal .reveal-box[open] summary { background: #ccfbf1; }
+.expand-block-wrapper.teal .reveal-content { border-color: #5eead4; }
+.expand-block-wrapper.amber .reveal-box summary { color: var(--ink-amber); background: #fffbeb; border-color: #fcd34d; }
+.expand-block-wrapper.amber .reveal-box summary::before { color: var(--ink-amber); }
+.expand-block-wrapper.amber .reveal-box[open] summary { background: #fef3c7; }
+.expand-block-wrapper.amber .reveal-content { border-color: #fcd34d; }
+.expand-block-wrapper.orange .reveal-box summary { color: var(--ink-orange); background: #fff7ed; border-color: #fdba74; }
+.expand-block-wrapper.orange .reveal-box summary::before { color: var(--ink-orange); }
+.expand-block-wrapper.orange .reveal-box[open] summary { background: #ffedd5; }
+.expand-block-wrapper.orange .reveal-content { border-color: #fdba74; }
+.expand-block-wrapper.rose .reveal-box summary { color: var(--ink-rose); background: #fff1f2; border-color: #fda4af; }
+.expand-block-wrapper.rose .reveal-box summary::before { color: var(--ink-rose); }
+.expand-block-wrapper.rose .reveal-box[open] summary { background: #ffe4e6; }
+.expand-block-wrapper.rose .reveal-content { border-color: #fda4af; }
+.mcq-card { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.04); }
+.mcq-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background-color: #dbeafe; color: #1e40af; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+.mcq-options { margin: 6px 0 8px 14px; font-size: 14.5px; line-height: 22px; }
+.mains-section { background: #fffafa; border: 2px solid #7f1d1d; border-radius: 8px; padding: 20px 20px 14px 20px; margin: 24px 0 10px 0; position: relative; box-shadow: 0 5px 15px rgba(127, 29, 29, 0.08); }
+.mains-section::before { content: "✍ UPSC & STATE PSC MAINS PRACTICE QUESTIONS"; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 0.5px; color: #ffffff; position: absolute; top: -12px; left: 20px; background: #991b1b; padding: 2px 12px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+.hl-dark-red { background-color: #991b1b; color: #ffffff; padding: 1px 7px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-block; font-family: 'Inter', sans-serif; }
+.mains-q-item { position: relative; margin-bottom: 14px; border-bottom: 1px dashed rgba(153, 27, 27, 0.25); padding-bottom: 12px; }
+.mains-q-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mains-q-title { font-size: 17px; color: #7f1d1d; font-weight: 700; line-height: 24px; padding-right: 40px; }
+.mains-framework { font-size: 15px; color: #334155; margin-top: 4px; padding-left: 10px; border-left: 2.5px solid #991b1b; line-height: 22px; }
+.eq { position: relative; font-family: 'Inter', sans-serif; font-weight: 700; color: #0f3870; background: rgba(224, 242, 254, 0.75); padding: 1px 6px; border-radius: 4px; border: 1px solid rgba(186, 230, 253, 0.95); display: inline-flex; align-items: center; gap: 4px; line-height: 1.35; margin: 1px 2px; vertical-align: middle; }
+.math-block { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-left: 4px solid var(--ink-purple); border-radius: 6px; padding: 10px 14px; margin: 10px 0; font-family: 'Inter', sans-serif; font-weight: 700; color: var(--ink-dark); font-size: 15px; }
+.fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px; }
+.fraction-top { border-bottom: 2px solid var(--ink-dark); padding-bottom: 2px; }
+.fraction-bottom { padding-top: 2px; }
+.note-image-container { position: relative; margin: 16px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
+.note-image-wrapper { position: relative; overflow: hidden; display: inline-block; min-width: 140px; max-width: 100%; border: 1.5px dashed #94a3b8; border-radius: 6px; padding: 6px; background: #ffffff; box-shadow: var(--shadow); }
+.note-image-wrapper img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; }
+@media print {
+  body { background: none !important; padding: 0 !important; }
+  .notebook-container { box-shadow: none !important; width: 100% !important; max-width: 100% !important; padding: 10px 15px 15px 45px !important; }
+}
+  
+</style>
+<style id="mobile-pwa-inline-style">
+/* ==========================================================================
+   SELF-CONTAINED MOBILE PWA & RESPONSIVE ENGINE (INLINED)
+   Phones (<=600px) | Tablets (601px-1024px) | Laptops/Desktops (>1024px)
+   Guarantees 100% Mobile Friendliness in Google Drive & Offline
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. TABLET BREAKPOINT (601px to 1024px) - iPads & Tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    padding: 16px 10px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 24px 70px 52px !important;
+    background-image: linear-gradient(90deg, transparent 38px, var(--margin-line, #f7a8b8) 38px, var(--margin-line, #f7a8b8) 40px, transparent 40px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+  }
+  .grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  .canvas-multi-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. PHONE BREAKPOINT (<= 600px) - Handheld Mobile Devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 6px 4px !important;
+  }
+  .notebook-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 10px 50px 22px !important;
+    background-image: linear-gradient(90deg, transparent 14px, var(--margin-line, #f7a8b8) 14px, var(--margin-line, #f7a8b8) 16px, transparent 16px), linear-gradient(var(--ruled-line, #e3ebf5) 1px, transparent 1px) !important;
+    background-size: 100% 28px, 100% 28px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    min-height: auto !important;
+  }
+  .title-section h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  .title-section .subtitle {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+  .section-header {
+    font-size: 18px !important;
+    line-height: 23px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .canvas-multi-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-row, .form-row-3 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .card-note {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .sticky {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+  }
+  .bullet-list li, .card-note li {
+    font-size: 14.5px !important;
+    line-height: 21px !important;
+    padding-left: 18px !important;
+  }
+  .table-block-wrapper, 
+  div[style*="overflow-x: auto"] {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+  .hand-table {
+    min-width: 480px !important;
+    font-size: 13px !important;
+  }
+  .hand-table th, .hand-table td {
+    padding: 6px 8px !important;
+  }
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .stat-box {
+    border-right: none !important;
+    border-bottom: 1px dashed #cbd5e1 !important;
+    padding-bottom: 8px !important;
+  }
+  .stat-box:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .task-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .task-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .btn-save {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+  .chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .chart-svg {
+    min-width: 580px !important;
+  }
+}
+
+/* 4. FLOATING PWA BACK TO HUB BUTTON */
+.pwa-back-link {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: #0f3870;
+  color: #ffffff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.pwa-back-link:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+@media print {
+  .pwa-back-link {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="notebook-container" id="editorCanvas"><div class="block-wrapper" draggable="false">
+    
+  <div class="title-section">
+        <div class="badge-tag">APPSC &amp; TGPSC GROUP-I | WORKING PROFESSIONAL ARCHITECTURE | 18:6 FASTING + 5:30 AM GYM</div>
+        <h1>Timetable</h1>
+        <div class="subtitle">18:6 Fasting (Finish Eating Before 6:00 PM) • 5:30 AM Compound Lifts + 2 km Treadmill • Walking Pad • Mission Mid-June ~73 kg</div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="sticky orange">
+            🌅 <strong>The 18:6 Fasting &amp; 6 PM Cutoff Edge:</strong><br>
+            Finishing all food by <strong>06:00 PM</strong> means your body has 4+ hours to completely digest before bed. Your sleep is 100% deeper, HGH spikes, and your 5:30 AM workout happens at <strong>hour 11.5 of pure fasted fat burning</strong>!
+          </div>
+        </div>
+        <div class="grid-col">
+          <div class="sticky green">
+            🚶‍♂️ <strong>Standing Desk + Walking Pad Synergy:</strong><br>
+            Two 45-minute walking sessions during IT WFH add <strong>6,000 steps (~400 kcal)</strong> daily. Walking pad block 1 at 10:30 AM hits right during hour 16.5 of fasting—melting stubborn love-handle fat!
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="card-note blue">
+    
+  
+    
+  
+        <h3 style="color: rgb(15, 56, 112) !important; font-size: 20px;">📊 The 46.5-Hour Weekly Study Formula (Ahead of Full-Time Students!)</h3>
+        <div class="card-text-body">
+          <ul class="bullet-list">
+            <li><strong>Weekdays (Monday to Friday):</strong> 5.5 hours/day × 5 days = <span class="hl-blue">27.5 Focused Study Hours</span></li>
+            <li><strong>Weekends (Saturday &amp; Sunday):</strong> 9.5 hours/day × 2 days = <span class="hl-green">19.0 High-Intensity Hours</span></li>
+            <li><strong>Total Weekly Study Capital:</strong> <span class="hl-yellow"><strong>46.5 Productive Hours / Week</strong></span>. Over 1,200 hours of top-tier study while shedding 30 kg down to ~73 kg!</li>
+          </ul>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header">
+        <span>I. Monday – Friday Master Blueprint (18:6 Fasting + 5:30 AM Gym + IT WFH)</span>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Timeline &amp; Window</th>
+              <th style="width: 25%;">Activity / Focus Area</th>
+              <th style="width: 40%;">Actionable Tasks &amp; Milestones</th>
+              <th style="width: 15%;">Fasting &amp; Mind</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Wake-Up &amp; Igniter</strong><br><span class="hl-yellow">05:00 AM – 05:30 AM</span><br>(30 Mins)</td>
+              <td><strong>Fasted Hydration</strong><br>500ml warm water + black coffee</td>
+              <td>
+                <ul class="bullet-list">
+                  <li>Unsweetened black coffee mobilizes fatty acids for training. Zero sugar, zero milk.</li>
+                  <li>Shoes &amp; gym gear on; arrive at gym by 5:28 AM.</li>
+                </ul>
+              </td>
+              <td><span class="hl-yellow">Fasting Hr 11.0</span><br>Day 1 Energy</td>
+            </tr>
+            <tr>
+              <td><strong>Morning Gym Session</strong><br><span class="hl-orange">05:30 AM – 07:00 AM</span><br>(1.5 Hours)</td>
+              <td>🏋️ <strong>Compound Lifts + 2 km Treadmill</strong><br>• Strength First (40 mins)<br>• Cardio Finisher (20 mins)</td>
+              <td>
+                <ul class="bullet-list">
+                  <li><strong>Compound Lifts (40 mins):</strong> Squats, Bench Press, Deadlifts, Rows (protects muscle &amp; ignites 48-hr afterburn).</li>
+                  <li><strong>2 km Treadmill Finisher (20 mins):</strong> Incline power walk (8–10% at 5.2 km/h) or run-walk interval. Zero knee impact at 103 kg; burns pure fat!</li>
+                </ul>
+              </td>
+              <td><span class="hl-orange">Fasting Hr 12.0</span><br>Peak fat burn</td>
+            </tr>
+            <tr>
+              <td><strong>Shower &amp; Fasted Reset</strong><br><span class="hl-teal">07:00 AM – 07:45 AM</span><br>(45 Mins)</td>
+              <td><strong>Cool Shower &amp; Electrolytes</strong><br>500ml water + pinch of pink salt</td>
+              <td>
+                <ul class="bullet-list">
+                  <li>Refreshing shower to drop body temperature.</li>
+                  <li><strong>18:6 Fasting Continues:</strong> Skip breakfast! Drink water with pink salt to replenish electrolytes lost during gym sweating.</li>
+                </ul>
+              </td>
+              <td><span class="hl-teal">Fasting Hr 13.5</span><br>Zero bloat</td>
+            </tr>
+            <tr>
+              <td><strong>Morning Study Slot 1</strong><br><span class="hl-blue">07:45 AM – 09:15 AM</span><br>(1.5 Hours)</td>
+              <td><strong>Core GS Pillar 1: Polity / Economy</strong><br>• Master Notes Deep Dive<br>• Articles &amp; Constitutional Concepts</td>
+              <td>
+                <ul class="bullet-list">
+                  <li><strong>Deep Fasted Clarity:</strong> Brain is fueled by noradrenaline &amp; ketones. Zero digestive fatigue.</li>
+                  <li>Read 1 core topic (e.g. Fundamental Rights Articles 12–35).</li>
+                </ul>
+              </td>
+              <td><span class="hl-blue">Fasting Hr 14.5</span><br>Laser focus</td>
+            </tr>
+            <tr>
+              <td><strong>IT WFH Work Block 1</strong><br><span class="hl-purple">09:15 AM – 12:00 PM</span><br>(2.75 Hours)</td>
+              <td><strong>Office Coding &amp; Standup</strong><br>+ <span class="hl-green"><strong>Walking Pad Block 1</strong></span><br>(10:30 AM – 11:15 AM)</td>
+              <td>
+                <ul class="bullet-list">
+                  <li>09:15 – 10:30 AM: Deep IT tasks, code reviews, PRs.</li>
+                  <li><strong>🚶 10:30 – 11:15 AM (Walking Pad at 2.3 km/h):</strong> 45 mins easy walk during standup/reading. Fasting hour 16.5 = maximum stubborn fat release + 2,500 steps!</li>
+                  <li>11:15 – 12:00 PM: Sprint wrap-up. Drink plain water.</li>
+                </ul>
+              </td>
+              <td><span class="hl-purple">Fasting Hr 16.5</span><br>Autophagy peak</td>
+            </tr>
+            <tr>
+              <td><strong>Meal 1: Break-Fast Lunch</strong><br><span class="hl-green">12:00 PM – 12:45 PM</span><br>(45 Mins)</td>
+              <td><strong>🍽️ Fast Breaks (Meal 1 Plate)</strong><br>• High Protein + Fiber first<br>• 15 mins Current Affairs / PIB</td>
+              <td>
+                <ul class="bullet-list">
+                  <li><strong>Break Fast (12:00 PM Sharp):</strong> Eggs/paneer/curd + cucumber salad first, 1–2 rotis/dal last. Prevents insulin spike and eliminates food coma!</li>
+                  <li>Read 15 mins of The Hindu / PIB editorial notes.</li>
+                </ul>
+              </td>
+              <td><span class="hl-green">EATING WINDOW</span><br>Window opens</td>
+            </tr>
+            <tr>
+              <td><strong>IT WFH Work Block 2</strong><br><span class="hl-purple">12:45 PM – 05:00 PM</span><br>(4.25 Hours)</td>
+              <td><strong>Office Tasks &amp; Meetings</strong><br>+ <span class="hl-green"><strong>Walking Pad Block 2</strong></span><br>+ <span class="hl-teal"><strong>Standing Desk</strong></span></td>
+              <td>
+                <ul class="bullet-list">
+                  <li><strong>🚶 01:30 – 02:15 PM (Walking Pad at 2.5 km/h):</strong> Post-lunch walk. Crushes afternoon drowsiness &amp; pulls glucose straight into leg muscles.</li>
+                  <li>02:15 – 03:45 PM: Core programming and IT deliverables.</li>
+                  <li><strong>03:45 PM Bridge Snack:</strong> Green tea + 5 soaked almonds &amp; walnuts.</li>
+                  <li><strong>🧍 04:15 – 05:00 PM (Standing Desk Only):</strong> Active standing prevents flank compression. Wrap up office tasks.</li>
+                </ul>
+              </td>
+              <td><span class="hl-purple">Active IT</span><br>6,000 steps reached</td>
+            </tr>
+            <tr>
+              <td><strong>Meal 2: Early Dinner (Final Meal)</strong><br><span class="hl-pink">05:00 PM – 05:45 PM</span><br>(45 Mins)</td>
+              <td><strong>🍲 Clean Dinner (Before 6:00 PM)</strong><br>Thick dal, vegetable soup, sautéed paneer/eggs + 1 phulka</td>
+              <td>
+                <ul class="bullet-list">
+                  <li>Nutritious, light dinner finished comfortably before 6:00 PM.</li>
+                  <li><strong>🔒 06:00 PM HARD CUTOFF: EATING WINDOW CLOSES!</strong> Kitchen is officially locked until 12:00 PM tomorrow. (18-hour fast begins).</li>
+                </ul>
+              </td>
+              <td><span class="hl-pink">WINDOW CLOSES</span><br>18h Fast Begins</td>
+            </tr>
+            <tr>
+              <td><strong>Evening Mental Reset &amp; Transition</strong><br><span class="hl-teal">05:45 PM – 06:00 PM</span><br>(15 Mins)</td>
+              <td><strong>Logoff &amp; Mental Switch</strong><br>Wash up, fresh air, switch to study desk</td>
+              <td>
+                <ul class="bullet-list">
+                  <li>Hard logoff from office laptop at 5:45 PM.</li>
+                  <li>Mental shift: From corporate engineer to future Group-1 Officer!</li>
+                </ul>
+              </td>
+              <td><span class="hl-teal">Reset</span><br>Light stomach</td>
+            </tr>
+            <tr>
+              <td><strong>Evening Study Slot 2</strong><br><span class="hl-blue">06:00 PM – 08:15 PM</span><br>(2.25 Hours)</td>
+              <td><strong>GS Pillar 2: History / S&amp;T + Writing</strong><br>• Space Tech / Ancient History<br>• 1 Timed Mains Answer</td>
+              <td>
+                <ul class="bullet-list">
+                  <li><strong>The Early Dinner Superpower:</strong> Dinner was finished by 6:00 PM, giving you **2.25 uninterrupted hours** of high-energy study with zero digestive lethargy!</li>
+                  <li><strong>Write 1 timed Mains Question (8–11 mins)</strong> under real exam countdown.</li>
+                </ul>
+              </td>
+              <td><span class="hl-blue">Heavy Study</span><br>Peak evening focus</td>
+            </tr>
+            <tr>
+              <td><strong>Night ACV Elixir &amp; Break</strong><br><span class="hl-teal">08:15 PM – 08:30 PM</span><br>(15 Mins)</td>
+              <td><strong>🍎 Apple Cider Vinegar (ACV)</strong><br>2 hours before bedtime</td>
+              <td>
+                <ul class="bullet-list">
+                  <li><strong>The Protocol:</strong> 1 to 2 tbsp raw ACV diluted in 250ml warm water. Drink with a straw (protects tooth enamel) &amp; rinse mouth.</li>
+                  <li><strong>Metabolic Benefit:</strong> Lowers overnight hepatic glucose production, stabilizes morning fasting blood sugar, and accelerates visceral fat burning without breaking your 18:6 fast!</li>
+                </ul>
+              </td>
+              <td><span class="hl-teal">Metabolic Reset</span><br>Zero fast break</td>
+            </tr>
+            <tr>
+              <td><strong>Night Active Recall &amp; Prep</strong><br><span class="hl-yellow">08:30 PM – 10:15 PM</span><br>(1.75 Hours)</td>
+              <td><strong>Spaced Retrieval &amp; Prelims MCQs</strong><br>• Active Recall of daily notes<br>• 15 Prelims MCQs drill</td>
+              <td>
+                <ul class="bullet-list">
+                  <li>Blank paper recall test; update Master Error Log.</li>
+                  <li>Set out gym shoes &amp; workout clothes for tomorrow's 5:30 AM session.</li>
+                </ul>
+              </td>
+              <td><span class="hl-yellow">Consolidation</span><br>Memory lock</td>
+            </tr>
+            <tr>
+              <td><strong>Deep Fasted Sleep &amp; Cellular Repair</strong><br><span class="hl-blue">10:15 PM – 05:00 AM</span><br>(6.75 Hours)</td>
+              <td><strong>Fasted Deep Rest</strong><br>Stomach is 100% empty</td>
+              <td>
+                <ul class="bullet-list">
+                  <li>Because dinner ended at 6:00 PM, digestion was completed by 8:30 PM.</li>
+                  <li>Zero acid reflux; maximum overnight Human Growth Hormone (HGH) release and fat burning during sleep!</li>
+                </ul>
+              </td>
+              <td><span class="hl-blue">Fasting Hr 5 to 11</span><br>Deep recovery</td>
+            </tr>
+          </tbody>
+        </table>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header">
+        <span>II. Weekend Powerhouse Schedule (Where Working Aspirants Win!)</span>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="table-block-wrapper">
+    
+  
+    
+  
+        <table class="hand-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Weekend Slot</th>
+              <th style="width: 25%;">Saturday Focus (9.5 Hours)</th>
+              <th style="width: 25%;">Sunday Focus (9.5 Hours)</th>
+              <th style="width: 30%;">Tangible Target Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>05:30 AM – 07:00 AM</strong><br>(1.5 Hours)</td>
+              <td>🏋️ <strong>Gym: Compound Legs &amp; Back</strong><br>Squats, Romanian Deadlifts, Lat Pulldowns + 2 km Treadmill</td>
+              <td>🏃 <strong>Active Recovery Cardio</strong><br>45 min outdoor jog/walk + mobility stretches</td>
+              <td>Burn 500+ calories early; morning momentum locked in!</td>
+            </tr>
+            <tr>
+              <td><strong>07:45 AM – 11:30 AM</strong><br><span class="hl-green">Morning Power Block</span><br>(3.75 Hours)</td>
+              <td><strong>Heavy Polity Backlog</strong><br>Parliament, Judiciary, State Executive, Constitutional Amendments</td>
+              <td><strong>Heavy Economy Backlog</strong><br>AP Reorganisation Act, State Budget, Resource Mobilization</td>
+              <td>
+                <ul class="bullet-list">
+                  <li>Complete 2 comprehensive chapters.</li>
+                  <li>Create comparative summary flowcharts.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>12:00 PM – 01:00 PM</strong><br>(1.0 Hour)</td>
+              <td>Meal 1: Break-Fast Lunch (High Protein)</td>
+              <td>Meal 1: Break-Fast Lunch (High Protein)</td>
+              <td>Fasting window breaks cleanly at 12:00 PM.</td>
+            </tr>
+            <tr>
+              <td><strong>01:00 PM – 03:00 PM</strong><br><span class="hl-blue">Midday Deep Block</span><br>(2.0 Hours)</td>
+              <td><strong>Science &amp; Technology</strong><br>Space Policy 2023, Satellite Orbits, Defence Tech, Biotech</td>
+              <td><strong>Ancient &amp; Medieval History</strong><br>IVC town planning, Vedic philosophy, Buddhism/Jainism, Magadha</td>
+              <td>
+                <ul class="bullet-list">
+                  <li>Memorize statutory bodies &amp; landmark judgments.</li>
+                  <li>Map archaeological sites and historical timelines.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>03:30 PM – 05:15 PM</strong><br><span class="hl-orange">Exam Simulation</span><br>(1.75 Hours)</td>
+              <td><strong>Prelims Sectional Mock Test</strong><br>100 Questions under strict timer</td>
+              <td><strong>Mains Answer Writing Sprint</strong><br>4 Mains Questions under timer</td>
+              <td>Real exam pressure simulation &amp; timing mastery.</td>
+            </tr>
+            <tr>
+              <td><strong>05:15 PM – 06:00 PM</strong><br>(45 Mins)</td>
+              <td>Meal 2: Early Dinner (Kitchen closes by 6 PM)</td>
+              <td>Meal 2: Early Dinner (Kitchen closes by 6 PM)</td>
+              <td>18-hour fast locked in for the weekend!</td>
+            </tr>
+            <tr>
+              <td><strong>07:00 PM – 09:45 PM</strong><br><span class="hl-purple">Night Review &amp; Audit</span><br>(2.75 Hours)</td>
+              <td><strong>Deep Mock Test Analysis</strong><br>Dissect wrong options, analyze guessing accuracy</td>
+              <td><strong>7-Day Spaced Repetition Sweep</strong><br>Re-read all high-yield notes made this entire week</td>
+              <td>
+                <ul class="bullet-list">
+                  <li>Update Master Error Log with lessons learned.</li>
+                  <li>Plan next week's 5-day syllabus goals.</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="section-header">
+        <span>III. 18:6 Fasting, Walking Pad &amp; Gym Synergy Architecture</span>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="grid-2">
+        <div class="grid-col">
+          <div class="card-note green">
+    
+  
+    
+  
+            <h3 style="color: rgb(21, 128, 61) !important; font-size: 20px;">🌙 The 6:00 PM Cutoff &amp; 18:6 Fasting Benefits</h3>
+            <div class="card-text-body">
+              <ul class="bullet-list">
+                <li><strong>No Evening Food Coma:</strong> Finishing dinner by 6:00 PM gives you <strong>uninterrupted mental clarity from 6:00 PM to 10:15 PM</strong> for deep Group-1 study!</li>
+                <li><strong>Superior Sleep Architecture:</strong> Going to bed with an empty stomach means your body produces <strong>300% more Human Growth Hormone (HGH)</strong> overnight, speeding up muscle repair and fat burning.</li>
+                <li><strong>Autophagy at 10:30 AM:</strong> During your morning walking pad session, your body has fasted for 16.5 hours—burning pure visceral fat from your love handles and abdomen!</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="grid-col">
+          <div class="card-note orange">
+    
+  
+    
+  
+            <h3 style="color: rgb(194, 65, 12) !important; font-size: 20px;">⚡ City vs. Hometown Mode</h3>
+            <div class="card-text-body">
+              <ul class="bullet-list">
+                <li><strong>City Mode (Primary Attack):</strong> 18:6 Fasting (12 PM – 6 PM) + Standing Desk / Walking Pad (6,000 steps) + 5:30 AM Gym (Compound Lifts + 2 km Treadmill).</li>
+                <li><strong>Hometown Mode (Defense):</strong> If dinner at 6 PM is hard with family, relax to 16:8 (dinner at 8 PM). 2 km outdoor morning walk + 15 mins bedroom push-ups/squats. Zero weight gain!</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div></div><div class="block-wrapper" draggable="false">
+    
+  <div class="sticky blue" style="text-align: center; font-size: 17px;">
+        🎯 <strong>Mission Mid-June (~73 kg Transformation):</strong><br>
+        <em>"By 07:00 AM, your compound lifting &amp; 2 km treadmill workout is conquered. By 12:00 PM, you have completed 18 hours of deep fasted fat burning and 6,000 steps on your walking pad. By 06:00 PM, dinner is done, leaving your evenings completely free for Mains answer writing. Execute this day after day, and by June, you stand at 73 kg in peak athletic fitness and ready to top Group-1!"</em>
+      </div></div></div>
+  <a href="./Dashboard.html" class="pwa-back-link" title="Back to Notes Library">📚 Notes Hub</a>
+</body>
+</html>
